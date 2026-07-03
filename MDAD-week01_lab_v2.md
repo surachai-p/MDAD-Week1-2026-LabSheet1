@@ -1462,7 +1462,6 @@ MaterialApp
 | ใช้เมื่อไหร่ |ใช้ตอนแก้ UI, สี, ข้อความ หรือปรับ Widget เล็กน้อย |ใช้เมื่อแก้โครงสร้างหลักของแอป หรือ Hot Reload แล้วผลไม่เปลี่ยน |
 ```
 ### 3.4 ผลการทดลอง Prompt Engineering
-![alt text](image-10.png)
 **Prompt แบบ Simple:**
 ```
 (วาง Prompt ที่ใช้)
