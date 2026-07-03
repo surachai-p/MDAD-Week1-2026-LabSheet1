@@ -431,6 +431,120 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 เราจะติดตั้งเฉพาะ **Command-line Tools** ซึ่งให้ทุกอย่างที่ Flutter ต้องการ โดยไม่ต้องติดตั้ง Android Studio IDE ทั้งตัว
 
+> ⚠️ **ข้อกำหนดเบื้องต้น:** Android SDK Command-line Tools ต้องการ **Java JDK** ในการทำงาน ถ้ารัน `sdkmanager` แล้วได้ Error ว่า `JAVA_HOME is not set` หรือ `no 'java' command found` ให้ทำขั้นตอน 4.0 ก่อน
+
+#### 4.0 ติดตั้ง Java JDK (จำเป็นสำหรับ Android SDK Tools)
+
+**ทำไมต้องใช้ Java?** Android SDK Command-line Tools เช่น `sdkmanager` และ `avdmanager` เขียนด้วย Java จึงต้องมี JDK ติดตั้งไว้ก่อน แนะนำ **JDK 17** ซึ่งเป็น Version ที่ Flutter และ Android Gradle รองรับดีที่สุด
+
+**ตรวจสอบก่อนว่ามี Java อยู่แล้วหรือไม่:**
+
+```bash
+java -version
+# ถ้ามีแล้วจะแสดงเช่น: openjdk version "17.x.x"
+# ถ้าไม่มีจะขึ้น: command not found หรือ java is not recognized
+```
+
+**ถ้ายังไม่มี ให้ติดตั้ง JDK 17:**
+
+**Windows:**
+
+```powershell
+# วิธีที่ 1: ใช้ winget (Windows Package Manager — มีใน Windows 10/11)
+winget install Microsoft.OpenJDK.17
+
+# ตรวจสอบว่าติดตั้งสำเร็จ (ปิด Terminal แล้วเปิดใหม่ก่อน)
+java -version
+# ควรแสดง: openjdk version "17.x.x"
+```
+
+```powershell
+# วิธีที่ 2: ดาวน์โหลดและติดตั้งเอง
+# 1. เปิดเบราว์เซอร์ไปที่ https://adoptium.net/
+# 2. คลิก "Latest LTS release" → เลือก JDK 17
+# 3. ดาวน์โหลด Windows x64 Installer (.msi)
+# 4. ดับเบิลคลิกติดตั้ง ติ๊ก "Set JAVA_HOME" ด้วย
+# 5. เปิด Terminal ใหม่แล้วทดสอบ
+java -version
+```
+
+**macOS:**
+
+```bash
+# วิธีที่ 1: ใช้ Homebrew (แนะนำ)
+brew install --cask temurin@17
+
+# วิธีที่ 2: ดาวน์โหลดจาก adoptium.net
+# https://adoptium.net/ → JDK 17 → macOS (.pkg)
+# ติดตั้งแล้ว JAVA_HOME จะถูกตั้งค่าอัตโนมัติ
+
+# ตรวจสอบ
+java -version
+# ควรแสดง: openjdk version "17.x.x"
+```
+
+**Linux (Ubuntu/Debian):**
+
+```bash
+# ติดตั้ง OpenJDK 17
+sudo apt update
+sudo apt install -y openjdk-17-jdk
+
+# ตรวจสอบ
+java -version
+# ควรแสดง: openjdk version "17.x.x"
+```
+
+**ตั้งค่า JAVA_HOME (ถ้า sdkmanager ยังแจ้ง Error):**
+
+Windows (PowerShell):
+```powershell
+# หา path ของ Java ที่ติดตั้ง
+# ปกติจะอยู่ที่ C:\Program Files\Eclipse Adoptium\jdk-17.x.x.x-hotspot\
+# หรือ C:\Program Files\Microsoft\jdk-17.x.x.x-hotspot\
+
+# ตั้งค่า JAVA_HOME
+[System.Environment]::SetEnvironmentVariable(
+  "JAVA_HOME",
+  "C:\Program Files\Eclipse Adoptium\jdk-17.x.x.x-hotspot",
+  "User"
+)
+# แทนที่ path ด้วย path จริงของเครื่องคุณ
+# ปิด Terminal แล้วเปิดใหม่
+```
+
+macOS/Linux:
+```bash
+# ตรวจสอบ JAVA_HOME ที่ควรเป็น
+/usr/libexec/java_home -v 17   # macOS เท่านั้น
+
+# เพิ่มใน ~/.zshrc หรือ ~/.bashrc
+echo 'export JAVA_HOME=$(/usr/libexec/java_home -v 17)' >> ~/.zshrc  # macOS
+# หรือ
+echo 'export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64' >> ~/.bashrc  # Linux
+source ~/.zshrc  # หรือ source ~/.bashrc
+
+# ตรวจสอบ
+echo $JAVA_HOME
+java -version
+```
+
+**ทดสอบขั้นสุดท้ายก่อนไปขั้นตอน 4.1:**
+
+```bash
+java -version
+# ต้องแสดง: openjdk version "17.x.x" หรือใกล้เคียง
+
+echo $JAVA_HOME   # macOS/Linux
+echo %JAVA_HOME%  # Windows CMD
+# ต้องแสดง path ที่มี jdk อยู่ ไม่ใช่ค่าว่าง
+```
+
+> ✅ ถ้า `java -version` แสดงผลได้ → พร้อมไปขั้นตอน 4.1  
+> ❌ ถ้ายังขึ้น `JAVA_HOME is not set` หลังตั้งค่าแล้ว → ลอง **ปิด VS Code ทั้งหมด แล้วเปิดใหม่** เพื่อให้ Environment Variables มีผล
+
+---
+
 #### 4.1 ดาวน์โหลด Android Command-line Tools
 
 1. เปิดเบราว์เซอร์ไปที่ https://developer.android.com/studio#command-line-tools-only
