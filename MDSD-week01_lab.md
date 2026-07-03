@@ -796,8 +796,8 @@ flutter devices
 **ขั้นตอน 2.1 — ดาวน์โหลด System Image (ถ้ายังไม่ได้ทำในขั้นตอนที่ 4):**
 
 ```bash
-# ตรวจสอบว่า System Image ติดตั้งแล้วหรือยัง
-sdkmanager --list_installed | grep system-images
+# ตรวจสอบว่า System Image ติดตั้งแล้วหรือยัง หลังรันคำสั่งให้หาดูว่ามี system-images หรือไม่
+sdkmanager --list_installed 
 
 # ถ้ายังไม่มี ติดตั้ง System Image API 34
 sdkmanager "system-images;android-34;google_apis;x86_64"
