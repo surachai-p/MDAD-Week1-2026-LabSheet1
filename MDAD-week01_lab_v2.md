@@ -1540,12 +1540,12 @@ MaterialApp
 
 ### สิ่งที่ต้องส่ง
 
-1. **Source Code** — Push ขึ้น GitHub Repository
+1. **Source Code** — Push ขึ้น GitHub Repository และส่ง Repository ใน MS Teams
    ```
    Repository Name: week01-flutter-intro-[รหัสนักศึกษา]
    ```
 
-2. **ใบงานที่กรอกเสร็จแล้ว** — ส่งเป็น PDF หรือ Markdown
+2. **ใบงานที่กรอกเสร็จแล้ว** — Pull Request ส่ง
 
 3. **Screenshot** อย่างน้อย 3 รูป:
    - Flutter Profile Card App
