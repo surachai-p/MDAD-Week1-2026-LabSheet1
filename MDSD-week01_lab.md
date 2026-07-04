@@ -1556,7 +1556,8 @@ flutter run
 ### 3.2 Screenshot ของ Flutter App
 
 
-<img width="1918" height="907" alt="image" src="https://github.com/user-attachments/assets/b8b0e38f-8ced-49a4-a392-6791b1f47184" />
+<img width="1918" height="910" alt="image" src="https://github.com/user-attachments/assets/3a699cc7-5033-4c34-a7c2-f987a041403c" />
+
 
 
 **Widget Tree ที่วาด:**
