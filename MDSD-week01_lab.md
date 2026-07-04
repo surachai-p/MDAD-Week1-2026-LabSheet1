@@ -1597,9 +1597,10 @@ MaterialApp
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+
+<img width="1915" height="911" alt="image" src="https://github.com/user-attachments/assets/eac194e7-a08a-4934-9e79-a312523888c2" />
+
+
 
 ---
 
@@ -1699,13 +1700,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [✅] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [✅] App รันได้บน Chrome หรือ Android Device/Emulator
+- [✅] Profile Card แสดงข้อมูลของตัวเอง
+- [✅] AI Chat คุยกับ Gemini ได้จริง
+- [✅] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [✅] ตอบคำถามท้ายบทครบทุกข้อ
+- [✅] Push ขึ้น GitHub แล้ว
 
 ---
 
