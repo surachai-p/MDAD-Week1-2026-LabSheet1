@@ -1295,7 +1295,7 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **บันทึกผลการทดลอง**
-> <img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/6947c38d-701c-451b-bb22-d27acb4c5313" />
+> <img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/558512f0-4249-48dc-a9aa-dc8af060a225" />
 
 
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
