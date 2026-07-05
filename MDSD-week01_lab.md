@@ -1183,10 +1183,13 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [x] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [x] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [x] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [x] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+
+**บันทึกผลการทดลอง**
+> <img width="1470" height="922" alt="image" src="https://github.com/user-attachments/assets/9d551291-6038-4cc6-a213-7b908cb6da7d" />
 
 ---
 
@@ -1200,6 +1203,18 @@ class ProfilePage extends StatelessWidget {
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
 > 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
+
+> #### Hot Reload vs Hot Restart ต่างกันอย่างไร?
+> 1. Hot Reload
+> - การทำงาน: เป็นการนำโค้ดเฉพาะส่วนที่เพิ่งแก้ไข (มักจะเป็นไฟล์ประเภท UI เช่น Widget build) ฉีดเข้าไปใน Dart Virtual Machine (VM) ที่กำลังรันอยู่บน Emulator หรือเครื่องจริงโดยตรง
+> - ผลกระทบต่อ State (ข้อมูลในแอป): จะยังคงรักษาข้อมูลเดิมไว้ หมายความว่า ถ้าเราเปิดแอปอยู่ที่หน้าไหน หรือกรอกข้อมูลอะไรค้างไว้ แอปจะไม่รีเซ็ตกลับไปหน้าแรก แต่จะเปลี่ยนดีไซน์หรือข้อความในหน้านั้นให้ทันที
+> - ความเร็ว: เร็วมาก (ใช้เวลาเฉลี่ย < 1 วินาที)
+> - หมาะสำหรับ: การปรับแต่งหน้าตา UI, การจูนสี, การจัด Layout หรือการแก้ข้อความ/คำผิดใน Widget
+> 2. Hot Restart
+> - การทำงาน : เป็นการทำลายหน่วยความจำเดิมทิ้งทั้งหมด แล้วเริ่มรันแอปพลิเคชันขึ้นมาใหม่ตั้งแต่จุดเริ่มต้น (นับหนึ่งใหม่ที่ฟังก์ชัน main())
+> - ผลกระทบต่อ State (ข้อมูลในแอป): ข้อมูลเดิมจะหายทั้งหมด (Lose State) แอปพลิเคชันจะถูกรีเซ็ตและย้อนกลับไปแสดงผลที่หน้าแรกสุด (Home Page) เสมือนเพิ่งเปิดแอปพลิเคชันขึ้นมาใหม่
+> - ความเร็ว: ช้ากว่า Hot Reload เล็กน้อย (ใช้เวลาประมาณ 2 - 5 วินาที ขึ้นอยู่กับขนาดของโปรเจกต์)
+> - เหมาะสำหรับ: การแก้ไขฟังก์ชัน main(), โค้ดส่วนที่เป็นการตั้งค่าเริ่มต้นก่อนเปิดแอป (Initialization), การเปลี่ยนตัวแปรที่เป็นสถิต (Static/Global variables) หรือเมื่อแอปเกิดอาการ Error/ค้างจากลอจิกเดิม
 
 ---
 
@@ -1229,6 +1244,13 @@ class ProfilePage extends StatelessWidget {
 4. คลิก **"Run"** หรือกด `Ctrl+Enter`
 5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้ำ
 
+>นี่คือแนวคิดของ **Flutter Framework** ที่สรุปมาอย่างกระชับและเข้าใจง่ายสำหรับนักศึกษาปี 2 ภายใน **5 ประโยค** ครับ:
+>1. **เขียนครั้งเดียว รันได้ทุกที่ (Single Codebase)**: Flutter คือ UI SDK จาก Google ที่ช่วยให้น้อง ๆ เขียนโค้ดด้วยภาษา Dart เพียงชุดเดียว แต่สามารถคอมไพล์เป็นแอปพลิเคชันที่ทำงานได้จริงทั้งบน iOS, Android, Web และ Desktop โดยไม่ต้องเขียนแยกภาษา
+>2. **ทุกอย่างคือตัวต่อ (Everything is a Widget)**: แนวคิดหลักของ Flutter คือการมองทุกส่วนบนหน้าจอเป็น "Widget" เสมือนการต่อเลโก้ ไม่ว่าจะเป็นปุ่มกด ข้อความ หรือเลย์เอาต์ช่องว่าง ล้วนเป็น Object ที่นำมาประกอบและซ้อนทับกันอย่างเป็นระบบตามโครงสร้าง OOP ที่น้อง ๆ คุ้นเคย
+>3. **วาดหน้าจอเองไม่พึ่ง OS (Self-Rendering Engine)**: แตกต่างจากเฟรมเวิร์กอื่นตรงที่ Flutter ไม่ได้ดึงปุ่มดั้งเดิมของระบบปฏิบัติการมาใช้ แต่มีเอนจินกราฟิกประสิทธิภาพสูงคอยวาด (Render) ทุกพิกเซลขึ้นมาเอง ทำให้หน้าตาแอปสวยงามสม่ำเสมอและทำงานได้ลื่นไหลสูงสุดถึง 120 FPS ในทุกอุปกรณ์
+>4. **เห็นผลลัพธ์ทันตาไม่ต้องรอโหลด (Hot Reload)**: ฟีเจอร์เด่นที่ช่วยประหยัดเวลามากคือ "Hot Reload" ซึ่งช่วยให้น้อง ๆ เห็นผลลัพธ์ของการแก้ไขโค้ดปรากฏบนหน้าจอจำลองได้ทันทีในเสี้ยววินาที โดยไม่ต้องเสียเวลารอคอมไพล์ใหม่ทั้งหมดตั้งแต่ต้น
+>5. **บทสรุปสำหรับปี 2**: หากเข้าใจ OOP และการเขียนโปรแกรมพื้นฐานแล้ว Flutter คือเครื่องมือวิเศษที่จะช่วยให้น้อง ๆ เปลี่ยนโครงสร้าง Logic ในหัวให้กลายเป็นแอปพลิเคชันที่หน้าตาสวยงามและมีประสิทธิภาพสูงระดับ Native ได้เร็วที่สุดครับ
+
 #### ทดลองที่ 2: Code Generation
 
 พิมพ์ Prompt ต่อไปนี้:
@@ -1244,6 +1266,9 @@ class ProfilePage extends StatelessWidget {
 ```
 
 6. นำโค้ดที่ได้ Copy ไปทดสอบใน Flutter Project
+
+**บันทึกผลการทดลอง**
+> <img width="1470" height="921" alt="image" src="https://github.com/user-attachments/assets/08300d2d-c836-4508-b766-949ca50bf1a3" />
 
 #### ทดลองที่ 3: Prompt Engineering
 
@@ -1262,7 +1287,13 @@ class ProfilePage extends StatelessWidget {
 ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
 
+**บันทึกผลการทดลอง**
+> <img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/558512f0-4249-48dc-a9aa-dc8af060a225" />
+
+
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
+> - Simple Prompt ได้ผลลัพธ์ในรูปแบบพื้นฐานทั่วไป (Generic/Minimalist) หน้าตาแอปพลิเคชันจะเน้นโทนสีขาวดำเรียบๆ แบนๆ ขาดสีสันและลูกเล่นในการไฮไลต์จุดสำคัญ แม้จะแสดงข้อมูลได้ครบตามสั่งแต่โครงสร้างโค้ดและการจัดหน้าจอจะถูกลดทอนรายละเอียดลงไปมาก เหมาะสำหรับการขึ้นโครงสร้างจำลองแบบไวๆ (Mockup) เท่านั้น หากจะใช้จริงนักพัฒนาต้องเสียเวลาเขียนโค้ดปรับแต่งรายละเอียดให้ครบถ้วน
+> - Detailed Prompt ได้ผลลัพธ์ที่เป็นมืออาชีพและตรงตามมาตรฐาน Material Design 3 เต็มรูปแบบ มีการจัดองค์ประกอบ มีมิติการใช้สีที่โดดเด่น เช่น ชื่อเมืองสีฟ้าและตัวเลขขนาดใหญ่หนาชัดเจน รวมถึงมีการเขียนลอจิกดักจับเงื่อนไขเพื่อเปลี่ยนสีไอคอนตามสภาพอากาศมาให้เรียบร้อย โค้ดมีความพร้อมสูง สามารถนำไปใช้งานจริงในโปรเจกต์ได้ทันทีโดยไม่ต้องแก้ไขเพิ่ม
 
 ---
 
@@ -1720,65 +1751,249 @@ flutter run
 
 ### 3.1 ผลการติดตั้ง Flutter
 
-```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+<img width="924" height="570" alt="image" src="https://github.com/user-attachments/assets/565221af-0a8b-422f-a9e5-a951e48ac8f3" />
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
-```
+- Flutter Version: 3.44.4
+- Dart Version: 3.12.2
+- Android SDK Version: 36.0.0
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+<img width="1469" height="922" alt="image" src="https://github.com/user-attachments/assets/bb7c54dc-6c50-4b4c-b257-8a45dde5d193" />
+
 
 **Widget Tree ที่วาด:**
 
 ```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
-
 MaterialApp
-└── ?
-    └── ?
-        └── ...
+└── ProfilePage
+    └── Scaffold
+        ├── AppBar
+        │   └── Text ('Profile')
+        └── SingleChildScrollView
+            └── Padding
+                └── Column
+                    ├── SizedBox (height: 20)
+                    ├── CircleAvatar
+                    │   └── Icon (Icons.person)
+                    ├── SizedBox (height: 16)
+                    ├── Text ('Siwapat Auisui')
+                    ├── SizedBox (height: 8)
+                    ├── Text ('รหัสนักศึกษา: 67030351')
+                    ├── SizedBox (height: 24)
+                    ├── Card
+                    │   └── Padding
+                    │       └── Column
+                    │           ├── Row (คณะ) -> [Icon, SizedBox, Text, Expanded -> Text]
+                    │           ├── Divider
+                    │           ├── Row (มหาวิทยาลัย) -> [Icon, SizedBox, Text, Expanded -> Text]
+                    │           ├── Divider
+                    │           ├── Row (อีเมล) -> [Icon, SizedBox, Text, Expanded -> Text]
+                    │           ├── Divider
+                    │           ├── Row (วิชาที่ชอบ) -> [Icon, SizedBox, Text, Expanded -> Text]
+                    │           ├── Divider
+                    │           └── Row (เป้าหมาย) -> [Icon, SizedBox, Text, Expanded -> Text]
+                    ├── SizedBox (height: 24)
+                    └── ElevatedButton.icon
+                        ├── Icon (Icons.smart_toy)
+                        └── Text ('ทดลอง AI Chat')
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว |เร็วมาก (มักใช้เวลาไม่ถึง 1 วินาที) เพราะโหลดเฉพาะโค้ดส่วนที่แก้ไขเข้าไปในตู้คอนเทนเนอร์เดิม | ช้ากว่า Hot Reload (ใช้เวลาประมาณ 2-5 วินาที) เพราะต้องเคลียร์ระบบและรันแอปพลิเคชันใหม่ทั้งหมด |
+| State ถูก Reset? | ไม่ถูก Reset (รักษา State เดิมไว้) หน้าจอและข้อมูลที่ผู้ใช้พิมพ์หรือกดค้างไว้จะยังคงอยู่เหมือนเดิม | ถูก Reset ทั้งหมด (กลับไปเริ่มต้นใหม่) ข้อมูลในหน่วยความจำและหน้าจอปัจจุบันจะถูกล้างทิ้งเหมือนเพิ่งเปิดแอปครั้งแรก |
+| ใช้เมื่อไหร่ | ใช้ตอนปรับแต่ง UI, เปลี่ยนสี, เพิ่ม Widget เล็ก ๆ น้อย ๆ หรือแก้ไข Logic ภายในฟังก์ชันที่อยากเห็นผลทันทีโดยไม่ต้องกรอกข้อมูลใหม่ | ใช้ตอนแก้ไขฟังก์ชันส่วนที่มีผลระดับโครงสร้าง เช่น เปลี่ยนโค้ดในฟังก์ชัน main(), แก้ไขข้อมูลใน initState(), หรือเปลี่ยนระบบการจัดการ State (State Management) |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+เขียนโค้ดหน้า Profile ใน Flutter ให้หน่อย มีชื่อ รหัสนักศึกษา และปุ่มกดไปหน้าอื่น
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+เขียนโค้ด Flutter (Material 3) สำหรับหน้า ProfilePage (StatelessWidget) โดยใช้โครงสร้าง Scaffold มี AppBar สีส้มตัวอักษรสีขาวอยู่ตรงกลาง ในส่วน body ให้ใช้ SingleChildScrollView ร่วมกับ Column ประกอบไปด้วย:
+1. CircleAvatar สีส้ม ด้านในเป็น Icon ไอคอนคนสีขาว ขนาดใหญ่
+2. Text แสดงชื่อ "Siwapat Auisui" ขนาดใหญ่ และ Text รหัสนักศึกษา "67030351" สีเทา
+3. Card ด้านในใช้ Column แสดงข้อมูล 5 แถว (คณะ, มหาวิทยาลัย, อีเมล, วิชาที่ชอบ, เป้าหมาย) โดยแยกแต่ละแถวด้วยโครงสร้าง Row ที่มี Icon สีส้ม และใช้ Divider คั่นระหว่างแถว
+4. ปุ่ม ElevatedButton.icon สีส้ม ตัวอักษรสีขาว ชื่อ "ทดลอง AI Chat" ขยายเต็มความกว้าง (Size.fromHeight(50)) เมื่อกดแล้วให้ใช้ Navigator.push พาไปหน้า AiChatPage()
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+จากการทดลองเปรียบเทียบพบว่า การป้อนคำสั่งแบบ Simple Prompt ที่เป็นเพียงคำสั่งในรูปแบบทั่วไปโดยไม่มีการระบุข้อกำหนดเฉพาะเจาะจง เพื่อให้ระบบสร้างหน้าจอประวัติส่วนตัวพื้นฐานนั้น ส่งผลให้ระบบทำการสุ่มเลือกเทมเพลตมาตรฐานและใช้ข้อมูลตัวอย่างในการแสดงผล ในขณะที่การป้อนคำสั่งแบบ Detailed Prompt ซึ่งมีการระบุข้อกำหนดและรายละเอียดเชิงเทคนิคอย่างเจาะจง เพื่อให้ AI ออกแบบหน้าจอ ProfilePage (StatelessWidget) ด้วย Flutter (Material 3) ภายใต้โครงสร้าง Scaffold โดยกำหนดค่า AppBar เป็นสีส้ม จัดเรียงหน้าจอด้วย SingleChildScrollView ร่วมกับ Column เพื่อแสดงผลอัตลักษณ์บุคคล ประกอบด้วย การระบุชื่อจริง "Siwapat Auisui" รหัสนักศึกษา "67030351" หัวข้อข้อมูลส่วนตัว (คณะ, มหาวิทยาลัย, อีเมล, วิชาที่ชอบ, เป้าหมาย) ในรูปแบบ Card และเพิ่ม ElevatedButton.icon สีส้มเพื่อเชื่อมโยงระบบไปยังหน้าข้อกำหนดถัดไป (AiChatPage) อย่างเป็นระบบ ช่วยให้ AI สามารถเจนเนอเรตหน้าจอ UI ได้ถูกต้องตรงตามวัตถุประสงค์ โดยระบุข้อมูลอัตลักษณ์และรหัสนักศึกษาจริงได้อย่างแม่นยำ พร้อมทั้งสามารถควบคุมธีมสีส้มและจัดเรียงองค์ประกอบโครงสร้างข้อมูลได้อย่างสมบูรณ์ แตกต่างจากการใช้ Simple Prompt ที่จะได้ผลลัพธ์เป็นเพียงโครงร่างรูปแบบพื้นฐาน ธีมสีน้ำเงินตามค่าเริ่มต้น และแสดงผลเป็นข้อมูลตัวอย่างจำลอง ซึ่งยังไม่พร้อมใช้งานและต้องนำไปพัฒนาปรับปรุงต่อในภายหลัง
 ```
+ภาพประกอบ
+- Simple
+<img width="1470" height="922" alt="image" src="https://github.com/user-attachments/assets/382dfa46-1f5f-47c2-a519-c00626716975" />
+
+- Detailed
+<img width="1470" height="922" alt="image" src="https://github.com/user-attachments/assets/17b05a5b-78d0-460b-bef0-50a845324334" />
 
 ### 3.5 Screenshot ของ AI Chat App
 
+<img width="1470" height="921" alt="image" src="https://github.com/user-attachments/assets/c0b34f38-1a7a-4afa-8e6d-761805f6ad00" />
+<img width="1470" height="922" alt="image" src="https://github.com/user-attachments/assets/edd16e48-658b-4c7a-ad5a-05ffba2b19f1" />
+
+#### Source code
 ```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Student List',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        useMaterial3: true,
+      ),
+      home: const StudentListScreen(),
+    );
+  }
+}
+
+// 1. สร้าง Model สำหรับเก็บข้อมูลนักศึกษา
+class Student {
+  final String id;
+  final String name;
+  final String major;
+  final String imageUrl; // สำหรับใส่รูปโปรไฟล์จำลอง
+
+  Student({
+    required this.id,
+    required this.name,
+    required this.major,
+    required this.imageUrl,
+  });
+}
+
+class StudentListScreen extends StatelessWidget {
+  const StudentListScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // 2. สร้างข้อมูลจำลองของนักศึกษา 5 คน
+    final List<Student> students = [
+      Student(
+        id: '65010101',
+        name: 'นายสมชาย รักเรียน',
+        major: 'วิทยาการคอมพิวเตอร์',
+        imageUrl: 'https://api.dicebear.com/7.x/adventurer/svg?seed=Somchai',
+      ),
+      Student(
+        id: '65010102',
+        name: 'นางสาวสมหญิง ขยันยิ่ง',
+        major: 'เทคโนโลยีสารสนเทศ',
+        imageUrl: 'https://api.dicebear.com/7.x/adventurer/svg?seed=Somying',
+      ),
+      Student(
+        id: '65010103',
+        name: 'นายกิตติพงษ์ เรียนดี',
+        major: 'วิศวกรรมซอฟต์แวร์',
+        imageUrl: 'https://api.dicebear.com/7.x/adventurer/svg?seed=Kittipong',
+      ),
+      Student(
+        id: '65010104',
+        name: 'นางสาวปิยะวรรณ สวยงาม',
+        major: 'วิทยาการคอมพิวเตอร์',
+        imageUrl: 'https://api.dicebear.com/7.x/adventurer/svg?seed=Piyawan',
+      ),
+      Student(
+        id: '65010105',
+        name: 'นายอนันต์ ยอดเยี่ยม',
+        major: 'เทคโนโลยีสารสนเทศ',
+        imageUrl: 'https://api.dicebear.com/7.x/adventurer/svg?seed=Anan',
+      ),
+    ];
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'รายชื่อนักศึกษา',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.blueAccent,
+      ),
+      body: Container(
+        color: Colors.grey[100], // สีพื้นหลังเทาอ่อนๆ
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.builder(
+          itemCount: students.length,
+          itemBuilder: (context, index) {
+            final student = students[index];
+            return Card(
+              elevation: 3, // ความเงาของเงาใต้ Card
+              margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12), // ขอบมน
+              ),
+              child: ListTile(
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 16,
+                ),
+                leading: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.blue[100],
+                  child: Text(
+                    student.name.substring(3, 5), // ดึงอักษรแรกของชื่อมาแสดง
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blueAccent,
+                    ),
+                  ),
+                ),
+                title: Text(
+                  student.name,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 4),
+                    Text('รหัสนักศึกษา: ${student.id}'),
+                    Text(
+                      'สาขา: ${student.major}',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                  ],
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 16,
+                  color: Colors.grey,
+                ),
+                onTap: () {
+                  // สามารถใส่ Action เมื่อกดที่รายชื่อนักศึกษาตรงนี้ได้
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('เลือกคุณ ${student.name}')),
+                  );
+                },
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
 ```
 
 ---
@@ -1789,36 +2004,27 @@ MaterialApp
 
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
-```
-คำตอบ: _______________________________________________
-```
+**คำตอบ:** Flutter ใช้ Rendering Engine ของตัวเอง (เช่น Impeller หรือ Skia) ในการวาดและควบคุม UI ลงบนหน้าจอโดยตรง ทำให้มีความเร็วสูงและ UI แสดงผลเหมือนกันในทุกแพลตฟอร์ม ในขณะที่ React Native จะใช้สะพานเชื่อม (Bridge) เพื่อแปลงโค้ดจาวาสคริปต์ไปเรียกใช้ Native UI Components ของระบบปฏิบัติการ (iOS/Android) ซึ่งทำให้การแสดงผลขึ้นอยู่กับแพลตฟอร์มนั้น ๆ
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
+**คำตอบ:** 
+- StatelessWidget: เป็น Widget ที่ไม่มีการเปลี่ยนแปลงข้อมูลภายในตัวมันหลังจากถูกสร้างขึ้น (ข้อมูลคงที่) หน้าจอไม่สามารถสั่งวาดใหม่ด้วยตัวเองได้ เหมาะสำหรับหน้าจอแสดงผลทั่วไป เช่น หน้าประวัติส่วนตัว (ProfilePage) หน้าบทความ หรือปุ่มกดที่ไม่เปลี่ยนรูปทรง
+- StatefulWidget: เป็น Widget ที่มี State สามารถเปลี่ยนแปลงข้อมูลภายในได้แบบไดนามิก และสั่งรันระบบเพื่อวาดหน้าจอใหม่เมื่อข้อมูลเปลี่ยนผ่านคำสั่ง setState() เหมาะสำหรับหน้าจอที่มีการโต้ตอบ เช่น หน้าห้องแชท (AiChatPage) หน้าฟอร์มกรอกข้อมูล หรือปุ่มกด Like
+สรุปคือ StatelessWidget ข้อมูลคงที่ เปลี่ยนแปลงไม่ได้ เหมาะกับจอแสดงทั่วไป ส่วน StatefulWidget ข้อมูลเปลี่ยนได้แบบไดนามิกและรีเฟรชหน้าจอได้ เหมาะกับจอโต้ตอบ
 
-```
-คำตอบ: _______________________________________________
-```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
-
-```
-คำตอบ: _______________________________________________
-```
+**คำตอบ:** เหตุผลที่ห้าม Commit API Key เพราะจะทำให้รหัสลับถูกเผยแพร่สู่สาธารณะ (โดยเฉพาะบน GitHub) ซึ่งอาจนำไปสู่การถูกแฮก ขโมยข้อมูล หรือแอบอ้างสิทธิ์การใช้งานจนเกิดค่าใช้จ่ายมหาศาล วิธีจัดการอย่างปลอดภัยคือการแยกเก็บรหัสไว้ในไฟล์คอนฟิกภายนอก เช่น ไฟล์ `.env` จากนั้นใส่ชื่อไฟล์ดังกล่าวใน `.gitignore` เพื่อป้องกันการ Commit และใช้ตัวจัดการ environment variables ในการดึงมาใช้งานตอนรันแอป
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
+**คำตอบ:** Hot Reload ทำงานโดยการโหลดเฉพาะซอร์สโค้ดส่วนที่มีการแก้ไข (Source Code Changes) เข้าไปยัง Dart Virtual Machine (VM) ที่กำลังรันอยู่บนเครื่องจำลอง ทำให้เห็นผลการเปลี่ยนแปลงบน UI ทันทีภายในเวลาไม่ถึงวินาทีโดยไม่ต้องล้างค่าข้อมูลเก่า (Preserve State) ส่วนข้อจำกัดคือ ไม่สามารถใช้กับการแก้ไขโค้ดที่มีผลต่อโครงสร้างหลักระดับระบบได้ เช่น การแก้ไขในฟังก์ชัน main(), การเปลี่ยนตัวแปรแบบสแตติก, หรือการแก้ไขคำสั่งภายในฟังก์ชัน initState() ของ StatefulWidget ซึ่งกรณีเหล่านี้จำเป็นต้องใช้ Hot Restart แทน
 
-```
-คำตอบ: _______________________________________________
-```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
-
-```
-คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
-```
+**คำตอบ:**
+1. ระบบผู้ช่วยอัจฉริยะและการตอบกลับ (AI Chatbot): นำมาสร้างเป็นฟีเจอร์แชทบอทฝังในแอปพลิเคชันเพื่อตอบคำถาม ให้คำปรึกษา หรือช่วยเหลือผู้ใช้งานแบบเรียลไทม์
+2. ระบบการจัดหมวดหมู่และวิเคราะห์ข้อมูลอัตโนมัติ (Data Extraction & Analysis): ใช้ AI ช่วยสรุปเนื้อหาบทความ แปลภาษา หรือคัดแยกข้อความสำคัญจากเอกสารที่ผู้ใช้อัปโหลดเข้ามาในระบบ
+3. ระบบแนะนำคอนเทนต์ตามความชอบส่วนบุคคล (Personalized Recommendation): ใช้ AI วิเคราะห์พฤติกรรมหรือประวัติการใช้งาน เพื่อแนะนำสินค้า แฟลชการ์ดคำศัพท์ หรือหลักสูตรการเรียนที่เหมาะสมกับผู้ใช้แต่ละคนแบบเฉพาะเจาะจง
 
 ---
 
@@ -1879,13 +2085,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [x] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [x] App รันได้บน Chrome หรือ Android Device/Emulator
+- [x] Profile Card แสดงข้อมูลของตัวเอง
+- [x] AI Chat คุยกับ Gemini ได้จริง
+- [x] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [x] ตอบคำถามท้ายบทครบทุกข้อ
+- [x] Push ขึ้น GitHub แล้ว
 
 ---
 
