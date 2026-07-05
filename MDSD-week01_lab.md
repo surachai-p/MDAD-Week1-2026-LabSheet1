@@ -1719,18 +1719,16 @@ flutter run
 ## 📋 ส่วนที่ 3: แบบบันทึกผลการทดลอง (Lab Report)
 
 ### 3.1 ผลการติดตั้ง Flutter
+<img width="1015" height="290" alt="image" src="https://github.com/user-attachments/assets/9743b726-f53c-4d69-9bdb-001375c7b84e" />
 
 ```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+
+
+Flutter Version: 3.44.4
+Dart Version: 3.12.2
+Android SDK Version: 34.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
@@ -1738,6 +1736,7 @@ Android SDK Version: _______________
 ```
 [แนบ Screenshot ของ Profile Card App ที่สร้าง]
 ```
+<img width="1918" height="1145" alt="image" src="https://github.com/user-attachments/assets/3f3a1500-2702-4ac3-9a2b-74c8ed21bb8b" />
 
 **Widget Tree ที่วาด:**
 
@@ -1754,25 +1753,34 @@ MaterialApp
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | เห็นผลการเปลี่ยนแปลงทันที | ช้ากว่า Hot Reload เพราะต้องเริ่มแอปใหม่ |
+| State ถูก Reset? | ไม่ | ใช่ |
+| ใช้เมื่อไหร่ | แก้ไข UI, ปรับสี, เปลี่ยนข้อความ | พิ่ม Class ใหม่, แก้ไขฟังก์ชัน |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
 (วาง Prompt ที่ใช้)
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง: ชื่อเมือง, อุณหภูมิ, ไอคอนสภาพอากาศ, ความชื้น ใช้ Material Design 3
 ```
 
 **Prompt แบบ Detailed:**
 ```
 (วาง Prompt ที่ใช้)
+คุณเป็น Flutter Developer ผู้เชี่ยวชาญ สร้าง Flutter Widget ชื่อ WeatherCard โดย: 
+1. รับ parameters: city, temperature, condition, humidity 
+2. แสดง UI สวยงามด้วย Card 
+3. ใช้ Icons ตามเงื่อนไขสภาพอากาศ 
+4. ใช้ Color scheme สีฟ้า-ขาว 
+ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
 (บันทึกสิ่งที่สังเกต)
+Prompt แบบ Detailed ให้โค้ดที่นำไปใช้งานได้ทันที มากกว่า มีการจัดการของไอคอนและการตั้งค่าสีตามที่ระบุไว้ชัดเจน
+ส่วนแบบ Simple จะให้โค้ดโครงสร้างพื้นฐานที่นักพัฒนาต้องมาปรับแต่งเองอีกมาก
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
@@ -1780,6 +1788,7 @@ MaterialApp
 ```
 [แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
 ```
+<img width="1918" height="1037" alt="image" src="https://github.com/user-attachments/assets/b9697de5-223a-463a-a5ca-8c570ad94032" />
 
 ---
 
@@ -1790,34 +1799,39 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter มี Rendering Engine ของตัวเอง ทำหน้าที่วาด UI เองทุก Pixel โดยไม่พึ่งพา Native Widget ของระบบปฏิบัติการ
+ในขณะที่ Framework อื่นๆ มักจะใช้การ Bridge เพื่อเรียกใช้ Native Widget ของแต่ละ Platform
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget: เป็น Widget ที่ UI ไม่มีการเปลี่ยนแปลง หลังจากถูกสร้างขึ้น เหมาะสำหรับส่วนหน้าจอที่แสดงข้อมูลนิ่ง เช่น Text, Icon, หรือ Image
+StatefulWidget: เป็น Widget ที่ UI สามารถเปลี่ยนแปลงได้ตามสถานะ (State) เช่น การรับค่าจากผู้ใช้หรือข้อมูลที่เปลี่ยนไป เหมาะสำหรับ Checkbox, TextField, หรือหน้าจอที่มีการนับตัวเลข
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพื่อป้องกัน ความปลอดภัย ไม่ให้ผู้อื่นนำ API Key ของเราไปใช้ ซึ่งอาจส่งผลต่อค่าใช้จ่ายหรือข้อมูลรั่วไหล
+ วิธีจัดการที่ปลอดภัยคือการใช้ไฟล์ .env หรือ Environment Variables และระบุชื่อไฟล์นั้นใน .gitignore เพื่อไม่ให้ถูกอัปโหลดขึ้น Repository
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload ทำงานโดยการแทรกโค้ดที่แก้ไขเข้าไปใน Dart Virtual Machine และสร้าง Widget Tree ใหม่โดยยังคง รักษา State เดิมไว้
+ ข้อจำกัดคือ ไม่สามารถใช้ได้กับการแก้ไขโครงสร้างพื้นฐาน เช่น การเพิ่ม Class ใหม่, การเปลี่ยนฟังก์ชัน main() หรือการแก้ไข initState ซึ่งต้องใช้ Hot Restart แทน
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. Text Generation: สร้าง Chatbot อัจฉริยะ, ระบบช่วยสรุปเนื้อหา หรือระบบแปลภาษาในแอป
+2. Vision / Image Analysis: ระบบตรวจสอบวัตถุจากภาพถ่าย (Object Detection) หรือการอ่านข้อความจากภาพ (OCR)
+3. Personalization: การวิเคราะห์พฤติกรรมผู้ใช้เพื่อสร้าง Adaptive UI หรือแนะนำเนื้อหาที่เหมาะสมกับแต่ละบุคคล
+
 ```
 
 ---
@@ -1879,13 +1893,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [✔] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [✔] App รันได้บน Chrome หรือ Android Device/Emulator
+- [✔] Profile Card แสดงข้อมูลของตัวเอง
+- [✔] AI Chat คุยกับ Gemini ได้จริง
+- [✔] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [✔] ตอบคำถามท้ายบทครบทุกข้อ
+- [✔] Push ขึ้น GitHub แล้ว
 
 ---
 
