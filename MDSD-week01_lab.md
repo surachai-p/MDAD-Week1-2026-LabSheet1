@@ -1306,7 +1306,7 @@ class ProfilePage extends StatelessWidget {
 
 ### ขั้นตอนที่ 3: สร้าง API Key
 
-1. ใน Google AI Studio คลิก **"Get API Key"** (เมนูด้านซ้าย)
+1. ใน Google AI Studio คลิก **"Get API Key"** (เมนูด้านซ้ายล่าง ที่เป็นรูปกุญแจ)
 2. คลิก **"Create API Key"**
 3. เลือก **"Create API key in new project"**
 4. **คัดลอก API Key และเก็บไว้อย่างปลอดภัย**
@@ -1339,7 +1339,7 @@ lib/config/api_keys.dart
 dependencies:
   flutter:
     sdk: flutter
-  google_generative_ai: ^0.4.3  # เพิ่มบรรทัดนี้
+  http: ^1.5.0 # เพิ่มบรรทัดนี้
 ```
 
 3. บันทึกไฟล์ → VS Code จะรัน `flutter pub get` อัตโนมัติ
@@ -1369,8 +1369,11 @@ class ApiConfig {
 สร้างไฟล์ `lib/pages/ai_chat_page.dart`:
 
 ```dart
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:http/http.dart' as http;
+
 import '../config/api_config.dart';
 
 class AiChatPage extends StatefulWidget {
@@ -1382,159 +1385,176 @@ class AiChatPage extends StatefulWidget {
 
 class _AiChatPageState extends State<AiChatPage> {
   final TextEditingController _controller = TextEditingController();
+
   final List<Map<String, String>> _messages = [];
+
   bool _isLoading = false;
-  late final GenerativeModel _model;
 
-  @override
-  void initState() {
-    super.initState();
-    // เริ่มต้น Gemini Model
-    _model = GenerativeModel(
-      model: 'gemini-1.5-flash',  // ใช้ Flash สำหรับ Demo (เร็วและฟรี)
-      apiKey: ApiConfig.geminiApiKey,
-    );
-  }
-
-  // ส่งข้อความไปยัง Gemini API
   Future<void> _sendMessage() async {
     final userMessage = _controller.text.trim();
+
     if (userMessage.isEmpty) return;
 
     setState(() {
-      _messages.add({'role': 'user', 'text': userMessage});
+      _messages.add({
+        'role': 'user',
+        'text': userMessage,
+      });
       _isLoading = true;
     });
+
     _controller.clear();
 
     try {
-      final content = [Content.text(userMessage)];
-      final response = await _model.generateContent(content);
-      
-      setState(() {
-        _messages.add({
-          'role': 'assistant',
-          'text': response.text ?? 'ไม่ได้รับการตอบกลับ'
+      final response = await http.post(
+        Uri.parse(
+          'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${ApiConfig.geminiApiKey}',
+        ),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": userMessage,
+                }
+              ]
+            }
+          ]
+        }),
+      );
+
+      debugPrint("Status Code : ${response.statusCode}");
+      debugPrint("Response : ${response.body}");
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+
+        final aiText =
+            data["candidates"][0]["content"]["parts"][0]["text"] ??
+                "No response";
+
+        setState(() {
+          _messages.add({
+            'role': 'assistant',
+            'text': aiText,
+          });
         });
-      });
-    } catch (e) {
+      } else {
+        setState(() {
+          _messages.add({
+            'role': 'assistant',
+            'text':
+                'Error ${response.statusCode}\n\n${response.body}',
+          });
+        });
+      }
+    } catch (e, st) {
+      debugPrint(e.toString());
+      debugPrint(st.toString());
+
       setState(() {
         _messages.add({
           'role': 'assistant',
-          'text': 'เกิดข้อผิดพลาด: ${e.toString()}'
+          'text': e.toString(),
         });
       });
     } finally {
-      setState(() => _isLoading = false);
+      setState(() {
+        _isLoading = false;
+      });
     }
+  }
+
+  Widget _buildMessage(Map<String, String> message) {
+    final isUser = message["role"] == "user";
+
+    return Align(
+      alignment:
+          isUser ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 6),
+        padding: const EdgeInsets.all(12),
+        constraints: const BoxConstraints(maxWidth: 300),
+        decoration: BoxDecoration(
+          color: isUser ? Colors.blue : Colors.grey.shade300,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Text(
+          message["text"] ?? "",
+          style: TextStyle(
+            color: isUser ? Colors.white : Colors.black,
+          ),
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gemini AI Chat'),
+        title: const Text("Gemini AI Chat"),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
       body: Column(
         children: [
-          // รายการข้อความ
           Expanded(
             child: _messages.isEmpty
                 ? const Center(
                     child: Text(
-                      '👋 ทักทาย Gemini AI!\nลองพิมพ์ข้อความด้านล่าง',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.grey, fontSize: 16),
+                      "👋 Hello Gemini",
+                      style: TextStyle(fontSize: 18),
                     ),
                   )
                 : ListView.builder(
                     padding: const EdgeInsets.all(16),
                     itemCount: _messages.length,
                     itemBuilder: (context, index) {
-                      final message = _messages[index];
-                      final isUser = message['role'] == 'user';
-                      
-                      return Align(
-                        alignment: isUser
-                            ? Alignment.centerRight
-                            : Alignment.centerLeft,
-                        child: Container(
-                          margin: const EdgeInsets.only(bottom: 8),
-                          padding: const EdgeInsets.all(12),
-                          constraints: BoxConstraints(
-                            maxWidth: MediaQuery.of(context).size.width * 0.75,
-                          ),
-                          decoration: BoxDecoration(
-                            color: isUser ? Colors.blue : Colors.grey[200],
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            message['text']!,
-                            style: TextStyle(
-                              color: isUser ? Colors.white : Colors.black,
-                            ),
-                          ),
-                        ),
-                      );
+                      return _buildMessage(_messages[index]);
                     },
                   ),
           ),
-          
-          // Loading Indicator
           if (_isLoading)
             const Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8),
               child: CircularProgressIndicator(),
             ),
-          
-          // Input Box
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  blurRadius: 4,
-                  offset: const Offset(0, -2),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _controller,
-                    decoration: InputDecoration(
-                      hintText: 'พิมพ์ข้อความ...',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(24),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _controller,
+                      decoration: InputDecoration(
+                        hintText: "Ask Gemini...",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
                       ),
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
+                      onSubmitted: (_) => _sendMessage(),
                     ),
-                    onSubmitted: (_) => _sendMessage(),
-                    textInputAction: TextInputAction.send,
                   ),
-                ),
-                const SizedBox(width: 8),
-                FloatingActionButton.small(
-                  onPressed: _isLoading ? null : _sendMessage,
-                  backgroundColor: Colors.blue,
-                  child: const Icon(Icons.send, color: Colors.white),
-                ),
-              ],
+                  const SizedBox(width: 8),
+                  FloatingActionButton.small(
+                    onPressed:
+                        _isLoading ? null : _sendMessage,
+                    child: const Icon(Icons.send),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
       ),
     );
   }
-  
+
   @override
   void dispose() {
     _controller.dispose();
@@ -1543,23 +1563,179 @@ class _AiChatPageState extends State<AiChatPage> {
 }
 ```
 
-อัปเดต `lib/main.dart` ให้นำทางไปหน้า AI Chat:
+อัปเดต lib/main.dart ให้นำทางไปหน้า AI Chat โดยแก้ไข 2 จุด:
+
+จุดที่ 1 — เพิ่ม import ที่หัวไฟล์ บรรทัดแรกๆ ของ main.dart มี import อยู่แล้ว ให้เพิ่มบรรทัดนี้ต่อท้าย import เดิม:
+```dart
+import 'package:flutter/material.dart';
+import 'pages/ai_chat_page.dart';   // ← เพิ่มบรรทัดนี้
+```
+จุดที่ 2 — เพิ่มปุ่มใน ProfilePage ภายใน Column ของ ProfilePage ให้เพิ่มปุ่มต่อท้าย Card widget ที่มีอยู่แล้ว:
+```dart
+// โครงสร้างของ ProfilePage ที่มีอยู่แล้ว
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(...),
+    body: SingleChildScrollView(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+
+          // --- ส่วนที่มีอยู่แล้ว ---
+          const SizedBox(height: 20),
+          const CircleAvatar(...),
+          const SizedBox(height: 16),
+          const Text('ชื่อ นามสกุล', ...),
+          const SizedBox(height: 8),
+          const Text('รหัสนักศึกษา: ...', ...),
+          const SizedBox(height: 24),
+          Card(...),   // Card ข้อมูล
+
+          // ↓↓↓ เพิ่ม 2 บรรทัดนี้ต่อจาก Card ↓↓↓
+          const SizedBox(height: 24),
+          ElevatedButton.icon(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AiChatPage(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.smart_toy),
+            label: const Text('ทดลอง AI Chat'),
+          ),
+          // ↑↑↑ จบส่วนที่เพิ่ม ↑↑↑
+
+        ],
+      ),
+    ),
+  );
+}
+```
+
+💡 ตำแหน่งที่เพิ่ม คือภายใน children: [...] ของ Column หลัง Card(...) ที่แสดงข้อมูลโปรไฟล์ ระวังวงเล็บ — ต้องอยู่ก่อน ], ที่ปิด children
+
+
+
+ตัวอย่าง main.dart ที่สมบูรณ์หลังเพิ่มแล้ว ส่วนที่เพิ่มใหม่จะมี Comment กำกับ:
 
 ```dart
-// เพิ่มใน ProfilePage หรือสร้าง Navigation
-// ตัวอย่าง: เพิ่มปุ่มนำทางไปหน้า AI Chat
+import 'package:flutter/material.dart';
+import 'pages/ai_chat_page.dart'; // ← เพิ่ม import นี้
 
-ElevatedButton.icon(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const AiChatPage()),
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My Profile',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        useMaterial3: true,
+      ),
+      home: const ProfilePage(),
     );
-  },
-  icon: const Icon(Icons.smart_toy),
-  label: const Text('ทดลอง AI Chat'),
-),
+  }
+}
+
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 20),
+            const CircleAvatar(
+              radius: 60,
+              backgroundColor: Colors.teal,
+              child: Icon(Icons.person, size: 60, color: Colors.white),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'ชื่อ นามสกุล',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            const Text('รหัสนักศึกษา: XXXXXXXX'),
+            const SizedBox(height: 24),
+            Card(
+              elevation: 4,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    _buildInfoRow(Icons.school, 'คณะ', 'วิทยาศาสตร์และเทคโนโลยี'),
+                    const Divider(),
+                    _buildInfoRow(Icons.code, 'วิชาที่ชอบ', 'Mobile Development'),
+                  ],
+                ),
+              ),
+            ),
+
+            // ↓ เพิ่มส่วนนี้ ↓
+            const SizedBox(height: 24),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AiChatPage(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.smart_toy),
+              label: const Text('ทดลอง AI Chat'),
+            ),
+            // ↑ จบส่วนที่เพิ่ม ↑
+
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInfoRow(IconData icon, String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        children: [
+          Icon(icon, color: Colors.teal),
+          const SizedBox(width: 12),
+          Text('$label: ', style: const TextStyle(fontWeight: FontWeight.bold)),
+          Expanded(child: Text(value)),
+        ],
+      ),
+    );
+  }
+}
 ```
+
+⚠️ ถ้าได้ Error ว่า AiChatPage ไม่รู้จัก ให้ตรวจสอบว่า:
+
+
+ไฟล์ lib/pages/ai_chat_page.dart มีอยู่จริง
+บรรทัด import 'pages/ai_chat_page.dart'; อยู่ที่หัวไฟล์ main.dart แล้ว
+
+
+
+ขั้นตอนที่ 6: รันและทดสอบ AI Chat
 
 ---
 
@@ -1570,7 +1746,7 @@ flutter run
 ```
 
 **ทดลองส่งข้อความต่อไปนี้:**
-
+** ให้ setting เพิ่ม keyboard ภาษาไทยก่อน **
 1. `สวัสดี ฉันเป็นนักศึกษา Flutter มือใหม่`
 2. `อธิบาย StatefulWidget ให้เข้าใจง่ายๆ`
 3. `ช่วยเขียน Flutter code แสดงรายการนักศึกษา 5 คน`
