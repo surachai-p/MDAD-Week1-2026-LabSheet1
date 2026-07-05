@@ -2085,13 +2085,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [x] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [x] App รันได้บน Chrome หรือ Android Device/Emulator
+- [x] Profile Card แสดงข้อมูลของตัวเอง
+- [x] AI Chat คุยกับ Gemini ได้จริง
+- [x] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [x] ตอบคำถามท้ายบทครบทุกข้อ
+- [x] Push ขึ้น GitHub แล้ว
 
 ---
 
