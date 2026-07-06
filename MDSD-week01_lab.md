@@ -1738,8 +1738,40 @@ flutter run
 
 **Widget Tree ที่วาด:**
 
-<img width="1367" height="672" alt="image" src="https://github.com/user-attachments/assets/eaebbbc6-f1fb-4430-9491-8fab96fd6cb1" />
-
+```MaterialApp
+  └── ProfilePage
+        └── Scaffold
+              ├── AppBar (Property: appBar)
+              │     └── Text ('โปรไฟล์ของฉัน')
+              │
+              └── SingleChildScrollView (Property: body)
+                    └── Padding
+                          └── Column
+                                ├── SizedBox (height: 20)
+                                ├── CircleAvatar
+                                │     └── Icon (Icons.person)
+                                ├── SizedBox (height: 20)
+                                ├── Text ('Arthittaya Phiokham')
+                                ├── SizedBox (height: 8)
+                                ├── Text ('รหัสนักศึกษา : 67030260')
+                                ├── SizedBox (height: 25)
+                                ├── Card
+                                │     └── Padding
+                                │           └── Column
+                                │                 ├── _buildInfoRow (คณะ) -> [Padding -> Row -> [Icon, SizedBox, Text, Expanded -> Text]]
+                                │                 ├── Divider
+                                │                 ├── _buildInfoRow (สาขา) -> [Padding -> Row -> [Icon, SizedBox, Text, Expanded -> Text]]
+                                │                 ├── Divider
+                                │                 ├── _buildInfoRow (วิชาที่ชอบ) -> [Padding -> Row -> [Icon, SizedBox, Text, Expanded -> Text]]
+                                │                 ├── Divider
+                                │                 ├── _buildInfoRow (งานอดิเรก) -> [Padding -> Row -> [Icon, SizedBox, Text, Expanded -> Text]]
+                                │                 ├── Divider
+                                │                 └── _buildInfoRow (เป้าหมาย) -> [Padding -> Row -> [Icon, SizedBox, Text, Expanded -> Text]]
+                                ├── SizedBox (height: 20)
+                                └── ElevatedButton.icon
+                                      ├── Icon (Icons.smart_toy)
+                                      └── Text ('ทดลอง AI Chat')
+```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
