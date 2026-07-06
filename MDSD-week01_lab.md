@@ -1012,7 +1012,20 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 > 📝 **แบบฝึกหัด:** วาด Widget Tree ของโค้ดนี้ลงในใบงาน
-
+MyApp
+  └── MaterialApp
+        └── MyHomePage (home:)
+              └── Scaffold
+                    ├── AppBar (appBar:)
+                    │     └── Text ("Flutter Demo Home Page")
+                    │
+                    ├── Center (body:)
+                    │     └── Column
+                    │           ├── Text ("You have pushed the button...")
+                    │           └── Text ("$_counter")
+                    │
+                    └── FloatingActionButton (floatingActionButton:)
+                          └── Icon (Icons.add)
 ---
 
 ### ขั้นตอนที่ 4: รันแอปพลิเคชันครั้งแรก
@@ -1183,10 +1196,13 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+<img width="502" height="957" alt="image" src="https://github.com/user-attachments/assets/9a791e09-0729-4208-9269-54cc1843b65d" />
+
+
+- [✓] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [✓] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [✓] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [✓] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
 
 ---
 
@@ -1222,13 +1238,16 @@ class ProfilePage extends StatelessWidget {
 2. เลือก **"Freeform"** Prompt Type
 3. พิมพ์ Prompt ต่อไปนี้และสังเกตผลลัพธ์:
 
+
 ```
 อธิบายแนวคิดของ Flutter Framework ให้นักศึกษาปี 2 เข้าใจง่ายๆ ภายใน 5 ประโยค
 ```
 
 4. คลิก **"Run"** หรือกด `Ctrl+Enter`
 5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้ำ
-
+คำตอบที่ได้แตกต่างจากถามครั้งแรกอย่างเห็นได้ชัด โดยผลลัพธืรอบ2จะให้คำตอบสวยหรู
+<img width="615" height="958" alt="image" src="https://github.com/user-attachments/assets/365e705c-c75a-432f-a259-186071baf5a0" />
+<img width="526" height="581" alt="image" src="https://github.com/user-attachments/assets/ac66e24c-d829-4eed-a8cd-ce7b8984a41d" />
 #### ทดลองที่ 2: Code Generation
 
 พิมพ์ Prompt ต่อไปนี้:
@@ -1265,6 +1284,7 @@ class ProfilePage extends StatelessWidget {
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
 
 ---
+ที่แตกต่างกันก็จะมีเรื่องการลงสีของหน้าต้าเว็บ กับการใช้ภาษาที่เปลี่ยนไป
 
 ### ขั้นตอนที่ 3: สร้าง API Key
 
@@ -1728,17 +1748,59 @@ flutter doctor output:
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.4
+Dart Version:  version 3.12.2
+Android SDK Version: 36.0.0
 ```
+PS C:\week01_hello_flutter\flutter_application_1> flutter doctor -v
+[√] Flutter (Channel stable, 3.44.4, on Microsoft Windows [Version 10.0.26200.8655], locale th-TH) [210ms]
+    • Flutter version 3.44.4 on channel stable at C:\src\flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision ad70ec4617 (12 days ago), 2026-06-24 11:07:06 -0700
+    • Engine revision a10d8ac38d
+    • Dart version 3.12.2
+    • DevTools version 2.57.0
+    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop,
+      enable-android, enable-ios, cli-animations, enable-native-assets, enable-swift-package-manager,
+      omit-legacy-version-file, enable-lldb-debugging, enable-uiscene-migration
 
+[√] Windows Version (Windows 11 or higher, 25H2, 2009) [1,871ms]
+
+[√] Android toolchain - develop for Android devices (Android SDK version 36.0.0) [4.0s]
+    • Android SDK at C:\Users\hp\Android
+    • Emulator version 36.6.11.0 (build_id 15507667) (CL:N/A)
+    • Platform android-36, build-tools 36.0.0
+    • ANDROID_HOME = C:\Users\hp\Android
+    • Java binary at: C:\Program Files\Android\Android Studio\jbr\bin\java
+      This is the JDK bundled with the latest Android Studio installation on this machine.
+      To manually set the JDK path, use: `flutter config --jdk-dir="path/to/jdk"`.
+    • Java version OpenJDK Runtime Environment (build 21.0.10+-14961533-b1163.108)
+    • All Android licenses accepted.
+
+[√] Chrome - develop for the web [11ms]
+    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[X] Visual Studio - develop Windows apps [10ms]
+    X Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+
+[√] Connected device (3 available) [1,796ms]
+    • Windows (desktop) • windows • windows-x64    • Microsoft Windows [Version 10.0.26200.8655]
+    • Chrome (web)      • chrome  • web-javascript • Google Chrome 149.0.7827.200
+    • Edge (web)        • edge    • web-javascript • Microsoft Edge 150.0.4078.48
+
+[√] Network resources [2.8s]
+    • All expected network resources are available.
+
+! Doctor found issues in 1 category.
+PS C:\week01_hello_flutter\flutter_application_1>
 ### 3.2 Screenshot ของ Flutter App
 
 ```
 [แนบ Screenshot ของ Profile Card App ที่สร้าง]
 ```
-
+<img width="502" height="957" alt="image" src="https://github.com/user-attachments/assets/9a791e09-0729-4208-9269-54cc1843b65d" />
 **Widget Tree ที่วาด:**
 
 ```
@@ -1749,36 +1811,38 @@ MaterialApp
     └── ?
         └── ...
 ```
+<img width="945" height="812" alt="image" src="https://github.com/user-attachments/assets/e3554ccf-a21a-44c9-855e-ea056073df94" />
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว |1|4|
+| State ถูก Reset? |ไม่รีเซ็ต|รีเซ็ต |
+| ใช้เมื่อไหร่ |ตอนจะรีหน้าในจุดเดิม |รีเพื่อดูการเปลี่ยนแปลง|
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
+<img width="832" height="748" alt="image" src="https://github.com/user-attachments/assets/ac2d8101-6c46-4791-8d3c-adf736cb5fab" />
+
 ```
-(วาง Prompt ที่ใช้)
-```
+<img width="1326" height="862" alt="image" src="https://github.com/user-attachments/assets/520d7b33-6a18-4c2c-9b71-251b05e1ce29" />```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
-```
+<img width="877" height="722" alt="image" src="https://github.com/user-attachments/assets/1991cb7c-bced-4511-81cb-5f85902712a9" />
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+มีหน้าUiที่เปลี่ยนไปจากเดิม
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
+<img width="426" height="702" alt="image" src="https://github.com/user-attachments/assets/64eaf820-4435-46a5-9a29-431cd7544279" />
+<img width="627" height="867" alt="image" src="https://github.com/user-attachments/assets/161aca79-1718-4a63-b13d-329d1039d4c5" />
 
 ```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
 ```
 
 ---
@@ -1790,34 +1854,35 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter จะใช้ Rendering Engine ของตัวเอง (เช่น Impeller หรือ Skia) ในการวาดและควบคุมพิกเซลทุกอย่างบนหน้าจอเองทั้งหมด ทำให้ลื่นไหลและหน้าตาเหมือนกันทุกแพลตฟอร์ม ส่วน React Native จะไม่ได้วาดเอง แต่จะส่งคำสั่งไปเรียกใช้ปุ่มหรือชิ้นส่วน (Native Components) ของระบบปฏิบัติการ Android และ iOS จริง ๆ ผ่านตัวสะพานเชื่อม (Bridge)
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget: เป็น Widget ที่เปลี่ยนค่าไม่ได้ หน้าตาคงที่ตลอดเวลาหลังจากสร้างเสร็จ เหมาะกับหน้าจอหรือชิ้นส่วนที่เน้นแสดงข้อมูลอย่างเดียว เช่น หน้าเกี่ยวกับเรา (About Page) ป้ายโลโก้ หรือการ์ดโชว์ข้อความทั่วไป
+StatefulWidget: เป็น Widget ที่หน้าตาสามารถเปลี่ยนแปลงได้แบบเรียลไทม์เมื่อมีข้อมูลใหม่เข้ามา (มีระบบ State) เหมาะกับหน้าจอที่มีการโต้ตอบกับผู้ใช้ เช่น หน้าแชตบอต (ที่ต้องเพิ่มข้อความลงในลิสต์) หน้ากรอกฟอร์ม หรือปุ่มกดไลก์
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพราะถ้าเราเผลออัปโหลด API Key ขึ้น GitHub/GitLab ไป คนอื่นจะสามารถขโมยโค้ดตัวนี้ไปสวมรอยใช้งานแทนเราได้ ซึ่งอาจทำให้เราโดนเรียกเก็บเงินจำนวนมาก หรือโควตาใช้งานเต็มจนแอปพัง วิธีจัดการที่ปลอดภัยคือ ให้เก็บ Key ไว้ในไฟล์แยกต่างหาก (เช่น .env หรือไฟล์ config) แล้วใส่ชื่อไฟล์นั้นไว้ใน .gitignore เพื่อไม่ให้ระบบอัปโหลดไฟล์นั้นขึ้น Git 
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload ทำงานโดยการโหลดโค้ดเฉพาะส่วนที่มีการแก้ไข (เช่น การปรับสี ปรับฟอนต์ หรือแก้ UI) ยัดเข้าไปในระบบจำลองขณะที่แอปยังรันอยู่ ทำให้เห็นผลทันทีโดยที่แอปไม่หลุดและยังจำข้อมูลเดิมได้ ส่วนข้อจำกัดคือ มันจะไม่ทำงานหากเราไปแก้ไขค่าเริ่มต้นของตัวแปร (เช่น ใน initState) หรือเมื่อมีการเพิ่มแพกเกจใหม่ในไฟล์ pubspec.yaml ซึ่งกรณีเหล่านั้นต้องใช้ Hot Restart หรือปิดแล้วกดรันใหม่แทน
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. นำมาทำระบบบริการลูกค้าอัตโนมัติ (Customer Support Bot) คอยตอบคำถามเกี่ยวกับสินค้าหรือบริการในแอปได้ตลอด 24 ชั่วโมง
+2. นำมาช่วยสรุปเนื้อหาบทความยาว ๆ หรือรีวิวจากผู้ใช้ให้กระชับ เพื่อแสดงผลในหน้าแรกของแอปให้ผู้ใช้อ่านง่ายขึ้น
+3. นำมาทำระบบแนะนำเนื้อหาอัจฉริยะ (AI Recommendation) เช่น ช่วยวิเคราะห์สิ่งที่ผู้ใช้ชอบ แล้วเจนฯ แผนการท่องเที่ยว แผนการกินอาหาร หรือคอร์สเรียนที่เหมาะกับคน ๆ นั้นให้โดยเฉพาะ
 ```
 
 ---
@@ -1879,13 +1944,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
+- [√] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [√] App รันได้บน Chrome หรือ Android Device/Emulator
+- [√] Profile Card แสดงข้อมูลของตัวเอง
+- [√] AI Chat คุยกับ Gemini ได้จริง
 - [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [√] ตอบคำถามท้ายบทครบทุกข้อ
+- [√] Push ขึ้น GitHub แล้ว
 
 ---
 
