@@ -42,11 +42,11 @@
 
 ---
 
-## 🎯 สรุปสิ่งที่ได้เรียนรู้จากใบงาน (Learning Outcomes)
-* **VS Code Workflow:** เข้าใจข้อดีของการพัฒนา Flutter ใน VS Code โดยไม่ต้องติดตั้ง Android Studio ตัวเต็ม
-* **Dart & Flutter Basics:** เข้าใจความแตกต่างและการใช้งาน `StatelessWidget` และ `StatefulWidget`
-* **AI Integration:** สามารถเชื่อมต่อ Google Gemini API เข้ากับแอปพลิเคชัน Flutter เพื่อสร้าง Generative AI Features
-* **Git & Security Best Practices:** รู้วิธีจัดการ API Key อย่างปลอดภัยด้วย `.env` และ `.gitignore` เพื่อไม่ให้ความลับหลุดสู่สาธารณะ
+### 4. ผลการทดลอง Prompt Engineering (Weather Card App - ข้อ 3.4)
+เปรียบเทียบผลลัพธ์การสร้าง UI ระหว่างคำสั่งแบบ Simple และ Detailed:
+
+| 🌤️ ผลลัพธ์จาก Simple Prompt | 🌈 ผลลัพธ์จาก Detailed Prompt |
+| :---: | :---: |
+| ![Simple Prompt](./images/prompt_simple.png) | ![Detailed Prompt](./images/prompt_detailed.png) |
 
 ---
-*จัดทำสำหรับส่งงานวิชา Mobile Software Development (MDAD 2026) — รหัสนักศึกษา 67030011*
