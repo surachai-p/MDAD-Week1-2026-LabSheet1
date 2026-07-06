@@ -8,16 +8,14 @@
 
 ---
 
-## 📌 ตำแหน่งไฟล์ใบงานและรายงานผลการทดลอง (Lab Files & Links)
+## 📌 ตำแหน่งไฟล์ใบงานและรายงาน (Quick Links)
 
-คุณสามารถเข้าถึงไฟล์ใบงาน รายงานผลการทดลอง และซอร์สโค้ดโปรเจกต์ได้จากลิงก์ด้านล่างนี้:
-
-| รายการ | รายละเอียด | ลิงก์เข้าถึงไฟล์ / คลังข้อมูล |
-| :--- | :--- | :--- |
-| **📘 ใบงานหลัก (Lab Sheet v2)** | ใบงานการทดลองที่กรอกคำตอบ การทดลอง และคำถามท้ายบทครบถ้วนสมบูรณ์ | **[📄 เปิดอ่าน MDAD-week01_lab_v2.md](./MDAD-week01_lab_v2.md)** |
-| **📝 รายงานผลการทดลอง** | รายงานสรุปผล Widget Tree, Prompt Engineering และคำตอบท้ายบท | **[📄 เปิดอ่าน LAB_REPORT.md](./week01-flutter-intro-67030011/LAB_REPORT.md)** |
-| **🚀 ซอร์สโค้ดโปรเจกต์ Flutter** | โฟลเดอร์โปรเจกต์แอปพลิเคชัน Profile Card และ AI Chat | **[📂 เข้าสู่โฟลเดอร์โปรเจกต์](./week01-flutter-intro-67030011)** หรือ **[🌐 ดูบน GitHub Repo](https://github.com/Kritternai/week01-flutter-intro-67030011)** |
-
+| 📁 เอกสาร / โปรเจกต์ | 🔗 ลิงก์เข้าถึง |
+| :--- | :--- |
+| 📘 **ใบงานหลัก (Lab Sheet v2)** | [📄 MDAD-week01_lab_v2.md](./MDAD-week01_lab_v2.md) |
+| 📝 **รายงานผลการทดลอง (Lab Report)** | [📄 LAB_REPORT.md](./week01-flutter-intro-67030011/LAB_REPORT.md) |
+| 🚀 **ซอร์สโค้ดโปรเจกต์ Flutter** | [📂 week01-flutter-intro-67030011](./week01-flutter-intro-67030011) |
+| 🌐 **GitHub Repository (โปรเจกต์)** | [🔗 Kritternai/week01-flutter-intro-67030011](https://github.com/Kritternai/week01-flutter-intro-67030011) |
 ---
 
 ## 📸 ผลการทดลองและตัวอย่างหน้าจอแอปพลิเคชัน (Experiment Results & Screenshots)
