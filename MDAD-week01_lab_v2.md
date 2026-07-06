@@ -1523,7 +1523,7 @@ MaterialApp
 
 ### 3.5 Screenshot ของ AI Chat App
 
-![AI Chat App Screenshot](https://raw.githubusercontent.com/Kritternai/week01-flutter-intro-67030011/main/screenshots/ai_chat.png)
+![AI Chat App Screenshot](images/ai_chat.png)
 
 
 ---
