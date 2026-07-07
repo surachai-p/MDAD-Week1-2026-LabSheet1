@@ -1732,12 +1732,12 @@ flutter run
 
 ### 3.1 ผลการติดตั้ง Flutter
 
-```
+
 flutter doctor output:
 <img width="810" height="298" alt="image" src="https://github.com/user-attachments/assets/ae7e6f16-2131-4747-8b7d-599a9227b799" />
 <img width="601" height="33" alt="image" src="https://github.com/user-attachments/assets/6156eaef-2145-4216-8640-12d6e47be8ed" />
 
-
+```
 Flutter Version: 3.44.4
 Dart Version: 36.0.0
 Android SDK Version: 3.12.2
@@ -1745,10 +1745,10 @@ Android SDK Version: 3.12.2
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
+
 <img width="1531" height="452" alt="image" src="https://github.com/user-attachments/assets/20a7fb51-a090-4a18-9e93-9b1f39150fa0" />
 <img width="1535" height="736" alt="image" src="https://github.com/user-attachments/assets/7bc5a9f7-69e0-467c-ae28-5af3841f08ac" />
-```
+
 
 **Widget Tree ที่วาด:**
 
@@ -1812,10 +1812,10 @@ MaterialApp
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
+
 <img width="1522" height="552" alt="image" src="https://github.com/user-attachments/assets/07d07199-48b3-4036-b51a-1a40cd3db987" />
 
-```
+
 
 ---
 
