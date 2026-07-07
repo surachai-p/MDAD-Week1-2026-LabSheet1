@@ -1053,10 +1053,10 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [✓] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [✓] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [✓] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [✓] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
 
 ---
 
@@ -1416,19 +1416,29 @@ flutter run
 
 ```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+  วางผลลัพธ์จาก flutter doctor ที่นี่
+  Doctor summary (to see all details, run flutter doctor -v):
+[✓] Flutter (Channel stable, 3.44.4, on Microsoft Windows [Version 10.0.26200.8655], locale en-US)
+[✓] Windows Version (11 Home Single Language 64-bit, 25H2, 2009)
+[✓] Android toolchain - develop for Android devices (Android SDK version 34.0.0)
+[✓] Chrome - develop for the web
+[✗] Visual Studio - develop Windows apps
+    ✗ Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+[✓] Connected device (3 available)
+[✓] Network resources
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+! Doctor found issues in 1 category.                
+![alt text](image.png)
+
+Flutter Version: 3.44.4
+Dart Version: 3.12.2
+Android SDK Version: 34.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
-
+![alt text](image-1.png)
 ```
 [แนบ Screenshot ของ Profile Card App ที่สร้าง]
 ```
@@ -1448,29 +1458,48 @@ MaterialApp
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว |128ms |1,746ms |
+| State ถูก Reset? |ไม่ Reset |ถููก Reset |
+| ใช้เมื่อไหร่ |แต่งหน้าตา แก้ไขบั๊กเล็กๆ และอยากเห็นผลทันทีโดยที่หน้าแอปไม่เด้งกลับไปเริ่มใหม่ |แก้โค้ดโครงสร้างหลัก แก้ไขค่าเริ่มต้น (initState) หรืออยากรีเซ็ตแอปใหม่ทั้งหมด |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
 (วาง Prompt ที่ใช้)
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง:
+- ชื่อเมือง
+- อุณหภูมิ (ตัวเลขขนาดใหญ่)
+- ไอคอนสภาพอากาศ (sunny/cloudy/rainy)
+- ความชื้น
+
+ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
 
 **Prompt แบบ Detailed:**
 ```
 (วาง Prompt ที่ใช้)
+คุณเป็น Flutter Developer ผู้เชี่ยวชาญ
+
+สร้าง Flutter Widget ชื่อ WeatherCard โดย:
+1. รับ parameters: city (String), temperature (double), condition (String), humidity (int)
+2. แสดง UI สวยงามด้วย Card Widget
+3. ใช้ Icons.wb_sunny สำหรับ "sunny", Icons.cloud สำหรับ "cloudy", Icons.water_drop สำหรับ "rainy"
+4. ใช้ Color scheme สีฟ้า-ขาว
+5. ขนาดอุณหภูมิต้องใหญ่และชัดเจน
+
+ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
 
 **ความแตกต่างของผลลัพธ์:**
+![alt text](<Screenshot 2026-07-03 225537.png>)
+![alt text](<Screenshot 2026-07-03 230029.png>)
 ```
 (บันทึกสิ่งที่สังเกต)
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
-
+![alt text](<Screenshot 2026-07-05 180226.png>)
 ```
 [แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
 ```
