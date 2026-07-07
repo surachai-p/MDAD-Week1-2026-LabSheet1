@@ -510,7 +510,7 @@ Windows (PowerShell):
   "User"
 )
 # แทนที่ path ด้วย path จริงของเครื่องคุณ
-# ปิด vs code แล้วเปิดใหม่
+# ปิด Terminal แล้วเปิดใหม่
 ```
 
 macOS/Linux:
@@ -582,7 +582,7 @@ $p = [System.Environment]::GetEnvironmentVariable("Path", "User")
   "User"
 )
 
-# 5. ปิด vs code แล้วเปิดใหม่ จากนั้นทดสอบ
+# 5. ปิด Terminal แล้วเปิดใหม่ จากนั้นทดสอบ
 sdkmanager --version
 # ควรแสดงตัวเลข version เช่น 12.0
 ```
@@ -833,10 +833,13 @@ source ~/.zshrc
 
 ```bash
 # ดู Hardware Profile ที่ใช้ได้
-avdmanager list device 
+avdmanager list device | grep -i pixel
 
 # สร้าง Emulator (Pixel 7, Android 14, x86_64)
-avdmanager create avd --name "Pixel7_API34" --package "system-images;android-34;google_apis;x86_64" --device "pixel_7"
+avdmanager create avd \
+  --name "Pixel7_API34" \
+  --package "system-images;android-34;google_apis;x86_64" \
+  --device "pixel_7"
 
 # ตรวจสอบว่าสร้างสำเร็จ
 avdmanager list avd
@@ -1012,7 +1015,20 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 > 📝 **แบบฝึกหัด:** วาด Widget Tree ของโค้ดนี้ลงในใบงาน
-
+```text
+MyApp
+ └── MaterialApp
+      └── MyHomePage
+           └── Scaffold
+                ├── AppBar
+                │    └── Text
+                ├── Center
+                │    └── Column
+                │         ├── Text
+                │         └── Text
+                └── FloatingActionButton
+                     └── Icon
+```
 ---
 
 ### ขั้นตอนที่ 4: รันแอปพลิเคชันครั้งแรก
@@ -1183,10 +1199,12 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [ ✅ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [ ✅ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [ ✅ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [ ✅ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/a16d915c-0833-4c13-86f7-f8a1d0d9e4f1" />
 
 ---
 
@@ -1199,8 +1217,12 @@ class ProfilePage extends StatelessWidget {
 5. บันทึกไฟล์อีกครั้ง → สังเกตการเปลี่ยนสีทันที
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
-> 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
+<img width="506" height="1002" alt="image" src="https://github.com/user-attachments/assets/fe88682a-2397-4630-a5b8-c781b7fe7833" />
 
+> 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
+```
+Hot Reload (r) คือการอัปเดตแค่หน้าตาแอปอย่างรวดเร็วโดยยังจำข้อมูลเดิมไว้ ส่วน Hot Restart (R) คือการเริ่มรันแอปใหม่ทั้งหมดและล้างข้อมูลความจำเดิมทิ้ง
+```
 ---
 
 ## 🧪 การทดลองที่ 3: ทดลองใช้งาน Google AI Studio
@@ -1229,6 +1251,18 @@ class ProfilePage extends StatelessWidget {
 4. คลิก **"Run"** หรือกด `Ctrl+Enter`
 5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้ำ
 
+```
+ครั้งแรก :
+```
+<img width="1006" height="516" alt="image" src="https://github.com/user-attachments/assets/67cffde8-e8f3-41ff-89f2-8468189a88b0" />
+
+---
+```
+ครั้งที่สอง :
+```
+<img width="992" height="437" alt="image" src="https://github.com/user-attachments/assets/ecd6752d-58a7-4aae-aeb2-44ed74dd774d" />
+
+
 #### ทดลองที่ 2: Code Generation
 
 พิมพ์ Prompt ต่อไปนี้:
@@ -1244,6 +1278,9 @@ class ProfilePage extends StatelessWidget {
 ```
 
 6. นำโค้ดที่ได้ Copy ไปทดสอบใน Flutter Project
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/88e9d2ef-3789-4878-803c-fb731b1b34b3" />
+
 
 #### ทดลองที่ 3: Prompt Engineering
 
@@ -1262,13 +1299,18 @@ class ProfilePage extends StatelessWidget {
 ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
 
-> 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/7a302e29-fafb-4002-9373-f4873d055523" />
 
+
+> 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
+```
+Prompt แบบ Simple จะให้ผลลัพธ์เป็นโค้ดพื้นฐานที่ทำงานได้แต่มีหน้าตาและโครงสร้างที่เรียบง่ายทั่วไป ในขณะที่ Prompt แบบ Detailed จะให้ผลลัพธ์เป็นโค้ดที่มีความสวยงาม โครงสร้างชัดเจน และตอบโจทย์ความต้องการเฉพาะเจาะจงได้สมบูรณ์พร้อมใช้งาน
+```
 ---
 
 ### ขั้นตอนที่ 3: สร้าง API Key
 
-1. ใน Google AI Studio คลิก **"Get API Key"** (เมนูด้านซ้ายล่าง ที่เป็นรูปกุญแจ)
+1. ใน Google AI Studio คลิก **"Get API Key"** (เมนูด้านซ้าย)
 2. คลิก **"Create API Key"**
 3. เลือก **"Create API key in new project"**
 4. **คัดลอก API Key และเก็บไว้อย่างปลอดภัย**
@@ -1301,7 +1343,7 @@ lib/config/api_keys.dart
 dependencies:
   flutter:
     sdk: flutter
-  http: ^1.5.0 # เพิ่มบรรทัดนี้
+  google_generative_ai: ^0.4.3  # เพิ่มบรรทัดนี้
 ```
 
 3. บันทึกไฟล์ → VS Code จะรัน `flutter pub get` อัตโนมัติ
@@ -1331,11 +1373,8 @@ class ApiConfig {
 สร้างไฟล์ `lib/pages/ai_chat_page.dart`:
 
 ```dart
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
+import 'package:google_generative_ai/google_generative_ai.dart';
 import '../config/api_config.dart';
 
 class AiChatPage extends StatefulWidget {
@@ -1347,176 +1386,159 @@ class AiChatPage extends StatefulWidget {
 
 class _AiChatPageState extends State<AiChatPage> {
   final TextEditingController _controller = TextEditingController();
-
   final List<Map<String, String>> _messages = [];
-
   bool _isLoading = false;
+  late final GenerativeModel _model;
 
+  @override
+  void initState() {
+    super.initState();
+    // เริ่มต้น Gemini Model
+    _model = GenerativeModel(
+      model: 'gemini-1.5-flash',  // ใช้ Flash สำหรับ Demo (เร็วและฟรี)
+      apiKey: ApiConfig.geminiApiKey,
+    );
+  }
+
+  // ส่งข้อความไปยัง Gemini API
   Future<void> _sendMessage() async {
     final userMessage = _controller.text.trim();
-
     if (userMessage.isEmpty) return;
 
     setState(() {
-      _messages.add({
-        'role': 'user',
-        'text': userMessage,
-      });
+      _messages.add({'role': 'user', 'text': userMessage});
       _isLoading = true;
     });
-
     _controller.clear();
 
     try {
-      final response = await http.post(
-        Uri.parse(
-          'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${ApiConfig.geminiApiKey}',
-        ),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode({
-          "contents": [
-            {
-              "parts": [
-                {
-                  "text": userMessage,
-                }
-              ]
-            }
-          ]
-        }),
-      );
-
-      debugPrint("Status Code : ${response.statusCode}");
-      debugPrint("Response : ${response.body}");
-
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-
-        final aiText =
-            data["candidates"][0]["content"]["parts"][0]["text"] ??
-                "No response";
-
-        setState(() {
-          _messages.add({
-            'role': 'assistant',
-            'text': aiText,
-          });
-        });
-      } else {
-        setState(() {
-          _messages.add({
-            'role': 'assistant',
-            'text':
-                'Error ${response.statusCode}\n\n${response.body}',
-          });
-        });
-      }
-    } catch (e, st) {
-      debugPrint(e.toString());
-      debugPrint(st.toString());
-
+      final content = [Content.text(userMessage)];
+      final response = await _model.generateContent(content);
+      
       setState(() {
         _messages.add({
           'role': 'assistant',
-          'text': e.toString(),
+          'text': response.text ?? 'ไม่ได้รับการตอบกลับ'
+        });
+      });
+    } catch (e) {
+      setState(() {
+        _messages.add({
+          'role': 'assistant',
+          'text': 'เกิดข้อผิดพลาด: ${e.toString()}'
         });
       });
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+      setState(() => _isLoading = false);
     }
-  }
-
-  Widget _buildMessage(Map<String, String> message) {
-    final isUser = message["role"] == "user";
-
-    return Align(
-      alignment:
-          isUser ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 6),
-        padding: const EdgeInsets.all(12),
-        constraints: const BoxConstraints(maxWidth: 300),
-        decoration: BoxDecoration(
-          color: isUser ? Colors.blue : Colors.grey.shade300,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Text(
-          message["text"] ?? "",
-          style: TextStyle(
-            color: isUser ? Colors.white : Colors.black,
-          ),
-        ),
-      ),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Gemini AI Chat"),
+        title: const Text('Gemini AI Chat'),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
       body: Column(
         children: [
+          // รายการข้อความ
           Expanded(
             child: _messages.isEmpty
                 ? const Center(
                     child: Text(
-                      "👋 Hello Gemini",
-                      style: TextStyle(fontSize: 18),
+                      '👋 ทักทาย Gemini AI!\nลองพิมพ์ข้อความด้านล่าง',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.grey, fontSize: 16),
                     ),
                   )
                 : ListView.builder(
                     padding: const EdgeInsets.all(16),
                     itemCount: _messages.length,
                     itemBuilder: (context, index) {
-                      return _buildMessage(_messages[index]);
+                      final message = _messages[index];
+                      final isUser = message['role'] == 'user';
+                      
+                      return Align(
+                        alignment: isUser
+                            ? Alignment.centerRight
+                            : Alignment.centerLeft,
+                        child: Container(
+                          margin: const EdgeInsets.only(bottom: 8),
+                          padding: const EdgeInsets.all(12),
+                          constraints: BoxConstraints(
+                            maxWidth: MediaQuery.of(context).size.width * 0.75,
+                          ),
+                          decoration: BoxDecoration(
+                            color: isUser ? Colors.blue : Colors.grey[200],
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            message['text']!,
+                            style: TextStyle(
+                              color: isUser ? Colors.white : Colors.black,
+                            ),
+                          ),
+                        ),
+                      );
                     },
                   ),
           ),
+          
+          // Loading Indicator
           if (_isLoading)
             const Padding(
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(8.0),
               child: CircularProgressIndicator(),
             ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      decoration: InputDecoration(
-                        hintText: "Ask Gemini...",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
+          
+          // Input Box
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  blurRadius: 4,
+                  offset: const Offset(0, -2),
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      hintText: 'พิมพ์ข้อความ...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(24),
                       ),
-                      onSubmitted: (_) => _sendMessage(),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
                     ),
+                    onSubmitted: (_) => _sendMessage(),
+                    textInputAction: TextInputAction.send,
                   ),
-                  const SizedBox(width: 8),
-                  FloatingActionButton.small(
-                    onPressed:
-                        _isLoading ? null : _sendMessage,
-                    child: const Icon(Icons.send),
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(width: 8),
+                FloatingActionButton.small(
+                  onPressed: _isLoading ? null : _sendMessage,
+                  backgroundColor: Colors.blue,
+                  child: const Icon(Icons.send, color: Colors.white),
+                ),
+              ],
             ),
           ),
         ],
       ),
     );
   }
-
+  
   @override
   void dispose() {
     _controller.dispose();
@@ -1525,179 +1547,23 @@ class _AiChatPageState extends State<AiChatPage> {
 }
 ```
 
-อัปเดต lib/main.dart ให้นำทางไปหน้า AI Chat โดยแก้ไข 2 จุด:
-
-จุดที่ 1 — เพิ่ม import ที่หัวไฟล์ บรรทัดแรกๆ ของ main.dart มี import อยู่แล้ว ให้เพิ่มบรรทัดนี้ต่อท้าย import เดิม:
-```dart
-import 'package:flutter/material.dart';
-import 'pages/ai_chat_page.dart';   // ← เพิ่มบรรทัดนี้
-```
-จุดที่ 2 — เพิ่มปุ่มใน ProfilePage ภายใน Column ของ ProfilePage ให้เพิ่มปุ่มต่อท้าย Card widget ที่มีอยู่แล้ว:
-```dart
-// โครงสร้างของ ProfilePage ที่มีอยู่แล้ว
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(...),
-    body: SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-
-          // --- ส่วนที่มีอยู่แล้ว ---
-          const SizedBox(height: 20),
-          const CircleAvatar(...),
-          const SizedBox(height: 16),
-          const Text('ชื่อ นามสกุล', ...),
-          const SizedBox(height: 8),
-          const Text('รหัสนักศึกษา: ...', ...),
-          const SizedBox(height: 24),
-          Card(...),   // Card ข้อมูล
-
-          // ↓↓↓ เพิ่ม 2 บรรทัดนี้ต่อจาก Card ↓↓↓
-          const SizedBox(height: 24),
-          ElevatedButton.icon(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const AiChatPage(),
-                ),
-              );
-            },
-            icon: const Icon(Icons.smart_toy),
-            label: const Text('ทดลอง AI Chat'),
-          ),
-          // ↑↑↑ จบส่วนที่เพิ่ม ↑↑↑
-
-        ],
-      ),
-    ),
-  );
-}
-```
-
-💡 ตำแหน่งที่เพิ่ม คือภายใน children: [...] ของ Column หลัง Card(...) ที่แสดงข้อมูลโปรไฟล์ ระวังวงเล็บ — ต้องอยู่ก่อน ], ที่ปิด children
-
-
-
-ตัวอย่าง main.dart ที่สมบูรณ์หลังเพิ่มแล้ว ส่วนที่เพิ่มใหม่จะมี Comment กำกับ:
+อัปเดต `lib/main.dart` ให้นำทางไปหน้า AI Chat:
 
 ```dart
-import 'package:flutter/material.dart';
-import 'pages/ai_chat_page.dart'; // ← เพิ่ม import นี้
+// เพิ่มใน ProfilePage หรือสร้าง Navigation
+// ตัวอย่าง: เพิ่มปุ่มนำทางไปหน้า AI Chat
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My Profile',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
-        useMaterial3: true,
-      ),
-      home: const ProfilePage(),
+ElevatedButton.icon(
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const AiChatPage()),
     );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        backgroundColor: Colors.teal,
-        foregroundColor: Colors.white,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 20),
-            const CircleAvatar(
-              radius: 60,
-              backgroundColor: Colors.teal,
-              child: Icon(Icons.person, size: 60, color: Colors.white),
-            ),
-            const SizedBox(height: 16),
-            const Text(
-              'ชื่อ นามสกุล',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            const Text('รหัสนักศึกษา: XXXXXXXX'),
-            const SizedBox(height: 24),
-            Card(
-              elevation: 4,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    _buildInfoRow(Icons.school, 'คณะ', 'วิทยาศาสตร์และเทคโนโลยี'),
-                    const Divider(),
-                    _buildInfoRow(Icons.code, 'วิชาที่ชอบ', 'Mobile Development'),
-                  ],
-                ),
-              ),
-            ),
-
-            // ↓ เพิ่มส่วนนี้ ↓
-            const SizedBox(height: 24),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AiChatPage(),
-                  ),
-                );
-              },
-              icon: const Icon(Icons.smart_toy),
-              label: const Text('ทดลอง AI Chat'),
-            ),
-            // ↑ จบส่วนที่เพิ่ม ↑
-
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildInfoRow(IconData icon, String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        children: [
-          Icon(icon, color: Colors.teal),
-          const SizedBox(width: 12),
-          Text('$label: ', style: const TextStyle(fontWeight: FontWeight.bold)),
-          Expanded(child: Text(value)),
-        ],
-      ),
-    );
-  }
-}
+  },
+  icon: const Icon(Icons.smart_toy),
+  label: const Text('ทดลอง AI Chat'),
+),
 ```
-
-⚠️ ถ้าได้ Error ว่า AiChatPage ไม่รู้จัก ให้ตรวจสอบว่า:
-
-
-ไฟล์ lib/pages/ai_chat_page.dart มีอยู่จริง
-บรรทัด import 'pages/ai_chat_page.dart'; อยู่ที่หัวไฟล์ main.dart แล้ว
-
-
-
-ขั้นตอนที่ 6: รันและทดสอบ AI Chat
 
 ---
 
@@ -1707,12 +1573,22 @@ class ProfilePage extends StatelessWidget {
 flutter run
 ```
 
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/22abb799-922e-4b0b-b908-653d8b86e830" />
+
+
 **ทดลองส่งข้อความต่อไปนี้:**
-** ให้ setting เพิ่ม keyboard ภาษาไทยก่อน **
+
 1. `สวัสดี ฉันเป็นนักศึกษา Flutter มือใหม่`
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/affa5e98-ba19-4358-b1fe-48695acf8462" />
+
 2. `อธิบาย StatefulWidget ให้เข้าใจง่ายๆ`
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/04760e4f-f209-4fe8-9216-2544070bc472" />
+
 3. `ช่วยเขียน Flutter code แสดงรายการนักศึกษา 5 คน`
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/56488172-b303-4c0d-997f-22c724a6861d" />
+
 4. ลองถามคำถามอื่นๆ ที่คุณสงสัย
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/ee6df1c8-9104-423c-a0c8-6e2347262c05" />
 
 ---
 
@@ -1720,66 +1596,89 @@ flutter run
 
 ### 3.1 ผลการติดตั้ง Flutter
 
-```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+<img width="983" height="902" alt="image" src="https://github.com/user-attachments/assets/0275c547-7bcd-4813-93c9-ee1976136f3e" />
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+```
+Flutter Version: 3.44.4
+Dart Version: 3.12.2
+Android SDK Version: 36.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/47856617-2a5f-4b9d-bbb1-f22ffc3b6ae7" />
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/3dbf5350-f998-49a9-8a74-80b8d4c06454" />
 
 **Widget Tree ที่วาด:**
 
 ```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
-
-MaterialApp
-└── ?
-    └── ?
-        └── ...
+MyApp
+└── MaterialApp
+    └── ProfilePage
+        └── Scaffold
+            ├── AppBar
+            │   └── Text ('โปรไฟล์ของฉัน')
+            └── SingleChildScrollView
+                └── Padding
+                    └── Column
+                        ├── SizedBox
+                        ├── CircleAvatar
+                        │   └── Icon (Icons.person)
+                        ├── SizedBox
+                        ├── Text ('นายธนบดี บุญภมร')
+                        ├── SizedBox
+                        ├── Text ('รหัสนักศึกษา: 67030298')
+                        ├── SizedBox
+                        ├── Card
+                        │   └── Padding
+                        │       └── Column
+                        │           ├── Row (ข้อมูล: คณะ)
+                        │           ├── Divider
+                        │           ├── Row (ข้อมูล: มหาวิทยาลัย)
+                        │           ├── Divider
+                        │           ├── Row (ข้อมูล: วิชาที่ชอบ)
+                        │           ├── Divider
+                        │           ├── Row (ข้อมูล: เป้าหมาย)
+                        │           ├── Divider
+                        │           └── Row (ข้อมูล: งานอดิเรก)
+                        ├── SizedBox
+                        ├── WeatherCard (การ์ดสภาพอากาศ)
+                        ├── SizedBox
+                        └── ElevatedButton.icon (ปุ่มกด)
+                            ├── Icon (Icons.smart_toy)
+                            └── Text ('ทดลอง AI Chat')
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | ทำงานได้อย่างรวดเร็วมากในระดับเสี้ยววินาที | ทำงานได้รวดเร็วแต่จะใช้เวลาโหลดนานกว่าแบบรัน Hot Reload |
+| State ถูก Reset? | ค่า State จะไม่ถูกรีเซ็ตและยังคงค่าสถานะเดิมไว้ | ค่า State จะถูกรีเซ็ตทั้งหมดกลับไปเป็นค่าเริ่มต้น |
+| ใช้เมื่อไหร่ | ใช้เมื่อมีการปรับแต่งหน้าตา UI หรือแก้ไขโค้ดทั่วไปที่ต้องการดูผลลัพธ์ทันที | ใช้เมื่อมีการเพิ่มไฟล์โครงสร้างใหม่ เปลี่ยนแปลงค่าตัวแปรหลักหรือแก้ไขโค้ดที่ต้องการให้ระบบเริ่มรันใหม่ตั้งแต่ต้น |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+แนะนำเมนูไข่หน่อย
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+ตอนนี้มีไข่ไก่ 2 ฟอง มาม่า 1 ห่อ และชีส 1 แผ่น แต่ไม่มีเตาแก๊ส (มีแค่ไมโครเวฟ) ช่วยคิดเมนูอาหารเย็นสไตล์เด็กหอที่ทำง่ายๆ ใช้เวลาไม่เกิน 5 นาที พร้อมบอกวิธีทำทีละขั้นตอนให้หน่อย
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+ใช้ Prompt แบบ Simple AI จะสุ่มเมนูไข่ ซึ่งบางเมนูอาจจะทำไม่ได้เพราะอุปกรณ์หรือวัตถุดิบไม่ครบแต่พอใช้ Prompt แบบ Detailed ที่มีการระบุเงื่อนไขและข้อจำกัดชัดเจนจะทำให้ AI จะตอบโจทย์ได้ตรงจุดกว่า ซึ่งได้เมนูที่ทำในไมโครเวฟได้จริงและบอกวิธีทำที่เข้าใจง่ายตรงกับความต้องการ
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/9eac14df-e0cf-40aa-8c4c-87a25e4c4aba" />
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/a6f35f56-e471-4fcd-9a00-9c3ed320e7ec" />
 
 ---
 
@@ -1790,34 +1689,38 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ :
+React Native อาศัยตัวเชื่อมเพื่อขอยืมหน้าตาดั้งเดิมของระบบปฏิบัติการมาแสดงผล ทำให้แอปพลิเคชันมีหน้าตาเปลี่ยนไปตามอุปกรณ์ที่ใช้งาน ส่วน Flutter จะใช้ระบบประมวลผลกราฟิกของตัวเอง ในการสร้างและวาดทุกพิกเซลลงบนหน้าจอโดยตรง ทำให้แอปทำงานได้รวดเร็วกว่าและมีหน้าตาเหมือนกันร้อยเปอร์เซ็นต์ในทุกระบบปฏิบัติการ
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:
+StatelessWidget คือวิดเจ็ตแบบคงที่ อัปเดตตัวเองไม่ได้ เหมาะสำหรับสร้างส่วนที่แสดงผลนิ่งๆ เช่น รูปภาพ หรือข้อความทั่วไป ส่วน StatefulWidget คือวิดเจ็ตที่อัปเดตหน้าตาและข้อมูลตัวเองได้ตลอดเวลา เหมาะสำหรับสร้างส่วนที่มีการโต้ตอบกับผู้ใช้
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:
+ห้าม Commit API Key เพราะแฮ็กเกอร์สามารถขโมยรหัสไปแอบอ้างใช้งานได้ ทำให้อาจต้องเสียค่าบริการมหาศาลหรือข้อมูลระบบรั่วไหล ส่วนวิธีจัดการที่ปลอดภัยคือให้แยก API Key ไปเก็บไว้ในไฟล์เฉพาะ (เช่นไฟล์ .env) แล้วตั้งค่าในไฟล์ .gitignore เพื่อบล็อกไม่ให้ Git อัปโหลดไฟล์รหัสนั้นขึ้นไปบน Git Repository
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:
+Hot Reload ทำงานโดยการฉีดโค้ดใหม่ที่เพิ่งแก้ไขเข้าไปในระบบที่กำลังรันอยู่ทันที ทำให้เห็นการเปลี่ยนแปลงของหน้าตา UI ได้อย่างรวดเร็วโดยที่สถานะและข้อมูลที่กรอกค้างไว้ในแอปยังคงอยู่เหมือนเดิมแต่มีข้อจำกัดคือจะไม่สามารถอัปเดตการเปลี่ยนแปลงได้หากเรามีการแก้โค้ดในฟังก์ชัน initState เปลี่ยนแปลงค่าตัวแปรเริ่มต้นหรือเพิ่มไฟล์รูปภาพใหม่ๆเข้าไป ซึ่งกรณีเหล่านี้จะต้องเปลี่ยนไปกด Hot Restart แทน
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. ระบบแชทบอทสำหรับตอบคำถามและช่วยเหลือลูกค้าแบบอัตโนมัติ
+2. ระบบผู้ช่วยสรุปเนื้อหาและวิเคราะห์ข้อมูลที่ซับซ้อนให้เข้าใจง่าย
+3. ระบบผู้ช่วยส่วนตัวเพื่อแนะนำสินค้าหรือบทความที่ตรงใจผู้ใช้แต่ละคน
 ```
 
 ---
@@ -1871,21 +1774,21 @@ week01-flutter-intro-XXXXXXXX/
 ├── .gitignore                  (ต้องมี!)
 ├── pubspec.yaml
 ├── screenshots/
-    ├── profile_card.png
-    ├── ai_studio.png
-    └── ai_chat.png
-
+│   ├── profile_card.png
+│   ├── ai_studio.png
+│   └── ai_chat.png
+└── LAB_REPORT.md              (ใบงานที่กรอกแล้ว)
 ```
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [ ✅ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [ ✅ ] App รันได้บน Chrome หรือ Android Device/Emulator
+- [ ✅ ] Profile Card แสดงข้อมูลของตัวเอง
+- [ ✅ ] AI Chat คุยกับ Gemini ได้จริง
+- [ ✅ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [ ✅ ] ตอบคำถามท้ายบทครบทุกข้อ
+- [ ✅ ] Push ขึ้น GitHub แล้ว
 
 ---
 
