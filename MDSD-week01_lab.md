@@ -1217,8 +1217,12 @@ class ProfilePage extends StatelessWidget {
 5. บันทึกไฟล์อีกครั้ง → สังเกตการเปลี่ยนสีทันที
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
-> 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
+<img width="506" height="1002" alt="image" src="https://github.com/user-attachments/assets/fe88682a-2397-4630-a5b8-c781b7fe7833" />
 
+> 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
+```
+Hot Reload (r) คือการอัปเดตแค่หน้าตาแอปอย่างรวดเร็วโดยยังจำข้อมูลเดิมไว้ ส่วน Hot Restart (R) คือการเริ่มรันแอปใหม่ทั้งหมดและล้างข้อมูลความจำเดิมทิ้ง
+```
 ---
 
 ## 🧪 การทดลองที่ 3: ทดลองใช้งาน Google AI Studio
