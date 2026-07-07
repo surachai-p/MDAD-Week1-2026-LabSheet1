@@ -675,6 +675,7 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 > 📝 **บันทึกผล:** จดบันทึก Error (`[✗]`) ที่พบ และทำการแก้ไขตามคำแนะนำ  
 > ไม่ต้องแก้ไขรายการที่ขึ้น `[!] Android Studio`
+<img width="1136" height="322" alt="image" src="https://github.com/user-attachments/assets/87910272-ae4c-49bc-b5d6-8461dff1fd43" />
 
 ---
 
@@ -1012,7 +1013,20 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 > 📝 **แบบฝึกหัด:** วาด Widget Tree ของโค้ดนี้ลงในใบงาน
-
+[ MyApp ]
+                      │
+              [ MaterialApp ]
+                      │
+               [ MyHomePage ]
+                      │
+                 [ Scaffold ]
+          ┌───────────┼───────────┐
+          │           │           │
+      [ AppBar ]   [ Center ]  [ FloatingActionButton ]
+                      │                   │
+                  [ Column ]          [ Icon ]
+             ┌────────┴────────┐
+          [ Text ]          [ Text ]
 ---
 
 ### ขั้นตอนที่ 4: รันแอปพลิเคชันครั้งแรก
@@ -1200,7 +1214,7 @@ class ProfilePage extends StatelessWidget {
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
 > 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
-
+hot reload โหลดเฉพาะโค้ดที่เพิ่งแก้ไข (เช่น เปลี่ยนสี เปลี่ยนข้อความ ปรับขนาด) เข้าสู่เครื่องเสมือน (Dart VM) ทันที ใช้เวลาไม่นานในการโหลด	hot reload คอมไพล์โค้ดใหม่ทั้งหมด และเริ่มต้นระบบการทำงานของแอปพลิเคชันใหม่ตั้งแต่ศูนย์ ใช้เวลานานมาก
 ---
 
 ## 🧪 การทดลองที่ 3: ทดลองใช้งาน Google AI Studio
@@ -1228,6 +1242,11 @@ class ProfilePage extends StatelessWidget {
 
 4. คลิก **"Run"** หรือกด `Ctrl+Enter`
 5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้ำ
+เมื่อเรียกครั้งแรก
+<img width="1227" height="352" alt="image" src="https://github.com/user-attachments/assets/a6318de8-01ae-4564-b932-e43bbaba5527" />
+เมื่อเรียกซ้ำ
+<img width="1193" height="627" alt="image" src="https://github.com/user-attachments/assets/10125921-e352-4df6-9688-99e19c1f94c3" />
+
 
 #### ทดลองที่ 2: Code Generation
 
@@ -1263,6 +1282,12 @@ class ProfilePage extends StatelessWidget {
 ```
 
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
+promt แบบ Simple
+<img width="1301" height="998" alt="image" src="https://github.com/user-attachments/assets/59cd8f3a-dec6-4a0d-8166-090928bff313" />
+promt แบบ detailed
+<img width="560" height="638" alt="image" src="https://github.com/user-attachments/assets/4ef6b303-7e57-46e9-890d-f393481720ba" />
+
+
 
 ---
 
@@ -1722,64 +1747,97 @@ flutter run
 
 ```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+<img width="812" height="317" alt="image" src="https://github.com/user-attachments/assets/721fd5db-cf5e-415d-9abb-31278a3c81f8" />
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 10.0.26200.8655
+Dart Version: 3.12.2
+Android SDK Version: 34.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
 ```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
+<img width="1296" height="876" alt="image" src="https://github.com/user-attachments/assets/8ef58cef-4cc6-47ae-b4cb-05873781ba4f" />
+
 ```
 
 **Widget Tree ที่วาด:**
 
 ```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
-
 MaterialApp
-└── ?
-    └── ?
-        └── ...
+└── ProfilePage
+    └── Scaffold
+        ├── AppBar (แถบด้านบน)
+        └── Padding (ตัวเว้นระยะขอบ)
+            └── Column (จัดเรียงแนวตั้ง)
+                ├── SizedBox (เว้นระยะ)
+                ├── CircleAvatar (วงกลมโปรไฟล์) ──> Icon (ไอคอนคน)
+                ├── SizedBox
+                ├── Text (ชื่อ-นามสกุล)
+                ├── SizedBox
+                ├── Text (รหัสนักศึกษา)
+                ├── SizedBox
+                └── Card (การ์ดข้อความ)
+                    └── Padding
+                        └── Column
+                            ├── _buildInfoRow (คณะ)
+                            ├── Divider (เส้นคั่น)
+                            ├── _buildInfoRow (วิชาที่ชอบ)
+                            ├── Divider
+                            ├── _buildInfoRow (เป้าหมาย)
+                            ├── Divider
+                            ├── _buildInfoRow (อีเมล)
+                            ├── Divider
+                            └── _buildInfoRow (งานอดิเรก)
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | 1-2วินาที | 3-5วินาที |
+| State ถูก Reset? | ไม่ถูกรีเซ็ต | ถูกรีเซ็ตทั้งหมด |
+| ใช้เมื่อไหร่ | ใช้ตอนปรับui เปลี่ยนสี ข้อมูล | แก้โครงสร้างหน้าเว็บ |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง:
+- ชื่อเมือง
+- อุณหภูมิ (ตัวเลขขนาดใหญ่)
+- ไอคอนสภาพอากาศ (sunny/cloudy/rainy)
+- ความชื้น
+
+ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+คุณเป็น Flutter Developer ผู้เชี่ยวชาญ
+
+สร้าง Flutter Widget ชื่อ WeatherCard โดย:
+1. รับ parameters: city (String), temperature (double), condition (String), humidity (int)
+2. แสดง UI สวยงามด้วย Card Widget
+3. ใช้ Icons.wb_sunny สำหรับ "sunny", Icons.cloud สำหรับ "cloudy", Icons.water_drop สำหรับ "rainy"
+4. ใช้ Color scheme สีฟ้า-ขาว
+5. ขนาดอุณหภูมิต้องใหญ่และชัดเจน
+
+ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+จะเพิ่มความละเอียดในการออกแบบหน้าเว็บมากยิ่งขึ้น
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+
+<img width="1312" height="891" alt="image" src="https://github.com/user-attachments/assets/68dfd78f-caaf-4d60-8f4c-da312fcd7bff" />
+
+
+
 
 ---
 
@@ -1790,34 +1848,39 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter ใช้ Rendering Engine ของตัวเอง (เช่น Impeller หรือ Skia) ในการวาด UI ลงบนหน้าจอโดยตรงแบบพิกเซลต่อพิกเซล ทำให้ได้ประสิทธิภาพที่ลื่นไหลและ UI หน้าตาเหมือนกันทุกแพลตฟอร์ม ส่วน React Native จะไม่ได้วาดเอง แต่ส่งสะพานเชื่อม (Bridge/JSI) ไปเรียกใช้ Native Component (UI ดั้งเดิม) ของ iOS และ Android ในการแสดงผล
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget: เป็น Widget ที่ไม่มีการเปลี่ยนแปลงข้อมูลภายในตัวมันเองหลังจากถูกสร้างขึ้น (Immutable) UI จะนิ่งคงที่ ตัวอย่างที่เหมาะสม: หน้าแสดงข้อความนิ่งๆ, หน้า About, ปุ่มกดทั่วไป หรือไอคอน
+
+StatefulWidget: เป็น Widget ที่สามารถเปลี่ยนแปลงข้อมูลภายใน (State) ได้ตลอดอายุการใช้งาน เมื่อข้อมูลเปลี่ยน UI จะถูกวาดใหม่ (Rebuild) ตัวอย่างที่เหมาะสม: หน้าฟอร์มกรอกข้อมูล, หน้าจอที่มีตัวนับเลข (Counter),
+หน้าตระกร้าสินค้า หรือหน้าที่มีการโหลดข้อมูลจาก API
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพราะ API Key เปรียบเสมือนรหัสผ่าน หากหลุดไปใน Git (โดยเฉพาะ Public Repo) ผู้ไม่หวังดีอาจนำไปแอบอ้างใช้งาน จนทำให้ข้อมูลรั่วไหล
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ารทำงาน: Hot Reload จะฉีดซอร์สโค้ดไฟล์ที่มีการแก้ไข (Source Code Changes) เข้าไปใน Dart Virtual Machine (VM) โดยตรง แล้วทำการ Rebuild ตัว Widget Tree ใหม่ทันที ทำให้เห็นผลลัพธ์การแก้ไขใน < 1 วินาที โดยที่ State ของแอปยังอยู่ครบถ้วน ไม่ต้องเริ่มแอปใหม่
+
+ข้อจำกัด: ไม่สามารถใช้ได้กับการแก้ไขที่เป็นโครงสร้างหลัก เช่น การเปลี่ยนฟังก์ชัน main(), การแก้ไขตัวแปร Global, การเปลี่ยนดีไซน์ใน Initial State (initState) หรือการเพิ่มสถาปัตยกรรม/Plugin ใหม่ (กรณีเหล่านี้ต้องใช้ Hot Restart หรือ Build ใหม่)
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1.  ระบบแชตบอทอัจฉริยะ (Smart Chatbot): สร้างระบบช่วยเหลือผู้ใช้ในแอปที่สามารถตอบคำถาม ให้คำแนะนำสินค้า หรือแก้ปัญหาเบื้องต้นได้แบบเรียลไทม์และเป็นธรรมชาติ
+2.  ระบบวิเคราะห์และคัดกรองรูปภาพ (Image Analysis): นำความสามารถ Multimodal มาใช้ เช่น ให้ผู้ใช้อัปโหลดรูปภาพสินค้าเพื่อค้นหา, ตรวจสอบสลิปโอนเงิน หรือวิเคราะห์สภาพผิวจากรูปถ่าย
+3.  ระบบสรุปเนื้อหาและสร้างคอนเทนต์อัตโนมัติ (Content Summarization): พัฒนาฟีเจอร์สรุปบทความข่าวยาวๆ, สรุปรีวิวสินค้าจากผู้ใช้ หรือช่วยเขียนคำอธิบาย (Caption) ให้ผู้ใช้อัตโนมัติเมื่อกดโพสต์รูปภาพ
 ```
 
 ---
