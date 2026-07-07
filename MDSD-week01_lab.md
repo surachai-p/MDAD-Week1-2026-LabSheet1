@@ -1183,11 +1183,11 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
-
+- [x] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [x] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [x] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [x] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+![Screenshot](images/ภาพถ่ายหน้าจอ%202569-07-08%20เวลา%2000.33.46.png)
 ---
 
 ### ขั้นตอนที่ 6: ทดลอง Hot Reload
@@ -1200,6 +1200,10 @@ class ProfilePage extends StatelessWidget {
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
 > 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
+
+**คำตอบ:**
+* **Hot Reload (r):** เป็นการโหลดเฉพาะส่วนของโค้ดที่มีการแก้ไขเข้าไปที่ Dart VM และทำการ rebuild widget tree ใหม่ โดย**ไม่มีการ Reset State** (ค่าของตัวแปรและสถานะหน้าจอต่าง ๆ ยังคงอยู่เหมือนเดิม) ทำงานได้รวดเร็วมากในระดับเสี้ยววินาที เหมาะสำหรับใช้ตอนปรับแต่งหน้าตา UI, ปรับสี หรือแก้อักษร
+* **Hot Restart (R):** เป็นการรีสตาร์ทตัวแปรและหน้าตาแอปทั้งหมดใหม่ ทำให้ **State ทั้งหมดถูกล้าง (Reset)** กลับไปเป็นค่าเริ่มต้นเหมือนเพิ่งเปิดแอปครั้งแรก การทำงานจะช้ากว่า Hot Reload เล็กน้อย (ประมาณ 2-3 วินาที) เหมาะสำหรับเมื่อมีการเปลี่ยนโครงสร้างแอป, แก้ไขเมธอด initState() หรือฟังก์ชัน main()
 
 ---
 
@@ -1242,6 +1246,7 @@ class ProfilePage extends StatelessWidget {
 
 ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
+![Screenshot](images/ภาพถ่ายหน้าจอ2569-07-08เวลา%2001.14.47.png)
 
 6. นำโค้ดที่ได้ Copy ไปทดสอบใน Flutter Project
 
@@ -1261,8 +1266,13 @@ class ProfilePage extends StatelessWidget {
 
 ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
-
+![Screenshot](images/ภาพถ่ายหน้าจอ%202569-07-08%20เวลา%2001.13.18.png)
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
+
+**คำตอบ:**
+1. **การควบคุมการแสดงผลและดีไซน์ (UI Design & Styles):** Prompt แบบ Simple จะได้หน้าตาแอปที่เป็น Card แบบธรรมดาที่ปรับแต่งสีสันไม่ได้ตามความต้องการ แต่ Detailed Prompt จะสามารถกำหนดโครงสร้างได้ชัดเจน เช่น ให้ใช้ชุดสีฟ้า-ขาว และปรับฟอนต์อุณหภูมิให้ใหญ่ชัดเจนขึ้น
+2. **ความสมบูรณ์ของตรรกะโค้ด (Logic & Functionality):** Simple Prompt จะขาดการตรวจสอบตรรกะ (เช่น ไม่แสดงไอคอนตามสภาพอากาศจริง) ขณะที่ Detailed Prompt ระบุเงื่อนไขไอคอนชัดเจน (sunny -> wb_sunny, cloudy -> cloud, rainy -> water_drop) ทำให้ได้โค้ดที่พร้อมใช้งานและทำงานถูกต้องตามเงื่อนไข
+3. **คำอธิบายส่วนเกิน (Code Readiness):** Detailed Prompt สั่งว่า "ไม่ต้อง Comment อธิบาย" ทำให้ได้โค้ดเนื้อๆ ที่สะอาดสะอ้านเพื่อนำไปรันได้เลย ส่วน Simple Prompt มักพ่วงข้อความบรรยายประกอบมาเยอะเกินความจำเป็น
 
 ---
 
@@ -1721,66 +1731,487 @@ flutter run
 ### 3.1 ผลการติดตั้ง Flutter
 
 ```
-flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+eek01_hello_flutter git:(main) ✗ flutter doctor -v               
+[✓] Flutter (Channel stable, 3.44.5, on macOS 26.4.1 25E253 darwin-arm64, locale th-TH) [510ms]
+    • Flutter version 3.44.5 on channel stable at /opt/homebrew/share/flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision f94f4fc76b (25 hours ago), 2026-07-06 11:19:24 -0700
+    • Engine revision 83675ed276
+    • Dart version 3.12.2
+    • DevTools version 2.57.0
+    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop,
+      enable-android, enable-ios, cli-animations, enable-native-assets, enable-swift-package-manager,
+      omit-legacy-version-file, enable-lldb-debugging, enable-uiscene-migration
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+[✓] Android toolchain - develop for Android devices (Android SDK version 34.0.0) [1,345ms]
+    • Android SDK at /Users/phuwish/Android
+    • Emulator version 36.6.11.0 (build_id 15507667) (CL:N/A)
+    • Platform android-36, build-tools 34.0.0
+    • ANDROID_HOME = /Users/phuwish/Android
+    • Java binary at: /Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin/java
+      This JDK is specified by the JAVA_HOME environment variable.
+      To manually set the JDK path, use: `flutter config --jdk-dir="path/to/jdk"`.
+    • Java version OpenJDK Runtime Environment Temurin-17.0.19+10 (build 17.0.19+10)
+    • All Android licenses accepted.
+
+[✓] Xcode - develop for iOS and macOS (Xcode 26.6) [1,035ms]
+    • Xcode at /Applications/Xcode.app/Contents/Developer
+    • Build 17F113
+    • CocoaPods version 1.17.0
+
+[✓] Chrome - develop for the web [5ms]
+    • Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+
+[✓] Connected device (2 available) [6.2s]
+    • macOS (desktop) • macos  • darwin-arm64   • macOS 26.4.1 25E253 darwin-arm64
+    • Chrome (web)    • chrome • web-javascript • Google Chrome 149.0.7827.201
+
+[✓] Network resources [2.2s]
+    • All expected network resources are available.
 ```
-
+![Screenshot](images/ภาพถ่ายหน้าจอ%202569-07-08%20เวลา%2002.33.26.png)
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+![Screenshot](images/ภาพถ่ายหน้าจอ%202569-07-08%20เวลา%2002.35.09.png)
 
 **Widget Tree ที่วาด:**
 
 ```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
-
 MaterialApp
-└── ?
-    └── ?
-        └── ...
+└── ProfilePage (StatelessWidget)
+    └── Scaffold
+        ├── AppBar (title: Text)
+        └── SingleChildScrollView
+            └── Padding
+                └── Column
+                    ├── CircleAvatar (Icon)
+                    ├── Text (Name: ภูวิชญ์ ประกอบจิตร)
+                    ├── Text (Student ID: 67030183)
+                    ├── Card
+                    │   └── Padding
+                    │       └── Column
+                    │           ├── Row (คณะ: ครุศาสตร์อุตสาหกรรมเเละเทคโนโลยี)
+                              ├── Divider
+                              ├── Row (วิชาที่ชอบ: Mobile Development)
+                              ├── Divider
+                              ├── Row (เป้าหมาย: พัฒนาแอปให้ได้ 1 ตัว)
+                              ├── Divider
+                              ├── Row (งานอดิเรก: เล่นเกม)
+                              ├── Divider
+                              └── Row (ความถนัด: เขียนโปรแกรม)
+                    
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | เร็วมาก (ระดับมิลลิวินาที / < 1 วินาที) | ช้ากว่าเล็กน้อย (ประมาณ 2-3 วินาที) |
+| State ถูก Reset? | ไม่ถูก Reset (ตัวแปรและหน้าตาแอปยังอยู่เหมือนเดิม) | ถูก Reset (ตัวแปรและหน้าตาแอปทั้งหมดกลับไปเริ่มต้นใหม่) |
+| ใช้เมื่อไหร่ | เมื่อแก้ UI, เปลี่ยนสี, แต่งปุ่ม หรือปรับโค้ดเล็กน้อยภายใน build | เมื่อแก้โครงสร้างแอป, แก้ไข initState, เปลี่ยนแปลง main.dart หรือเพิ่งโหลด package ใหม่มาใช้งาน |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+ช่วยเขียน Flutter Widget สำหรับแสดงหน้าโปรไฟล์ (Profile Card) ด้วย StatelessWidget ให้หน่อย
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+สร้าง Flutter Widget ชื่อ ProfileCard โดย:
+1. รับ parameters: name (String), role (String), email (String), experienceYears (int)
+2. แสดง UI สวยงามด้วย Card Widget มีขอบโค้งมน
+3. มีภาพ Avatar แบบวงกลม (ใช้ Icon รูปคนก็ได้) จัดวางอยู่ตรงกลางด้านบน
+4. ใช้ Color scheme โทนสีน้ำเงิน-เทา
+5. ตัวหนังสือชื่อ (name) ต้องเป็นตัวหนาและมีขนาดใหญ่ชัดเจน
+
+ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+1. ความสมบูรณ์ของโค้ด: Simple Prompt จะได้โค้ดที่จัดวาง UI แบบพื้นฐานเรียงต่อกันเฉยๆ แต่ Detailed Prompt จะให้โค้ดแบบ Drop-in ready ที่มีการจัด Layout ใช้งานได้ทันที เช่น จัด Avatar ไว้กึ่งกลาง มีช่องว่าง (Padding) อย่างสวยงามโดยไม่ต้องแก้ไขเพิ่ม
+2. ความถูกต้องตามข้อกำหนด: Detailed Prompt สามารถควบคุมธีมสี (น้ำเงิน-เทา) และโครงสร้างขอบ Card โค้งมนได้ตรงใจมากกว่า Simple Prompt ที่ AI มักเลือกสีตามใจชอบ
+3. โครงสร้าง UI: ตัว Detailed Prompt ส่งผลให้ UI ที่เจนเนอเรทออกมามีสัดส่วนของรูปโปรไฟล์ ขนาดฟอนต์ชื่อ และความสวยงามของการจัดวางดูเป็นมืออาชีพกว่าอย่างเห็นได้ชัด
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
+![Screenshot](images/ภาพถ่ายหน้าจอ%202569-07-08%20เวลา%2003.36.00.png)
+![Screenshot](images/ภาพถ่ายหน้าจอ%202569-07-08%20เวลา%2003.34.58.png)
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
+### โค้ดผลลัพธ์ของ Profile Card 
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.grey[100], // พื้นหลังของหน้าจอ
+        appBar: AppBar(
+          title: const Text('โปรไฟล์'),
+          centerTitle: true,
+          backgroundColor: Colors.blueAccent,
+        ),
+        body: const Center(
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: ProfileCard(
+              name: 'สมชาย ดีใจ',
+              role: 'Flutter Developer',
+              email: 'somchai.deejai@email.com',
+              phone: '089-123-4567',
+              imageUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80', // รูปตัวอย่างจาก Unsplash
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// --- Widget Profile Card (StatelessWidget) ---
+class ProfileCard extends StatelessWidget {
+  final String name;
+  final String role;
+  final String email;
+  final String phone;
+  final String imageUrl;
+
+  const ProfileCard({
+    super.key,
+    required this.name,
+    required this.role,
+    required this.email,
+    required this.phone,
+    required this.imageUrl,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4, // เงาของ Card
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20), // ความโค้งของมุม Card
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(24.0),
+        width: double.infinity,
+        constraints: const BoxConstraints(maxWidth: 350), // กำหนดความกว้างสูงสุด
+        child: Column(
+          mainAxisSize: MainAxisSize.min, // ให้ขนาดพอดีกับข้อมูลข้างใน
+          children: [
+            // 1. รูปโปรไฟล์วงกลมพร้อมเส้นขอบ
+            Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.blueAccent, width: 3),
+              ),
+              child: CircleAvatar(
+                radius: 50,
+                backgroundImage: NetworkImage(imageUrl),
+              ),
+            ),
+            const SizedBox(height: 16),
+
+            // 2. ชื่อ
+            Text(
+              name,
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 6),
+
+            // 3. ตำแหน่ง/บทบาท
+            Text(
+              role.toUpperCase(),
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: Colors.blueAccent[700],
+                letterSpacing: 1.2,
+              ),
+            ),
+            const SizedBox(height: 20),
+            const Divider(thickness: 1), // เส้นคั่น
+            const SizedBox(height: 12),
+
+            // 4. ข้อมูลติดต่อ (Email)
+            _buildContactInfo(
+              icon: Icons.email_outlined,
+              text: email,
+              iconColor: Colors.redAccent,
+            ),
+            const SizedBox(height: 12),
+
+            // 5. ข้อมูลติดต่อ (เบอร์โทรศัพท์)
+            _buildContactInfo(
+              icon: Icons.phone_android_outlined,
+              text: phone,
+              iconColor: Colors.green,
+            ),
+            const SizedBox(height: 24),
+
+            // 6. ปุ่ม Action (เช่น ปุ่มแก้ไขโปรไฟล์)
+            SizedBox(
+              width: double.infinity,
+              height: 45,
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  // ใส่ Action ที่ต้องการให้ทำงานเมื่อกดปุ่มที่นี่
+                  print('แก้ไขโปรไฟล์ของ $name');
+                },
+                icon: const Icon(Icons.edit, size: 18),
+                label: const Text(
+                  'แก้ไขโปรไฟล์',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blueAccent,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  elevation: 2,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // Helper Method สำหรับสร้างแถวข้อมูลการติดต่อเพื่อลดความซ้ำซ้อนของโค้ด
+  Widget _buildContactInfo({
+    required IconData icon,
+    required String text,
+    required Color iconColor,
+  }) {
+    return Row(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: iconColor.withOpacity(0.1),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(icon, color: iconColor, size: 20),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: Text(
+            text,
+            style: const TextStyle(
+              fontSize: 15,
+              color: Colors.black87,
+            ),
+            overflow: TextOverflow.ellipsis, // ป้องกันข้อความยาวเกินหน้าจอ
+          ),
+        ),
+      ],
+    );
+  }
+}
 ```
 
+
+
+### โค้ดผลลัพธ์ของ Profile Card แบบที่ 2 
+
+![Screenshot](images/ภาพถ่ายหน้าจอ%202569-07-08%20เวลา%2003.36.00.png)
+
+![Screenshot](images/ภาพถ่ายหน้าจอ%202569-07-08%20เวลา%2003.40.54.png)
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.blueGrey[900],
+        body: const Center(
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: ProfileCard(
+              name: 'Phuwish Pobkobchit',
+              role: 'Student',
+              email: '67030183@kmitl.ac.th',
+              experienceYears: '1 year',
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileCard extends StatelessWidget {
+  final String name;
+  final String role;
+  final String email;
+  final String experienceYears;
+
+  const ProfileCard({
+    super.key,
+    required this.name,
+    required this.role,
+    required this.email,
+    required this.experienceYears,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 8,
+      shadowColor: Colors.black.withOpacity(0.2),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: Container(
+        width: 340,
+        padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 24),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(24),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Colors.white,
+              Colors.blueGrey[50]!,
+            ],
+          ),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.blueGrey.withOpacity(0.3),
+                    blurRadius: 12,
+                    offset: const Offset(0, 6),
+                  ),
+                ],
+              ),
+              child: CircleAvatar(
+                radius: 45,
+                backgroundColor: Colors.blueGrey[700],
+                child: const Icon(
+                  Icons.person,
+                  size: 55,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              name,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w800,
+                color: Colors.blueGrey[900],
+                letterSpacing: 0.5,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.blueGrey[100],
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                child: Text(
+                  role.toUpperCase(),
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blueGrey[800],
+                    letterSpacing: 1.2,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 24),
+            Divider(
+              color: Colors.blueGrey[200],
+              thickness: 1,
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Icon(
+                  Icons.email_outlined,
+                  color: Colors.blueGrey[600],
+                  size: 22,
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Text(
+                    email,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.blueGrey[800],
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 14),
+            Row(
+              children: [
+                Icon(
+                  Icons.history_edu_outlined,
+                  color: Colors.blueGrey[600],
+                  size: 22,
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Text(
+                    'Experience: $experienceYears',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.blueGrey[800],
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
 ---
 
 ## 📝 ส่วนที่ 4: คำถามท้ายบท (Review Questions)
@@ -1790,34 +2221,40 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter ใช้ Rendering Engine ของตัวเอง (Skia หรือ Impeller) ในการวาด UI ขึ้นมาใหม่ทั้งหมดแบบ Pixel-by-pixel ไม่ได้แปลงโค้ดไปเรียกใช้ Native UI Components ของแต่ละแพลตฟอร์มแบบ React Native (ซึ่งใช้ Bridge เชื่อมกับ Native Components) ทำให้แอป Flutter มีหน้าตาเหมือนกันเป๊ะในทุกแพลตฟอร์มและเรนเดอร์กราฟิกได้เร็วกว่า
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: 
+- StatelessWidget: เป็น Widget ที่สถานะคงที่ เปลี่ยนแปลงเองไม่ได้หลังจากสร้างเสร็จ เหมาะสำหรับ UI ที่ไม่ต้องอัปเดต เช่น ข้อความ (Text), รูปภาพ (Image), ไอคอน (Icon)
+- StatefulWidget: เป็น Widget ที่เปลี่ยนแปลงสถานะได้ (Dynamic) ระหว่างการรันแอปเมื่อมีเหตุการณ์เกิดขึ้น เช่น ปุ่ม Checkbox, หน้าที่มีการดึงข้อมูลจาก API, หรือตัวเลขนับขึ้นลง
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: การ Commit API Key ลงใน Git จะทำให้ความลับรั่วไหล (โดยเฉพาะบน Public Repo) ซึ่งอาจถูกนำไปใช้ในทางที่ผิดหรือทำให้เกิดค่าใช้จ่ายจำนวนมหาศาล 
+วิธีจัดการที่ปลอดภัย: 
+1. สร้างไฟล์สำหรับเก็บคีย์ (เช่น `config.dart` หรือ `.env`)
+2. นำไฟล์เหล่านั้นใส่ลงใน `.gitignore` เพื่อไม่ให้ถูก push ขึ้น Git
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload ทำงานโดยการ Inject (ฉีด) โค้ดที่อัปเดตใหม่เข้าไปใน Dart Virtual Machine ขณะแอปกำลังรัน ทำให้เห็นผลลัพธ์ UI และ Logic บางส่วนได้ทันทีโดยที่สถานะเดิม (State) ยังคงอยู่
+ข้อจำกัด: หากแก้ไข `initState`, ฟังก์ชัน `main()`, หรือเปลี่ยนโครงสร้างคลาสไปเยอะมาก จะไม่ทำงาน ต้องกดใช้ Hot Restart แทน
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. ระบบแชทบอทหรือผู้ช่วยอัจฉริยะ (Intelligent Assistant): สำหรับตอบคำถามหรือช่วยเหลือผู้ใช้งานภายในแอป
+2. ระบบวิเคราะห์ภาษา (Text Analysis): วิเคราะห์ความรู้สึกจากรีวิวของลูกค้าหรือสรุปใจความสำคัญจากข้อความยาวๆ
+3. ระบบสร้างคอนเทนต์อัตโนมัติ (Content Generation): ใช้ช่วยคิดแคปชันโฆษณา, สร้างเรื่องราว, หรือแปลภาษาแบบ Real-time
 ```
 
 ---
@@ -1879,13 +2316,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [x] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [x] App รันได้บน Chrome หรือ Android Device/Emulator
+- [x] Profile Card แสดงข้อมูลของตัวเอง
+- [x] AI Chat คุยกับ Gemini ได้จริง
+- [x] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [x] ตอบคำถามท้ายบทครบทุกข้อ
+- [x] Push ขึ้น GitHub แล้ว
 
 ---
 
