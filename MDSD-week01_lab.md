@@ -1833,11 +1833,11 @@ MaterialApp
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
+
 <img width="1312" height="891" alt="image" src="https://github.com/user-attachments/assets/68dfd78f-caaf-4d60-8f4c-da312fcd7bff" />
 
 
-```
+
 
 ---
 
