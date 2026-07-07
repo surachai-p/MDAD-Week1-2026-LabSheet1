@@ -1724,7 +1724,13 @@ flutter run
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
+[√] Flutter (Channel stable, 3.44.5, on Microsoft Windows [Version 10.0.26100.3775], locale th-TH)
+[√] Windows Version (Windows 11 or higher, 24H2, 2009)
+[√] Android toolchain - develop for Android devices (Android SDK version 34.0.0)
+[√] Chrome - develop for the web
+[√] Visual Studio - develop Windows apps (Visual Studio Build Tools 2022 17.14.27 (February 2026))
+[√] Connected device (3 available)
+[√] Network resources               │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
@@ -1735,10 +1741,10 @@ Android SDK Version: ______34.0.0_________
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
+
 <img width="1261" height="711" alt="image" src="https://github.com/user-attachments/assets/c8e42356-8799-480f-94cf-4a6fa2b1394f" />
 
-```
+
 
 **Widget Tree ที่วาด:**
 
@@ -1816,9 +1822,8 @@ Text (message text)
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+<img width="928" height="997" alt="image" src="https://github.com/user-attachments/assets/0950272b-1938-4dce-b875-9200f56be2fe" />
+
 
 ---
 
@@ -1889,7 +1894,7 @@ Text (message text)
 
 1. **Source Code** — Push ขึ้น GitHub Repository
    ```
-   Repository Name: week01-flutter-intro-[รหัสนักศึกษา]
+   (https://github.com/Patcharapol2006/week01-flutter-intro-67030154)
    ```
 
 2. **ใบงานที่กรอกเสร็จแล้ว** — ส่งเป็น PDF หรือ Markdown
@@ -1920,13 +1925,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [✅] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [✅] App รันได้บน Chrome หรือ Android Device/Emulator
+- [✅] Profile Card แสดงข้อมูลของตัวเอง
+- [✅] AI Chat คุยกับ Gemini ได้จริง
+- [✅] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [✅] ตอบคำถามท้ายบทครบทุกข้อ
+- [✅] Push ขึ้น GitHub แล้ว
 
 ---
 
