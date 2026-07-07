@@ -1741,8 +1741,8 @@ Android SDK Version: ______34.0.0_________
 
 ### 3.2 Screenshot ของ Flutter App
 
-
 <img width="1261" height="711" alt="image" src="https://github.com/user-attachments/assets/c8e42356-8799-480f-94cf-4a6fa2b1394f" />
+
 
 
 
