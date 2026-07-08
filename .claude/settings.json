@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//d/Year 3, Term 1 work/mobile app/week01_hello_flutter/**)"
+    ]
+  }
+}
