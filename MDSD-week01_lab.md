@@ -1755,9 +1755,9 @@ flutter doctor output:
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.4
+Dart Version: 3.12.2
+Android SDK Version: 36.0.0
 ```
 <img width="912" height="292" alt="image" src="https://github.com/user-attachments/assets/f0a4ffb2-55d1-426c-bf28-8e12624003bc" />
 
