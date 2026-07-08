@@ -1216,7 +1216,8 @@ class ProfilePage extends StatelessWidget {
 4. เปลี่ยนสี `Colors.teal` เป็น `Colors.orange`
 5. บันทึกไฟล์อีกครั้ง → สังเกตการเปลี่ยนสีทันที
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
-<img width="1512" height="949" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 02 58 27" src="https://github.com/user-attachments/assets/4050d7f6-b825-450a-9c8e-632898ff5f4e" />
+<img width="1512" height="949" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 03 14 09" src="https://github.com/user-attachments/assets/91bb1e2a-49d0-4666-bc4b-197006b5bd98" />
+
 
 > 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
 ```
