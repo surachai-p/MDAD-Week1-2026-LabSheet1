@@ -1,4 +1,4 @@
-# 📱 ใบงานการทดลองที่ 1
+<img width="1624" height="969" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 04 13 57" src="https://github.com/user-attachments/assets/cce5e857-dea6-4ac6-96b8-cfd870b9980f" /><img width="1624" height="969" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 04 11 24" src="https://github.com/user-attachments/assets/858485f6-1818-4df4-bcaf-ea1d398fc709" /># 📱 ใบงานการทดลองที่ 1
 ## วิชา: การพัฒนาซอฟต์แวร์สำหรับอุปกรณ์เคลื่อนที่ (Mobile Software Development)
 ## หัวข้อ: ปฐมนิเทศ & แนะนำ Mobile Development — Flutter, Dart & Google AI Studio
 
@@ -1782,9 +1782,16 @@ flutter run
 **ทดลองส่งข้อความต่อไปนี้:**
 ** ให้ setting เพิ่ม keyboard ภาษาไทยก่อน **
 1. `สวัสดี ฉันเป็นนักศึกษา Flutter มือใหม่`
+<img width="1624" height="969" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 04 11 24" src="https://github.com/user-attachments/assets/69527282-51cd-4ca2-9869-a391b96b68e7" />
+
 2. `อธิบาย StatefulWidget ให้เข้าใจง่ายๆ`
+<img width="1624" height="969" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 04 12 52" src="https://github.com/user-attachments/assets/669d7909-ab4e-40e7-a5d6-52c9d812fe96" />
+
 3. `ช่วยเขียน Flutter code แสดงรายการนักศึกษา 5 คน`
+<img width="1624" height="969" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 04 13 57" src="https://github.com/user-attachments/assets/7d7d8dfb-8228-4b45-acd3-e2e3e84e8199" />
+
 4. ลองถามคำถามอื่นๆ ที่คุณสงสัย
+<img width="1624" height="969" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 04 15 07" src="https://github.com/user-attachments/assets/087d4f9e-2b25-493e-a0f5-3c63e63da6d0" />
 
 ---
 
