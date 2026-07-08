@@ -1728,58 +1728,107 @@ flutter doctor output:
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.5
+Dart Version: 3.138.0
+Android SDK Version: 34.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+![alt text](image.png)
 
 **Widget Tree ที่วาด:**
 
 ```
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
 
-MaterialApp
-└── ?
-    └── ?
-        └── ...
+MaterialApp (MyApp)
+└── ProfilePage (home)
+    └── Scaffold
+        ├── AppBar
+        │   └── Text ("Profile")
+        └── SingleChildScrollView (body)
+            └── Column
+                ├── SizedBox (height: 20)
+                ├── CircleAvatar
+                │   └── Icon (person)
+                ├── SizedBox (height: 16)
+                ├── Text ("Pawin Srisiriwat")
+                ├── SizedBox (height: 8)
+                ├── Text ("รหัสนักศึกษา: 67030166")
+                ├── SizedBox (height: 24)
+                ├── Card
+                │   └── Padding
+                │       └── Column
+                │           ├── Row  → Icon(school) + Text("คณะ") + Text("วิทยาศาสตร์...")
+                │           ├── Divider
+                │           ├── Row  → Icon(code) + Text("วิชาที่ลง") + Text("Mobile Development")
+                │           ├── Divider
+                │           └── Row  → Icon(star) + Text("เป้าหมาย") + Text("พัฒนาแอป...")
+                ├── SizedBox (height: 24)
+                └── ElevatedButton.icon
+                    ├── Icon (smart_toy)
+                    └── Text ("ทดลอง AI Chat")
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | เร็วมาก (เสี้ยววินาที) เพราะ Inject เฉพาะโค้ดที่เปลี่ยนเข้าไปใน Dart VM ที่รันอยู่ | ช้ากว่า (หลักวินาที) เพราะต้อง Restart Dart VM และรันแอปใหม่ทั้งหมด |
+| State ถูก Reset? | ไม่ถูก Reset — ค่าตัวแปร State (เช่น _counter, _messages) ยังคงอยู่เหมือนเดิม | ถูก Reset ทั้งหมด — แอปกลับไปเริ่มต้นที่ main()/initState() ใหม่ |
+| ใช้เมื่อไหร่ | แก้ไข UI เล็กน้อย เช่น สี ข้อความ Layout ระหว่างพัฒนา | เพิ่ม/ลบ Class ใหม่, แก้ไข initState(), เปลี่ยนโครงสร้าง State/Field หรือเมื่อ Hot Reload ไม่ทำงานตามที่คาด |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง:
+- ชื่อเมือง
+- อุณหภูมิ (ตัวเลขขนาดใหญ่)
+- ไอคอนสภาพอากาศ (sunny/cloudy/rainy)
+- ความชื้น
+
+ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
+
+![alt text](image-3.png)
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+คุณเป็น Flutter Developer ผู้เชี่ยวชาญ
+
+สร้าง Flutter Widget ชื่อ WeatherCard โดย:
+1. รับ parameters: city (String), temperature (double), condition (String), humidity (int)
+2. แสดง UI สวยงามด้วย Card Widget
+3. ใช้ Icons.wb_sunny สำหรับ "sunny", Icons.cloud สำหรับ "cloudy", Icons.water_drop สำหรับ "rainy"
+4. ใช้ Color scheme สีฟ้า-ขาว
+5. ขนาดอุณหภูมิต้องใหญ่และชัดเจน
+
+ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
+
+![alt text](image-4.png)
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+Prompt แบบ Simple: Gemini ต้องเดาเองว่าจะรับค่า Parameter แบบไหน (เช่น temperature เป็น int หรือ
+double) จะ Map ไอคอนกับสภาพอากาศอย่างไร และมักใส่ Comment อธิบายโค้ดมาด้วย ทำให้บางครั้งได้โครงสร้าง
+หรือชื่อตัวแปรไม่ตรงกับที่ต้องการเป๊ะ ต้องแก้ไขเพิ่มเติมก่อนนำไปใช้จริง
+
+Prompt แบบ Detailed: ผลลัพธ์ตรงตามสเปกมากกว่า เพราะระบุ Type ของ Parameter, ไอคอนที่ใช้คู่กับแต่ละ
+สภาพอากาศ, Color Scheme และการเน้นขนาดตัวอักษรไว้ชัดเจน ทำให้ได้โค้ดที่ Copy ไปใช้ได้เลยโดยแทบไม่ต้อง
+แก้ไข และไม่มี Comment แทรกตามที่สั่งไว้
+
+สรุป: การกำหนด Role, Parameter Type และรายละเอียดที่ต้องการล่วงหน้า (Prompt Engineering) ช่วยลด
+ความคลุมเครือและทำให้ผลลัพธ์จาก AI ใกล้เคียงกับสิ่งที่ต้องการมากขึ้น ลดรอบการแก้ไขซ้ำ
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+![alt text](image-1.png)
+
+![alt text](image-2.png)
 
 ---
 
@@ -1790,34 +1839,61 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter ใช้ Rendering Engine ของตัวเอง (Skia/Impeller) วาด UI ทุก Pixel เองผ่าน Dart
+โดยไม่พึ่ง Native UI Component ของแต่ละแพลตฟอร์ม ทำให้ UI หน้าตาเหมือนกันทุกแพลตฟอร์ม 100%
+และควบคุม Animation ได้ละเอียด แต่ App Size จะใหญ่กว่าเพราะต้องแนบ Engine ไปด้วย
+
+React Native ใช้ Bridge/JSI แปลง Component ที่เขียนด้วย JavaScript ไปเรียกใช้ Native UI Component
+จริงของแต่ละแพลตฟอร์ม (เช่น UIView บน iOS) ทำให้ได้ Look & Feel แบบ Native จริง แต่การสื่อสารข้าม
+Bridge อาจทำให้ Performance ของ UI ที่ซับซ้อนช้ากว่า Flutter ในบางกรณี
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget คือ Widget ที่ไม่มีข้อมูลภายในที่เปลี่ยนแปลงได้หลัง Build ครั้งแรก
+(Immutable) เหมาะกับ UI ที่แสดงข้อมูลคงที่ ไม่ต้องตอบสนอง User Interaction เช่น Text ชื่อ-นามสกุล
+และ CircleAvatar ในหน้า Profile Card ของเรา
+
+StatefulWidget คือ Widget ที่มี State เปลี่ยนแปลงได้ระหว่างแอปทำงาน เมื่อ State เปลี่ยนจะเรียก
+setState() เพื่อสั่งให้ Flutter Build UI ใหม่ เหมาะกับ UI ที่ต้องโต้ตอบกับผู้ใช้ เช่น หน้า AiChatPage
+ที่ต้องอัปเดตรายการข้อความ (_messages) และสถานะ Loading (_isLoading) อยู่ตลอดเวลา
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ห้าม Commit API Key ลง Git เพราะถ้า Repository เป็น Public ทุกคนจะเห็นค่า Key ได้ทันที
+และถึงจะลบออกภายหลัง ค่า Key เดิมก็ยังอยู่ใน Git History อยู่ดี ทำให้ผู้ไม่หวังดีนำไปใช้ยิง Request
+แทนเรา ทำให้เสียค่าใช้จ่าย (Billing) หรือถูกจำกัด/ระงับ Quota การใช้งานของเราได้
+
+วิธีจัดการอย่างปลอดภัย: เก็บ Key ไว้ในไฟล์แยก (เช่น api_config.dart หรือ .env) แล้วเพิ่มไฟล์นั้นใน
+.gitignore ไม่ให้ถูก Track, ใช้ Environment Variables หรือ --dart-define ตอน Build แทนการ Hardcode,
+ใน Production ควรเรียกผ่าน Backend ของเราเองแทนการฝัง Key ไว้ในแอปโดยตรง และตั้งค่า API Key
+Restriction (จำกัด Domain/Package ที่เรียกได้) ใน Google Cloud Console
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload ทำงานโดยส่งเฉพาะโค้ดส่วนที่เปลี่ยนแปลง (Source Code Diff) เข้าไป Inject ใน
+Dart Virtual Machine ที่กำลังรันอยู่โดยไม่ปิดแอป แล้ว Flutter Framework จะ Rebuild เฉพาะ Widget
+Tree ใหม่ตามโค้ดที่แก้ไข โดยที่ State เดิมของแอปยังคงอยู่ ทำให้เห็นผลการเปลี่ยนแปลงเกือบทันที
+
+ข้อจำกัด: ใช้ไม่ได้กับการเปลี่ยนแปลงที่กระทบโครงสร้างโปรแกรม เช่น แก้ไข main() หรือ initState(),
+เพิ่ม/ลบ Field ใน Class, เปลี่ยน Generic Type, แก้ไขโค้ด Native (Android/iOS), หรือเพิ่ม Package
+ใหม่ใน pubspec.yaml — กรณีเหล่านี้ต้องใช้ Hot Restart หรือ Full Restart แทน
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
-คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+คำตอบ:
+1. Chatbot/ผู้ช่วยตอบคำถามในแอป เช่น ให้ลูกค้าถามข้อมูลสินค้า หรือให้นักศึกษาถามทบทวนบทเรียนได้
+   ทันทีในแอป
+2. สร้างเนื้อหาอัตโนมัติ เช่น ให้ AI เขียนคำอธิบายสินค้า สรุปข้อความยาวๆ ให้สั้นลง หรือแปลภาษาในแอป
+3. วิเคราะห์รูปภาพ/เอกสาร เช่น สแกนใบเสร็จแล้วให้ AI ดึงยอดเงินออกมาอัตโนมัติ (OCR + Understanding)
+   หรือแนะนำเมนูอาหารจากรูปวัตถุดิบที่ถ่ายมา
 ```
 
 ---
@@ -1879,13 +1955,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [✗] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [✓] App รันได้บน Chrome หรือ Android Device/Emulator
+- [✓] Profile Card แสดงข้อมูลของตัวเอง
+- [✓] AI Chat คุยกับ Gemini ได้จริง
+- [✓] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [✓] ตอบคำถามท้ายบทครบทุกข้อ
+- [✓] Push ขึ้น GitHub แล้ว
 
 ---
 
