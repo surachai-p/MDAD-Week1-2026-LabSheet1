@@ -1798,66 +1798,128 @@ flutter run
 
 ### 3.1 ผลการติดตั้ง Flutter
 
-```
-flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+<img width="1009" height="686" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 04 44 44" src="https://github.com/user-attachments/assets/7c0b07a7-1ab5-4a0e-bf1e-d8e7b0995016" />
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
-```
 
 ### 3.2 Screenshot ของ Flutter App
+<img width="1624" height="969" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 04 45 59" src="https://github.com/user-attachments/assets/a0cc5012-08aa-4586-99c4-9df5ae414453" />
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+
+
 
 **Widget Tree ที่วาด:**
 
 ```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
+MyApp (Root)
+└── MaterialApp
+    └── ProfilePage
+        └── Scaffold
+            ├── AppBar (appBar)
+            │   └── Text ('โปรไฟล์ของฉัน')
+            └── Padding (body)
+                └── Column
+                    ├── SizedBox (height: 20)
+                    ├── CircleAvatar (รูปโปรไฟล์)
+                    │   └── Icon (Icons.person)
+                    ├── SizedBox (height: 16)
+                    ├── Text ('ITTIKORN TONGSIMA')
+                    ├── SizedBox (height: 8)
+                    ├── Text ('รหัสนักศึกษา: 67030261')
+                    ├── SizedBox (height: 24)
+                    └── Card
+                        └── Padding
+                            └── Column
+                                ├── _buildInfoRow (คณะ) -> Padding -> Row [ Icon, SizedBox, Text, Expanded -> Text ]
+                                ├── Divider
+                                ├── _buildInfoRow (วิชาที่ชอบ) -> Padding -> Row [ Icon, SizedBox, Text, Expanded -> Text ]
+                                ├── Divider
+                                ├── _buildInfoRow (เป้าหมาย) -> Padding -> Row [ Icon, SizedBox, Text, Expanded -> Text ]
+                                ├── Divider
+                                ├── _buildInfoRow (อาหารที่ชอบ) -> Padding -> Row [ Icon, SizedBox, Text, Expanded -> Text ]
+                                ├── Divider
+                                ├── _buildInfoRow (สัตว์เลี้ยงที่ชอบ) -> Padding -> Row [ Icon, SizedBox, Text, Expanded -> Text ]
+                                ├── SizedBox (height: 24)
+                                └── ElevatedButton.icon (ปุ่มทดลอง AI Chat)
+```
 
-MaterialApp
-└── ?
-    └── ?
-        └── ...
+AI Chat Page
+```
+AiChatPage
+└── State <_AiChatPageState>
+    └── Scaffold
+        ├── AppBar (appBar)
+        │   └── Text ('Gemini AI Chat')
+        └── Column (body)
+            ├── Expanded
+            │   └── [_messages.isEmpty]
+            │       ├── TRUE  -> Center
+            │       │            └── Text ('👋 Hello Gemini')
+            │       └── FALSE -> ListView.builder
+            │                    └── _buildMessage (ทำงานซ้ำตามจำนวนข้อความ)
+            │                        └── Align
+            │                            └── Container
+            │                                └── Text (ข้อความแชท)
+            ├── [_isLoading คือ true]
+            │   └── Padding
+            │       └── CircularProgressIndicator
+            └── SafeArea
+                └── Padding
+                    └── Row
+                        ├── Expanded
+                        │   └── TextField
+                        ├── SizedBox (width: 8)
+                        └── FloatingActionButton.small
+                            └── Icon (Icons.send)
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
-|---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+|---|:---:|:---:|
+| ความเร็ว |เร็วมาก (ไม่ถึง 1 วิ) เนื่องจากโหลดเฉพาะโค้ดส่วนที่แก้ไขเข้าไปใน Dart Virtual Machine  โดยไม่ได้รันระบบใหม่ทั้งหมด | ช้ากว่า Hot Reload ( 2-5 วิ) เพราะต้องทำการเคลียร์คอมไพล์เก่าและเริ่มต้นระบบของแอปพลิเคชันใหม่ทั้งหมดจากจุดเริ่มต้น|
+| State ถูก Reset? |ไม่ถูก Reset เป็น Maintain State| ถูก Reset ทั้งหมด เป็น Destroy & Rebuild State|
+| ใช้เมื่อไหร่ | ใช้เมื่อมีการแก้ไขเกี่ยวกับ UI/UX หรือ Logic ย่อยๆ เพื่อดูผลลัพธ์ทันที| ใช้เมื่อมีการแก้ไขโค้ดที่มีผลต่อ โครงสร้างหลักหรือสถานะเริ่มต้น เช่น เปลี่ยนแปลงค่าในฟังก์ชัน main(), เปลี่ยนระบบธีม (ThemeData), หรือโหลดค่าจากไฟล์คอนฟิกใหม่|
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+ช่วยแต่งหน้าจอโค้ด AiChatPage ของ Flutter ตัวนี้ให้สวยขึ้นหน่อย เอาแบบโมเดิร์นๆ เปลี่ยนสีกล่องข้อความแชทให้น่ารัก เปลี่ยนปุ่มส่ง และทำช่องกรอกข้อความให้ดูดีขึ้น
 ```
+<img width="1624" height="969" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 04 46 40" src="https://github.com/user-attachments/assets/322a1f68-e7f7-4006-ab4f-a9a05023ae1c" />
+Commit Hash : 330a4e450246337577288b0b01b642ea31e4c9e6
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+"คุณเป็น Senior Flutter UI/UX Developer และ Clean Code Expert ช่วยปรับปรุงดีไซน์ (Refactor UI) หน้าจอ AiChatPage โดยใช้หลักการ Material Design 3 และ Modern Chat UI Guidelines ดังนี้:
+1. Theme & Color System: ใช้สีจาก Theme.of(context).colorScheme โดยปรับสีพื้นหลังเป็นโทนสว่างนวล คล้ายหน้าจอแชทระดับโปรดักชัน
+2. Message Bubbles: ปรับแต่งกล่องข้อความแชท (User และ Assistant) ให้มีความมนเฉพาะมุม (Custom Border Radius) เช่น กล่องฝั่งผู้ใช้ให้มุมล่างขวาแหลม ฝั่ง AI ให้มุมล่างซ้ายแหลม และเพิ่มเงาเบาๆ (BoxShadow)
+3. Empty State: ออกแบบหน้าจอก่อนเริ่มแชทใหม่ให้น่าดึงดูด โดยใช้สัญลักษณ์หรือไอคอนขนาดใหญ่คู่กับข้อความต้อนรับที่จัดวางกึ่งกลางอย่างสวยงาม
+4. Chat Input Area: ปรับเปลี่ยนขอบของ TextField ให้เป็นทรงมนเรียว (Rounded-pill shape) เปลี่ยนสีพื้นหลังช่องกรอกข้อความ และเปลี่ยนปุ่มส่งจาก FloatingActionButton.small เป็น IconButton ที่ฝังอยู่ด้านในหรืออยู่ท้ายบรรทัดอย่างลงตัว
+5. Loading State: แทนที่จะใช้ CircularProgressIndicator เดี่ยวๆ ให้จัดกลุ่มอยู่ในรูปแบบ Shimmer หรือแสดงสถานะ "AI กำลังพิมพ์..." (Typing Indicator) ให้ดูมีชีวิตชีวา"
 ```
+
+
+Commit Hash : 1a4a29cee778f1cb8630674874557a5b8310ca9d
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+1. ผลลัพธ์ที่ได้จาก Simple Prompt เมื่อใช้พรอมต์แบบทั่วไปที่อาจไม่ได้กำกับโครงสร้างธีมไว้อย่างเคร่งครัด AI จะพยายามคิดแทนโดยการจับคู่สีให้อยู่ในโทนเดียวกันทั้งหมดแบบเดี่ยวๆ
+  -	การเลือกใช้สี: AI เลือกเปลี่ยนสีพื้นหลังและสีขององค์ประกอบต่างๆ ให้เด่นจนเกินไป แต่ขาดการคำนวณสัดส่วนพื้นที่ว่าง ทำให้อินเตอร์เฟสโดยรวมดูแข็ง
+  -	โครงสร้างของแถบกรอกข้อความรวมถึงปุ่มส่งด้านล่างยังเป็นเพียงการนำคอมโพเนนต์พื้นฐานมาวางต่อกัน ไม่ได้ปรับแต่งสัดส่วนให้เนียนตา
+2. ผลลัพธ์ที่ได้จาก Detailed Prompt เมื่อระบุความต้องการโดยการสวมบทบาทเป็น Senior UI/UX Developer และเน้นย้ำเรื่องการใช้ระบบสีจาก Theme.of(context).colorScheme ควบคู่กับ Material 3 Guidelines ผลลัพธ์จะออกมาระดับมืออาชีพและตรงจุดมากกว่า
+  -	AI จะเลือกใช้สีตามที่สั่ง ไม่เอาสีมามั่ว โดยระบบจะไปดึงค่าโทนสีครีม/น้ำตาลนวล ซึ่งเป็นสีสืบทอดมาจากสีหลักของแอป (seedColor: Colors.orange) ทำให้ได้ธีมที่สอดคล้องเป็นอันหนึ่งอันเดียวกันทั้งหน้าเพจโดยไม่ฮาร์ดโค้ดสีตามใจชอบ
+  -	ไอคอนตรงกลางถูกปรับเปลี่ยนเป็นไอคอนของ Gemini ช่วยสร้างความรู้สึกเป็นมิตรและสื่อถึงฟังก์ชันการแชทได้ชัดเจน
+  -	ปุ่มส่งด้านล่างขวาได้รับการปรับแต่งตามข้อกำหนดของดีไซเนอร์ โดยเปลี่ยนเป็น IconButton.filled ทรงวงกลมและใช้ไอคอนหัวลูกศรชี้ขึ้น ซึ่งเป็นมาตรฐาน UI ของแอปพลิเคชันแชทในปัจจุบัน โดยถูกยุบรวมเข้ากับช่องกรอกข้อความอย่างแนบเนียน ทำให้อินเตอร์เฟสดูสะอาด น่ากด และใช้งานง่ายขึ้นอย่างเห็นได้ชัด
+
+แบบ Detailed Prompt จะตรงตามความต้องการมากกว่าเพราะกำหนดรายละเอียดที่ต้องใช้ให้หมดเเละเเละใช้ token น้อยกว่าแบบ Simple เพราะไม่ต้องไปคิดว่าต้องการแบบไหนเเละโค้ดที่ออกมาอาจไม่ตรงความต้องการของเราด้วย
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+![Uploading ภาพถ่ายหน้าจอ 2569-07-09 เวลา 05.00.39.png…]()
+
+
 
 ---
 
