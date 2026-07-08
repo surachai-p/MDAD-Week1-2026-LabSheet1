@@ -1720,11 +1720,12 @@ flutter run
 
 ### 3.1 ผลการติดตั้ง Flutter
 
+
+**flutter doctor output**
+<img width="1345" height="903" alt="Screenshot 2026-07-08 082808" src="https://github.com/user-attachments/assets/2539141d-4b02-42a0-9f5e-11e84e0fc276" />
+
+
 ```
-flutter doctor output:
-
-
-
 Flutter Version: Flutter version 3.44.4
 Dart Version: Dart version 3.12.2
 Android SDK Version: Android SDK version 34.0.0
@@ -1732,9 +1733,8 @@ Android SDK Version: Android SDK version 34.0.0
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+<img width="1918" height="1132" alt="Screenshot 2026-07-08 082950" src="https://github.com/user-attachments/assets/86f48d7d-a747-4a48-a88e-9924269e720c" />
+
 
 **Widget Tree ที่วาด:**
 
@@ -1742,18 +1742,35 @@ Android SDK Version: Android SDK version 34.0.0
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
 
 MaterialApp
-└── ?
-    └── ?
-        └── ...
+└── ProfilePage
+    └── Scaffold
+        ├── appBar: AppBar
+        │   └── Text ('Profile')
+        │
+        └── body: Column
+            ├── CircleAvatar
+            │   └── Icon (Icons.person)
+            ├── Text ('ชนินทร์ คำวงศ์ษา')
+            ├── Text ('รหัสนักศึกษา: 67030281')
+            │
+            ├── Card (ข้อมูลส่วนตัว)
+            │   └── Column
+            │       ├── Row (อีเมล)
+            │       ├── Row (มหาวิทยาลัย)
+            │       ├── Row (คณะ)
+            │       ├── Row (วิชาที่ชอบ)
+            │       └── Row (เป้าหมาย)
+            │
+            └── ElevatedButton.icon (ปุ่ม AI Chat)
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว |เร็วมาก|ช้ากว่า|
+| State ถูก Reset? |ไม่ถูก Reset |ถูก Reset |
+| ใช้เมื่อไหร่ |ใช้เมื่อต้องการ ปรับแต่ง UI หรือแก้ไขโค้ดเล็กๆ น้อยๆ ภายในฟังก์ชัน|ใช้เมื่อมีการ แก้ไขโครงสร้างหลัก เช่น ฟังก์ชัน main(), initState() หรือตัวแปร Global|
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
@@ -1787,15 +1804,24 @@ MaterialApp
 
 **แบบ Simple**
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+<img width="1915" height="1127" alt="Screenshot 2026-07-08 085907" src="https://github.com/user-attachments/assets/4cb7e9fe-c5e2-4305-af50-d4624cea94ef" />
+
+**ผลลัพธ์ แบบ Simple**
+
+<img width="1918" height="1131" alt="Screenshot 2026-07-08 090258" src="https://github.com/user-attachments/assets/dc0e974f-06b1-4c46-8673-0e777f15a756" />
+
+-----------------------------------------------------------------------
+
 
 **แบบ Detailed**
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+<img width="1918" height="1137" alt="Screenshot 2026-07-08 085958" src="https://github.com/user-attachments/assets/11a5d7de-6c0c-4ff9-9765-6213a0bc0beb" />
+
+
+**ผลลัพธ์ แบบ Detailed**
+
+<img width="1918" height="1135" alt="Screenshot 2026-07-08 090355" src="https://github.com/user-attachments/assets/ad95d1e7-193e-4768-9b6d-0551ff2cfb57" />
+
 
 ---
 
@@ -1806,34 +1832,34 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter ใช้ Engine ของตัวเอง (Impeller/Skia) วาด UI บนหน้าจอโดยตรง ทำให้ลื่นไหลและหน้าตาเหมือนกันทุกเครื่อง ส่วน React Native ต้องแปลงโค้ดผ่าน Bridge ไปเรียกใช้ UI ดั้งเดิมของ OS นั้นๆ
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget เปลี่ยนแปลงข้อมูล/หน้าตาไม่ได้หลังสร้าง (เช่น หน้าแสดงโลโก้, ข้อความทั่วไป) ส่วน StatefulWidget สามารถอัปเดตข้อมูลและเปลี่ยนหน้าตาแอปได้ตลอดเวลาผ่าน setState() (เช่น หน้าจอตัวนับเลข, ฟอร์มกรอกข้อมูล)
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพราะหากรหัสหลุดไป ผู้ไม่หวังดีจะนำไปสวมรอยใช้งาน จนข้อมูลรั่วไหลหรือเกิดค่าใช้จ่ายแฝง วิธีแก้คือให้เก็บรหัสไว้ในไฟล์ภายนอก เช่น .env แล้วใส่ชื่อไฟล์นี้ใน .gitignore เพื่อไม่ให้อัปโหลดขึ้น Git
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ทำงานโดยส่งโค้ดที่แก้ไขเข้า Dart VM เพื่ออัปเดตหน้าจอทันทีโดยไม่สูญเสียข้อมูลเดิมในแอป ข้อจำกัดคือ ไม่สามารถอัปเดตการแก้ไขโค้ดระดับโครงสร้างลึกๆ ได้ เช่น แก้ฟังก์ชัน main(), เปลี่ยน initState() หรือเปลี่ยนตัวแปร Global
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. ระบบ Smart Chatbot ตอบคำถามและช่วยเหลือลูกค้าในแอปแบบอัตโนมัติ
+2. ระบบสแกนและวิเคราะห์รูปภาพ เช่น สแกนใบเสร็จคำนวณเงิน หรือตรวจโรคพืชจากภาพถ่าย
+3. ฟีเจอร์ผู้ช่วยอัจฉริยะ ช่วยสรุปเนื้อหาบทความยาวๆ หรือช่วยร่างข้อความตอบกลับ
 ```
 
 ---
