@@ -1797,8 +1797,7 @@ flutter run
 ## 📋 ส่วนที่ 3: แบบบันทึกผลการทดลอง (Lab Report)
 
 ### 3.1 ผลการติดตั้ง Flutter
-
-<img width="1009" height="686" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 04 44 44" src="https://github.com/user-attachments/assets/7c0b07a7-1ab5-4a0e-bf1e-d8e7b0995016" />
+<img width="999" height="450" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 06 00 45" src="https://github.com/user-attachments/assets/3c5f0650-763d-4134-8287-1e0c8b42b2f6" />
 
 
 ### 3.2 Screenshot ของ Flutter App
