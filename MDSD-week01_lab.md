@@ -1,4 +1,3 @@
-<img width="1624" height="969" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 04 13 57" src="https://github.com/user-attachments/assets/cce5e857-dea6-4ac6-96b8-cfd870b9980f" /><img width="1624" height="969" alt="ภาพถ่ายหน้าจอ 2569-07-09 เวลา 04 11 24" src="https://github.com/user-attachments/assets/858485f6-1818-4df4-bcaf-ea1d398fc709" /># 📱 ใบงานการทดลองที่ 1
 ## วิชา: การพัฒนาซอฟต์แวร์สำหรับอุปกรณ์เคลื่อนที่ (Mobile Software Development)
 ## หัวข้อ: ปฐมนิเทศ & แนะนำ Mobile Development — Flutter, Dart & Google AI Studio
 
