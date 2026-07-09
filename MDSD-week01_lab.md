@@ -1724,7 +1724,8 @@ flutter run
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
+│  <img width="602" height="333" alt="image" src="https://github.com/user-attachments/assets/dac72be1-dd27-4a12-9864-a3e03d214636" />
+                │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
