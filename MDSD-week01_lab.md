@@ -1187,6 +1187,7 @@ class ProfilePage extends StatelessWidget {
 - [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
 - [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
 - [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/1ee7ceb7-fbd8-4833-b6d3-2325a0415e0b" />
 
 ---
 
@@ -1226,8 +1227,11 @@ class ProfilePage extends StatelessWidget {
 อธิบายแนวคิดของ Flutter Framework ให้นักศึกษาปี 2 เข้าใจง่ายๆ ภายใน 5 ประโยค
 ```
 
+
 4. คลิก **"Run"** หรือกด `Ctrl+Enter`
-5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้ำ
+5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้
+<img width="995" height="252" alt="image" src="https://github.com/user-attachments/assets/2bb303cd-1ac6-4cad-9c8c-f01ad2d21740" />
+
 
 #### ทดลองที่ 2: Code Generation
 
@@ -1722,41 +1726,72 @@ flutter run
 
 ```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+
+Flutter Version: 10.0.19045.6466
+Dart Version:3.12.2
+Android SDK Version:  36.0.0
 ```
+<img width="756" height="228" alt="image" src="https://github.com/user-attachments/assets/181b3fa1-2d0d-4b09-8521-724e196820de" />
+
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/dab4df06-ba8e-4341-94ef-b09bcd399521" />
+
 ```
 
 **Widget Tree ที่วาด:**
 
-```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
+MyApp
+└── MaterialApp
+    └── ProfilePage
+        └── Scaffold
+            ├── AppBar
+            │   └── Text("Profile")
+            │
+            └── Body
+                └── Padding
+                    └── Column
+                        ├── SizedBox
+                        ├── CircleAvatar
+                        │   └── Icon(Icons.person)
+                        ├── SizedBox
+                        ├── Text("korn daengthong")
+                        ├── SizedBox
+                        ├── Text("รหัสนักศึกษา: 67030268")
+                        ├── Text("บ้าน: บุฮม")
+                        ├── Text("โปเกมอนที่ชอบ: โกดัค")
+                        ├── SizedBox
+                        ├── Card
+                        │   └── Padding
+                        │       └── Column
+                        │           ├── _buildInfoRow()
+                        │           │   └── Row
+                        │           │       ├── Icon
+                        │           │       ├── SizedBox
+                        │           │       ├── Text
+                        │           │       └── Expanded
+                        │           │           └── Text
+                        │           ├── Divider
+                        │           ├── _buildInfoRow()
+                        │           ├── Divider
+                        │           └── _buildInfoRow()
+                        ├── SizedBox
+                        └── ElevatedButton.icon
+                            ├── Icon(Icons.smart_toy)
+                            └── Text("ทดลอง AI Chat")
 
-MaterialApp
-└── ?
-    └── ?
-        └── ...
+
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | เร็วมาก (ประมาณ 1–3 วินาที) | ช้ากว่า (ประมาณ 3–10 วินาที) |
+| State ถูก Reset? |ไม่ถูกรีเซ็ต (State ยังคงอยู่) |ถูกรีเซ็ตทั้งหมด (เริ่มแอปใหม่) |
+| ใช้เมื่อไหร่ |ใช้เมื่อแก้ไข UI เช่น Text, Color, Layout, Widget เพื่อดูผลทันที | ใช้เมื่อแก้ไข main(), ตัวแปรเริ่มต้น, State, การตั้งค่าระบบ หรือเมื่อ Hot Reload ไม่อัปเดต|
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
@@ -1790,34 +1825,35 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter มี Rendering Engine ของตัวเอง (Skia/Impeller) จึงวาด UI เองทั้งหมด ทำให้หน้าตาและประสิทธิภาพสม่ำเสมอทุกแพลตฟอร์ม ส่วน React Native ใช้ Native UI Components ของระบบปฏิบัติการผ่าน Bridge ทำให้หน้าตาใกล้เคียงกับแอป Native ของแต่ละแพลตฟอร์ม
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget เป็น Widget ที่ข้อมูลไม่เปลี่ยนแปลงหลังจากสร้างแล้ว เหมาะสำหรับหน้าจอหรือองค์ประกอบที่แสดงข้อมูลคงที่ เช่น โลโก้, ข้อความ, ไอคอน หรือหัวข้อ
+StatefulWidget เป็น Widget ที่สามารถเปลี่ยนแปลงข้อมูลและอัปเดตหน้าจอได้ เหมาะสำหรับปุ่มกด, ฟอร์มกรอกข้อมูล, ตัวนับจำนวน, หรือหน้า AI Chat ที่ข้อความเปลี่ยนแปลงตลอดเวลา
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: าม Commit API Key ลง Git Repository เพราะผู้อื่นอาจนำ API Key ไปใช้งานโดยไม่ได้รับอนุญาต ทำให้เกิดค่าใช้จ่ายหรือข้อมูลรั่วไหล วิธีจัดการที่ปลอดภัยคือเก็บ API Key ไว้ในไฟล์ Environment (.env), Secret Manager หรือไฟล์ที่ไม่ถูกอัปโหลดขึ้น Git และเพิ่มไฟล์ดังกล่าวไว้ใน .gitignore
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:Hot Reload จะอัปเดตเฉพาะส่วนของโค้ดที่แก้ไขเข้าสู่แอปที่กำลังทำงาน โดยไม่รีเซ็ต State ทำให้เห็นผลการเปลี่ยนแปลงได้อย่างรวดเร็ว ข้อจำกัดคือไม่สามารถอัปเดตการเปลี่ยนแปลงบางประเภท เช่น การแก้ไขฟังก์ชัน main(), การเปลี่ยนค่าเริ่มต้นของแอป หรือการเปลี่ยนแปลงที่เกี่ยวข้องกับ State บางกรณี ซึ่งต้องใช้ Hot Restart แทน
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. สร้างระบบ AI Chatbot สำหรับตอบคำถามและให้ข้อมูลแก่ผู้ใช้งาน
+2. ช่วยสรุปข้อความหรือเอกสารอัตโนมัติ เพื่อให้ผู้ใช้เข้าใจข้อมูลได้รวดเร็วขึ้น
+3. ช่วยแนะนำหรือค้นหาข้อมูล เช่น ระบบผู้ช่วยแนะนำสินค้า แนะนำบทเรียน หรือแนะนำการแก้ปัญหาภายในแอป
 ```
 
 ---
@@ -1879,13 +1915,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [✓ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [✓ ] App รันได้บน Chrome หรือ Android Device/Emulator
+- [✓ ] Profile Card แสดงข้อมูลของตัวเอง
+- [x ] AI Chat คุยกับ Gemini ได้จริง
+- [✓ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [✓ ] ตอบคำถามท้ายบทครบทุกข้อ
+- [✓] Push ขึ้น GitHub แล้ว
 
 ---
 
