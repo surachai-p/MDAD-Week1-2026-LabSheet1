@@ -1748,7 +1748,7 @@ Android SDK Version: 36.0.0
 ### 3.2 Screenshot ของ Flutter App
 
 ```
-<img width="1200" height="912" alt="image" src="https://github.com/user-attachments/assets/0fd8bea6-c7d8-4e99-9719-449a073dd5b3" />
+<img width="1193" height="912" alt="image" >
 
 ```
 
