@@ -1235,7 +1235,8 @@ class ProfilePage extends StatelessWidget {
 5. บันทึกไฟล์อีกครั้ง → สังเกตการเปลี่ยนสีทันที
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
-> 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
+> 🔍 **ข้อสังเกต:** Hot Reload: อัปเดต UI ทันทีโดยไม่รีสตาร์ทแอป และคง State ไว้
+Hot Restart: รีสตาร์ททั้งแอป และ Reset State กลับไปเหมือนตอนเปิดแอปใหม่
 
 ---
 
