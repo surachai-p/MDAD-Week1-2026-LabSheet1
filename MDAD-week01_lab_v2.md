@@ -883,24 +883,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 > 📝 **แบบฝึกหัด:** วาด Widget Tree ของโค้ดนี้ลงในใบงาน
 
-```
-MyApp (StatelessWidget)
-  └── MaterialApp
-        └── MyHomePage (StatefulWidget)
-              └── Scaffold
-                    ├── appBar: AppBar
-                    │     └── title: Text ("Flutter Demo Home Page")
-                    │
-                    ├── body: Center
-                    │     └── Column
-                    │           ├── children: [
-                    │           │     ├── Text ("You have pushed the button this many times:")
-                    │           │     └── Text ("$_counter")
-                    │           │ ]
-                    │
-                    └── floatingActionButton: FloatingActionButton
-                          └── child: Icon (Icons.add)
-```
+![alt text](image-17.png)
 
 
 
