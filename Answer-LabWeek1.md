@@ -24,13 +24,40 @@ Android SDK Version: 36.0.0
 
 **Widget Tree ที่วาด:**
 
-```
+
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
 
 MaterialApp
-└── ?
-    └── ?
-        └── ...
+└── ProfilePage
+    └── Scaffold
+        ├── AppBar
+        │   └── Text
+        └── Padding
+            └── Column
+                ├── SizedBox
+                ├── CircleAvatar
+                │   └── Icon
+                ├── SizedBox
+                ├── Text (ชื่อ)
+                ├── SizedBox
+                ├── Text (รหัสนักศึกษา)
+                ├── SizedBox
+                ├── Card
+                │   └── Padding
+                │       └── Column
+                │           ├── Row (คณะ)
+                │           ├── Divider
+                │           ├── Row (วิชาที่ชอบ)
+                │           ├── Divider
+                │           ├── Row (เป้าหมาย)
+                │           ├── Divider
+                │           ├── Row (สาขา)
+                │           ├── Divider
+                │           └── Row (สถาบัน)
+                ├── SizedBox
+                └── ElevatedButton.icon
+                    ├── Icon
+                    └── Text ("ทดลอง AI Chat")
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
