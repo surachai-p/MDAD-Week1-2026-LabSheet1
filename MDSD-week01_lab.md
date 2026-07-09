@@ -676,6 +676,16 @@ Doctor summary (to see all details, run flutter doctor -v):
 > 📝 **บันทึกผล:** จดบันทึก Error (`[✗]`) ที่พบ และทำการแก้ไขตามคำแนะนำ  
 > ไม่ต้องแก้ไขรายการที่ขึ้น `[!] Android Studio`
 
+
+>**พบ Error:**
+> [X] Android toolchain - develop for Android devices
+>      X Flutter requires Android SDK 36 and the Android BuildTools 28.0.3
+>
+>ที่ดำเนินการ
+> 1.ติดตั้ง Java JDK 17
+> 2.ติดตั้ง Android SDK Command-line Tools
+> 3.ติดตั้ง Android SDK Components
+
 ---
 
 ### ขั้นตอนที่ 5: ติดตั้ง VS Code และ Flutter Extension
@@ -1015,6 +1025,38 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ---
 
+```
+MyApp
+│
+└── MaterialApp
+    │
+    └── MyHomePage
+        │
+        └── Scaffold
+            │
+            ├── AppBar
+            │   │
+            │   └── Text
+            │       └── "Flutter Demo Home Page"
+            │
+            ├── Body
+            │   │
+            │   └── Center
+            │       │
+            │       └── Column
+            │           │
+            │           ├── Text
+            │           │   └── "You have pushed the button this many times:"
+            │           │
+            │           └── Text
+            │               └── _counter
+            │
+            └── FloatingActionButton
+                │
+                └── Icon
+                    └── Icons.add
+```
+
 ### ขั้นตอนที่ 4: รันแอปพลิเคชันครั้งแรก
 
 มี 2 วิธีในการรัน เลือกวิธีที่ถนัด:
@@ -1183,10 +1225,10 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [ / ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [ / ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [ / ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [ / ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
 
 ---
 
@@ -1200,6 +1242,11 @@ class ProfilePage extends StatelessWidget {
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
 > 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
+>
+```
+Hot Reload เมื่อกด Ctrl + S UI เปลี่ยนทันทีโดยไม่ต้องรันแอปใหม่ และข้อมูลเดิมยังอยู่
+Hot Restart เมื่อกด R แอปเริ่มทำงานใหม่ทั้งหมด และข้อมูลถูกรีเซ็ต
+```
 
 ---
 
@@ -1263,6 +1310,12 @@ class ProfilePage extends StatelessWidget {
 ```
 
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
+
+```
+Simple Prompt คือการสั่งงานแบบสั้น ๆ ทำให้ AI ต้องเดาเองว่าเราต้องการแบบไหน ผลลัพธ์ที่ได้อาจจะไม่ตรงกับที่คิดไว้ และรายละเอียดอาจมีไม่มาก
+
+Detailed Prompt คือการบอกความต้องการให้ละเอียดขึ้น เช่น อยากได้อะไร รูปแบบไหน มีเงื่อนไขอะไร หรือมีตัวอย่างให้ดู ทำให้ AI เข้าใจงานมากขึ้น และได้ผลลัพธ์ที่ตรงกับที่ต้องการมากกว่า
+```
 
 ---
 
@@ -1724,20 +1777,35 @@ flutter run
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
+│ Doctor summary (to see all details, run flutter doctor -v):
+[√] Flutter (Channel stable, 3.44.5, on Microsoft Windows [Version
+    10.0.26200.8655], locale th-TH)
+[√] Windows Version (11 Home Single Language 64-bit, 25H2, 2009)
+[√] Android toolchain - develop for Android devices (Android SDK version 36.0.0)
+[√] Chrome - develop for the web
+[X] Visual Studio - develop Windows apps
+    X Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all
+      of its default components
+[√] Connected device (4 available)
+[√] Network resources
+
+! Doctor found issues in 1 category.                │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.5
+Dart Version: 3.12.2
+Android SDK Version: 36.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+
+<img width="387" height="706" alt="8" src="https://github.com/user-attachments/assets/dbc61f25-c88c-4b08-92e1-4b250635091b" />
+
+
 
 **Widget Tree ที่วาด:**
 
@@ -1745,41 +1813,51 @@ Android SDK Version: _______________
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
 
 MaterialApp
-└── ?
-    └── ?
-        └── ...
+└── ProfilePage
+    └── Scaffold
+        ├── AppBar
+        │   └── Text
+        └── Column
+            ├── CircleAvatar
+            ├── Text
+            ├── Card
+            └── ElevatedButton
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว |เร็วกว่า เพราะไม่ต้องเริ่มแอปใหม่ |ช้ากว่า เพราะต้องโหลดแอปใหม่ทั้งหมด |
+| State ถูก Reset? | ไม่ Reset ค่าเดิม เช่น ตัวเลข Counter ยังอยู่| Reset State กลับค่าเริ่มต้น|
+| ใช้เมื่อไหร่ |ใช้ตอนแก้ UI สี ข้อความ หรือหน้าตาแอป |ใช้ตอนแก้โครงสร้างแอป เพิ่ม Class ใหม่ |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+เขียน Flutter Widget สำหรับแสดงสภาพอากาศ
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+เขียน Flutter Widget ชื่อ WeatherCard ใช้ Material Design 3
+รับค่า cityName, temperature, condition และ humidity
+ใช้ Card, Icon และ Typography พร้อมยกตัวอย่างการเรียกใช้งาน
+และอธิบายโค้ดแต่ละส่วน
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+Prompt แบบสั้น AI จะตอบแบบกว้าง ๆ รายละเอียดไม่เยอะ
+แต่ Prompt แบบละเอียด AI เข้าใจสิ่งที่ต้องการมากกว่า
+เลยได้โค้ดครบ มีคำอธิบาย และใช้งานได้ตรงตามที่ต้องการ
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+<img width="360" height="841" alt="image" src="https://github.com/user-attachments/assets/c04b1aea-9d1b-4acc-bda1-ff1e6b644aa3" />
+
 
 ---
 
@@ -1790,34 +1868,35 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter วาดหน้าจอเองด้วย Engine ของ Flutter ทำให้หน้าตาเหมือนกันทุกเครื่อง ส่วน React Native ใช้ Component ของมือถือโดยตรง
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget คือหน้าที่ข้อมูลไม่เปลี่ยน เช่น ข้อความหรือรูปภาพ
+StatefulWidget คือหน้าที่ข้อมูลเปลี่ยนได้ เช่น Counter, ช่องแชต หรือหน้าที่มีการกดปุ่มแล้วข้อมูลเปลี่ยน
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพราะคนอื่นอาจเอา Key ไปใช้ได้ ควรเก็บไว้ในไฟล์ .env หรือไฟล์ที่ไม่เอาขึ้น Git และใช้ .gitignore ป้องกัน
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload คือการเปลี่ยนโค้ดแล้วเห็นผลทันทีโดยไม่ต้องเปิดแอปใหม่ แต่บางการเปลี่ยนแปลงต้องใช้ Hot Restart
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. ช่วยเขียนโค้ดและแก้ Error
+2. ทำระบบ Chatbot ตอบคำถามผู้ใช้
+3. ช่วยแนะนำหรือวิเคราะห์ข้อมูลในแอป
 ```
 
 ---
@@ -1879,13 +1958,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [ /] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [/ ] App รันได้บน Chrome หรือ Android Device/Emulator
+- [ /] Profile Card แสดงข้อมูลของตัวเอง
+- [/ ] AI Chat คุยกับ Gemini ได้จริง
+- [/ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [ /] ตอบคำถามท้ายบทครบทุกข้อ
+- [ /] Push ขึ้น GitHub แล้ว
 
 ---
 
