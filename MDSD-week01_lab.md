@@ -1,4 +1,4 @@
-<img width="1918" height="1013" alt="image" src="https://github.com/user-attachments/assets/e82f9cb1-1011-4b77-81a4-2753de8a864b" /># 📱 ใบงานการทดลองที่ 1
+📱 ใบงานการทดลองที่ 1
 ## วิชา: การพัฒนาซอฟต์แวร์สำหรับอุปกรณ์เคลื่อนที่ (Mobile Software Development)
 ## หัวข้อ: ปฐมนิเทศ & แนะนำ Mobile Development — Flutter, Dart & Google AI Studio
 
