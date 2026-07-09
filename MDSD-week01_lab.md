@@ -1183,10 +1183,11 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [✓] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [✓] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [✓] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [✓] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+<img width="1251" height="567" alt="image" src="https://github.com/user-attachments/assets/5f692e2f-5b55-4ac8-a683-e2e438324aa8" />
 
 ---
 
@@ -1242,6 +1243,7 @@ class ProfilePage extends StatelessWidget {
 
 ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
+<img width="1918" height="1140" alt="image" src="https://github.com/user-attachments/assets/7c501d8f-dccd-42b8-9d3c-87fceae70758" />
 
 6. นำโค้ดที่ได้ Copy ไปทดสอบใน Flutter Project
 
@@ -1261,9 +1263,19 @@ class ProfilePage extends StatelessWidget {
 
 ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
+<img width="1918" height="1138" alt="image" src="https://github.com/user-attachments/assets/ea7b50c7-b4e6-4c63-8cb7-6323bbbd9b22" />
 
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
-
+- . ความเฉพาะเจาะจงของโค้ดและการออกแบ
+จาก Simple Prompt (แบบแรก):
+ผลลัพธ์: AI จะใช้ความเห็นส่วนตัวบนแนวทางมาตรฐานในการออกแบบ เช่น การเลือกใช้โทนสีเทา/ขาวตามระบบ Material Design 3 เพื่อให้กลมกลืนกับระบบ และแยกสีไอคอนตามสภาพอากาศเพื่อให้ดูง่าย
+จาก Detailed Prompt (แบบสอง):
+ผลลัพธ์: AI จะทำตามข้อกำหนดที่ระบุมา เช่น การบังคับใช้โทนสีฟ้า-ขาว การใช้การไล่เฉดสีและการเลือกใช้ไอคอนเฉพาะตามที่สั่ง
+โครงสร้างและการรับส่งข้อมูล (Data Structure)
+จาก Simple Prompt (แบบแรก):
+AI คาดเดาว่าการระบุสภาพอากาศควรจะปลอดภัยจากการพิมพ์ผิด จึงเลือกสร้าง enum WeatherCondition ขึ้นมาเพื่อควบคุมค่าให้อยู่ในขอบเขตที่ถูกต้อง
+จาก Detailed Prompt (แบบสอง):
+AI ปฏิบัติตามคำสั่งที่ระบุให้ตัวแปร condition เป็น String ซึ่งจะสะดวกในกรณีที่ต้องการส่งค่าตรงจากข้อมูลประเภท JSONโดยไม่ต้องเขียนคลาสแปลงข้อมูลเพิ่ม
 ---
 
 ### ขั้นตอนที่ 3: สร้าง API Key
@@ -1743,10 +1755,37 @@ Android SDK Version: 34.0.0
 ```
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
 
-MaterialApp
-└── ?
-    └── ?
-        └── ...
+ MaterialApp
+    └── ProfilePage (StatelessWidget)
+        └── Scaffold
+            ├── AppBar (ส่วนหัว)
+            │   └── Text ('โปรไฟล์ของฉัน')
+            └── Padding (ส่วนเนื้อหา)
+                └── Column [crossAxisAlignment: center]
+                    ├── SizedBox
+                    ├── CircleAvatar (รูปโปรไฟล์วงกลม)
+                    │   └── Icon
+                    ├── SizedBox
+                    ├── Text ('นายภูมิชนะ เทียมแก้ว')
+                    ├── SizedBox
+                    ├── Text ('รหัสนักศึกษา: 67030180')
+                    ├── SizedBox
+                    └── Card (กล่องข้อมูลหลัก)
+                        └── Padding
+                            └── Column
+                                ├── _buildInfoRow (คณะ) -> Row [Icon, SizedBox, Text, Expanded -> Text]
+                                ├── Divider (เส้นคั่น)
+                                ├── _buildInfoRow (วิชาที่ชอบ) -> Row [Icon, SizedBox, Text, Expanded -> Text]
+                                ├── Divider (เส้นคั่น)
+                                ├── _buildInfoRow (เป้าหมาย) -> Row [Icon, SizedBox, Text, Expanded -> Text]
+                                ├── Divider (เส้นคั่น)
+                                ├── _buildInfoRow (อีเมล) -> Row [Icon, SizedBox, Text, Expanded -> Text]
+                                ├── Divider (เส้นคั่น)
+                                ├── _buildInfoRow (เบอร์โทรศัพท์) -> Row [Icon, SizedBox, Text, Expanded -> Text]
+                                ├── SizedBox
+                                └── ElevatedButton.icon (ปุ่ม AI Chat)
+                                    ├── Icon (Icons.smart_toy)
+                                    └── Text ('ทดลอง AI Chat')
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
