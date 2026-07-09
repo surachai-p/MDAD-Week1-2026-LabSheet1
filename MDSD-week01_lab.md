@@ -675,6 +675,12 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 > 📝 **บันทึกผล:** จดบันทึก Error (`[✗]`) ที่พบ และทำการแก้ไขตามคำแนะนำ  
 > ไม่ต้องแก้ไขรายการที่ขึ้น `[!] Android Studio`
+>**พบ Error:**
+> [X] Android toolchain - develop for Android devices
+>      X Flutter requires Android SDK 36 and the Android BuildTools 28.0.3
+> 1.ติดตั้ง Java JDK 17
+> 2.ติดตั้ง Android SDK Command-line Tools
+> 3.ติดตั้ง Android SDK Components
 
 ---
 
