@@ -1750,13 +1750,26 @@ flutter run
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
+│  
+Doctor summary (to see all details, run flutter doctor -v):
+[√] Flutter (Channel stable, 3.44.4, on Microsoft Windows [Version 10.0.26200.8655], locale en-US)
+[√] Windows Version (11 Home Single Language 64-bit, 25H2, 2009)
+[√] Android toolchain - develop for Android devices (Android SDK version 36.0.0)
+[√] Chrome - develop for the web
+[X] Visual Studio - develop Windows apps
+    X Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+[√] Connected device (3 available)
+[√] Network resources
+
+! Doctor found issues in 1 category.                    │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.4
+Dart Version: 3.12.2
+Android SDK Version: 36.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
@@ -1820,24 +1833,42 @@ MyApp
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง:
+- ชื่อเมือง
+- อุณหภูมิ (ตัวเลขขนาดใหญ่)
+- ไอคอนสภาพอากาศ (sunny/cloudy/rainy)
+- ความชื้น
+
+ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+คุณเป็น Flutter Developer ระดับ Senior
+
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง:
+1. ชื่อเมือง (String) 
+2. อุณหภูมิ (double) ให้ตัวเลขมีขนาดใหญ่และหนาเด่นชัด
+3. ไอคอนสภาพอากาศ (String: sunny/cloudy/rainy) โดยใช้ Icons.wb_sunny, Icons.cloud, Icons.water_drop ให้สอดคล้องกับค่าที่ส่งมา
+4. ความชื้น (int) แสดงคู่กับไอคอนความชื้นขนาดเล็ก
+
+เงื่อนไขการออกแบบ:
+- ใช้ Material Design 3 (Card Widget) แบบไม่มีขอบมุมแหลม
+- รับค่าทั้งหมดผ่าน Constructor Parameters
+- ตกแต่ง Card ให้มีพื้นหลังไล่สี (LinearGradient) โทนสีฟ้าสดใส-ขาว
+- จัด Layout ด้วย Padding ให้สมดุล และให้ผลลัพธ์เป็นโค้ดที่สมบูรณ์พร้อมรัน
+ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+- การใช้ Prompt แบบ Simple : AI สามารถเขียนโค้ดโครงสร้างพื้นฐานได้ถูกต้อง รับพารามิเตอร์ได้ครบ และมีข้อมูลแสดงผลครบถ้วน แต่หน้าตา UI จะออกมาดูเรียบง่าย เป็นแค่ Card ธรรมดา ขาดสีสัน และอาจจะจัดวางตำแหน่งได้ไม่สวยงามเท่าที่ควร
+- การใช้ Prompt แบบ Detailed: เมื่อมีการเพิ่มการสวมบทบาท (Senior Developer) และระบุเงื่อนไขการตกแต่งที่ชัดเจน (เช่น พื้นหลังไล่สีฟ้า, การใช้ไอคอนที่เจาะจง) โค้ดที่ได้จะมีความสมบูรณ์แบบในแง่ของ UI มากขึ้น ได้หน้าจอที่สวยงามพร้อมนำไปใช้งานจริงได้ทันทีโดยแทบไม่ต้องเสียเวลาแก้โค้ดเอง
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
+<img width="1917" height="1025" alt="image" src="https://github.com/user-attachments/assets/79ecbdfb-bd71-4e83-8e0b-48e95c8d1f39" />
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
 
 ---
 
@@ -1848,34 +1879,38 @@ MyApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter มี Engine ของตัวเอง (Skia/Impeller) วาดพิกเซลลงจอตรงๆ หน้าตาAppเลยเหมือนกันทุกเครื่อง
+ส่วน React Native ต้องส่งข้อมูลผ่านตัวกลาง (Bridge) ไปเรียกใช้ตัววาดของระบบอีกที เลยทำงานช้ากว่า และทำให้Appมีหน้าตาเปลี่ยนไปตามอุปกรณ์ที่ใช้งาน
 ```
-
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:
+- StatelessWidget: หน้าตาคงที่ เปลี่ยนค่าไม่ได้ เหมาะกับหน้าโชว์ข้อมูลนิ่งๆ เช่น หน้า Profile ข้อความ หรือรูปภาพทั่วไป
+- StatefulWidget: หน้าตาเปลี่ยนตามข้อมูลได้ตลอดเวลา เหมาะกับหน้าที่มีการโต้ตอบ เช่น หน้าแชท (AiChatPage) ที่มีข้อความใหม่เด้งขึ้นมาเรื่อยๆ หรือปุ่มกดนับเลข
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพราะคนอื่นจะสามารถเห็นคีย์ของเราอาจจะแอบจิ๊กคีย์เราไปใช้จนโควต้าหมดหรือโดนเก็บตังค์
+วิธีแก้คือแยกคีย์ไปไว้ในไฟล์อื่น (เช่น api_config.dart) แล้วใส่ชื่อไฟล์นั้นไว้ใน .gitignore เพื่อล็อกไม่ให้ Git อัปโหลดขึ้นอินเทอร์เน็ต
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload ทำงานโดยการส่งโค้ดที่เพิ่งแก้ใหม่เข้าไปอัปเดตในแอปทันที ทำให้หน้าจอเปลี่ยนปุ๊บปั๊บโดยที่ข้อมูลที่เปิดค้างไว้ไม่หาย 
+ข้อจำกัดคือจะใช้ไม่ได้กับการแก้โครงสร้างใหญ่ๆ เช่น ติดตั้งแพ็กเกจใหม่ เพิ่มรูปภาพ หรือแก้โค้ดส่วนเริ่มต้นแอป ถ้าทำพวกนี้ Hot Reload จะเอาไม่อยู่ ต้องกด Hot Restart เพื่อเปิดแอปใหม่
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. ทำแอปคิดเมนูอาหาร: ให้ผู้ใช้พิมพ์วัตถุดิบที่มีในตู้เย็น แล้วส่งให้ AI ช่วยคิดเมนูพร้อมบอกวิธีทำ
+2. ทำแอปช่วยสรุปบทความ: เวลาเจอข่าวหรือเว็บที่เนื้อหายาวๆ ก็ก๊อปข้อความมาโยนใส่แอปให้ AI สรุปใจความสำคัญสั้นๆ ให้
+3. ทำแอปวางแผนจัดทริปเที่ยว: แค่พิมพ์บอก AI ว่าอยากไปจังหวัดไหน มีงบเท่าไหร่ ให้ AI ช่วยจัดตารางเที่ยวรายวันออกมาให้เลย
 ```
 
 ---
@@ -1937,13 +1972,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [ ✅ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [ ✅ ] App รันได้บน Chrome หรือ Android Device/Emulator
+- [ ✅ ] Profile Card แสดงข้อมูลของตัวเอง
+- [ ✅ ] AI Chat คุยกับ Gemini ได้จริง
+- [ ✅ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [ ✅ ] ตอบคำถามท้ายบทครบทุกข้อ
+- [ ✅ ] Push ขึ้น GitHub แล้ว
 
 ---
 
