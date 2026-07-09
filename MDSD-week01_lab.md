@@ -1,4 +1,4 @@
-# 📱 ใบงานการทดลองที่ 1
+<img width="1918" height="1013" alt="image" src="https://github.com/user-attachments/assets/e82f9cb1-1011-4b77-81a4-2753de8a864b" /># 📱 ใบงานการทดลองที่ 1
 ## วิชา: การพัฒนาซอฟต์แวร์สำหรับอุปกรณ์เคลื่อนที่ (Mobile Software Development)
 ## หัวข้อ: ปฐมนิเทศ & แนะนำ Mobile Development — Flutter, Dart & Google AI Studio
 
@@ -424,6 +424,7 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 > 📝 `[✗] Android toolchain` แสดงว่ายังไม่มี Android SDK — **ต้องแก้ไขในขั้นตอนที่ 4**
 > `[✓] Chrome` หมายความว่าสามารถรัน Flutter บน Chrome ได้แล้วทันที โดยไม่ต้องรอ Android SDK
+<img width="912" height="297" alt="image" src="https://github.com/user-attachments/assets/117fd5d3-f1cc-4882-9433-6c43fd8849f9" />
 
 ---
 
@@ -542,6 +543,7 @@ echo %JAVA_HOME%  # Windows CMD
 
 > ✅ ถ้า `java -version` แสดงผลได้ → พร้อมไปขั้นตอน 4.1  
 > ❌ ถ้ายังขึ้น `JAVA_HOME is not set` หลังตั้งค่าแล้ว → ลอง **ปิด VS Code ทั้งหมด แล้วเปิดใหม่** เพื่อให้ Environment Variables มีผล
+<img width="738" height="117" alt="image" src="https://github.com/user-attachments/assets/50ce293c-8c9b-4d5f-b7cc-820dbb6012e3" />
 
 ---
 
@@ -675,6 +677,7 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 > 📝 **บันทึกผล:** จดบันทึก Error (`[✗]`) ที่พบ และทำการแก้ไขตามคำแนะนำ  
 > ไม่ต้องแก้ไขรายการที่ขึ้น `[!] Android Studio`
+<img width="826" height="177" alt="image" src="https://github.com/user-attachments/assets/f87b28ae-cf0e-4877-a0a3-416cff3bc7ed" />
 
 ---
 
@@ -1012,7 +1015,20 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 > 📝 **แบบฝึกหัด:** วาด Widget Tree ของโค้ดนี้ลงในใบงาน
-
+MyApp
+  └── MaterialApp
+        └── MyHomePage
+              └── Scaffold
+                    ├── appBar: AppBar
+                    │     └── title: Text
+                    │
+                    ├── body: Center
+                    │     └── child: Column
+                    │           ├── Text
+                    │           └── Text
+                    │
+                    └── floatingActionButton: FloatingActionButton
+                          └── child: Icon
 ---
 
 ### ขั้นตอนที่ 4: รันแอปพลิเคชันครั้งแรก
@@ -1183,10 +1199,11 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [✓] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [✓] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [✓] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [✓] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+<img width="1918" height="1018" alt="image" src="https://github.com/user-attachments/assets/b2f21cf6-93c2-4b00-ac13-9c3c9fdd07b4" />
 
 ---
 
@@ -1198,6 +1215,7 @@ class ProfilePage extends StatelessWidget {
 4. เปลี่ยนสี `Colors.teal` เป็น `Colors.orange`
 5. บันทึกไฟล์อีกครั้ง → สังเกตการเปลี่ยนสีทันที
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
+<img width="1918" height="1013" alt="image" src="https://github.com/user-attachments/assets/5e78dff3-052c-46a3-9074-c4b56867387b" />
 
 > 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
 
@@ -1228,6 +1246,8 @@ class ProfilePage extends StatelessWidget {
 
 4. คลิก **"Run"** หรือกด `Ctrl+Enter`
 5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้ำ
+<img width="1258" height="363" alt="Screenshot 2026-07-09 140907" src="https://github.com/user-attachments/assets/a4554da9-f15d-49e2-bb38-ef02f559aec4" />
+<img width="1243" height="340" alt="image" src="https://github.com/user-attachments/assets/cb629981-bd6a-48cd-94d3-045eaf43462c" />
 
 #### ทดลองที่ 2: Code Generation
 
@@ -1242,6 +1262,7 @@ class ProfilePage extends StatelessWidget {
 
 ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
+<img width="1918" height="1017" alt="image" src="https://github.com/user-attachments/assets/10b6e344-615c-42c4-9193-8e6b1c5f9cca" />
 
 6. นำโค้ดที่ได้ Copy ไปทดสอบใน Flutter Project
 
@@ -1263,7 +1284,11 @@ class ProfilePage extends StatelessWidget {
 ```
 
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
-
+<img width="1918" height="1017" alt="image" src="https://github.com/user-attachments/assets/56cc9396-0d56-4355-9aab-03ea6d38744b" />
+```
+- เวอร์ชันแรก: เน้นโค้ดง่ายๆ ปล่อยให้สีสันเปลี่ยนตามธีมระบบอัตโนมัติ และขนาดการ์ดจะยืดขยายเต็มหน้าจอตามขนาดอุปกรณ์
+- เวอร์ชันสอง: เน้นความสวยงามแบบเฉพาะเจาะจง ล็อคสีฟ้า-ขาว ใส่เงาให้ดูมีมิติ และจำกัดความกว้างไว้ไม่ให้ขยายจนเบี้ยวเมื่อเปิดบนหน้าจอใหญ่
+```
 ---
 
 ### ขั้นตอนที่ 3: สร้าง API Key
@@ -1778,7 +1803,8 @@ MaterialApp
 ### 3.5 Screenshot ของ AI Chat App
 
 ```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
+<img width="1918" height="1017" alt="Screenshot 2026-07-09 145914" src="https://github.com/user-attachments/assets/0cc822f7-7731-45e8-8054-1f31f150842d" />
+
 ```
 
 ---
