@@ -13,7 +13,7 @@
 | **เครื่องมือเสริม** | Android SDK Command-line Tools, Chrome Browser, ADB |
 
 > 💡 **ทำไมใช้ VS Code เป็นหลัก?**  
-> VS Code มี Flutter Extension ที่ครบถ้วน รองรับการพัฒนา Flutter ได้เต็มรูปแบบโดยไม่ต้องติดตั้ง Android Studio ช่วยประหยัด Storage ได้กว่า 8 GB และเปิดได้เร็วกว่ามาก เราติดตั้งเฉพาะ Android SDK Command-line Tools ที่จำเป็นจริงๆ แทน
+> VS Code มี Flutter Extension ที่ครบถ้วน รองรับการพัฒนา Flutter ได้เต็มรูปแบบโดยไม่ต้องติดตั้งg Android Studio ช่วยประหยัด Storage ได้กว่า 8 GB และเปิดได้เร็วกว่ามาก เราติดตั้งเฉพาะ Android SDK Command-line Tools ที่จำเป็นจริงๆ แทน
 
 ---
 
@@ -1015,7 +1015,20 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 > 📝 **แบบฝึกหัด:** วาด Widget Tree ของโค้ดนี้ลงในใบงาน
-
+MyApp (StatelessWidget)
+ └── MaterialApp
+      └── MyHomePage (StatefulWidget)          [home]
+           └── Scaffold
+                ├── AppBar                      [appBar]
+                │    └── Text("Flutter Demo Home Page")   [title]
+                │
+                ├── Center                      [body]
+                │    └── Column
+                │         ├── Text("You have pushed the button this many times:")
+                │         └── Text("$_counter")
+                │
+                └── FloatingActionButton         [floatingActionButton]
+                     └── Icon(Icons.add)          [child]
 ---
 
 ### ขั้นตอนที่ 4: รันแอปพลิเคชันครั้งแรก
@@ -1186,11 +1199,12 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [/] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [/] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [/] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [/] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
 
+  ![alt text](image.png)
 ---
 
 ### ขั้นตอนที่ 6: ทดลอง Hot Reload
@@ -1203,7 +1217,9 @@ class ProfilePage extends StatelessWidget {
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
 > 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
-
+1. รันแอป กด + เพิ่มข้อมูล 1 แถว หรือกดแก้ไขข้อมูลบางแถว
+2. แก้โค้ดเล็กน้อย เช่น เปลี่ยนสี Colors.indigo เป็น Colors.3.teal แล้วกด Hot Reload (r) → สังเกตว่าข้อมูลที่เพิ่ม/แก้ไว้ ยังอยู่ สีเปลี่ยนทันที
+3. กด Hot Restart (R) แทน → สังเกตว่าข้อมูลที่เพิ่ม/แก้ไว้ หายไป กลับเป็นค่าเริ่มต้นใน _infoItems
 ---
 
 ## 🧪 การทดลองที่ 3: ทดลองใช้งาน Google AI Studio
@@ -1232,6 +1248,13 @@ class ProfilePage extends StatelessWidget {
 4. คลิก **"Run"** หรือกด `Ctrl+Enter`
 5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้ำ
 
+นี่คือแนวคิดของ Flutter Framework สำหรับอธิบายให้นักศึกษาปี 2 เข้าใจได้ง่ายๆ ภายใน 5 ประโยคครับ:
+เขียนครั้งเดียวใช้ได้ทุกเครื่อง (Cross-Platform): Flutter เป็นเครื่องมือจาก Google ที่ใช้ภาษา Dart ช่วยให้เราเขียนโค้ดเพียงชุดเดียว (Single Codebase) แต่สามารถสร้างแอปพลิเคชันรันได้พร้อมกันทั้งบน iOS, Android, Web และ Desktop
+ทุกอย่างคือตัวต่อเลโก้ (Everything is a Widget): แนวคิดหลักของ Flutter คือการมองทุกอย่างบนหน้าจอเป็นชิ้นส่วนที่เรียกว่า "Widget" ไม่ว่าจะเป็นปุ่ม ข้อความ หรือกล่องข้อความ โดยเราจะนำ Widget เหล่านี้มาประกอบและซ้อนทับกันเป็นหน้าตาแอปตามต้องการ
+เห็นผลลัพธ์ทันใจด้วย Hot Reload: มีฟีเจอร์เด่นที่ชื่อ "Hot Reload" ทำให้นักพัฒนาสามารถแก้ไขโค้ดและเห็นผลลัพธ์บนหน้าจอจำลองได้ทันทีในเวลาไม่ถึงวินาที ช่วยลดเวลาในการทดสอบและพัฒนาแอปลงไปได้มหาศาล
+ลื่นไหลและสวยงามตรงกันทุกระบบ (High Performance): Flutter มีกราฟิกเอนจินส่วนตัวคอยวาดหน้าจอขึ้นมาเองแบบพิกเซลต่อพิกเซลแทนที่จะใช้ UI สำเร็จรูปของระบบปฏิบัติการ ส่งผลให้แอปพลิเคชันทำงานได้ลื่นไหลระดับ 60-120 FPS และแสดงผลสวยงามเหมือนกันเป๊ะในทุกอุปกรณ์
+ลดความซ้ำซ้อนในการเรียนรู้: สำหรับนักศึกษาปี 2 การศึกษา Flutter จะช่วยประหยัดเวลาเพราะไม่ต้องแยกเรียนภาษา Swift สำหรับ iOS และ Kotlin สำหรับ Android แต่สามารถใช้ความรู้เดียวทำโปรเจกต์ส่งอาจารย์หรือพัฒนาผลิตภัณฑ์จริงออกสู่ตลาดได้อย่างรวดเร็ว
+
 #### ทดลองที่ 2: Code Generation
 
 พิมพ์ Prompt ต่อไปนี้:
@@ -1247,6 +1270,7 @@ class ProfilePage extends StatelessWidget {
 ```
 
 6. นำโค้ดที่ได้ Copy ไปทดสอบใน Flutter Project
+
 
 #### ทดลองที่ 3: Prompt Engineering
 
@@ -1266,6 +1290,22 @@ class ProfilePage extends StatelessWidget {
 ```
 
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
+1. Simple Prompt (แบบเรียบง่าย/เน้นเป้าหมายหลัก)
+ตัวอย่าง: "เขียน Flutter Widget ชื่อ WeatherCard ที่แสดงอุณหภูมิ สภาพอากาศ และความชื้น"
+วิธีการทำงานของ AI: AI จะใช้ "ค่าเริ่มต้นมาตรฐาน (Defaults)" หรือการคาดเดาความน่าจะเป็นที่เหมาะสมที่สุดในการสร้างส่วนที่เหลือ เช่น การตั้งชื่อตัวแปร สไตล์สี และชุดไอคอนขึ้นมาเอง
+ผลลัพธ์ที่ได้:
+ได้โค้ดที่ทำงานได้ทั่วไป แต่อาจใช้ชื่อพารามิเตอร์ที่ไม่ตรงกับโครงสร้างข้อมูลในแอปของคุณ (เช่น AI อาจตั้งชื่อว่า temp ในขณะที่แอปของคุณใช้ temperature)
+ดีไซน์และโทนสีจะเป็นสีมาตรฐานของเฟรมเวิร์ก (เช่น สีม่วง/น้ำเงินของ Material Baseline)
+มักจะมีคำอธิบายหรือ Comment ยาวๆ แทรกเข้ามาด้วย
+เหมาะสำหรับ: ช่วงเริ่มต้นโปรเจกต์ที่ต้องการไอเดียคร่าวๆ หรือต้องการสร้างโปรโตไทป์อย่างรวดเร็ว (Exploration)
+2. Detailed Prompt (แบบระบุเงื่อนไขชัดเจน)
+ตัวอย่าง: "สร้าง WeatherCard รับค่า city (String), temperature (double), condition (String) ใช้โทนสีฟ้า-ขาว, อุณหภูมิตัวใหญ่ชัดเจน, และไม่ต้องเขียน Comment อธิบาย"
+วิธีการทำงานของ AI: AI จะถูกจำกัดขอบเขต (Constraints) ให้ทำงานภายใต้เงื่อนไขที่คุณกำหนดเท่านั้น โดยตัดการคาดเดาที่ไม่จำเป็นออกไป
+ผลลัพธ์ที่ได้:
+ใช้งานได้ทันที: ชื่อตัวแปรและประเภทข้อมูล (Types) ตรงกับ API หรือโมเดลที่คุณมีอยู่ในระบบอยู่แล้ว
+ดีไซน์ตรงใจ: โทนสีและสไตล์จัดวางตรงกับความต้องการของแบรนด์หรือ UI Mockup (เช่น สีฟ้า-ขาว ขนาดฟอนต์ใหญ่พิเศษ)
+สะอาดและตรงจุด: ไม่มีข้อความอธิบายที่รกรุงรัง โค้ดกระชับ นำไป Deploy หรือวางในระบบได้ทันที
+เหมาะสำหรับ: การพัฒนาในชีวิตจริง (Production) ที่ต้องการความแม่นยำสูง โครงสร้างโค้ดต้องเข้ากันได้กับส่วนอื่นๆ ของระบบเดิม
 
 ---
 
@@ -1551,25 +1591,65 @@ flutter run
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
+│  ![alt text](image-2.png)                  │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.4
+Dart Version: 3.12.2
+Android SDK Version: 36.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
 ```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
+[![alt text](image-3.png)]
 ```
 
 **Widget Tree ที่วาด:**
 
 ```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
+(MyApp (StatelessWidget)
+ └── MaterialApp
+      └── ProfilePage (StatefulWidget)              [home]
+           └── Scaffold
+                ├── AppBar                           [appBar]
+                │    └── Text("Profile")             [title]
+                │
+                ├── SingleChildScrollView             [body]
+                │    └── Column
+                │         ├── SizedBox(height: 20)
+                │         ├── GestureDetector          — onTap: _pickImage
+                │         │    └── CircleAvatar
+                │         │         └── Icon(person)  หรือ FileImage เป็น background ถ้าเลือกรูปแล้ว
+                │         ├── SizedBox(height: 16)
+                │         ├── Text("Nithi Thipprasoet")
+                │         ├── SizedBox(height: 8)
+                │         ├── Text("รหัสนักศึกษา: ...")
+                │         ├── SizedBox(height: 24)
+                │         │
+                │         ├── Card                     — ข้อมูลโปรไฟล์
+                │         │    └── Padding
+                │         │         └── Column
+                │         │              └── (loop) สำหรับแต่ละ _InfoItem:
+                │         │                   ├── Divider (ยกเว้นแถวแรก)
+                │         │                   └── _buildInfoRow → Padding
+                │         │                        └── Row
+                │         │                             ├── Icon (ตาม _iconForLabel)
+                │         │                             ├── SizedBox(width: 12)
+                │         │                             ├── Text("label: ")
+                │         │                             ├── Expanded → Text(value)
+                │         │                             ├── IconButton (edit)
+                │         │                             └── IconButton (delete)
+                │         │
+                │         ├── SizedBox(height: 24)
+                │         └── ElevatedButton.icon        — ไป AiChatPage
+                │              ├── Icon(smart_toy)
+                │              └── Text("ทดลอง AI Chat")
+                │
+                └── FloatingActionButton                [floatingActionButton]
+                     └── Icon(Icons.add)                 — เปิด dialog เพิ่มข้อมูล
+)
 
 MaterialApp
 └── ?
@@ -1581,31 +1661,47 @@ MaterialApp
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว |เร็วมาก (เสี้ยววินาที) เพราะ inject โค้ดเข้า Dart VM ที่รันอยู่ ไม่ต้อง build ใหม่ทั้งหมด | ช้ากว่า (เป็นวินาที) เพราะปิดแอปแล้วรัน main() ใหม่ทั้งหมด|
+| State ถูก Reset? |ไม่ — ตัวแปรใน State (เช่น _infoItems, _profileImage) ยังอยู่เหมือนเดิม | ใช่ — กลับไปเป็นค่าเริ่มต้นตามที่ประกาศไว้ในโค้ด (5 รายการ default, ไม่มีรูปโปรไฟล์)|
+| ใช้เมื่อไหร่ |แก้ UI/style เล็กน้อย ปรับ widget tree, แก้ logic ในเมธอดที่ไม่กระทบ initState/ตัวแปร global |แก้ main(), เพิ่ม/ลบตัวแปร state ใหม่, แก้ initState, เปลี่ยน dependency ใน pubspec.yaml — กรณีที่ hot reload sync ไม่ได้ |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+(เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง:
+- ชื่อเมือง
+- อุณหภูมิ (ตัวเลขขนาดใหญ่)
+- ไอคอนสภาพอากาศ (sunny/cloudy/rainy)
+- ความชื้น)
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+(คุณเป็น Flutter Developer ผู้เชี่ยวชาญ
+
+สร้าง Flutter Widget ชื่อ WeatherCard โดย:
+1. รับ parameters: city (String), temperature (double), condition (String), humidity (int)
+2. แสดง UI สวยงามด้วย Card Widget
+3. ใช้ Icons.wb_sunny สำหรับ "sunny", Icons.cloud สำหรับ "cloudy", Icons.water_drop สำหรับ "rainy"
+4. ใช้ Color scheme สีฟ้า-ขาว
+5. ขนาดอุณหภูมิต้องใหญ่และชัดเจน
+
+ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
+)
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+(ยิ่ง prompt ละเอียดและมี constraint ชัดเจนมากเท่าไหร่ ผลลัพธ์ยิ่งตรงตามที่ต้องการและสม่ำเสมอมากขึ้นเท่านั้น — นี่คือหัวใจของ Prompt Engineering ครับ)
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
 ```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
+[![alt text](image-4.png)
+![alt text](image-5.png)
+![alt text](image-6.png)]
 ```
 
 ---
@@ -1617,34 +1713,37 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:  Flutter มี rendering engine เป็นของตัวเอง (Skia/Impeller) วาดทุก pixel ลง canvas เอง ไม่พึ่ง native widget ส่วน React Native ใช้ Bridge/JSI แปลงคำสั่งไปเรียก native widget จริงของแต่ละ OS (UIView/Android View) ทำให้ Flutter ได้ UI เหมือนกันทุกแพลตฟอร์ม แต่ React Native ได้ native look ของแต่ละ OS โดยอัตโนมัติ
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget คือ widget ที่ไม่มีข้อมูลภายในที่เปลี่ยนแปลงได้ — สร้างครั้งเดียว build ครั้งเดียว ข้อมูลมาจาก constructor เท่านั้น เหมาะกับ UI ที่ตายตัว เช่น MyApp, AppBar title, การ์ดแสดงข้อมูลคงที่
+
+StatefulWidget คือ widget ที่มี State เก็บข้อมูลที่เปลี่ยนแปลงได้ระหว่างรันแอป และเรียก setState() เพื่อสั่ง rebuild UI ใหม่เมื่อข้อมูลเปลี่ยน เหมาะกับ UI ที่ต้องโต้ตอบ เช่น ProfilePage ของเรา (เพิ่ม/แก้/ลบข้อมูล, เปลี่ยนรูปโปรไฟล์), ตัวนับ counter, ฟอร์มกรอกข้อมูล
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ทำไมห้าม commit: Git เก็บ ประวัติทุกเวอร์ชัน ไว้ตลอด แม้จะลบ/แก้ไฟล์ทีหลังแล้ว key เก่าก็ยังอยู่ใน commit history ย้อนหลังได้ ยิ่งถ้า push ขึ้น GitHub แบบ public repo ใครก็ดึงประวัติไปดู หรือมี bot สแกนหา key รั่วอัตโนมัติได้ตลอดเวลา 
+
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload ส่งเฉพาะโค้ดที่แก้ไข (source code diff) เข้าไปยัง Dart VM ที่กำลังรันแอปอยู่ โดยไม่ปิดแอป จากนั้นสั่ง rebuild widget tree ใหม่ทั้งหมดด้วย state เดิมที่มีอยู่ ทำให้เห็นผลการแก้ไขแทบจะทันที
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. AI Chat ในแอป ผู้ใช้ถามคำถาม/ขอความช่วยเหลือได้ตลอด
+2. Code Generation ช่วยพัฒนาเร็วขึ้น — ใช้ Gemini/AI ช่วยร่างโค้ด widget หรือ boilerplate เบื้องต้น อย่างที่นำมาทำใน weatherCard
+3. สร้าง/ปรับ Content อัตโนมัติ — เช่น ให้ AI สรุปข้อความยาวๆ, แปลภาษาในแอป, หรือ generate คำอธิบายสินค้า/โปรไฟล์จากข้อมูลดิบที่ผู้ใช้กรอกเข้ามา
 ```
 
 ---
@@ -1706,13 +1805,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [!] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [/] App รันได้บน Chrome หรือ Android Device/Emulator
+- [/] Profile Card แสดงข้อมูลของตัวเอง
+- [/] AI Chat คุยกับ Gemini ได้จริง
+- [/] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [/] ตอบคำถามท้ายบทครบทุกข้อ
+- [/] Push ขึ้น GitHub แล้ว
 
 ---
 

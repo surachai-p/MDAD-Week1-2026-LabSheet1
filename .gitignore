@@ -43,3 +43,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# API Keys (สำคัญมาก!)
+*.env
+lib/config/api_keys.dart
+lib/config/api_config.dart

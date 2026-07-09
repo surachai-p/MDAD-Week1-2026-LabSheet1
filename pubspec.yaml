@@ -30,10 +30,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  google_generative_ai: ^0.4.3
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+
+  # ใช้เลือกรูปภาพจากคลังภาพ/กล้องสำหรับรูปโปรไฟล์
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
