@@ -1186,10 +1186,10 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [x] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [x] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [x] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [x] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
 
 ---
 
@@ -1555,15 +1555,16 @@ flutter doctor output:
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.4, on macOS 26.2 25C56
+Dart Version: 3.12.2
+Android SDK Version: 36.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
 ```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
+<img width="1197" height="768" alt="image" src="https://github.com/user-attachments/assets/03144b89-3655-4714-87d1-fdd98c0f1c8c" />
+
 ```
 
 **Widget Tree ที่วาด:**
@@ -1581,20 +1582,247 @@ MaterialApp
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | 238MS | 278MS|
+| State ถูก Reset? | ไม่ | ใช่ |
+| ใช้เมื่อไหร่ | แก้ไข UI | เปลี่ยนโครงสร้าง |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+import 'package:flutter/material.dart';
+
+class WeatherCard extends StatelessWidget {
+  // 1. กำหนด Constructor Parameters
+  final String cityName;
+  final double temperature;
+  final String weatherCondition; // รองรับ 'sunny', 'cloudy', 'rainy'
+  final int humidity;
+
+  const WeatherCard({
+    super.key,
+    required this.cityName,
+    required this.temperature,
+    required this.weatherCondition,
+    required this.humidity,
+  });
+
+  // ฟังก์ชันช่วยเลือกไอคอนให้ตรงกับสภาพอากาศ
+  IconData _getWeatherIcon(String condition) {
+    switch (condition.toLowerCase()) {
+      case 'sunny':
+        return Icons.wb_sunny_rounded;
+      case 'cloudy':
+        return Icons.cloud_rounded;
+      case 'rainy':
+        return Icons.thunderstorm_rounded;
+      default:
+        return Icons.help_outline_rounded;
+    }
+  }
+
+  // ฟังก์ชันช่วยเลือกสีไอคอนให้เหมาะกับสภาพอากาศ
+  Color _getIconColor(String condition) {
+    switch (condition.toLowerCase()) {
+      case 'sunny':
+        return Colors.amber.shade700;
+      case 'cloudy':
+        return Colors.blueGrey.shade400;
+      case 'rainy':
+        return Colors.blue.shade600;
+      default:
+        return Colors.grey;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // ใช้สีพื้นหลังและการ์ดตาม Material Design 3 Spec
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
+    return Card(
+      // Card ใน MD3 แนะนำให้ใช้แบบ Filled หรือ Elevated (ปรับตามดีไซน์ที่ชอบได้)
+      elevation: 0,
+      color: colorScheme.surfaceContainerHighest, 
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16), // ขอบมนสไตล์ MD3
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // 1. ชื่อเมือง
+            Row(
+              children: [
+                Icon(Icons.location_on, size: 18, color: colorScheme.primary),
+                const SizedBox(width: 4),
+                Text(
+                  cityName,
+                  style: textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: colorScheme.onSurface,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            
+            // 2. อุณหภูมิ และ ไอคอนสภาพอากาศ
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // อุณหภูมิตัวเลขขนาดใหญ่
+                Text(
+                  '${temperature.toStringAsFixed(1)}°C',
+                  style: textTheme.displayMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: colorScheme.onSurface,
+                  ),
+                ),
+                // ไอคอนสภาพอากาศ
+                Icon(
+                  _getWeatherIcon(weatherCondition),
+                  size: 64,
+                  color: _getIconColor(weatherCondition),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            
+            // 3. ความชื้น
+            Row(
+              children: [
+                Icon(Icons.water_drop_rounded, size: 18, color: colorScheme.secondary),
+                const SizedBox(width: 6),
+                Text(
+                  'ความชื้น: $humidity%',
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+import 'package:flutter/material.dart';
+
+class WeatherCard extends StatelessWidget {
+  final String city;
+  final double temperature;
+  final String condition;
+  final int humidity;
+
+  const WeatherCard({
+    super.key,
+    required this.city,
+    required this.temperature,
+    required this.condition,
+    required this.humidity,
+  });
+
+  IconData _getWeatherIcon(String condition) {
+    switch (condition.toLowerCase()) {
+      case 'sunny':
+        return Icons.wb_sunny;
+      case 'cloudy':
+        return Icons.cloud;
+      case 'rainy':
+        return Icons.water_drop;
+      default:
+        return Icons.help_outline;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 6,
+      shadowColor: Colors.blue.withOpacity(0.4),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+      ),
+      color: Colors.blue.shade600,
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.location_on, color: Colors.white, size: 20),
+                const SizedBox(width: 8),
+                Text(
+                  city,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  '${temperature.toStringAsFixed(1)}°',
+                  style: const TextStyle(
+                    fontSize: 64,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    height: 1.0,
+                  ),
+                ),
+                Icon(
+                  _getWeatherIcon(condition),
+                  size: 80,
+                  color: Colors.white,
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.water_drop, color: Colors.white, size: 18),
+                  const SizedBox(width: 8),
+                  Text(
+                    'Humidity $humidity%',
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 ```
 
 **ความแตกต่างของผลลัพธ์:**
@@ -1706,13 +1934,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [x] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [x] App รันได้บน Chrome หรือ Android Device/Emulator
+- [x] Profile Card แสดงข้อมูลของตัวเอง
+- [x] AI Chat คุยกับ Gemini ได้จริง
+- [x] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [x] ตอบคำถามท้ายบทครบทุกข้อ
+- [x] Push ขึ้น GitHub แล้ว
 
 ---
 
