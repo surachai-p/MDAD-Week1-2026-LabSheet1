@@ -1244,6 +1244,8 @@ class ProfilePage extends StatelessWidget {
 ```
 
 6. นำโค้ดที่ได้ Copy ไปทดสอบใน Flutter Project
+## รูปการทดลอง
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/399a26f5-8591-48eb-8169-5ef162fc43a7" />
 
 #### ทดลองที่ 3: Prompt Engineering
 
@@ -1720,23 +1722,19 @@ flutter run
 
 ### 3.1 ผลการติดตั้ง Flutter
 
-```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+<img width="1068" height="339" alt="image" src="https://github.com/user-attachments/assets/4d5937ad-7cee-4aba-9a88-30cf9b4d7b38" />
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
-```
+
+Flutter Version: 3.44.4
+Dart Version: Dart SDK version: 3.12.2 (stable) (Tue Jun 9 01:11:39 2026 -0700) on "windows_x64"
+Android SDK Version: 36.1.0
+
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3a35f876-377f-4add-ac3b-dedbcc5cffef" />
+
 ```
 
 **Widget Tree ที่วาด:**
@@ -1745,41 +1743,44 @@ Android SDK Version: _______________
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
 
 MaterialApp
-└── ?
-    └── ?
-        └── ...
-```
+MaterialApp
+└── ProfilePage (Scaffold)
+    ├── AppBar
+    └── Padding (Body)
+        └── Column
+            ├── CircleAvatar
+            ├── Text (ชื่อ)
+            ├── Text (รหัสนักศึกษา)
+            └── Card
+                └── Column
+                    └── _buildInfoRow (x5 แถว)
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
-| รายการ | Hot Reload (r) | Hot Restart (R) |
-|---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+<img width="833" height="284" alt="image" src="https://github.com/user-attachments/assets/2e28be52-1288-4dcb-becd-27a1e4a99b7a" />
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+Prompt แบบ Simple: "เขียน Flutter Widget ชื่อ WeatherCard..."
+
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+Prompt แบบ Detailed: "คุณเป็น Flutter Developer ผู้เชี่ยวชาญ... (พร้อมระบุพารามิเตอร์ สี และเงื่อนไขไอคอน)"
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+แบบ Detailed ให้โค้ดที่มีโครงสร้างครบถ้วน พร้อมใช้งาน และตรงตามสเปกที่ต้องการ (เช่น สีที่กำหนด) ในขณะที่แบบ Simple มักขาดรายละเอียดสำคัญ เช่น การจัดการเงื่อนไขข้อมูลหรือการจัด Layout
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f7535f62-44a3-4f16-83a0-6831199e55bf" />
+
 
 ---
 
@@ -1790,34 +1791,36 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:1. Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
+คำตอบ: Flutter ใช้ Rendering Engine ของตัวเองที่ชื่อว่า Impeller (หรือ Skia ในเวอร์ชันก่อนหน้า) ในการวาด UI ลงบน Canvas โดยตรง จึงให้ประสิทธิภาพที่สูงและมีความสม่ำเสมอในทุกแพลตฟอร์ม ในขณะที่ React Native จะต้องส่งผ่านข้อมูลผ่าน "Bridge" เพื่อไปเรียกใช้ Native UI Components ของระบบปฏิบัติการนั้นๆ ทำให้การ Render มีความซับซ้อนมากกว่า
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget: ใช้สำหรับ Widget ที่ข้อมูล ไม่เปลี่ยนแปลง ตลอดอายุการใช้งาน เช่น ข้อความหัวข้อ (Text), โลโก้, หรือการแสดงผลข้อมูลที่คงที่
+StatefulWidget: ใช้สำหรับ Widget ที่ข้อมูลสามารถ เปลี่ยนแปลงได้ และต้องการให้หน้าจอแสดงผลอัปเดตใหม่ (Rebuild) เมื่อข้อมูลเปลี่ยน เช่น ปุ่มกดนับเลข (Counter), ช่องกรอกข้อมูล (Text Field), หรือหน้าแชทที่มีข้อความเด้งขึ้นมาใหม่
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:เพราะ Git Repository (โดยเฉพาะ Public) สามารถถูกผู้อื่นเข้าถึงได้ หากมีผู้ไม่หวังดีนำ API Key ไปใช้ จะทำให้โควตาการใช้งานของคุณหมด หรืออาจถูกเรียกเก็บเงินค่าบริการแทนคุณได้ วิธีจัดการที่ปลอดภัยคือการเก็บ Key ไว้ในไฟล์ Environment (เช่น .env) และเพิ่มไฟล์นั้นลงใน .gitignore เพื่อไม่ให้ Git บันทึกไฟล์ที่มีรหัสผ่านขึ้นไปบนระบบ
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload ทำงานโดยการฉีดโค้ดใหม่ที่แก้ไขเข้าไปใน Dart Virtual Machine ที่กำลังรันอยู่ โดยที่ ไม่สูญเสียสถานะ (State) เดิม ของแอปพลิเคชันไป ช่วยให้เห็นผลลัพธ์การเปลี่ยน UI ได้ทันที ข้อจำกัดคือ หากมีการแก้ไขโครงสร้าง Class ใหญ่ๆ, เปลี่ยนประเภทข้อมูลของตัวแปรใน State, หรือมีการแก้ไฟล์ในระดับ main function จำเป็นต้องใช้ Hot Restart แทน
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. AI-Assisted Coding: ช่วยเขียนโค้ดโครงสร้าง Widget ที่ซับซ้อน หรือช่วยแปลง Logic จากภาษาอื่นมาเป็น Dart
+2. Automated Content Generation: ใช้ในการสรุปข้อมูล หรือสร้างบทสนทนาโต้ตอบแบบฉลาดภายในแอป (เช่น แชทบอทแนะนำข้อมูล)
+3. Data Mocking & Testing: ใช้ AI สร้างชุดข้อมูลตัวอย่าง (Dummy Data) จำนวนมากเพื่อนำมาทดสอบการแสดงผลในหน้าแอปก่อนนำข้อมูลจริงมาใช้
 ```
 
 ---
