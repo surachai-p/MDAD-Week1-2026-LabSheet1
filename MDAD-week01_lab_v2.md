@@ -1416,26 +1416,26 @@ flutter run
 
 ```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  PS C:\week01_hello_flutter> flutter doctor
-Doctor summary (to see all details, run flutter doctor -v):
-[√] Flutter (Channel stable, 3.44.4, on Microsoft Windows [Version 10.0.26200.8655], locale th-TH)
-[√] Windows Version (11 Home Single Language 64-bit, 25H2, 2009)
-[!] Android toolchain - develop for Android devices (Android SDK version 34.0.0)
-    X Flutter requires Android SDK 36 and the Android BuildTools 28.0.3
-      To update the Android SDK visit https://flutter.dev/to/windows-android-setup for detailed instructions.
-[√] Chrome - develop for the web
-[X] Visual Studio - develop Windows apps
-    X Visual Studio not installed; this is necessary to develop Windows apps.
-      Download at https://visualstudio.microsoft.com/downloads/.
-      Please install the "Desktop development with C++" workload, including all of its default components
-[√] Connected device (3 available)
-[√] Network resources
-
-! Doctor found issues in 2 categories.                │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                                                 │
+│    PS C:\week01_hello_flutter> flutter doctor                                                                   │
+│    Doctor summary (to see all details, run flutter doctor -v):                                                  │
+│    [√] Flutter (Channel stable, 3.44.4, on Microsoft Windows [Version 10.0.26200.8655], locale th-TH)           │ 
+│    [√] Windows Version (11 Home Single Language 64-bit, 25H2, 2009)                                             │
+│    [!] Android toolchain - develop for Android devices (Android SDK version 34.0.0)                             │
+│      X Flutter requires Android SDK 36 and the Android BuildTools 28.0.3                                        │
+│        To update the Android SDK visit https://flutter.dev/to/windows-android-setup for detailed instructions.  │
+│    [√] Chrome - develop for the web                                                                             │
+│    [X] Visual Studio - develop Windows apps                                                                     │
+│      X Visual Studio not installed; this is necessary to develop Windows apps.                                  │
+│       Download at https://visualstudio.microsoft.com/downloads/.                                                │
+│        Download at https://visualstudio.microsoft.com/downloads/.                                               │
+│        Please install the "Desktop development with C++" workload, including all of its default components      │
+│    [√] Connected device (3 available)                                                                           │
+│   [√] Network resources                                                                                         │
+│    ! Doctor found issues in 2 categories.                                                                       │
+│                                                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 
 Flutter Version: 3.44.4
 Dart Version: 3.9.4
