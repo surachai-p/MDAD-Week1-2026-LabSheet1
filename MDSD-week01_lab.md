@@ -1183,10 +1183,10 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [✓] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [✓] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [✓] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [✓] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
 
 ---
 
@@ -1200,7 +1200,12 @@ class ProfilePage extends StatelessWidget {
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
 > 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
-
+![alt text](image.png)
+```
+สรุปความต่าง Hot Reload vs Hot Restart
+Hot Reload (Ctrl + S): อัปเดตเฉพาะ UI ที่เปลี่ยน ข้อมูล/สถานะเดิมไม่หาย ทำงานเร็วมาก (< 1 วินาที) เหมาะกับการแต่งสีและแก้ข้อความ
+Hot Restart (R): รีเซ็ตแอปใหม่ทั้งหมด ข้อมูล/สถานะหายเกลี้ยง กลับไปเริ่มหน้าแรกสุด เหมาะกับตอนแก้โครงสร้างโค้ดหลักหรือฟังก์ชันเริ่มต้น
+```
 ---
 
 ## 🧪 การทดลองที่ 3: ทดลองใช้งาน Google AI Studio
@@ -1264,6 +1269,10 @@ class ProfilePage extends StatelessWidget {
 
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
 
+แบบ Simple
+![alt text](<Screenshot 2026-07-03 225537-1.png>)
+แบบ Detailed 
+![alt text](<Screenshot 2026-07-03 230029-1.png>)
 ---
 
 ### ขั้นตอนที่ 3: สร้าง API Key
@@ -1719,27 +1728,79 @@ flutter run
 ## 📋 ส่วนที่ 3: แบบบันทึกผลการทดลอง (Lab Report)
 
 ### 3.1 ผลการติดตั้ง Flutter
-
+![alt text](<Screenshot 2026-07-07 225629.png>)
 ```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+  วางผลลัพธ์จาก flutter doctor ที่นี่
+  Doctor summary (to see all details, run flutter doctor -v):
+[✓] Flutter (Channel stable, 3.44.4, on Microsoft Windows [Version
+    10.0.26200.8655], locale en-US) [243ms]
+    • Flutter version 3.44.4 on channel stable at C:\src\flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision ad70ec4617 (13 days ago), 2026-06-24 11:07:06
+      -0700
+    • Engine revision a10d8ac38d
+    • Dart version 3.12.2
+    • DevTools version 2.57.0
+    • Feature flags: enable-web, enable-linux-desktop,
+      enable-macos-desktop, enable-windows-desktop, enable-android,
+      enable-ios, cli-animations, enable-native-assets,
+      enable-swift-package-manager, omit-legacy-version-file,
+      enable-lldb-debugging, enable-uiscene-migration
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+[✓] Windows Version (11 Home Single Language 64-bit, 25H2, 2009) [2.9s]
+
+[✓] Android toolchain - develop for Android devices (Android SDK version
+    34.0.0) [3.3s]
+    • Android SDK at C:\Users\Nawapon\Android
+    • Emulator version 36.6.11.0 (build_id 15507667) (CL:N/A)
+    • Platform android-36, build-tools 34.0.0
+    • ANDROID_HOME = C:\Users\Nawapon\Android
+    • Java binary at: C:\Program
+      Files\Microsoft\jdk-17.0.19.10-hotspot\bin\java
+      This JDK is specified by the JAVA_HOME environment variable.
+      To manually set the JDK path, use: `flutter config
+      --jdk-dir="path/to/jdk"`.
+    • Java version OpenJDK Runtime Environment Microsoft-13877129 (build
+      17.0.19+10-LTS)
+    • All Android licenses accepted.
+
+[✓] Chrome - develop for the web [15ms]
+    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[✗] Visual Studio - develop Windows apps [14ms]
+    ✗ Visual Studio not installed; this is necessary to develop Windows
+      apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including
+      all of its default components
+
+[✓] Connected device (3 available) [335ms]
+    • Windows (desktop) • windows • windows-x64    • Microsoft Windows
+      [Version 10.0.26200.8655]
+    • Chrome (web)      • chrome  • web-javascript • Google Chrome
+      149.0.7827.201
+    • Edge (web)        • edge    • web-javascript • Microsoft Edge
+      150.0.4078.48
+
+[✓] Network resources [55.3s]        
+    • All expected network resources are available.
+
+! Doctor found issues in 1 category.
+
+Flutter Version: 3.44.4
+Dart Version: 3.12.2
+Android SDK Version: 34.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
-
+![alt text](image-1.png)
 ```
 [แนบ Screenshot ของ Profile Card App ที่สร้าง]
 ```
 
 **Widget Tree ที่วาด:**
+![alt text](IMG_1573.jpg)
 
 ```
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
@@ -1754,29 +1815,53 @@ MaterialApp
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว |128ms |1,746ms |
+| State ถูก Reset? |ไม่ Reset |ถููก Reset |
+| ใช้เมื่อไหร่ |แต่งหน้าตา แก้ไขบั๊กเล็กๆ และอยากเห็นผลทันทีโดยที่หน้าแอปไม่เด้งกลับไปเริ่มใหม่ |แก้โค้ดโครงสร้างหลัก แก้ไขค่าเริ่มต้น (initState) หรืออยากรีเซ็ตแอปใหม่ทั้งหมด |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
 (วาง Prompt ที่ใช้)
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง:
+- ชื่อเมือง
+- อุณหภูมิ (ตัวเลขขนาดใหญ่)
+- ไอคอนสภาพอากาศ (sunny/cloudy/rainy)
+- ความชื้น
+
+ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
 
 **Prompt แบบ Detailed:**
 ```
 (วาง Prompt ที่ใช้)
+คุณเป็น Flutter Developer ผู้เชี่ยวชาญ
+
+สร้าง Flutter Widget ชื่อ WeatherCard โดย:
+1. รับ parameters: city (String), temperature (double), condition (String), humidity (int)
+2. แสดง UI สวยงามด้วย Card Widget
+3. ใช้ Icons.wb_sunny สำหรับ "sunny", Icons.cloud สำหรับ "cloudy", Icons.water_drop สำหรับ "rainy"
+4. ใช้ Color scheme สีฟ้า-ขาว
+5. ขนาดอุณหภูมิต้องใหญ่และชัดเจน
+
+ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
 
 **ความแตกต่างของผลลัพธ์:**
+![alt text](<Screenshot 2026-07-03 225537.png>)
+![alt text](<Screenshot 2026-07-03 230029.png>)
+
 ```
 (บันทึกสิ่งที่สังเกต)
+Prompt แบบ Simple (จาก): ผลลัพธ์เป็นแบบ "สุ่ม" ให้ผลงานที่ดูไม่เป็นระเบียบ สีสันไม่เข้ากับธีม และโค้ดมักจะใช้งานจริงได้ยากเพราะขาดการกำหนดค่าที่ชัดเจน
+Prompt แบบ Detailed (จาก): ผลลัพธ์เป็นแบบ "มืออาชีพ" เพราะมีการระบุเงื่อนไข (ดีไซน์, สี, Parameter) ไว้อย่างชัดเจน ทำให้ได้ Widget ที่สวยงาม และพร้อมนำไปใช้งานได้ทันที
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
-
+![alt text](<Screenshot 2026-07-09 023412.png>)
+![alt text](<Screenshot 2026-07-05 180226.png>)
+![alt text](<Screenshot 2026-07-09 024747.png>)
 ```
 [แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
 ```
@@ -1790,34 +1875,51 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:Flutter ใช้ Skia (เอนจินกราฟิกของตัวเอง) วาด widget ทุกพิกเซลขึ้นมาเองบน canvas โดยไม่พึ่งพา native UI component ของแพลตฟอร์ม ทำให้ UI หน้าตาเหมือนกันทุกแพลตฟอร์ม 100% และควบคุม performance ได้ดีเพราะไม่ต้องผ่าน JavaScript Bridge
+React Native ใช้ native components จริง ของแต่ละแพลตฟอร์ม (UIView บน iOS, View บน Android) โดยโค้ด JS จะสื่อสารกับฝั่ง native ผ่าน Bridge (หรือ JSI ใน New Architecture) เพื่อสั่งเรนเดอร์ widget native เหล่านั้น ข้อดีคือ UI จะดู "native" ตามแพลตฟอร์มนั้นๆ แต่การสื่อสารข้าม Bridge อาจมี overhead มากกว่า
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
-```
+คำตอบ: StatelessWidget ไม่มี state ที่เปลี่ยนแปลงได้ build ครั้งเดียวตาม input ที่ได้รับ Text, Icon, หน้าจอ static, Card แสดงข้อมูลคงที่ และ StatefulWidget มี state ที่เปลี่ยนแปลงได้ผ่าน setState() มี state ที่เปลี่ยนแปลงได้ผ่าน setState() Form ที่มีการกรอกข้อมูล, Counter, Checkbox, หน้าที่ต้อง fetch ข้อมูลแล้วอัปเดต UI
+``` 
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: 
+เหตุผลที่ห้าม
+- Git เก็บ history ทุกอย่างไว้ถาวร ต่อให้ลบไฟล์ทีหลัง key ก็ยังอยู่ใน commit history เก่า
+- ถ้า repo เป็น public (หรือหลุดเป็น public ภายหลัง) ใครก็ตามสามารถเอา key ไปใช้ได้ทันที เช่น เรียก API แทนเรา ทำให้เสียค่าใช้จ่ายหรือถูกใช้ในทางที่ผิด
+- มี bot สแกนหา key บน GitHub ตลอดเวลา คีย์ที่หลุดมักถูกใช้งานภายในไม่กี่นาที
+วิธีจัดการอย่างปลอดภัย:
+1. ใช้ environment variables (.env file) และใส่ .env ไว้ใน .gitignore
+2. ใช้ package เช่น flutter_dotenv หรือส่ง key ผ่าน --dart-define ตอน build แทนการ hardcode
+3. เก็บ key ฝั่ง backend/server แล้วให้แอป client เรียกผ่าน backend ของเราเอง (ไม่ให้ client เข้าถึง key โดยตรง) ซึ่งเป็นวิธีที่ปลอดภัยที่สุดสำหรับแอป production
+4. ใช้ secret manager ของ CI/CD (เช่น GitHub Actions Secrets) เวลา build/deploy
+5. ถ้า key หลุดไปแล้ว ต้อง revoke/regenerate key ใหม่ทันที — การลบออกจาก repo อย่างเดียวไม่พอ
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: การทำงาน: Hot Reload จะฉีด (inject) โค้ด Dart ที่แก้ไขใหม่เข้าไปใน Dart Virtual Machine ที่กำลังรันอยู่ โดยไม่ต้อง restart แอปใหม่ทั้งหมด จากนั้น Flutter framework จะ build widget tree ใหม่ (rebuild) แต่ state เดิมของแอปยังคงอยู่ ทำให้เห็นผลการแก้ไข UI ได้เกือบจะทันทีโดยไม่เสียตำแหน่งที่กำลังทดสอบอยู่
+ข้อจำกัด:
+- ใช้ไม่ได้กับการเปลี่ยนแปลง native code (Kotlin/Swift/Java/Objective-C)
+- การแก้ไข main() function หรือ initialization code ระดับ top-level ที่รันครั้งเดียวตอนเริ่มแอป จะไม่ถูกรันซ้ำ
+- การเปลี่ยนแปลง type ของ generic, enum, หรือโครงสร้าง class บางแบบอาจทำให้ hot reload fail ต้องใช้ Hot Restart แทน
+- การเพิ่ม/ลบ dependency ใน pubspec.yaml ต้อง restart หรือรัน flutter pub get ใหม่
+- ค่า initState() จะไม่ถูกเรียกซ้ำ เพราะ state เดิมยังอยู่ (ต่างจาก Hot Restart ที่จะ reset state ทั้งหมด)
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1.Chatbot ผู้ช่วยอัจฉริยะในแอป  ใช้ Gemini API สร้างระบบตอบคำถามลูกค้าอัตโนมัติ แนะนำสินค้า หรือช่วยเหลือผู้ใช้แบบ real-time ภายในแอป ลดภาระทีม support
+2.สร้าง สรุปเนื้อหาอัตโนมัติ (Content Generation & Summarization) เช่น ให้ AI ช่วยสรุปบทความยาวๆ เขียนคำบรรยายสินค้า หรือแปลภาษาข้อความในแอปแบบอัตโนมัติ
+3.วิเคราะห์ภาพและข้อมูล (Image/Data Analysis)  เช่น ใช้ Gemini วิเคราะห์รูปภาพที่ผู้ใช้อัปโหลด (ตรวจสอบเอกสาร จำแนกวัตถุ OCR อ่านข้อความจากรูป) หรือวิเคราะห์ข้อมูล log/feedback ผู้ใช้เพื่อสรุป insight ให้ทีมพัฒนา
 ```
 
 ---
@@ -1879,13 +1981,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [✓] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [✓] App รันได้บน Chrome หรือ Android Device/Emulator
+- [✓] Profile Card แสดงข้อมูลของตัวเอง
+- [✓] AI Chat คุยกับ Gemini ได้จริง
+- [✓] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [✓] ตอบคำถามท้ายบทครบทุกข้อ
+- [✓] Push ขึ้น GitHub แล้ว
 
 ---
 
