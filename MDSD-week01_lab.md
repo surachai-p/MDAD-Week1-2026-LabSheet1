@@ -1724,55 +1724,86 @@ flutter run
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
+│  ➜  week01_hello_flutter git:(main) flutter doctor
+Doctor summary (to see all details, run flutter doctor -v):
+[✓] Flutter (Channel stable, 3.32.7, on macOS 15.6.1 24G90 darwin-arm64, locale en-TH)
+[✓] Android toolchain - develop for Android devices (Android SDK version 35.0.0)
+[✗] Xcode - develop for iOS and macOS
+    ✗ Xcode installation is incomplete; a full installation is necessary for iOS and macOS development.
+      Download at: https://developer.apple.com/xcode/
+      Or install Xcode via the App Store.
+      Once installed, run:
+        sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+        sudo xcodebuild -runFirstLaunch
+    ✗ CocoaPods not installed.
+        CocoaPods is a package manager for iOS or macOS platform code.
+        Without CocoaPods, plugins will not work on iOS or macOS.
+        For more info, see https://flutter.dev/to/platform-plugins
+      For installation instructions, see https://guides.cocoapods.org/using/getting-started.html#installation
+[✓] Chrome - develop for the web
+[!] Android Studio (not installed)
+[✓] VS Code (version 1.121.0)
+[✓] VS Code (version 1.89.1)
+[✓] Connected device (2 available)
+[✓] Network resources
+
+! Doctor found issues in 2 categories.
+➜  week01_hello_flutter git:(main) │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.32.7
+Dart Version: 3.8.1
+Android SDK Version: 35.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+
+![alt text](image.png)
+
 
 **Widget Tree ที่วาด:**
 
-```
+
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
 
 MaterialApp
-└── ?
-    └── ?
-        └── ...
-```
+![alt text](image-1.png)
+
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
-| รายการ | Hot Reload (r) | Hot Restart (R) |
-|---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| รายการ              | Hot Reload (r)                  | Hot Restart (R) |
+|---                  |---                              |---|
+| ความเร็ว             | เร็วมาก                          |ช้ากว่า Hot Reload |
+| State ถูก Reset?     | ไม่ถูกรีเซ็ต                        | ถูกรีเซ็ต|
+| ใช้เมื่อไหร่            | ถูกรีเซ็ตเมื่อแก้ไข UI หรือโค้ดทั่วไป     |เมื่อแก้ไข UI หรือโค้ดทั่วไป |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+อธิบายแนวคิดของ Flutter Framework ให้นักศึกษาปี 2 เข้าใจง่ายๆ ภายใน 5 ประโยค
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+คุณเป็น Flutter Developer ผู้เชี่ยวชาญ
+
+สร้าง Flutter Widget ชื่อ WeatherCard โดย:
+1. รับ parameters: city (String), temperature (double), condition (String), humidity (int)
+2. แสดง UI สวยงามด้วย Card Widget
+3. ใช้ Icons.wb_sunny สำหรับ "sunny", Icons.cloud สำหรับ "cloudy", Icons.water_drop สำหรับ "rainy"
+4. ใช้ Color scheme สีฟ้า-ขาว
+5. ขนาดอุณหภูมิต้องใหญ่และชัดเจน
+
+ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+Simple Prompt ให้ผลลัพธ์ที่ตรงตามคำสั่งพื้นฐาน แต่รายละเอียดของ UI และโค้ดอาจยังไม่ครบหรือไม่ตรงกับที่ต้องการทั้งหมด ส่วน Detailed Prompt ให้ผลลัพธ์ที่มีรายละเอียดมากกว่า โค้ดมีโครงสร้างชัดเจน ใช้ Widget และสีตามที่กำหนด รวมถึงสามารถนำไปใช้งานได้ทันที จึงตรงกับความต้องการมากกว่า
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
@@ -1790,34 +1821,34 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter มี Rendering Engine (Skia/Impeller) เป็นของตัวเอง จึงวาด UI ลงบนหน้าจอโดยตรง ทำให้หน้าตาและการแสดงผลเหมือนกันทุกแพลตฟอร์ม ส่วน React Native ใช้ Native UI Component ของระบบปฏิบัติการ (Android/iOS) ผ่าน Bridge จึงอาศัยการ Render ของแต่ละแพลตฟอร์ม
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget เป็น Widget ที่ข้อมูลไม่เปลี่ยนแปลงหลังจากสร้างแล้ว เหมาะสำหรับ UI ที่เป็นข้อมูลคงที่ เช่น ข้อความ โลโก้ หรือไอคอน ส่วน StatefulWidget เป็น Widget ที่สามารถเปลี่ยนแปลงข้อมูลและอัปเดตหน้าจอได้เมื่อ State เปลี่ยน เช่น ปุ่มนับจำนวน (Counter) ฟอร์มกรอกข้อมูล หรือหน้าที่ดึงข้อมูลจาก API
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพราะ API Key เป็นข้อมูลลับ หากถูกเผยแพร่ใน Git Repository อาจมีผู้อื่นนำไปใช้งาน ทำให้เกิดค่าใช้จ่ายหรือเข้าถึงบริการโดยไม่ได้รับอนุญาต วิธีจัดการที่ปลอดภัย ได้แก่ เก็บ API Key ไว้ใน Environment Variables, ไฟล์ .env ที่ไม่ Commit ขึ้น Git และเพิ่มไฟล์ดังกล่าวไว้ใน .gitignore รวมถึงใช้ Secret Management ของผู้ให้บริการ Cloud
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload จะโหลดเฉพาะโค้ดที่มีการแก้ไขเข้าไปในแอปที่กำลังทำงาน โดยไม่ต้อง Build ใหม่ทั้งหมด ทำให้เห็นผลลัพธ์ได้ทันทีและยังคง State เดิมของแอปไว้ ข้อจำกัดคือไม่สามารถอัปเดตการเปลี่ยนแปลงบางประเภท เช่น การแก้ไข main() การเปลี่ยนค่าเริ่มต้นของ Global Variable หรือการเปลี่ยน Native Code ซึ่งต้องใช้ Hot Restart หรือ Build ใหม่
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
-คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+คำตอบ:
+1. สร้างระบบ Chatbot ตอบคำถามและให้คำแนะนำแก่ผู้ใช้งานภายในแอป
+2. สรุปข้อความหรือเอกสาร และช่วยตอบคำถามจากข้อมูลที่ผู้ใช้อัปโหลด
+3. แนะนำเมนูอาหาร สินค้า หรือเนื้อหาที่เหมาะกับความต้องการของผู้ใช้แบบอัตโนมัติ
 ```
 
 ---
@@ -1855,8 +1886,12 @@ MaterialApp
 
 3. **Screenshot** อย่างน้อย 3 รูป:
    - Flutter Profile Card App
+   ![alt text](image-3.png)
+   ![alt text](image-2.png)
    - Google AI Studio Prompt Test
+   ![alt text](image-4.png)
    - AI Chat Demo ที่ทำงานได้
+   ![alt text](image-5.png)
 
 ### โครงสร้าง Repository ที่ต้องการ
 
