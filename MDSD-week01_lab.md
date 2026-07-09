@@ -1741,25 +1741,50 @@ flutter doctor output:
 └─────────────────────────────────────────────────────────┘
 
 Flutter Version: 10.0.19045.6332
-Dart Version: ______________________
+Dart Version: 3.12.2 (stable)
 Android SDK Version: 36.1.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+<img width="1294" height="765" alt="งานAI CHAT 2" src="https://github.com/user-attachments/assets/62f152a1-f7d2-44b5-a81b-b13f5e85b7ac" />
+
+
 
 **Widget Tree ที่วาด:**
 
 ```
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
 
-MaterialApp
-└── ?
-    └── ?
-        └── ...
+main()
+└── runApp()
+    └── MyApp (StatelessWidget)
+        └── MaterialApp
+            ├── title: "Flutter Demo"
+            ├── theme: ThemeData
+            │   └── ColorScheme.fromSeed()
+            └── home
+                └── MyHomePage (StatefulWidget)
+                    └── Scaffold
+                        ├── AppBar
+                        │   └── Text(widget.title)
+                        │       └── "Flutter Demo Home Page"
+                        │
+                        ├── Body
+                        │   └── Center
+                        │       └── Column
+                        │           ├── mainAxisAlignment
+                        │           │   └── MainAxisAlignment.center
+                        │           ├── Text
+                        │           │   └── "You have pushed the button this many times:"
+                        │           └── Text
+                        │               └── "$_counter"
+                        │
+                        └── FloatingActionButton
+                            ├── onPressed
+                            │   └── _incrementCounter()
+                            └── Icon
+                                └── Icons.add
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
