@@ -1835,7 +1835,7 @@ Prompt แบบ Detailed ระบุความต้องการอย่
 ```
 [แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
 ```
-```
+``
 <img width="487" height="663" alt="image" src="https://github.com/user-attachments/assets/b83f8d97-b65f-4e14-9aaa-1a335fd5be45" />
 ```
 ```
