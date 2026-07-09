@@ -1418,62 +1418,92 @@ flutter run
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
+│  PS C:\week01_hello_flutter> flutter doctor
+Doctor summary (to see all details, run flutter doctor -v):
+[√] Flutter (Channel stable, 3.44.4, on Microsoft Windows [Version 10.0.26200.8655], locale th-TH)
+[√] Windows Version (11 Home Single Language 64-bit, 25H2, 2009)
+[!] Android toolchain - develop for Android devices (Android SDK version 34.0.0)
+    X Flutter requires Android SDK 36 and the Android BuildTools 28.0.3
+      To update the Android SDK visit https://flutter.dev/to/windows-android-setup for detailed instructions.
+[√] Chrome - develop for the web
+[X] Visual Studio - develop Windows apps
+    X Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+[√] Connected device (3 available)
+[√] Network resources
+
+! Doctor found issues in 2 categories.                │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.4
+Dart Version: 3.9.4
+Android SDK Version: 34.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/06be06d6-7102-4eb9-b339-1d2493e33dfa" />
 
 **Widget Tree ที่วาด:**
 
-```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
+<img width="667" height="960" alt="image" src="https://github.com/user-attachments/assets/a3b14e83-c7e9-45a0-84da-35c8b048f847" />
 
+```
 MaterialApp
-└── ?
-    └── ?
-        └── ...
+    └── MyHomePage (หรือหน้าแรกของแอป)
+        └── Scaffold
+            ├── AppBar
+            │   └── Text
+            └── body: Column 
+                └── ElevatedButton 
+                    └── AiChatPage
+                        └── Scaffold
+                            ├── AppBar
+                            │   └── Text ('Gemini AI Chat')
+                            └── body: Column
+                                ├── Expanded
+                                │   └── ListView.builder 
+                                └── Container
+                                    └── Row
+                                        ├── Expanded
+                                        │   └── TextField
+                                        └── FloatingActionButton
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว |เร็วมาก ใช้เวลาไม่ถึง 1 วินาที |เร็วกว่ารันใหม่แต่ช้ากว่าโหลดปกติเล็กน้อย |
+| State ถูก Reset? |ไม่รีเซ็ต ข้อมูลเก่าบนหน้าจอยังอยู่ครบ |รีเซ็ตข้อมูลบนหน้าจอทั้งหมดจะกลับไปเริ่มต้นใหม่ |
+| ใช้เมื่อไหร่ |ใช้ตอนแก้โค้ดดีไซน์ตกแต่งสีหรือแก้คำผิดทั่วไป |ใช้ตอนแก้ฟังก์ชัน initState หรือแก้พวกตัวแปรระบบ |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+ขอเมนูอาหารเย็น 3 อย่าง
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+ขอเมนูอาหารเย็นที่เป็นอาหารไทยรสจัดจ้าน 3 อย่าง สำหรับคนกำลังลดน้ำหนัก บอกแคลอรีและวัตถุหลักของแต่ละเมนูให้ด้วยนะ
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+Simple ตอบแบบง่ายๆไม่คิดอะไรเยอะเหมือนเพื่อนคุยกัน แต่ถ้า Detailed จะตอบละเอียดตามประเด็นที่เราต้องการ
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/7c3c5ec5-a7cd-4469-8298-7d5f36cde7eb" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/c0ad94c9-c67f-4858-a7c0-4baa84228167" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/6bcadac8-4e73-46ba-83c7-42d373630f4c" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/0e84d0a2-7529-45a2-8965-79be0e011926" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/fe27e247-928e-4dea-8239-dc6b0d522d37" />
 
 ---
 
@@ -1484,35 +1514,34 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter จะใช้ Engine ของตัวเองชื่อ Impeller หรือ Skia ในการวาดหน้าจอขึ้นมาเองทั้งหมดเลยครับ มันเลยควบคุมพวกพิกเซลและความลื่นไหลได้ดีกว่ามาก หน้าตาแอปจะเหมือนกันทุกเครื่อง ส่วน React Native จะไม่ได้วาดเอง แต่ใช้วิธีส่งคำสั่ง Bridge ไปเรียกใช้หน้าตา UI ดั้งเดิมของ Android กับ iOS อีกที
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget: คือหน้าจอแบบนิ่ง ๆ เปลี่ยนแปลงค่าอะไรไม่ได้หลังจากโหลดเสร็จ เหมาะกับหน้าที่ไม่ต้องขยับหรือรับค่าอะไรเพิ่ม เช่น หน้าโชว์โปรไฟล์ Profile Card หรือหน้าติดต่อเรา แต่StatefulWidget: คือหน้าจอที่เปลี่ยนแปลงข้อมูลตามที่เราพิมพ์หรือกดได้ โดยใช้คำสั่ง setState เพื่อสั่งให้หน้าจออัปเดตใหม่ เหมาะกับหน้าที่มีการโต้ตอบตลอดเวลา เช่น หน้าแชท AI ที่ต้องคอยเพิ่มข้อความใหม่ ๆ เข้ามาในหน้าจอ
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: พราะถ้าเราอัปโหลดขึ้น Git โดยเฉพาะพวก GitHub ที่เป็นสาธารณะคนอื่นหรือพวกบอทจะสามารถสแกนมาเจอขโมยรหัส API Key ของเราไปใช้ฟรีๆได้ซึ่งอาจจะทำให้โควตาเราหมดหรือโดนเก็บเงินเพิ่ม วิธีแก้คือให้แยกเก็บรหัสไว้ในไฟล์อื่นข้างนอก เช่น ไฟล์ดอทเอนวี หรือไฟล์ config แยกแล้วใส่ชื่อไฟล์นั้นไว้ในดอทจิกอิกนอร์เพื่อไม่ให้ระบบดึงไฟล์ที่มีรหัสอัปโหลดขึ้นไปบนอินเทอร์เน็ต
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload คือการส่งโค้ดเฉพาะส่วนที่เราเพิ่งแก้ไขไปอัปเดตบนแอปทันทีทำให้เห็นผลลัพธ์บนหน้าจอไวมากในเวลาไม่ถึงวินาทีโดยที่ข้อมูลเก่าบนหน้าจอหรือพวก State ยังไม่หายไปข้อจำกัดคือมันจะไม่ยอมเปลี่ยนค่าให้ถ้าเราไปแก้โค้ดในฟังก์ชัน initState แก้ไขตัวแปรระดับ Global หรือพวกไฟล์ตั้งค่าระบบอย่าง pubspec.yaml ถ้าแก้พวกนี้ต้องกด Hot Restart หรือรันแอปใหม่แทน
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
-```
+1. ทำบอทคอยตอบคำถามลูกค้า Chatbot Support ในแอปขายของเพื่อช่วยตอบคำถามพื้นฐานได้ตลอด 24 ชั่วโมง
+2. ทำระบบผู้ช่วยส่วนตัวคอยแนะนำการจัดทริปเที่ยวแนะนำเมนูอาหารหรือแนะนำการแต่งตัวตามสไตล์ที่ผู้ใช้ชอบ
+3. ทำฟีเจอร์ช่วยสรุปเนื้อหา เช่น สรุปข่าวสาร สรุปหนังสือ หรือช่วยตรวจแก้คำผิดภาษาอังกฤษในแอปพิมพ์งาน
 
 ---
 
@@ -1573,13 +1602,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [/] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [/] App รันได้บน Chrome หรือ Android Device/Emulator
+- [/] Profile Card แสดงข้อมูลของตัวเอง
+- [/] AI Chat คุยกับ Gemini ได้จริง
+- [/] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [/] ตอบคำถามท้ายบทครบทุกข้อ
+- [/] Push ขึ้น GitHub แล้ว
 
 ---
 
