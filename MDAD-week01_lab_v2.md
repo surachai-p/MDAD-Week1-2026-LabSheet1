@@ -1416,22 +1416,32 @@ flutter run
 
 ```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+PS D:\project\week01_hello_flutter> flutter doctor                                                                     
+Doctor summary (to see all details, run flutter doctor -v):
+[√] Flutter (Channel stable, 3.44.5, on Microsoft Windows [Version 10.0.26200.8737], locale en-US)
+[√] Windows Version (11 Home Single Language 64-bit, 25H2, 2009)
+[√] Android toolchain - develop for Android devices (Android SDK version 36.0.0)
+[√] Chrome - develop for the web
+[!] Visual Studio - develop Windows apps (Visual Studio Community 2026 18.7.3)
+    X Visual Studio is missing necessary components. Please re-run the Visual Studio installer for the "Desktop development with C++" workload, and include these components:
+        MSVC v142 - VS 2019 C++ x64/x86 build tools
+         - If there are multiple build tool versions available, install the latest
+        C++ CMake tools for Windows
+        Windows 10 SDK
+[√] Connected device (3 available)
+[√] Network resources
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.5
+Dart Version: 3.12.2 
+Android SDK Version: 34.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+``
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/96cdf0c9-cc49-438f-ae53-a76a8360f9a1" />
+
+``
 
 **Widget Tree ที่วาด:**
 
@@ -1439,41 +1449,74 @@ Android SDK Version: _______________
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
 
 MaterialApp
-└── ?
-    └── ?
-        └── ...
+ └── ProfilePage
+      └── Scaffold
+           ├── AppBar
+           │    └── Text ('Profile')
+           └── Padding
+                └── Column
+                     ├── SizedBox
+                     ├── CircleAvatar
+                     │    └── Icon (Icons.person)
+                     ├── SizedBox
+                     ├── Text (ชื่อ)
+                     ├── SizedBox
+                     ├── Text (รหัสนักศึกษา)
+                     ├── SizedBox
+                     ├── Card
+                     │    └── Padding
+                     │         └── Column
+                     │              ├── _buildInfoRow (คณะ)
+                     │              ├── Divider
+                     │              ├── _buildInfoRow (วิชาที่ชอบ)
+                     │              ├── Divider
+                     │              ├── _buildInfoRow (เป้าหมาย)
+                     │              ├── Divider
+                     │              ├── _buildInfoRow (งานอดิเรก)
+                     │              ├── Divider
+                     │              └── _buildInfoRow (เพลงที่ฟังบ่อย)
+                     ├── SizedBox
+                     └── ElevatedButton.icon (ทดลอง AI Chat)
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | เร็วมาก | เร็วปานกลาง |
+| State ถูก Reset? | ไม่ถูก Reset | ถูก Reset เคลียร์ค่าทั้งหมด |
+| ใช้เมื่อไหร่ | ใช้ตอนแก้ไขหน้าตา UI, เปลี่ยนสี, เปลี่ยนข้อความ หรือแก้โค้ดเล็ก ๆ น้อย ๆ | ใช้ตอนแก้ไขโครงสร้างหลัก, แก้ไขฟังก์ชันใน main(), เปลี่ยนแปลงค่าเริ่มต้น (State) หรือเปลี่ยนสถาปัตยกรรมของแอป |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+ช่วยคิดหัวข้อโปรเจกต์ Mobile Development ให้หน่อย
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+ในฐานะผู้เชี่ยวชาญด้าน Instructional Design สำหรับนักศึกษาคณะครุศาสตร์อุตสาหกรรม จงออกแบบหัวข้อโปรเจกต์รายวิชา Mobile Development ที่เน้นการแก้ปัญหาในสถานศึกษาจริง โดยกำหนดให้:
+1. หัวข้อต้องครอบคลุมการใช้งานจริง เช่น ระบบเช็คชื่อ, ระบบยืมคืนอุปกรณ์, หรือระบบจัดตารางสอน
+2. ระบุทักษะทางเทคนิค (Tech Stack) ที่นักศึกษาจะได้เรียนรู้ในแต่ละหัวข้อ
+3. ระบุเป้าหมายการเรียนรู้ (Learning Outcome) ตามระดับความยากที่เหมาะสมกับนักศึกษาชั้นปีที่ 3-4
+4. นำเสนอในรูปแบบตารางที่อ่านง่าย
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+Simple Prompt ให้ผลลัพธ์ที่เป็นข้อมูลทั่วไปแบบกว้างๆ ซึ่งมักจะขาดบริบทเฉพาะทาง ทำให้ผู้ใช้ต้องนำข้อมูลไปเรียบเรียงหรือต่อยอดด้วยตัวเองอีกมาก
+
+Detailed Prompt ให้ผลลัพธ์ที่มีความแม่นยำสูง ตรงตามบทบาทและกลุ่มเป้าหมายที่กำหนด มีโครงสร้างที่ชัดเจนและเป็นระเบียบ ทำให้สามารถนำไปใช้งานจริงในงานวิชาการหรือการวางแผนโครงการได้ทันทีโดยไม่ต้องแก้ไขเพิ่มครับ
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+``
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/f8bd74e5-a693-47a1-a1c1-351e368cd356" />
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/3f7ef04a-16a0-4440-97e9-1f12ee7a20d7" />
+
+``
 
 ---
 
@@ -1484,34 +1527,36 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter วาด UI เองผ่าน Engine (Skia/Impeller) ทำให้เหมือนกันทุกแพลตฟอร์ม ส่วน React Native ใช้ Bridge สื่อสารกับ UI ของ Native OS จริงๆ
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget แสดงผลคงที่ (เช่น แสดงข้อความ, ไอคอน) ส่วน StatefulWidget เปลี่ยนแปลงตามการใช้งาน (เช่น ฟอร์มกรอกข้อมูล, ปุ่มกดที่มีสถานะเปิด/ปิด)
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพื่อป้องกันข้อมูลรั่วไหลและถูกนำไปใช้ในทางที่ผิด วิธีแก้คือใช้ไฟล์ .env (ที่ใส่ใน .gitignore) หรือเก็บในระบบจัดการ Secrets ของ CI/CD
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ฉีดโค้ดใหม่เข้าสู่ VM ขณะแอปทำงานโดยไม่ล้างสถานะเดิม ข้อจำกัดคือไม่รองรับการแก้ไขโครงสร้าง Class ใหญ่ๆ หรือการเปลี่ยนค่า Initial State
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+  1. ช่วยเขียนโครงสร้าง Code (Boilerplate)
+
+  2. วิเคราะห์และแก้ไขบั๊ก (Debugging)
+
+  3. เขียนชุดคำสั่งทดสอบ (Unit Test)
 ```
 
 ---
@@ -1573,13 +1618,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [/] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [/] App รันได้บน Chrome หรือ Android Device/Emulator
+- [/] Profile Card แสดงข้อมูลของตัวเอง
+- [/] AI Chat คุยกับ Gemini ได้จริง
+- [/] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [/] ตอบคำถามท้ายบทครบทุกข้อ
+- [/] Push ขึ้น GitHub แล้ว
 
 ---
 
