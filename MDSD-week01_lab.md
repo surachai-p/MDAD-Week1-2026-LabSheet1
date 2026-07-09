@@ -1722,11 +1722,26 @@ flutter run
 
 ```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+Doctor summary (to see all details, run flutter doctor -v):
+[✓] Flutter (Channel stable, 3.44.5, on macOS 26.4 25E246 darwin-arm64, locale th-TH)
+[✓] Android toolchain - develop for Android devices (Android SDK version 34.0.0)
+[!] Xcode - develop for iOS and macOS
+    ✗ Xcode installation is incomplete; a full installation is necessary for iOS and macOS development.
+      Download at: https://developer.apple.com/xcode/
+      Or install Xcode via the App Store.
+      Once installed, run:
+        sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+        sudo xcodebuild -runFirstLaunch
+    ! CocoaPods not installed.
+        CocoaPods is a package manager for iOS or macOS platform code.
+        Without CocoaPods, plugins will not work on iOS or macOS.
+        For more info, see https://flutter.dev/to/platform-plugins
+      For installation instructions, see https://guides.cocoapods.org/using/getting-started.html#installation
+[✓] Chrome - develop for the web
+[✓] Connected device (2 available)
+[✓] Network resources
+
+! Doctor found issues in 1 category.
 
 Flutter Version: 3.44.5
 Dart Version: 3.12.2
