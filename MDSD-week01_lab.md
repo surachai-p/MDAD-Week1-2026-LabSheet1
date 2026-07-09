@@ -1254,10 +1254,10 @@ class ProfilePage extends StatelessWidget {
 ```
 
 4. คลิก **"Run"** หรือกด `Ctrl+Enter`
-5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้
-6. ำ
-แนวคิดของ Flutter สำหรับนักศึกษาปี 2 สามารถสรุปได้ง่ายๆ ดังนี้ครับ:
+5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้ำ
+   
 ```
+แนวคิดของ Flutter สำหรับนักศึกษาปี 2 สามารถสรุปได้ง่ายๆ ดังนี้ครับ:
 1.  Flutter คือ UI Framework จาก Google ที่ช่วยให้เราเขียนโค้ดชุดเดียว (Single
     Codebase) แต่สามารถรันแอปพลิเคชันได้ทั้งบน iOS, Android, Web และ Desktop
 2.  ใช้ภาษา Dart ในการพัฒนา ซึ่งมีโครงสร้างไวยากรณ์ใกล้เคียงกับภาษา Java หรือ C#
@@ -1284,8 +1284,8 @@ class ProfilePage extends StatelessWidget {
 
 ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
-
 6. นำโค้ดที่ได้ Copy ไปทดสอบใน Flutter Project
+<img width="1286" height="870" alt="image" src="https://github.com/user-attachments/assets/d9e0beaf-819a-4a74-96af-7b7dd86f8e20" />
 
 #### ทดลองที่ 3: Prompt Engineering
 
