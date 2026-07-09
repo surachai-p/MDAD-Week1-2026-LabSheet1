@@ -1720,15 +1720,10 @@ flutter run
 
 ### 3.1 ผลการติดตั้ง Flutter
 
-```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│ <img width="996" height="344" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 01 27 59" src="https://github.com/user-attachments/assets/1d7489ec-b0c8-4d4a-a605-a61d45f796bd" />
+<img width="996" height="344" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 01 27 59" src="https://github.com/user-attachments/assets/1d7489ec-b0c8-4d4a-a605-a61d45f796bd" />
 
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-
+```
 Flutter Version: 3.44.4
 Dart Version: 3.12.2
 Android SDK Version: 36.0.0
@@ -1736,16 +1731,12 @@ Android SDK Version: 36.0.0
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
 <img width="1710" height="1112" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 01 28 24" src="https://github.com/user-attachments/assets/56d35b26-46af-415b-9fd6-c1d0b9c38a18" />
 
 ```
 
 **Widget Tree ที่วาด:**
-
-```
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
-
 MyApp (MaterialApp)
 └── สลับหน้าจอด้วย Navigator (ขึ้นอยู่กับว่าผู้ใช้อยู่ที่หน้าไหน)
     ├── หน้าที่ 1: ProfilePage (Scaffold)
@@ -1763,7 +1754,7 @@ MyApp (MaterialApp)
         └── body (พื้นที่หน้าต่างแชท)
             └── ... (โครงสร้างภายในหน้าแชทของคุณ เช่น ListView, TextField)
 ```
-
+```
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
@@ -1772,31 +1763,32 @@ MyApp (MaterialApp)
 | State ถูก Reset? | | |
 | ใช้เมื่อไหร่ | | |
 
+```
+```
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
-```
 (วันนี้กินอะไรดี)
+```
 ```
 
 **Prompt แบบ Detailed:**
-```
 (วันนี้กินอะไรขอแบบโวเดียมต่ำ แคลน้อย เน้นโปรตีน)
 ```
 
+
 **ความแตกต่างของผลลัพธ์:**
-```
+
 <img width="1710" height="843" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 01 37 49" src="https://github.com/user-attachments/assets/10b57731-1e0a-4600-bfbd-23b4f3c08561" />
 <img width="1709" height="650" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 01 37 27" src="https://github.com/user-attachments/assets/f8a5cb67-8e3b-418f-a409-7e87ac469a49" />
 
-```
+
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
+
 <img width="1710" height="1112" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 01 41 48" src="https://github.com/user-attachments/assets/1c2bfc67-30ee-4d43-9d2f-984b38e48ddd" />
 
-```
 
 ---
 
