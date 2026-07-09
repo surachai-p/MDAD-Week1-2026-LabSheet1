@@ -1016,6 +1016,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
 > 📝 **แบบฝึกหัด:** วาด Widget Tree ของโค้ดนี้ลงในใบงาน
 
+```
+MyApp (Root Widget)
+ └── MaterialApp
+      └── MyHomePage 
+           └── Scaffold 
+                ├── AppBar 
+                │    └── title Flutter Demo Home Page
+                │
+                ├── body Center
+                │    └── Column 
+                │         ├── You have pushed the button
+                │         └── ตัวเลข
+                │
+                └── floatingActionButton: FloatingActionButton
+                     └── child: Icon
+```
 ---
 
 ### ขั้นตอนที่ 4: รันแอปพลิเคชันครั้งแรก
