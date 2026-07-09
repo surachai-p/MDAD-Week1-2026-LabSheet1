@@ -1735,9 +1735,9 @@ Android SDK Version: 34.0.0
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
+
 <img width="1918" height="1078" alt="Screenshot 2026-07-09 162128" src="https://github.com/user-attachments/assets/faced092-563b-4bc4-a101-b39501aa79d7" />
-```
+
 
 **Widget Tree ที่วาด:**
 
@@ -1795,11 +1795,11 @@ MaterialApp
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
+
 <img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/37b9b634-7fae-4e3c-8459-5b9059584132" />
 <img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/a7e4eb9d-854b-4ccb-a251-b22c8694e63f" />
 
-```
+
 
 ---
 
