@@ -429,8 +429,9 @@ Doctor summary (to see all details, run flutter doctor -v):
 > `[!] Android Studio (not installed)` **ไม่ใช่ Error ที่ต้องแก้** — ตราบที่ `[✓] Android toolchain` และ `[✓] VS Code` ผ่าน ก็พัฒนา Flutter ได้เต็มรูปแบบ
 
 > 📝 **บันทึกผล:** จดบันทึก Error (`[✗]`) ที่พบและทำการแก้ไขตามคำแนะนำ แต่ไม่ต้องแก้ `[!] Android Studio`
+> 
+<img width="2036" height="948" alt="image" src="https://github.com/user-attachments/assets/65f50694-bc75-42e8-86ff-d9f16218523f" />
 
-![alt text](image.png)
 
 ---
 
