@@ -1777,13 +1777,27 @@ flutter run
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
+│ Doctor summary (to see all details, run flutter doctor -v):
+[√] Flutter (Channel stable, 3.44.5, on Microsoft Windows [Version
+    10.0.26200.8655], locale th-TH)
+[√] Windows Version (11 Home Single Language 64-bit, 25H2, 2009)
+[√] Android toolchain - develop for Android devices (Android SDK version 36.0.0)
+[√] Chrome - develop for the web
+[X] Visual Studio - develop Windows apps
+    X Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all
+      of its default components
+[√] Connected device (4 available)
+[√] Network resources
+
+! Doctor found issues in 1 category.                │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.5
+Dart Version: 3.12.2
+Android SDK Version: 36.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
@@ -1822,17 +1836,22 @@ MaterialApp
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+เขียน Flutter Widget สำหรับแสดงสภาพอากาศ
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+เขียน Flutter Widget ชื่อ WeatherCard ใช้ Material Design 3
+รับค่า cityName, temperature, condition และ humidity
+ใช้ Card, Icon และ Typography พร้อมยกตัวอย่างการเรียกใช้งาน
+และอธิบายโค้ดแต่ละส่วน
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+Prompt แบบสั้น AI จะตอบแบบกว้าง ๆ รายละเอียดไม่เยอะ
+แต่ Prompt แบบละเอียด AI เข้าใจสิ่งที่ต้องการมากกว่า
+เลยได้โค้ดครบ มีคำอธิบาย และใช้งานได้ตรงตามที่ต้องการ
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
