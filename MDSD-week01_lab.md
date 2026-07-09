@@ -1267,6 +1267,9 @@ class ProfilePage extends StatelessWidget {
 ```
 
 6. นำโค้ดที่ได้ Copy ไปทดสอบใน Flutter Project
+   ## บันทึกการทดลอง
+   <img width="1900" height="1870" alt="image" src="https://github.com/user-attachments/assets/aa827ffb-dfc7-46f7-a3a1-e2eb8653502e" />
+
 
 #### ทดลองที่ 3: Prompt Engineering
 
@@ -1284,9 +1287,33 @@ class ProfilePage extends StatelessWidget {
 
 ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
+## บันทึกการทดลอง
+<img width="1896" height="1866" alt="image" src="https://github.com/user-attachments/assets/7683ac9f-8239-423b-8c0e-6a807952db3b" />
 
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
 
+การเปรียบเทียบระหว่าง Prompt แบบ Simple (ทั่วไป) และ Detailed (เฉพาะเจาะจง) ในมุมมองของนักพัฒนา ให้ผลลัพธ์ที่แตกต่างกันอย่างชัดเจนดังนี้ครับ:
+```
+1. ความสวยงามและการออกแบบ (Visual Design)
+Simple Prompt: AI จะเลือกค่ามาตรฐาน (Default) ของ Material Design มาให้ ผลลัพธ์ที่ได้จะดู "สะอาดตา" แต่ "จืดชืด" เพราะอิงตาม Theme ของระบบเป็นหลัก
+
+Detailed Prompt: ผลลัพธ์จะมี "Character" ที่ชัดเจน เช่น การใช้ Gradient (สีฟ้า-ขาว), การกำหนดน้ำหนักตัวอักษร (FontWeight.w900), และการจัดวาง Layout ที่มีมิติมากกว่า เพราะมีการระบุโทนสีและสไตล์ที่ต้องการลงไป
+
+2. ความแม่นยำของ Data Types และ Logic
+Simple Prompt: AI ต้อง "เดา" ประเภทข้อมูลเอง เช่น อาจจะใช้ Enum หรือ String สำหรับสภาพอากาศ ซึ่งบางครั้งอาจไม่ตรงกับโครงสร้าง Data ที่คุณมี
+
+Detailed Prompt: คุณระบุ Data Type ชัดเจน (String, double, int) ทำให้โค้ดที่ได้สามารถนำไปเชื่อมต่อกับ Model หรือ API ของคุณได้ทันทีโดยไม่ต้องแก้ไขประเภทตัวแปร
+
+3. การควบคุมผลลัพธ์ (Control & Consistency)
+Simple Prompt: ผลลัพธ์มีความสุ่ม (Randomness) สูง ถ้ากด Generate ใหม่ อาจได้ Icon คนละชุด หรือการจัดเรียงคนละแบบ
+
+Detailed Prompt: มีการระบุ Business Logic ที่เฉพาะเจาะจง เช่น "ใช้ไอคอนนี้สำหรับสถานะนี้เท่านั้น" ทำให้ผลลัพธ์มีความเสถียรและตรงตามความต้องการ (Requirement) 100%
+
+4. ประสิทธิภาพในการทำงาน (Efficiency)
+Simple Prompt: เหมาะสำหรับ "การร่างไอเดีย" (Prototyping) หรือตอนที่คุณยังคิดไม่ออกว่าอยากได้หน้าตาแบบไหน
+
+Detailed Prompt: เหมาะสำหรับการ "ผลิตชิ้นงานจริง" (Production) ช่วยลดเวลาในการมานั่งแก้สี แก้ขนาด Font หรือแก้ Logic ภายหลัง
+```
 ---
 
 ### ขั้นตอนที่ 3: สร้าง API Key
