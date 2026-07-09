@@ -399,42 +399,151 @@ source ~/.zshrc
 
 ---
 
-### ขั้นตอนที่ 3: ตรวจสอบ Installation ด้วย flutter doctor
+### ขั้นตอนที่ 3: ตรวจสอบ Flutter Installation เบื้องต้น
 
-เปิด Terminal / Command Prompt แล้วพิมพ์:
+เปิด Terminal ใน VS Code (`` Ctrl+` ``) แล้วพิมพ์:
 
 ```bash
 flutter doctor
 ```
 
-**ผลลัพธ์ที่คาดหวัง (VS Code Workflow — ไม่มี Android Studio):**
+**ผลลัพธ์ที่คาดหวังหลังติดตั้ง Flutter SDK เพียงอย่างเดียว (ยังไม่มี Android SDK):**
 
 ```
 Doctor summary (to see all details, run flutter doctor -v):
 [✓] Flutter (Channel stable, 3.x.x)
-[✓] Android toolchain - develop for Android devices (Android SDK version 34.x.x)
-      • Android SDK at ~/Android (หรือ C:\Users\xxx\Android)
-      • Build Tools 34.0.0
+[✗] Android toolchain - develop for Android devices
+      ✗ Unable to locate Android SDK.
+        Install Android Studio from: https://developer.android.com/studio
+        (or visit https://flutter.dev/to/android-setup for detailed instructions)
 [✓] Chrome - develop for the web
 [!] Android Studio (not installed)
-[✓] VS Code (version 1.9x.x)
-      • Flutter extension version 3.xx
-[✓] Connected device (2 available)
+[!] VS Code (not installed)
 [✓] Network resources
-
-! Doctor found issues in 1 category.
 ```
 
-> ✅ **ผลข้างต้นคือผลที่ถูกต้องสำหรับ VS Code Workflow**  
-> `[!] Android Studio (not installed)` **ไม่ใช่ Error ที่ต้องแก้** — ตราบที่ `[✓] Android toolchain` และ `[✓] VS Code` ผ่าน ก็พัฒนา Flutter ได้เต็มรูปแบบ
-
-> 📝 **บันทึกผล:** จดบันทึก Error (`[✗]`) ที่พบและทำการแก้ไขตามคำแนะนำ แต่ไม่ต้องแก้ `[!] Android Studio`
+> 📝 `[✗] Android toolchain` แสดงว่ายังไม่มี Android SDK — **ต้องแก้ไขในขั้นตอนที่ 4**
+> `[✓] Chrome` หมายความว่าสามารถรัน Flutter บน Chrome ได้แล้วทันที โดยไม่ต้องรอ Android SDK
 
 ---
 
 ### ขั้นตอนที่ 4: ติดตั้ง Android SDK Command-line Tools (แทน Android Studio)
 
 เราจะติดตั้งเฉพาะ **Command-line Tools** ซึ่งให้ทุกอย่างที่ Flutter ต้องการ โดยไม่ต้องติดตั้ง Android Studio IDE ทั้งตัว
+
+> ⚠️ **ข้อกำหนดเบื้องต้น:** Android SDK Command-line Tools ต้องการ **Java JDK** ในการทำงาน ถ้ารัน `sdkmanager` แล้วได้ Error ว่า `JAVA_HOME is not set` หรือ `no 'java' command found` ให้ทำขั้นตอน 4.0 ก่อน
+
+#### 4.0 ติดตั้ง Java JDK (จำเป็นสำหรับ Android SDK Tools)
+
+**ทำไมต้องใช้ Java?** Android SDK Command-line Tools เช่น `sdkmanager` และ `avdmanager` เขียนด้วย Java จึงต้องมี JDK ติดตั้งไว้ก่อน แนะนำ **JDK 17** ซึ่งเป็น Version ที่ Flutter และ Android Gradle รองรับดีที่สุด
+
+**ตรวจสอบก่อนว่ามี Java อยู่แล้วหรือไม่:**
+
+```bash
+java -version
+# ถ้ามีแล้วจะแสดงเช่น: openjdk version "17.x.x"
+# ถ้าไม่มีจะขึ้น: command not found หรือ java is not recognized
+```
+
+**ถ้ายังไม่มี ให้ติดตั้ง JDK 17 หรือ version ที่สูงกว่า:**
+
+**Windows:**
+
+```powershell
+# วิธีที่ 1: ใช้ winget (Windows Package Manager — มีใน Windows 10/11)
+winget install Microsoft.OpenJDK.17
+
+# ตรวจสอบว่าติดตั้งสำเร็จ (ปิด vs code แล้วเปิดใหม่ก่อน หรือตรวจสอบจาก command prompt ของ windows)
+java -version
+# ควรแสดง: openjdk version "17.x.x"
+```
+
+```powershell
+# วิธีที่ 2: ดาวน์โหลดและติดตั้งเอง
+# 1. เปิดเบราว์เซอร์ไปที่ https://adoptium.net/
+# 2. คลิก "Latest LTS release" → เลือก JDK 17
+# 3. ดาวน์โหลด Windows x64 Installer (.msi)
+# 4. ดับเบิลคลิกติดตั้ง ติ๊ก "Set JAVA_HOME" ด้วย
+# 5. เปิด Terminal ใหม่แล้วทดสอบ
+java -version
+```
+
+**macOS:**
+
+```bash
+# วิธีที่ 1: ใช้ Homebrew (แนะนำ)
+brew install --cask temurin@17
+
+# วิธีที่ 2: ดาวน์โหลดจาก adoptium.net
+# https://adoptium.net/ → JDK 17 → macOS (.pkg)
+# ติดตั้งแล้ว JAVA_HOME จะถูกตั้งค่าอัตโนมัติ
+
+# ตรวจสอบ
+java -version
+# ควรแสดง: openjdk version "17.x.x"
+```
+
+**Linux (Ubuntu/Debian):**
+
+```bash
+# ติดตั้ง OpenJDK 17
+sudo apt update
+sudo apt install -y openjdk-17-jdk
+
+# ตรวจสอบ
+java -version
+# ควรแสดง: openjdk version "17.x.x"
+```
+
+**ตั้งค่า JAVA_HOME (ถ้า sdkmanager ยังแจ้ง Error):**
+
+Windows (PowerShell):
+```powershell
+# หา path ของ Java ที่ติดตั้ง
+# ปกติจะอยู่ที่ C:\Program Files\Eclipse Adoptium\jdk-17.x.x.x-hotspot\
+# หรือ C:\Program Files\Microsoft\jdk-17.x.x.x-hotspot\
+
+# ตั้งค่า JAVA_HOME
+[System.Environment]::SetEnvironmentVariable(
+  "JAVA_HOME",
+  "C:\Program Files\Eclipse Adoptium\jdk-17.x.x.x-hotspot",
+  "User"
+)
+# แทนที่ path ด้วย path จริงของเครื่องคุณ
+# ปิด vs code แล้วเปิดใหม่
+```
+
+macOS/Linux:
+```bash
+# ตรวจสอบ JAVA_HOME ที่ควรเป็น
+/usr/libexec/java_home -v 17   # macOS เท่านั้น
+
+# เพิ่มใน ~/.zshrc หรือ ~/.bashrc
+echo 'export JAVA_HOME=$(/usr/libexec/java_home -v 17)' >> ~/.zshrc  # macOS
+# หรือ
+echo 'export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64' >> ~/.bashrc  # Linux
+source ~/.zshrc  # หรือ source ~/.bashrc
+
+# ตรวจสอบ
+echo $JAVA_HOME
+java -version
+```
+
+**ทดสอบขั้นสุดท้ายก่อนไปขั้นตอน 4.1:**
+
+```bash
+java -version
+# ต้องแสดง: openjdk version "17.x.x" หรือใกล้เคียง
+
+echo $JAVA_HOME   # macOS/Linux
+echo %JAVA_HOME%  # Windows CMD
+# ต้องแสดง path ที่มี jdk อยู่ ไม่ใช่ค่าว่าง
+```
+
+> ✅ ถ้า `java -version` แสดงผลได้ → พร้อมไปขั้นตอน 4.1  
+> ❌ ถ้ายังขึ้น `JAVA_HOME is not set` หลังตั้งค่าแล้ว → ลอง **ปิด VS Code ทั้งหมด แล้วเปิดใหม่** เพื่อให้ Environment Variables มีผล
+
+---
 
 #### 4.1 ดาวน์โหลด Android Command-line Tools
 
@@ -447,30 +556,35 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 #### 4.2 ติดตั้ง Command-line Tools
 
-**Windows (PowerShell — รันใน VS Code Terminal):**
+**Windows (PowerShell ใน VS Code Terminal):**
 
 ```powershell
-# 1. สร้างโฟลเดอร์ที่ต้องการ (โครงสร้าง cmdline-tools\latest สำคัญมาก)
+# 1. สร้างโฟลเดอร์ (โครงสร้าง cmdline-tools\latest สำคัญมาก ห้ามข้ามขั้นตอน)
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Android\cmdline-tools\latest"
 
-# 2. แตกไฟล์ ZIP ที่ดาวน์โหลดมา แล้ว copy เนื้อหาทั้งหมดไปที่โฟลเดอร์นี้
-# (แตกไฟล์ ZIP จะได้โฟลเดอร์ชื่อ cmdline-tools ข้างใน copy ทุกไฟล์ไปที่ latest\)
+# 2. แตกไฟล์ ZIP ที่ดาวน์โหลดมา
+# ตัวอย่าง: ถ้าดาวน์โหลดไว้ที่ Downloads\commandlinetools-win-*.zip
+Expand-Archive -Path "$env:USERPROFILE\Downloads\commandlinetools-win-*_latest.zip" -DestinationPath "$env:TEMP\cmdtools"
 
-# 3. เพิ่ม PATH (รันครั้งเดียวใน PowerShell แบบ Admin)
+# 3. Copy ไฟล์ทั้งหมดใน cmdline-tools\ ไปวางที่ latest\
+Copy-Item -Path "$env:TEMP\cmdtools\cmdline-tools\*" `
+          -Destination "$env:USERPROFILE\Android\cmdline-tools\latest" `
+          -Recurse -Force
+
+# 4. ตั้งค่า Environment Variables (รันใน PowerShell ปกติ ไม่ต้อง Admin)
 [System.Environment]::SetEnvironmentVariable(
-  "ANDROID_HOME",
-  "$env:USERPROFILE\Android",
-  "User"
+  "ANDROID_HOME", "$env:USERPROFILE\Android", "User"
 )
-$currentPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
+$p = [System.Environment]::GetEnvironmentVariable("Path", "User")
 [System.Environment]::SetEnvironmentVariable(
   "Path",
-  "$currentPath;$env:USERPROFILE\Android\cmdline-tools\latest\bin;$env:USERPROFILE\Android\platform-tools",
+  "$p;$env:USERPROFILE\Android\cmdline-tools\latest\bin;$env:USERPROFILE\Android\platform-tools",
   "User"
 )
 
-# 4. ปิดและเปิด Terminal ใหม่ แล้วทดสอบ
+# 5. ปิด vs code แล้วเปิดใหม่ จากนั้นทดสอบ
 sdkmanager --version
+# ควรแสดงตัวเลข version เช่น 12.0
 ```
 
 **macOS/Linux (Terminal ใน VS Code):**
@@ -479,35 +593,46 @@ sdkmanager --version
 # 1. สร้างโฟลเดอร์ (โครงสร้าง cmdline-tools/latest สำคัญมาก)
 mkdir -p ~/Android/cmdline-tools/latest
 
-# 2. แตกไฟล์ ZIP แล้ว copy เนื้อหาทั้งหมดไปที่ latest/
-# หลังแตกไฟล์ได้โฟลเดอร์ cmdline-tools/ ข้างในมี bin/, lib/, ... 
-# ให้ copy ทั้งหมดเข้าไปใน ~/Android/cmdline-tools/latest/
+# 2. แตกไฟล์ ZIP และ copy เนื้อหาไปที่ latest/
 unzip ~/Downloads/commandlinetools-*.zip -d /tmp/cmdtools
 cp -r /tmp/cmdtools/cmdline-tools/* ~/Android/cmdline-tools/latest/
 
 # 3. เพิ่ม PATH ใน ~/.zshrc (macOS) หรือ ~/.bashrc (Linux)
 echo 'export ANDROID_HOME="$HOME/Android"' >> ~/.zshrc
 echo 'export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"' >> ~/.zshrc
-source ~/.zshrc
 
-# ทดสอบ
+# 4. โหลดการตั้งค่าใหม่และทดสอบ
+source ~/.zshrc
 sdkmanager --version
+# ควรแสดงตัวเลข version เช่น 12.0
 ```
 
-> ⚠️ **โครงสร้างโฟลเดอร์ที่ถูกต้อง** ต้องเป็นแบบนี้เท่านั้น:
+> ⚠️ **โครงสร้างโฟลเดอร์ที่ถูกต้อง — ต้องเป็นแบบนี้เท่านั้น:**
 > ```
-> ~/Android/cmdline-tools/latest/bin/sdkmanager   ✅ ถูก
-> ~/Android/cmdline-tools/bin/sdkmanager          ❌ ผิด — ขาด latest/
+> ~/Android/
+>   cmdline-tools/
+>     latest/
+>       bin/          ← sdkmanager, avdmanager อยู่ที่นี่
+>       lib/
+>       NOTICE.txt
+>       source.properties
+>
+> ✅ ถูก:  ~/Android/cmdline-tools/latest/bin/sdkmanager
+> ❌ ผิด:  ~/Android/cmdline-tools/bin/sdkmanager   (ขาด latest/)
+> ❌ ผิด:  ~/Android/bin/sdkmanager                 (ขาดทั้ง 2 ชั้น)
 > ```
 
-#### 4.3 ติดตั้ง Android SDK Components
+#### 4.3 ติดตั้ง Android SDK Components ที่จำเป็น
 
 ```bash
-# ติดตั้ง Component ที่จำเป็น
+# ติดตั้ง Build Tools และ Platform ที่ Flutter ต้องการ
 sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
-# ติดตั้ง System Image สำหรับ Emulator
+# ติดตั้ง System Image สำหรับ Emulator (ใช้เวลาประมาณ 5-10 นาที)
 sdkmanager "system-images;android-34;google_apis;x86_64"
+
+# ติดตั้ง Emulator binary
+sdkmanager "emulator"
 
 # ตรวจสอบสิ่งที่ติดตั้งแล้ว
 sdkmanager --list_installed
@@ -517,31 +642,39 @@ sdkmanager --list_installed
 
 ```bash
 flutter doctor --android-licenses
-# พิมพ์ y แล้วกด Enter ทุกครั้งที่ถาม จนขึ้น "All SDK package licenses accepted"
+# พิมพ์ y แล้วกด Enter ทุกครั้งที่ถาม
+# จนขึ้น "All SDK package licenses accepted"
 ```
 
-**ตรวจสอบผลลัพธ์หลังติดตั้ง:**
+#### 4.5 ตรวจสอบผลลัพธ์หลังติดตั้ง Android SDK
 
 ```bash
 flutter doctor
 ```
 
-ผลที่คาดหวัง (Android Studio ไม่ต้องผ่าน):
+**ผลลัพธ์ที่คาดหวัง (หลังติดตั้ง Android SDK สำเร็จ):**
 
 ```
+Doctor summary (to see all details, run flutter doctor -v):
 [✓] Flutter (Channel stable, 3.x.x)
-[✓] Android toolchain - develop for Android devices
-      • Android SDK at ~/Android
-      • Android SDK 34.x.x
+[✓] Android toolchain - develop for Android devices (Android SDK version 34.x.x)
+      • Android SDK at ~/Android (หรือ C:\Users\xxx\Android)
       • Build Tools 34.0.0
 [✓] Chrome - develop for the web
 [!] Android Studio (not installed)   ← [!] ปกติ ไม่ต้องแก้
 [✓] VS Code (version x.x.x)
       • Flutter extension version x.x
 [✓] Network resources
+
+! Doctor found issues in 1 category.
 ```
 
-> ✅ `[!] Android Studio (not installed)` **ไม่ใช่ Error** — Flutter ใช้ Command-line Tools ได้โดยไม่ต้องมี Android Studio IDE
+> ✅ `[✓] Android toolchain` ผ่านแล้ว — Flutter พร้อมสร้างแอป Android  
+> ✅ `[!] Android Studio (not installed)` **ไม่ใช่ Error** — เราใช้ Command-line Tools แทนโดยตั้งใจ  
+> ❗ ถ้ายังเห็น `[✗] Android toolchain` — ตรวจสอบโครงสร้างโฟลเดอร์ใน 4.2 และ PATH ว่าถูกต้อง
+
+> 📝 **บันทึกผล:** จดบันทึก Error (`[✗]`) ที่พบ และทำการแก้ไขตามคำแนะนำ  
+> ไม่ต้องแก้ไขรายการที่ขึ้น `[!] Android Studio`
 
 ---
 
@@ -663,8 +796,8 @@ flutter devices
 **ขั้นตอน 2.1 — ดาวน์โหลด System Image (ถ้ายังไม่ได้ทำในขั้นตอนที่ 4):**
 
 ```bash
-# ตรวจสอบว่า System Image ติดตั้งแล้วหรือยัง
-sdkmanager --list_installed | grep system-images
+# ตรวจสอบว่า System Image ติดตั้งแล้วหรือยัง หลังรันคำสั่งให้หาดูว่ามี system-images หรือไม่
+sdkmanager --list_installed 
 
 # ถ้ายังไม่มี ติดตั้ง System Image API 34
 sdkmanager "system-images;android-34;google_apis;x86_64"
@@ -700,13 +833,10 @@ source ~/.zshrc
 
 ```bash
 # ดู Hardware Profile ที่ใช้ได้
-avdmanager list device | grep -i pixel
+avdmanager list device 
 
 # สร้าง Emulator (Pixel 7, Android 14, x86_64)
-avdmanager create avd \
-  --name "Pixel7_API34" \
-  --package "system-images;android-34;google_apis;x86_64" \
-  --device "pixel_7"
+avdmanager create avd --name "Pixel7_API34" --package "system-images;android-34;google_apis;x86_64" --device "pixel_7"
 
 # ตรวจสอบว่าสร้างสำเร็จ
 avdmanager list avd
@@ -1138,7 +1268,7 @@ class ProfilePage extends StatelessWidget {
 
 ### ขั้นตอนที่ 3: สร้าง API Key
 
-1. ใน Google AI Studio คลิก **"Get API Key"** (เมนูด้านซ้าย)
+1. ใน Google AI Studio คลิก **"Get API Key"** (เมนูด้านซ้ายล่าง ที่เป็นรูปกุญแจ)
 2. คลิก **"Create API Key"**
 3. เลือก **"Create API key in new project"**
 4. **คัดลอก API Key และเก็บไว้อย่างปลอดภัย**
@@ -1171,7 +1301,7 @@ lib/config/api_keys.dart
 dependencies:
   flutter:
     sdk: flutter
-  google_generative_ai: ^0.4.3  # เพิ่มบรรทัดนี้
+  http: ^1.5.0 # เพิ่มบรรทัดนี้
 ```
 
 3. บันทึกไฟล์ → VS Code จะรัน `flutter pub get` อัตโนมัติ
@@ -1201,8 +1331,11 @@ class ApiConfig {
 สร้างไฟล์ `lib/pages/ai_chat_page.dart`:
 
 ```dart
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:http/http.dart' as http;
+
 import '../config/api_config.dart';
 
 class AiChatPage extends StatefulWidget {
@@ -1214,159 +1347,176 @@ class AiChatPage extends StatefulWidget {
 
 class _AiChatPageState extends State<AiChatPage> {
   final TextEditingController _controller = TextEditingController();
+
   final List<Map<String, String>> _messages = [];
+
   bool _isLoading = false;
-  late final GenerativeModel _model;
 
-  @override
-  void initState() {
-    super.initState();
-    // เริ่มต้น Gemini Model
-    _model = GenerativeModel(
-      model: 'gemini-1.5-flash',  // ใช้ Flash สำหรับ Demo (เร็วและฟรี)
-      apiKey: ApiConfig.geminiApiKey,
-    );
-  }
-
-  // ส่งข้อความไปยัง Gemini API
   Future<void> _sendMessage() async {
     final userMessage = _controller.text.trim();
+
     if (userMessage.isEmpty) return;
 
     setState(() {
-      _messages.add({'role': 'user', 'text': userMessage});
+      _messages.add({
+        'role': 'user',
+        'text': userMessage,
+      });
       _isLoading = true;
     });
+
     _controller.clear();
 
     try {
-      final content = [Content.text(userMessage)];
-      final response = await _model.generateContent(content);
-      
-      setState(() {
-        _messages.add({
-          'role': 'assistant',
-          'text': response.text ?? 'ไม่ได้รับการตอบกลับ'
+      final response = await http.post(
+        Uri.parse(
+          'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${ApiConfig.geminiApiKey}',
+        ),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": userMessage,
+                }
+              ]
+            }
+          ]
+        }),
+      );
+
+      debugPrint("Status Code : ${response.statusCode}");
+      debugPrint("Response : ${response.body}");
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+
+        final aiText =
+            data["candidates"][0]["content"]["parts"][0]["text"] ??
+                "No response";
+
+        setState(() {
+          _messages.add({
+            'role': 'assistant',
+            'text': aiText,
+          });
         });
-      });
-    } catch (e) {
+      } else {
+        setState(() {
+          _messages.add({
+            'role': 'assistant',
+            'text':
+                'Error ${response.statusCode}\n\n${response.body}',
+          });
+        });
+      }
+    } catch (e, st) {
+      debugPrint(e.toString());
+      debugPrint(st.toString());
+
       setState(() {
         _messages.add({
           'role': 'assistant',
-          'text': 'เกิดข้อผิดพลาด: ${e.toString()}'
+          'text': e.toString(),
         });
       });
     } finally {
-      setState(() => _isLoading = false);
+      setState(() {
+        _isLoading = false;
+      });
     }
+  }
+
+  Widget _buildMessage(Map<String, String> message) {
+    final isUser = message["role"] == "user";
+
+    return Align(
+      alignment:
+          isUser ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 6),
+        padding: const EdgeInsets.all(12),
+        constraints: const BoxConstraints(maxWidth: 300),
+        decoration: BoxDecoration(
+          color: isUser ? Colors.blue : Colors.grey.shade300,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Text(
+          message["text"] ?? "",
+          style: TextStyle(
+            color: isUser ? Colors.white : Colors.black,
+          ),
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gemini AI Chat'),
+        title: const Text("Gemini AI Chat"),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
       body: Column(
         children: [
-          // รายการข้อความ
           Expanded(
             child: _messages.isEmpty
                 ? const Center(
                     child: Text(
-                      '👋 ทักทาย Gemini AI!\nลองพิมพ์ข้อความด้านล่าง',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.grey, fontSize: 16),
+                      "👋 Hello Gemini",
+                      style: TextStyle(fontSize: 18),
                     ),
                   )
                 : ListView.builder(
                     padding: const EdgeInsets.all(16),
                     itemCount: _messages.length,
                     itemBuilder: (context, index) {
-                      final message = _messages[index];
-                      final isUser = message['role'] == 'user';
-                      
-                      return Align(
-                        alignment: isUser
-                            ? Alignment.centerRight
-                            : Alignment.centerLeft,
-                        child: Container(
-                          margin: const EdgeInsets.only(bottom: 8),
-                          padding: const EdgeInsets.all(12),
-                          constraints: BoxConstraints(
-                            maxWidth: MediaQuery.of(context).size.width * 0.75,
-                          ),
-                          decoration: BoxDecoration(
-                            color: isUser ? Colors.blue : Colors.grey[200],
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            message['text']!,
-                            style: TextStyle(
-                              color: isUser ? Colors.white : Colors.black,
-                            ),
-                          ),
-                        ),
-                      );
+                      return _buildMessage(_messages[index]);
                     },
                   ),
           ),
-          
-          // Loading Indicator
           if (_isLoading)
             const Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8),
               child: CircularProgressIndicator(),
             ),
-          
-          // Input Box
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  blurRadius: 4,
-                  offset: const Offset(0, -2),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _controller,
-                    decoration: InputDecoration(
-                      hintText: 'พิมพ์ข้อความ...',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(24),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _controller,
+                      decoration: InputDecoration(
+                        hintText: "Ask Gemini...",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
                       ),
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
+                      onSubmitted: (_) => _sendMessage(),
                     ),
-                    onSubmitted: (_) => _sendMessage(),
-                    textInputAction: TextInputAction.send,
                   ),
-                ),
-                const SizedBox(width: 8),
-                FloatingActionButton.small(
-                  onPressed: _isLoading ? null : _sendMessage,
-                  backgroundColor: Colors.blue,
-                  child: const Icon(Icons.send, color: Colors.white),
-                ),
-              ],
+                  const SizedBox(width: 8),
+                  FloatingActionButton.small(
+                    onPressed:
+                        _isLoading ? null : _sendMessage,
+                    child: const Icon(Icons.send),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
       ),
     );
   }
-  
+
   @override
   void dispose() {
     _controller.dispose();
@@ -1375,23 +1525,179 @@ class _AiChatPageState extends State<AiChatPage> {
 }
 ```
 
-อัปเดต `lib/main.dart` ให้นำทางไปหน้า AI Chat:
+อัปเดต lib/main.dart ให้นำทางไปหน้า AI Chat โดยแก้ไข 2 จุด:
+
+จุดที่ 1 — เพิ่ม import ที่หัวไฟล์ บรรทัดแรกๆ ของ main.dart มี import อยู่แล้ว ให้เพิ่มบรรทัดนี้ต่อท้าย import เดิม:
+```dart
+import 'package:flutter/material.dart';
+import 'pages/ai_chat_page.dart';   // ← เพิ่มบรรทัดนี้
+```
+จุดที่ 2 — เพิ่มปุ่มใน ProfilePage ภายใน Column ของ ProfilePage ให้เพิ่มปุ่มต่อท้าย Card widget ที่มีอยู่แล้ว:
+```dart
+// โครงสร้างของ ProfilePage ที่มีอยู่แล้ว
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(...),
+    body: SingleChildScrollView(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+
+          // --- ส่วนที่มีอยู่แล้ว ---
+          const SizedBox(height: 20),
+          const CircleAvatar(...),
+          const SizedBox(height: 16),
+          const Text('ชื่อ นามสกุล', ...),
+          const SizedBox(height: 8),
+          const Text('รหัสนักศึกษา: ...', ...),
+          const SizedBox(height: 24),
+          Card(...),   // Card ข้อมูล
+
+          // ↓↓↓ เพิ่ม 2 บรรทัดนี้ต่อจาก Card ↓↓↓
+          const SizedBox(height: 24),
+          ElevatedButton.icon(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AiChatPage(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.smart_toy),
+            label: const Text('ทดลอง AI Chat'),
+          ),
+          // ↑↑↑ จบส่วนที่เพิ่ม ↑↑↑
+
+        ],
+      ),
+    ),
+  );
+}
+```
+
+💡 ตำแหน่งที่เพิ่ม คือภายใน children: [...] ของ Column หลัง Card(...) ที่แสดงข้อมูลโปรไฟล์ ระวังวงเล็บ — ต้องอยู่ก่อน ], ที่ปิด children
+
+
+
+ตัวอย่าง main.dart ที่สมบูรณ์หลังเพิ่มแล้ว ส่วนที่เพิ่มใหม่จะมี Comment กำกับ:
 
 ```dart
-// เพิ่มใน ProfilePage หรือสร้าง Navigation
-// ตัวอย่าง: เพิ่มปุ่มนำทางไปหน้า AI Chat
+import 'package:flutter/material.dart';
+import 'pages/ai_chat_page.dart'; // ← เพิ่ม import นี้
 
-ElevatedButton.icon(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const AiChatPage()),
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My Profile',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        useMaterial3: true,
+      ),
+      home: const ProfilePage(),
     );
-  },
-  icon: const Icon(Icons.smart_toy),
-  label: const Text('ทดลอง AI Chat'),
-),
+  }
+}
+
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 20),
+            const CircleAvatar(
+              radius: 60,
+              backgroundColor: Colors.teal,
+              child: Icon(Icons.person, size: 60, color: Colors.white),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'ชื่อ นามสกุล',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            const Text('รหัสนักศึกษา: XXXXXXXX'),
+            const SizedBox(height: 24),
+            Card(
+              elevation: 4,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    _buildInfoRow(Icons.school, 'คณะ', 'วิทยาศาสตร์และเทคโนโลยี'),
+                    const Divider(),
+                    _buildInfoRow(Icons.code, 'วิชาที่ชอบ', 'Mobile Development'),
+                  ],
+                ),
+              ),
+            ),
+
+            // ↓ เพิ่มส่วนนี้ ↓
+            const SizedBox(height: 24),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AiChatPage(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.smart_toy),
+              label: const Text('ทดลอง AI Chat'),
+            ),
+            // ↑ จบส่วนที่เพิ่ม ↑
+
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInfoRow(IconData icon, String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        children: [
+          Icon(icon, color: Colors.teal),
+          const SizedBox(width: 12),
+          Text('$label: ', style: const TextStyle(fontWeight: FontWeight.bold)),
+          Expanded(child: Text(value)),
+        ],
+      ),
+    );
+  }
+}
 ```
+
+⚠️ ถ้าได้ Error ว่า AiChatPage ไม่รู้จัก ให้ตรวจสอบว่า:
+
+
+ไฟล์ lib/pages/ai_chat_page.dart มีอยู่จริง
+บรรทัด import 'pages/ai_chat_page.dart'; อยู่ที่หัวไฟล์ main.dart แล้ว
+
+
+
+ขั้นตอนที่ 6: รันและทดสอบ AI Chat
 
 ---
 
@@ -1402,7 +1708,7 @@ flutter run
 ```
 
 **ทดลองส่งข้อความต่อไปนี้:**
-
+** ให้ setting เพิ่ม keyboard ภาษาไทยก่อน **
 1. `สวัสดี ฉันเป็นนักศึกษา Flutter มือใหม่`
 2. `อธิบาย StatefulWidget ให้เข้าใจง่ายๆ`
 3. `ช่วยเขียน Flutter code แสดงรายการนักศึกษา 5 คน`
@@ -1571,12 +1877,12 @@ Simple Prompt ให้ผลลัพธ์ที่ตรงตามคำส
 
 ### สิ่งที่ต้องส่ง
 
-1. **Source Code** — Push ขึ้น GitHub Repository และส่ง Repository ใน MS Teams
+1. **Source Code** — Push ขึ้น GitHub Repository
    ```
    Repository Name: week01-flutter-intro-[รหัสนักศึกษา]
    ```
 
-2. **ใบงานที่กรอกเสร็จแล้ว** — Pull Request ส่ง
+2. **ใบงานที่กรอกเสร็จแล้ว** — ส่งเป็น PDF หรือ Markdown
 
 3. **Screenshot** อย่างน้อย 3 รูป:
    - Flutter Profile Card App
@@ -1600,10 +1906,10 @@ week01-flutter-intro-XXXXXXXX/
 ├── .gitignore                  (ต้องมี!)
 ├── pubspec.yaml
 ├── screenshots/
-│   ├── profile_card.png
-│   ├── ai_studio.png
-│   └── ai_chat.png
-└── LAB_REPORT.md              (ใบงานที่กรอกแล้ว)
+    ├── profile_card.png
+    ├── ai_studio.png
+    └── ai_chat.png
+
 ```
 
 ### Checklist ก่อนส่ง
