@@ -1720,17 +1720,16 @@ flutter run
 
 ### 3.1 ผลการติดตั้ง Flutter
 
-```
-flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
+flutter doctor output:
+
+ วางผลลัพธ์จาก flutter doctor ที่นี่  <img width="1008" height="335" alt="image" src="https://github.com/user-attachments/assets/44f4cfd6-7a72-4687-a3b7-fa52181f189f" />
+                  
+│                                                     
+
+Flutter Version: (Channel stable, 3.44.4, on Microsoft Windows [Version 10.0.26200.8655], locale en-US)
 Dart Version: ______________________
-Android SDK Version: _______________
+Android SDK Version: version 34.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
