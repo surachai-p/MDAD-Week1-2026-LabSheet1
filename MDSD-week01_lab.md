@@ -1012,7 +1012,24 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 > 📝 **แบบฝึกหัด:** วาด Widget Tree ของโค้ดนี้ลงในใบงาน
-
+MyApp
+│
+└── MaterialApp
+    │
+    └── MyHomePage
+        │
+        └── Scaffold
+            ├── AppBar
+            │   └── Text
+            │
+            ├── Body
+            │   └── Center
+            │       └── Column
+            │           ├── Text
+            │           └── Text (_counter)
+            │
+            └── FloatingActionButton
+                └── Icon(+)
 ---
 
 ### ขั้นตอนที่ 4: รันแอปพลิเคชันครั้งแรก
@@ -1182,11 +1199,14 @@ class ProfilePage extends StatelessWidget {
 }
 ```
 
+
+
+
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [ ✓ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [ ✓ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [ ✓ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [ ✓ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
 
 ---
 
@@ -1228,6 +1248,7 @@ class ProfilePage extends StatelessWidget {
 
 4. คลิก **"Run"** หรือกด `Ctrl+Enter`
 5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้ำ
+
 
 #### ทดลองที่ 2: Code Generation
 
@@ -1724,13 +1745,39 @@ flutter run
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
+│  วางผลลัพธ์จาก flutter doctor ที่นี่ PS C:\Users\patkorn\week01_hello_flutter> flutter doctor
+Doctor summary (to see all details, run flutter doctor
+-v):
+[√] Flutter (Channel stable, 3.44.4, on Microsoft
+    Windows [Version 10.0.26200.8655], locale th-TH)
+[√] Windows Version (11 Home Single Language 64-bit,
+    25H2, 2009)
+[!] Android toolchain - develop for Android devices
+    (Android SDK version 34.0.0)
+    X Flutter requires Android SDK 36 and the Android
+      BuildTools 28.0.3
+      To update the Android SDK visit
+      https://flutter.dev/to/windows-android-setup for
+      detailed instructions.
+[√] Chrome - develop for the web
+[X] Visual Studio - develop Windows apps
+    X Visual Studio not installed; this is necessary
+      to develop Windows apps.
+      Download at
+      https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with
+      C++" workload, including all of its default
+      components
+[√] Connected device (3 available)
+[√] Network resources
+
+! Doctor found issues in 2 categories.                   │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.4
+Dart Version: 3.12.2
+Android SDK Version: 36.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
@@ -1738,10 +1785,9 @@ Android SDK Version: _______________
 ```
 [แนบ Screenshot ของ Profile Card App ที่สร้าง]
 ```
-
-**Widget Tree ที่วาด:**
-
+<img width="618" height="1017" alt="image" src="https://github.com/user-attachments/assets/1926c650-7b7a-4c7c-95fd-a294fbbe242b" />
 ```
+
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
 
 MaterialApp
@@ -1749,14 +1795,15 @@ MaterialApp
     └── ?
         └── ...
 ```
+<img width="2157" height="1668" alt="image" src="https://github.com/user-attachments/assets/8166c545-1385-407e-98c7-969c40f959eb" />
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | 1 | 4 |
+| State ถูก Reset? | ไม่รีเซ็ต | รีเซ็ต |
+| ใช้เมื่อไหร่ | รีหน้าในจุดเดิม | รีดูการเปลี่ยนแปลง |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
@@ -1772,13 +1819,25 @@ MaterialApp
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+Prompt แบบ Simple ให้รายละเอียดน้อย
+
+
+<img width="1187" height="702" alt="image" src="https://github.com/user-attachments/assets/44925ad4-66f7-45a9-98dc-177b99b5b70e" />
+
+```
+Prompt แบบ Detailed ระบุความต้องการอย่างชัดเจน ทั้งโครงสร้าง Widget การจัดวาง ขนาดตัวอักษร สี 
 ```
 
+<img width="1175" height="671" alt="image" src="https://github.com/user-attachments/assets/9967460a-ad2f-4e1e-9b90-d714ae3b5c39" />
+```
 ### 3.5 Screenshot ของ AI Chat App
 
 ```
 [แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
+```
+``
+<img width="487" height="663" alt="image" src="https://github.com/user-attachments/assets/b83f8d97-b65f-4e14-9aaa-1a335fd5be45" />
+```
 ```
 
 ---
@@ -1790,34 +1849,39 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
-```
+คำตอบ: Flutter ใช้ Rendering  ในการวาด UI ลงบนหน้าจอโดยตรง ทำให้ UI มีความสม่ำเสมอและประสิทธิภาพสูง 
+       React Native ใช้ Native UI Components ของระบบปฏิบัติการผ่าน Bridge อาจมีความแตกต่างของหน้าตาในแต่ละแพลตฟอร์ม
 
+```
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:  StatelessWidget เป็น Widget ที่ข้อมูลไม่เปลี่ยนแปลงหลังจากสร้างแล้ว เหมาะสำหรับแสดงข้อความ รูปภาพ หรือปุ่มที่ไม่มีการเปลี่ยนสถานะ
+        StatefulWidget เป็น Widget ที่สามารถเปลี่ยนแปลงข้อมูลและอัปเดตหน้าจอได้ผ่าน setState() เหมาะสำหรับฟอร์มรับข้อมูล ตัวนับ (Counter) รายการที่โหลดจาก API หรือหน้าที่มีการโต้ตอบกับผู้ใช้
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:  เพราะ API Key เป็นข้อมูลสำคัญ
+        วิธีจัดการอย่างปลอดภัย ได้แก่
+          - เก็บ API Key ไว้ในไฟล์ .env หรือ Environment Variables
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: อัปเดตโค้ดที่แก้ไขเข้าสู่แอปที่กำลังทำงานโดยไม่ต้องคอมไพล์ใหม่ทั้งหมด
+       ข้อจำกัด ไม่สามารถอัปเดตการเปลี่ยนแปลงบางอย่าง
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. ช่วยสร้างโค้ด Flutter เช่น Widget, UI และโครงสร้างโปรเจกต์จากคำอธิบาย (Prompt)
+2. วยตรวจสอบ แก้ไขข้อผิดพลาด และอธิบาย Error หรือแนะนำวิธีปรับปรุงโค้ด
+3. ช่วยสร้างเนื้อหาในแอป เช่น สรุปข้อความ ตอบคำถามผ่าน Chatbot แปลภาษา หรือวิเคราะห์ข้อมูลจากผู้ใช้
 ```
 
 ---
