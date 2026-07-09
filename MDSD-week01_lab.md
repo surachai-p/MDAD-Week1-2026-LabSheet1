@@ -1758,9 +1758,16 @@ flutter run
 **ทดลองส่งข้อความต่อไปนี้:**
 ** ให้ setting เพิ่ม keyboard ภาษาไทยก่อน **
 1. `สวัสดี ฉันเป็นนักศึกษา Flutter มือใหม่`
+<img width="1307" height="817" alt="image" src="https://github.com/user-attachments/assets/cfcf8a76-e7a4-47fc-a89c-22dbbd5df286" />
+
 2. `อธิบาย StatefulWidget ให้เข้าใจง่ายๆ`
+<img width="952" height="870" alt="image" src="https://github.com/user-attachments/assets/14c0d80a-7dd4-4089-be88-8e04f1e402c5" />
+
 3. `ช่วยเขียน Flutter code แสดงรายการนักศึกษา 5 คน`
+<img width="951" height="1021" alt="image" src="https://github.com/user-attachments/assets/9ac5e97e-0188-412e-876b-a6f6e6b298f5" />
+
 4. ลองถามคำถามอื่นๆ ที่คุณสงสัย
+<img width="961" height="1030" alt="image" src="https://github.com/user-attachments/assets/c6979f91-a908-4146-89af-095719fff345" />
 
 ---
 
