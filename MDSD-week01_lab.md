@@ -1710,9 +1710,16 @@ flutter run
 **ทดลองส่งข้อความต่อไปนี้:**
 ** ให้ setting เพิ่ม keyboard ภาษาไทยก่อน **
 1. `สวัสดี ฉันเป็นนักศึกษา Flutter มือใหม่`
+<img width="1305" height="990" alt="image" src="https://github.com/user-attachments/assets/5a998634-d79c-4b99-87ec-1da631de9e92" />
+
 2. `อธิบาย StatefulWidget ให้เข้าใจง่ายๆ`
+<img width="1306" height="997" alt="2" src="https://github.com/user-attachments/assets/6a1b686a-74fc-474b-bfbb-87d295d53b58" />
+
 3. `ช่วยเขียน Flutter code แสดงรายการนักศึกษา 5 คน`
+<img width="1305" height="996" alt="image" src="https://github.com/user-attachments/assets/90fedfc0-f8d3-43c8-b736-6579023b1d9b" />
+
 4. ลองถามคำถามอื่นๆ ที่คุณสงสัย
+<img width="1307" height="993" alt="image" src="https://github.com/user-attachments/assets/9cf0047f-2280-4bb9-8036-d7cb11a583c3" />
 
 ---
 
@@ -1720,65 +1727,80 @@ flutter run
 
 ### 3.1 ผลการติดตั้ง Flutter
 
-```
+``
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+<img width="957" height="346" alt="image" src="https://github.com/user-attachments/assets/e23ae176-4e2b-4ef5-95d2-3f27ed5af2d3" />
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+
+Flutter Version: 3.44.5
+Dart Version: 3.12.2
+Android SDK Version: 36.1.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
 ```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
+<img width="1311" height="997" alt="image" src="https://github.com/user-attachments/assets/9c870462-7ab1-47fb-b08c-7fa6126afe27" />
+
 ```
 
 **Widget Tree ที่วาด:**
 
 ```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
+MaterialApp
+└── ProfilePage
+    └── Scaffold
+        ├── AppBar
+        └── SingleChildScrollView
+            └── Center
+                └── Card
+                    └── Padding
+                        └── Column
+                            ├── Icon
+                            ├── Text
+                            ├── Divider
+                            ├── ListTile × 5
+                            ├── TextField
+                            ├── ElevatedButton
+                            └── Container (แสดงคำตอบ)
 
 MaterialApp
 └── ?
     └── ?
         └── ...
-```
+``
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | เร็ว | ช้า |
+| State ถูก Reset? | ไม่รี | ถูกรีเซ็ต |
+| ใช้เมื่อไหร่ | แก้UIหน้าเว็บ | แก้โค้ดใหญ่หลังบ้านข้างใน ตัวแปรต่างๆ |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
-```
-(วาง Prompt ที่ใช้)
-```
+``
+อธิบาย StatefulWidget
+``
 
 **Prompt แบบ Detailed:**
-```
-(วาง Prompt ที่ใช้)
+``
+อธิบาย StatefulWidget ใน Flutter ให้เข้าใจง่ายสำหรับนักศึกษาปี 1 พร้อมยกตัวอย่างโค้ดสั้น ๆ
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+Simple Prompt นั้นจะอธิบายได้กระชับกว่าส่วน Detailed Prompt นั้นจะอธิบายให้แบบมีรายละเอียดและคำตอบที่ครบถ้วนและมีตัวอย่างตามคำสั่งที่ป้อนไป
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
 ```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
+<img width="1310" height="892" alt="image" src="https://github.com/user-attachments/assets/f2d10ed3-6ecc-4f11-8c3e-9970b74e65ce" />
+<img width="1551" height="622" alt="image" src="https://github.com/user-attachments/assets/30c2003c-7780-4220-ae75-74c44f5f4349" />
+
 ```
 
 ---
@@ -1790,34 +1812,37 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter มี Rendering Engine ของตนเอง เลยทำให้ควบคุมหน้าuiได้เลย ส่วน React Native นั้นต้องใช้ การเรนเดอร์ผ่านคอมโพเนนต์
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget คือวิดเจ็ตที่ข้อมูลไม่เปลี่ยนต่อทำงานเหมาะกับพวกหัวข้อ
+StatefulWidget สามารถเปลี่ยนข้อมูลได้เลยและอัพเดตไปยังหน้าจอด้วย
+setState() เหมาะกับปุ่มนับจำนวนครั้งที่กด ฟอร์มกรอกข้อมูล
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพราะมีคีย์ของเราอยู่อาจมีคนอื่นนำคีย์ไปและทำให้เกิดข้อมูลรั่วไหลหรือเกิดค่า่ใช้จ่าย
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload ทำงานโดยคอมไพล์เฉพาะโค้ดที่เปลี่ยนแล้วฉีดเข้าไปในแอปที่กำลังรันอยู่ จากนั้น Flutter จะสร้าง widget ใหม่
+ข้อจำกัดคือการเปลี่ยนแปลง
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. ทำแชตบอตตอบคำถาม
+2. เคราะห์ความคิดเห็นผู้ใช้จากรีวิว
+3. ตรวจจับเนื้อหาที่ไม่เหมาะสมหรือสแปม
 ```
 
 ---
@@ -1880,12 +1905,12 @@ week01-flutter-intro-XXXXXXXX/
 ### Checklist ก่อนส่ง
 
 - [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [ ✓ ] App รันได้บน Chrome หรือ Android Device/Emulator
+- [ ✓ ] Profile Card แสดงข้อมูลของตัวเอง
+- [✓] AI Chat คุยกับ Gemini ได้จริง
+- [ ✓ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [ ✓ ] ตอบคำถามท้ายบทครบทุกข้อ
+- [ ✓ ] Push ขึ้น GitHub แล้ว
 
 ---
 
