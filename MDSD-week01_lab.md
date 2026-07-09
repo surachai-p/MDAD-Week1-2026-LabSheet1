@@ -1724,8 +1724,18 @@ flutter run
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
 │                                                         │
-│ <img width="825" height="236" alt="image" src="https://github.com/user-attachments/assets/53d6331d-a311-4952-abb9-d8ea17a20d8d" />
-      │
+│ <PS C:\Projects\week01_hello_flutter> flutter doctor
+Doctor summary (to see all details, run flutter doctor -v):
+[√] Flutter (Channel stable, 3.44.5, on Microsoft Windows [Version 10.0.26200.8655],
+    locale en-US)
+[√] Windows Version (11 Home Single Language 64-bit, 25H2, 2009)
+[√] Android toolchain - develop for Android devices (Android SDK version 36.0.0)
+[√] Chrome - develop for the web
+[√] Visual Studio - develop Windows apps (Visual Studio Build Tools 2022 17.14.25
+    (January 2026))
+[√] Connected device (4 available)
+[√] Network resources
+
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
@@ -1738,8 +1748,8 @@ Android SDK Version: 36.0.0
 ### 3.2 Screenshot ของ Flutter App
 
 ```
-[<img width="1296" height="987" alt="image" src="https://github.com/user-attachments/assets/6d3261a4-cc57-48c9-865d-a5e9c53a52d7" />
-]
+<img width="1200" height="912" alt="image" src="https://github.com/user-attachments/assets/0fd8bea6-c7d8-4e99-9719-449a073dd5b3" />
+
 ```
 
 **Widget Tree ที่วาด:**
