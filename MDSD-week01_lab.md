@@ -1814,9 +1814,7 @@ main()
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+<img width="1310" height="768" alt="งานAI CHAT" src="https://github.com/user-attachments/assets/450b1429-1874-4977-b630-7df15626cff9" />
 
 ---
 
