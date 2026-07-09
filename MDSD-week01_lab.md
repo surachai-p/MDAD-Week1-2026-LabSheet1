@@ -676,6 +676,9 @@ Doctor summary (to see all details, run flutter doctor -v):
 > 📝 **บันทึกผล:** จดบันทึก Error (`[✗]`) ที่พบ และทำการแก้ไขตามคำแนะนำ  
 > ไม่ต้องแก้ไขรายการที่ขึ้น `[!] Android Studio`
 
+<img width="810" height="317" alt="image" src="https://github.com/user-attachments/assets/49e04ab3-4aaf-4788-ad5e-98071cfca92f" />
+
+
 ---
 
 ### ขั้นตอนที่ 5: ติดตั้ง VS Code และ Flutter Extension
@@ -1013,6 +1016,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
 > 📝 **แบบฝึกหัด:** วาด Widget Tree ของโค้ดนี้ลงในใบงาน
 
+```
+MyApp (Root Widget)
+ └── MaterialApp
+      └── MyHomePage 
+           └── Scaffold 
+                ├── AppBar 
+                │    └── title Flutter Demo Home Page
+                │
+                ├── body Center
+                │    └── Column 
+                │         ├── You have pushed the button
+                │         └── ตัวเลข
+                │
+                └── floatingActionButton: FloatingActionButton
+                     └── child: Icon
+```
 ---
 
 ### ขั้นตอนที่ 4: รันแอปพลิเคชันครั้งแรก
@@ -1183,10 +1202,12 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [/] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [/] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [/] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [/] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+
+<img width="1572" height="887" alt="image" src="https://github.com/user-attachments/assets/b8b04fd5-0e53-4087-8599-0a76585d47d5" />
 
 ---
 
@@ -1200,6 +1221,12 @@ class ProfilePage extends StatelessWidget {
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
 > 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
+```
+ Hot Reload: เปลี่ยนแปลงเฉพาะโค้ด UI / Logic โดยไม่รีเซ็ตสถานะแอป 
+ Hot Restart: เริ่มต้นแอปใหม่ทั้งหมด และเคลียร์สถานะแอปให้กลับไปนับหนึ่งใหม่
+```
+> 
+<img width="1288" height="975" alt="image" src="https://github.com/user-attachments/assets/1ac2c502-7ca3-49b3-a937-f6a4c222afe7" />
 
 ---
 
@@ -1228,7 +1255,22 @@ class ProfilePage extends StatelessWidget {
 
 4. คลิก **"Run"** หรือกด `Ctrl+Enter`
 5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้ำ
-
+   
+```
+แนวคิดของ Flutter สำหรับนักศึกษาปี 2 สามารถสรุปได้ง่ายๆ ดังนี้ครับ:
+1.  Flutter คือ UI Framework จาก Google ที่ช่วยให้เราเขียนโค้ดชุดเดียว (Single
+    Codebase) แต่สามารถรันแอปพลิเคชันได้ทั้งบน iOS, Android, Web และ Desktop
+2.  ใช้ภาษา Dart ในการพัฒนา ซึ่งมีโครงสร้างไวยากรณ์ใกล้เคียงกับภาษา Java หรือ C#
+    ทำให้ต่อยอดความรู้พื้นฐานที่น้องๆ มีอยู่แล้วได้ไม่ยาก
+3.  มีแนวคิดหลักคือ "Everything is a Widget"
+    โดยมองว่าทุกส่วนประกอบบนหน้าจอคือชิ้นส่วนเล็กๆ
+    ที่นำมาวางซ้อนหรือต่อกันเหมือนเลโก้เพื่อสร้างหน้าตาแอปที่ซับซ้อน
+4.  แสดงผลด้วยการวาดหน้าจอเองทั้งหมด ผ่านกราฟิกเอนจินประสิทธิภาพสูง
+    ทำให้แอปมีความลื่นไหลและแสดงผลหน้าตาเหมือนกันเป๊ะในทุกอุปกรณ์โดยไม่เพี้ยน
+5.  มาพร้อมฟีเจอร์ Hot Reload
+    ที่ช่วยให้เราเห็นการเปลี่ยนแปลงของโค้ดบนหน้าจอได้ทันทีหลังจากกดเซฟ
+    ทำให้การแก้บั๊กและออกแบบ UI ทำได้รวดเร็วกว่าการเขียนแอปแบบสมัยก่อนมากครับ
+```
 #### ทดลองที่ 2: Code Generation
 
 พิมพ์ Prompt ต่อไปนี้:
@@ -1242,8 +1284,8 @@ class ProfilePage extends StatelessWidget {
 
 ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
-
 6. นำโค้ดที่ได้ Copy ไปทดสอบใน Flutter Project
+<img width="1286" height="870" alt="image" src="https://github.com/user-attachments/assets/d9e0beaf-819a-4a74-96af-7b7dd86f8e20" />
 
 #### ทดลองที่ 3: Prompt Engineering
 
@@ -1261,9 +1303,15 @@ class ProfilePage extends StatelessWidget {
 
 ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
+<img width="1288" height="931" alt="image" src="https://github.com/user-attachments/assets/9bd8f989-32cf-4e03-91f7-daa79975d39a" />
+
 
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
-
+```
+ แบบ Simple เป็นภาพแบบทั่วไปพื้นๆเนื่องจาก prompt ไม่ได้มีการกำหนดบทบาทที่ชัดเจนทั้งในเรื่องของ UI สี ขนาดตัวอักษร
+ ส่วนแบบ Detailed จะแสดงผลได้สวยงามขนาดอุณหภูมิใหญ่แลเจน เพราะมีการเขียน prompt ที่ชัดเจนลงรายละเอียดว่าต้องการให้ส่วนไหน
+ เป็นยังไง
+```
 ---
 
 ### ขั้นตอนที่ 3: สร้าง API Key
@@ -1710,9 +1758,16 @@ flutter run
 **ทดลองส่งข้อความต่อไปนี้:**
 ** ให้ setting เพิ่ม keyboard ภาษาไทยก่อน **
 1. `สวัสดี ฉันเป็นนักศึกษา Flutter มือใหม่`
+<img width="1307" height="817" alt="image" src="https://github.com/user-attachments/assets/cfcf8a76-e7a4-47fc-a89c-22dbbd5df286" />
+
 2. `อธิบาย StatefulWidget ให้เข้าใจง่ายๆ`
+<img width="952" height="870" alt="image" src="https://github.com/user-attachments/assets/14c0d80a-7dd4-4089-be88-8e04f1e402c5" />
+
 3. `ช่วยเขียน Flutter code แสดงรายการนักศึกษา 5 คน`
+<img width="951" height="1021" alt="image" src="https://github.com/user-attachments/assets/9ac5e97e-0188-412e-876b-a6f6e6b298f5" />
+
 4. ลองถามคำถามอื่นๆ ที่คุณสงสัย
+<img width="961" height="1030" alt="image" src="https://github.com/user-attachments/assets/c6979f91-a908-4146-89af-095719fff345" />
 
 ---
 
@@ -1720,66 +1775,409 @@ flutter run
 
 ### 3.1 ผลการติดตั้ง Flutter
 
-```
-flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+flutter doctor output:
+<img width="577" height="211" alt="image" src="https://github.com/user-attachments/assets/38bb48bb-55ea-4eb7-9702-76396942c1f6" />
+
+<img width="1213" height="725" alt="image" src="https://github.com/user-attachments/assets/83b8e4e6-4272-4af0-8899-587802d6c207" />
+
+```
+Flutter Version: 3.44.4
+Dart Version: 3.12.2
+Android SDK Version: 34.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+<img width="957" height="1003" alt="image" src="https://github.com/user-attachments/assets/36231c90-de0b-4b72-8ff5-620ef10be8bb" />
 
 **Widget Tree ที่วาด:**
 
 ```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
-
-MaterialApp
-└── ?
-    └── ?
-        └── ...
+MyApp 
+  └── MaterialApp
+        └── ProfilePage
+              └── Scaffold
+                    ├── AppBar
+                    │     └── title
+                    │
+                    └── body: SingleChildScrollView
+                          └── Padding 
+                                └── Column
+                                      ├── SizedBox 
+                                      ├── CircleAvatar
+                                      │     └── Icon 
+                                      ├── SizedBox
+                                      ├── 'Nirapada Khattiya'
+                                      ├── SizedBox
+                                      ├── 'รหัสนักศึกษา: 67030118'
+                                      ├── SizedBox
+                                      │
+                                      ├── Card 
+                                      │     └── Padding
+                                      │           └── Column
+                                      │                 ├── _buildInfoRow (คณะ)
+                                      │                 ├── Divider
+                                      │                 ├── _buildInfoRow (วิชาที่ชอบ)
+                                      │                 ├── Divider
+                                      │                 ├── _buildInfoRow (เป้าหมาย)
+                                      │                 ├── Divider
+                                      │                 ├── _buildInfoRow (email)
+                                      │                 ├── Divider
+                                      │                 └── _buildInfoRow (phone)
+                                      │
+                                      ├── SizedBox
+                                      └── ทดลอง AI Chat
+                                            ├── Icon
+                                            └── ทดลอง AI Chat
 ```
+```
+AiChatPage 
+  └── _AiChatPageState
+        └── Scaffold
+              ├── AppBar
+              │     └── Gemini AI Chat
+              │
+              └── body
+                    ├── Expanded
+                    │     └── [_messages.isEmpty]
+                    │           ├── true  Text ('👋 Hello Gemini')
+                    │           └── false --> ListView.builder
+                    │                           └── _buildMessage 
+                    │                                 └── Align
+                    │                                       └── Container
+                    │                                             └── Text 
+                    │
+                    ├── [if (_isLoading)] 
+                    │     └── true  Padding  CircularProgressIndicator
+                    │
+                    └── SafeArea 
+                          └── Padding
+                                └── Row
+                                      ├── Expanded
+                                      │     └── TextField
+                                      ├── SizedBox
+                                      └── FloatingActionButton.small
+                                            └── Icon
+```
+
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
-|---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+|---|:---:|:---:|
+| ความเร็ว |เร็วมาก (Sub-second) ส่วนใหญ่ใช้เวลาไม่ถึง 1 วินาที เพราะโหลดเฉพาะโค้ดส่วนที่เปลี่ยนแปลงเข้าไปใน Dart Virtual Machine (VM) |ช้ากว่า (ใช้เวลาไม่กี่วินาที) เพราะต้องทำลายคอมไพล์เก่าแล้วเริ่มโหลดตัวแอปพลิเคชันขึ้นมาใหม่ทั้งหมดตั้งแต่ศูนย์ |
+| State ถูก Reset? |ไม่ถูก Reset (Maintain State) ค่าของตัวแปร หน้าจอที่เปิดค้างไว้ หรือข้อความในช่องแชตจะยังคงอยู่เหมือนเดิม |ถูก Reset ทั้งหมด (Lose State) ค่าของตัวแปร หน้าจอ และสถานะของแอปจะกลับไปเริ่มต้นใหม่ที่หน้าแรกเหมือนเพิ่งเปิดแอป |
+| ใช้เมื่อไหร่ |ใช้ตอน ปรับแต่งหน้าตา UI, แก้สี, ปรับดีไซน์ หรือแก้ไขโค้ดเล็กๆ น้อยๆ ภายในฟังก์ชัน build เพื่อดูผลลัพธ์การจัดวางแบบทันที |ใช้ตอน แก้ไขโครงสร้างหลัก เช่น แก้ไขฟังก์ชัน main(), เปลี่ยนแปลง initState, แก้ไขข้อมูลในคลาสโมเดล หรือเปลี่ยนโครงสร้างการ Routing ข้ามหน้า |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+ช่วยตกแต่ง UI ของหน้า AiChatPage (StatefulWidget) นี้ให้สวยงามขึ้น โดยเน้นปรับดีไซน์ของกล่องข้อความแชต (Chat Bubble) แยกสีฝั่งผู้ใช้และ AI ให้ชัดเจน และเพิ่มความโค้งมนกับเงา (Elevation) โดยไม่ต้องเปลี่ยนแปลงตรรกะ (Logic) การส่งข้อความเดิม
 ```
+<img width="1918" height="1012" alt="image" src="https://github.com/user-attachments/assets/d51d7550-48d5-4abb-8438-947314e9df32" />
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+คุณคือผู้เชี่ยวชาญด้านการตกแต่ง UI
+หน้าที่ของคุณคือ Redesign เฉพาะ User Interface ของหน้าแชท Gemini AI ให้ดูทันสมัย ระดับ Production พร้อมใช้งานจริง คล้าย ChatGPT, Google Gemini หรือ Microsoft Copilot
+==================================================
+ข้อกำหนดสำคัญ
+==================================================
+
+- ห้ามแก้ไข Logic ใด ๆ
+- ห้ามแก้ไข _sendMessage()
+- ห้ามแก้ไขตัวแปร
+- ห้ามแก้ไข API
+- ห้ามเปลี่ยนชื่อ Widget
+
+ให้แก้ไขเฉพาะ
+
+- build()
+- _buildMessage()
+
+==================================================
+DESIGN STYLE
+==================================================
+
+ออกแบบ UI ให้มีสไตล์
+
+- Modern
+- Minimal
+- Premium
+- Material Design 3
+- Soft UI
+- Clean
+- Comfortable
+- Luxury
+- Responsive
+
+Color Palette
+
+Primary
+- Colors.orange
+
+Secondary
+- Colors.deepOrangeAccent
+
+Background
+- Color(0xFFF8F9FB)
+
+Card
+- Colors.white
+
+AI Bubble
+- Color(0xFFF2F4F7)
+
+User Bubble
+- Colors.orange
+
+Primary Text
+- Colors.black87
+
+Secondary Text
+- Colors.grey
+
+==================================================
+APP BAR
+==================================================
+
+ออกแบบ AppBar ใหม่
+
+- ใช้ Material 3
+- elevation = 0
+- พื้นหลังสีขาว
+- Title อยู่กึ่งกลาง
+- Title เป็น "Gemini AI"
+- เพิ่ม Icons.auto_awesome สีส้ม
+- เพิ่ม Divider บาง ๆ ด้านล่าง AppBar
+
+==================================================
+CHAT AREA
+==================================================
+
+- พื้นหลังทั้งหน้าจอใช้ Color(0xFFF8F9FB)
+- ใช้ SafeArea
+- ใช้ AnimatedContainer
+- รองรับการแสดงผลเมื่อ Keyboard เปิด
+- Padding รอบหน้าจอ 16 px
+
+==================================================
+EMPTY STATE
+==================================================
+
+เมื่อ _messages.isEmpty
+
+แสดงอยู่กึ่งกลางหน้าจอ
+
+ประกอบด้วย
+
+- CircleAvatar ขนาดใหญ่ สีส้มอ่อน
+- Icon Icons.auto_awesome ขนาด 48
+- Text "Hello Gemini"
+  - Font Size 22
+  - FontWeight.bold
+- Text "Start a conversation with AI"
+  - สีเทา
+  - จัดให้อยู่ใต้ข้อความหลัก
+
+==================================================
+CHAT BUBBLE
+==================================================
+
+ออกแบบ Bubble ใหม่ทั้งหมด
+
+User Message
+
+- สีส้ม
+- ตัวอักษรสีขาว
+- BorderRadius.circular(22)
+- มุมล่างขวาเป็นมุมตรง
+- Shadow นุ่ม ๆ
+- Padding 14
+- Margin แนวตั้ง 8
+
+AI Message
+
+- สีขาว
+- Border สีเทาอ่อน
+- Shadow จาง ๆ
+- BorderRadius.circular(22)
+- มุมล่างซ้ายเป็นมุมตรง
+- ตัวอักษรสีดำ
+
+กำหนด Bubble
+
+- กว้างไม่เกิน 78% ของหน้าจอ
+- ใช้ ConstrainedBox
+
+==================================================
+MESSAGE ANIMATION
+==================================================
+
+ข้อความใหม่ทุกข้อความ
+
+ใช้ Animation
+
+- AnimatedSwitcher
+  หรือ
+- AnimatedContainer
+
+Effect
+
+- Fade In
+- Slide In
+
+Duration
+
+- 300 milliseconds
+
+==================================================
+INPUT AREA
+==================================================
+
+ออกแบบช่องพิมพ์ข้อความใหม่
+
+ลักษณะ
+
+- Floating Input Area
+- Container สีขาว
+- Shadow บาง ๆ
+- Padding 12
+
+ภายในประกอบด้วย Row
+
+TextField
+
+- Filled = true
+- fillColor = Color(0xFFF5F5F5)
+- ไม่มีเส้น Border แข็ง
+- BorderRadius 30
+- Hint สีเทา
+- minLines = 1
+- maxLines = null
+- TextInputAction.send
+
+เมื่อ Focus
+
+- Border สีส้ม
+
+==================================================
+SEND BUTTON
+==================================================
+
+เปลี่ยน FloatingActionButton เป็น
+
+- ปุ่มวงกลม
+- Gradient สี Orange → Deep Orange
+- Icons.send_rounded สีขาว
+- มี Shadow
+- รองรับ Ripple Effect
+
+==================================================
+LOADING
+==================================================
+
+ระหว่าง AI กำลังตอบ
+
+ไม่ใช้ CircularProgressIndicator เพียงอย่างเดียว
+
+ให้แสดง
+
+AI Bubble
+
+ภายในมี
+
+- CircularProgressIndicator สีส้ม
+  หรือ
+- Loading Animation แบบสามจุด (...)
+
+พร้อมข้อความ
+
+"Gemini is thinking..."
+
+==================================================
+LIST VIEW
+==================================================
+
+ListView
+
+- Padding 16
+- BouncingScrollPhysics
+- Scroll ลงล่างอัตโนมัติเมื่อมีข้อความใหม่
+
+==================================================
+TYPOGRAPHY
+==================================================
+
+User Message
+
+- FontWeight.w500
+
+AI Message
+
+- FontWeight.w400
+
+ทุกข้อความ
+
+- LetterSpacing = 0.2
+- Height = 1.5
+
+==================================================
+EXTRA
+==================================================
+
+เพิ่ม Animation และลูกเล่นเล็กน้อย
+
+- Bubble Fade In
+- Scale Animation ของปุ่มส่ง
+- Soft Shadow
+- Smooth Transition
+- Hero Feeling
+- Premium Interaction
+
+==================================================
+OUTPUT
+==================================================
+
+ส่งกลับมาเฉพาะ
+
+1. เมธอด build()
+
+2. เมธอด _buildMessage()
+
+เท่านั้น
+
+ห้ามส่งโค้ดส่วนอื่น
+
+ห้ามแก้ไข Logic
+
+ห้ามเพิ่ม Package ใหม่
+
+ห้ามเปลี่ยนชื่อคลาส
 ```
+<img width="1911" height="1001" alt="image" src="https://github.com/user-attachments/assets/8d1bb094-00d8-4c22-9fc8-7719ab329299" />
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+Simple Prompt
+-บอกความต้องการแบบกว้าง ๆ เช่น ให้ตกแต่ง UI ให้สวยขึ้น
+-AI มีอิสระในการออกแบบเอง
+-ผลลัพธ์อาจแตกต่างกันในแต่ละครั้ง เพราะ AI ตัดสินใจเองว่าจะใช้สี ฟอนต์ หรือ Layout แบบไหน
+-เหมาะกับงานที่ต้องการปรับแต่งเร็ว ๆ หรืออยากให้ AI คิดดีไซน์ให้
+
+Detailed Prompt
+-ระบุรายละเอียดทุกส่วน เช่น สี รูปแบบ Bubble, AppBar, Animation, ระยะห่าง, Typography และข้อจำกัดต่าง ๆ
+-AI จะสร้าง UI ได้ตรงตามความต้องการมากกว่า และมีความสม่ำเสมอ
+-ผลลัพธ์ดูเป็นมืออาชีพ คล้ายแอปจริง เพราะมีแนวทางการออกแบบชัดเจน
+-เหมาะกับงานที่ต้องการควบคุมหน้าตา UI ให้ตรงตามแบบที่วางไว้
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+<img width="1912" height="958" alt="image" src="https://github.com/user-attachments/assets/b0d107c6-0f82-4788-b5d4-58d8527f40ac" />
+
 
 ---
 
@@ -1790,34 +2188,42 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter ใช้ Rendering Engine ของตนเอง (Skia/Impeller) เพื่อวาดทุก Widget ลงบนหน้าจอโดยตรง ทำให้ UI มีความสม่ำเสมอและประสิทธิภาพสูง
+        React Native ใช้ Native UI Components ของ Android และ iOS โดย JavaScript จะส่งคำสั่งไปยัง Native เพื่อให้ระบบปฏิบัติการเป็นผู้แสดงผล ทำให้หน้าตาเป็นไปตามแพลตฟอร์มแต่มีค่าใช้จ่ายในการสื่อสารระหว่าง JavaScript และ Native เพิ่มขึ้น
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget คือ Widget ที่ข้อมูลไม่เปลี่ยนแปลงหลังจากสร้างแล้ว เหมาะกับหน้าจอหรือส่วนที่เป็นข้อมูลคงที่ เช่น โลโก้ แอป ชื่อแอป หรือข้อความ
+        StatefulWidget คือ Widget ที่ข้อมูลสามารถเปลี่ยนแปลงได้ระหว่างการใช้งาน เมื่อข้อมูลเปลี่ยน UI จะอัปเดตตาม เช่น ปุ่มนับจำนวน คลิกแล้วเลขเพิ่ม ช่องกรอกข้อความ หรือหน้าจอแชท
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพราะถ้า API Key หลุดไปบน Git คนอื่นสามารถนำไปใช้งานแทนเราได้ ทำให้เกิดค่าใช้จ่ายหรือข้อมูลรั่วไหล วิธีจัดการที่ปลอดภัย เช่น
+เก็บ API Key ไว้ในไฟล์ .env
+เพิ่มไฟล์ที่มี API Key ลงใน .gitignore
+เก็บ API Key ไว้ที่ฝั่ง Server แล้วให้แอปเรียกผ่าน Server แทน
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload คือการอัปเดตโค้ดที่แก้ไขแล้วไปยังแอปทันที โดยไม่ต้องรันใหม่ ทำให้พัฒนาได้เร็วขึ้น และยังคงสถานะเดิมของแอปไว้
+ข้อจำกัด
+ใช้ไม่ได้กับการเปลี่ยนแปลงบางอย่าง เช่น main() หรือการแก้ไขโครงสร้าง State บางประเภท
+ถ้าเปลี่ยนแปลงใหญ่ อาจต้องใช้ Hot Restart หรือรันแอปใหม่
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. Chatbot ตอบคำถาม เช่น ผู้ช่วยตอบคำถามลูกค้าหรือผู้ใช้งานในแอป
+2. สรุปหรือสร้างเนื้อหาอัตโนมัติ เช่น สรุปข้อสอบ ช่วยทำการบ้าน
+3. ผู้ช่วยแนะนำการใช้งานสินต่างๆ
 ```
 
 ---
@@ -1879,13 +2285,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [/] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [/] App รันได้บน Chrome หรือ Android Device/Emulator
+- [/] Profile Card แสดงข้อมูลของตัวเอง
+- [/] AI Chat คุยกับ Gemini ได้จริง
+- [/] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [/] ตอบคำถามท้ายบทครบทุกข้อ
+- [/] Push ขึ้น GitHub แล้ว
 
 ---
 
