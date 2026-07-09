@@ -662,7 +662,7 @@ Doctor summary (to see all details, run flutter doctor -v):
       • Build Tools 34.0.0
 [✓] Chrome - develop for the web
 [!] Android Studio (not installed)   ← [!] ปกติ ไม่ต้องแก้
-[✓] VS Code (version x.x.x)
+[✗] VS Code (version x.x.x)
       • Flutter extension version x.x
 [✓] Network resources
 
@@ -1013,7 +1013,40 @@ class _MyHomePageState extends State<MyHomePage> {
 
 > 📝 **แบบฝึกหัด:** วาด Widget Tree ของโค้ดนี้ลงในใบงาน
 
----
+โค้ดเริ่มต้นนี้มีส่วนสำคัญดังนี้:
+
+import 'package:flutter/material.dart';
+
+นำเข้า Flutter Material UI ซึ่งเป็นชุด widget สำหรับสร้างหน้าตาแอป
+void main()
+
+จุดเริ่มต้นของแอปพลิเคชัน
+เรียก runApp() เพื่อรัน widget หลัก
+class MyApp extends StatelessWidget
+
+เป็น widget หลักของแอป
+StatelessWidget หมายถึง widget นี้ไม่มีสถานะเปลี่ยนแปลงเอง
+ใช้สร้าง MaterialApp ซึ่งเป็นโครงสร้างพื้นฐานของแอป
+home: const HomePage()
+
+บอกว่าเมื่อเปิดแอป จะให้แสดงหน้า HomePage
+class HomePage extends StatelessWidget
+
+เป็นหน้าแสดงผลหลัก
+build() จะคืน Scaffold เป็นโครงสร้างหน้าจอหลัก
+Scaffold
+
+เป็นโครงสร้างพื้นฐานของหน้าใน Flutter
+ประกอบด้วย AppBar และ body
+AppBar
+
+แถบหัวข้อด้านบนของหน้า
+Center
+
+จัดวาง widget ให้อยู่ตรงกลาง
+Text
+
+แสดงข้อความบนหน้าจอ
 
 ### ขั้นตอนที่ 4: รันแอปพลิเคชันครั้งแรก
 
@@ -1183,10 +1216,10 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [✅] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [✅] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [✅] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [✅] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
 
 ---
 
@@ -1199,7 +1232,8 @@ class ProfilePage extends StatelessWidget {
 5. บันทึกไฟล์อีกครั้ง → สังเกตการเปลี่ยนสีทันที
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
-> 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
+> 🔍 **ข้อสังเกต:** Hot Reload: อัปเดต UI ทันทีโดยไม่รีสตาร์ทแอป และคง State ไว้
+Hot Restart: รีสตาร์ททั้งแอป และ Reset State กลับไปเหมือนตอนเปิดแอปใหม่
 
 ---
 
@@ -1264,7 +1298,7 @@ class ProfilePage extends StatelessWidget {
 
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
 
----
+Detailed Prompt ช่วยลดเวลาในการ "แก้โค้ด" หลังจาก AI เจนให้ และช่วยให้เราได้ผลลัพธ์ที่ตรงกับภาพ
 
 ### ขั้นตอนที่ 3: สร้าง API Key
 
@@ -1722,102 +1756,115 @@ flutter run
 
 ```
 flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+<img width="692" height="487" alt="image" src="https://github.com/user-attachments/assets/da4c089a-7451-49d5-9d36-48d6b7631c21" />
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+
+Flutter Version: 3.44.4
+Dart Version: 3.12.2
+Android SDK Version: 34.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
+```<img width="1918" height="1016" alt="image" src="https://github.com/user-attachments/assets/ba203201-fd3d-4e78-96f4-fe7349a055ee" />
+
 ```
 
 **Widget Tree ที่วาด:**
 
 ```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
-
 MaterialApp
-└── ?
-    └── ?
-        └── ...
+└── ProfilePage (Scaffold)
+├── AppBar(title: 'โปรไฟล์ของฉัน')
+└── Body: SingleChildScrollView (padding: 16)
+└── Column (crossAxisAlignment: center)
+├── SizedBox(height: 20)
+├── CircleAvatar(radius: 60, Icon)
+├── SizedBox(height: 16)
+├── Text('กฤษฏิณัช สำราญกิจ')
+├── SizedBox(height: 8)
+├── Text('รหัสนักศึกษา: 67030270')
+├── SizedBox(height: 24)
+└── Card
+└── Padding(16)
+└── Column
+├── _buildInfoRow(Icons.school, 'คณะ', 'ครุศาสตร์อุตสาหกรรมและเทคโนโลยี')
+│ └── Row[ Icon, SizedBox, Text(label, bold), Expanded(Text(value)) ]
+├── Divider
+├── _buildInfoRow(Icons.code, 'สาขา', 'เทคโนโลยีสารสนเทศ')
+├── Divider
+├── _buildInfoRow(Icons.favorite, 'งานอดิเรก', 'เล่นเกมและฟังเพลง')
+├── Divider
+├── _buildInfoRow(Icons.location_on, 'ที่อยู่', 'กรุงเทพมหานคร')
+├── Divider
+├── _buildInfoRow(Icons.star, 'เป้าหมาย', 'พัฒนาแอปให้สำเร็จและเรียนรู้ Flutter')
+├── Divider
+├── _buildInfoRow(Icons.phone, 'ติดต่อ', 'example@email.com')
+└── SizedBox(width: double.infinity)
+└── ElevatedButton.icon (icon: smart_toy, label: 'ทดลอง AI Chat')
+└── onPressed: Navigator.push -> AiChatPage
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
-| รายการ | Hot Reload (r) | Hot Restart (R) |
+| รายการ | Hot Reload (`r`) | Hot Restart (`R`) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | เร็วกว่า | ช้ากว่า |
+| State ถูก Reset? | ไม่ถูก reset (รักษา state) | ถูก reset ทั้งหมด |
+| ใช้เมื่อไหร่ | เปลี่ยน UI / โค้ดเล็กน้อย เช่น widget tree, styles, method body | เปลี่ยน stateful initialization, global variables, `main()` หรือเมื่อ hot reload ไม่อัพเดต |
+
+
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+สวัสดีครับ
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+คุณคือผู้เชี่ยวชาญด้าน Content Marketing ที่มีประสบการณ์ 10 ปี  ช่วยคิดไอเดียทำคลิปสั้น TikTok จำนวน 3 ไอเดีย สำหรับร้านกาแฟเปิดใหม่สไตล์มินิมอล  กลุ่มเป้าหมายคือวัยรุ่นและวัยทำงานที่ชอบถ่ายรูปเช็กอิน  ขอไอเดียที่เน้นความสร้างสรรค์ สนุกสนาน ไม่เอาแนวขายของตรงๆ และสรุปผลลัพธ์มาเป็นตารางที่มีหัวข้อ: ชื่อไอเดีย, แนวทางการถ่ายทำ, และจุดดึงดูดสายตา 
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+Prompt แบบ Simple: ได้แค่คำทักทายทั่วไป ต้องเสียเวลาพิมพ์สั่งงานต่อ
+
+Prompt แบบ Detailed: ได้ชิ้นงานจริง เป็นตารางไอเดียที่ตรงโจทย์และพร้อมใช้งานทันที
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
 ```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
+<img width="1918" height="636" alt="image" src="https://github.com/user-attachments/assets/1b85547c-b8ed-4544-a062-ab2a7b827f65" />
+
 ```
 
 ---
 
-## 📝 ส่วนที่ 4: คำถามท้ายบท (Review Questions)
+## 📝 1. Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
-ตอบคำถามต่อไปนี้ลงในใบงาน:
+คำตอบ: Flutter ใช้ rendering engine ของตัวเอง (Skia) เพื่อวาด UI ทั้งหมดใหม่จากโค้ด Dart ทำให้ไม่ต้องพึ่ง native UI component โดยตรง ส่วน React Native ใช้ native rendering engine ของแพลตฟอร์มแล้วเชื่อมระหว่าง JavaScript กับ native widgets
 
-**1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
+2. อธิบายความแตกต่างระหว่าง StatelessWidget และ StatefulWidget พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
-```
-คำตอบ: _______________________________________________
-```
+คำตอบ: StatelessWidget คือ widget ที่ไม่มี state ภายในเอง แสดงผลคงที่หรือรับข้อมูลจากภายนอก เช่น ปุ่มตัวอักษร หรือตัวแสดงหัวข้อ Text ส่วน StatefulWidget มี state ภายในและสามารถเปลี่ยน UI ได้เมื่อ state เปลี่ยน เช่น ฟอร์มที่กรอกข้อมูล, นับจำนวนครั้งกดปุ่ม, หรือหน้าจอ chat ที่ต้องเพิ่มข้อความได้
 
-**2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
+3. เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
-```
-คำตอบ: _______________________________________________
-```
+คำตอบ: เพราะ API Key เป็นข้อมูลลับ หาก commit ลง repo จะมีคนอื่นเข้าถึงได้ง่าย เสี่ยงโดนขโมยใช้ ทำให้เกิดค่าใช้จ่ายหรือความปลอดภัยถูกทำลาย วิธีจัดการคือเก็บใน environment variables, ไฟล์ .env ที่ไม่ commit, secret manager ของ cloud, หรือไฟล์ config ที่อยู่ใน .gitignore
 
-**3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
+4. Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
-```
-คำตอบ: _______________________________________________
-```
+คำตอบ: Hot Reload อัปเดตโค้ด Dart ที่แก้แล้วเข้าไปในแอปที่รันอยู่ โดยไม่ต้องรีสตาร์ทแอปทั้งตัว จึงเร็วและรักษา state ไว้ได้ แต่มีข้อจำกัดคือไม่รองรับการเปลี่ยนแปลง main() หรือบาง initialization, class structure ใหม่, หรือ state ที่สร้างตอนเริ่มต้นอย่างลึกมาก จึงต้องใช้ Hot Restart เมื่อเปลี่ยนโครงสร้างหลัก
 
-**4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
+5. จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
-```
-คำตอบ: _______________________________________________
-```
-
-**5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
-
-```
-คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+คำตอบ:
+ช่วยสร้างแชทบอทตอบคำถามผู้ใช้ในแอปได้อัตโนมัติ
+ช่วยเขียนคำอธิบายเนื้อหา, สรุปบทความ หรือแนะนำเนื้อหาตามผู้ใช้
+ช่วยสร้างระบบแนะนำการค้นหา/แนะนำสินค้า หรือช่วยแปลภาษาในแอปแบบเรียลไทม์
 ```
 
 ---
@@ -1879,13 +1926,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [!] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [!] App รันได้บน Chrome หรือ Android Device/Emulator
+- [!] Profile Card แสดงข้อมูลของตัวเอง
+- [!] AI Chat คุยกับ Gemini ได้จริง
+- [!] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [!] ตอบคำถามท้ายบทครบทุกข้อ
+- [!] Push ขึ้น GitHub แล้ว
 
 ---
 
