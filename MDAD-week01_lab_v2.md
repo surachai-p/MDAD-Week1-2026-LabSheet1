@@ -1532,7 +1532,424 @@ StatefulWidget เป็น Widget ที่สามารถเปลี่ย
 
 ---
 
-## 📤 การส่งงาน (Submission)
+## � ส่วนที่ 6: บทเรียนพิเศษ — Git และ Version Control
+
+### ความสำคัญของ Version Control
+
+**Git** คือระบบบันทึกประวัติการเปลี่ยนแปลงโค้ด (Version Control System) ที่ช่วยให้:
+- 💾 เก็บประวัติการแก้ไขทุกครั้ง
+- 👥 ทำงานร่วมกับผู้พัฒนาคนอื่นๆ ได้
+- ↩️ ย้อนกลับไปยังเวอร์ชันเก่าได้เมื่อเกิดปัญหา
+- 📝 เห็นว่าใครแก้ไขอะไรและเมื่อไหร่
+
+---
+
+### 6.1 การติดตั้ง Git
+
+**macOS:**
+```bash
+brew install git
+```
+
+**Windows (PowerShell):**
+```powershell
+# ผ่าน Chocolatey
+choco install git
+
+# หรือ Scoop
+scoop install git
+```
+
+**Linux (Ubuntu/Debian):**
+```bash
+sudo apt install git
+```
+
+**ตรวจสอบการติดตั้ง:**
+```bash
+git --version
+# ผลลัพธ์: git version 2.x.x
+```
+
+---
+
+### 6.2 การตั้งค่า Git คร้ังแรก
+
+เมื่อติดตั้ง Git เป็นครั้งแรก ให้กำหนดชื่อและอีเมล:
+
+```bash
+# ตั้งชื่อผู้ใช้ (จะแสดงในประวัติ Commit)
+git config --global user.name "ชื่อ นามสกุล"
+
+# ตั้งอีเมล
+git config --global user.email "email@example.com"
+
+# ตรวจสอบการตั้งค่า
+git config --global --list
+```
+
+> 💡 **Tip:** หากไม่ใช้ `--global` ค่าจะใช้ได้เฉพาะ Repository ปัจจุบันเท่านั้น
+
+---
+
+### 6.3 คำสั่ง Git พื้นฐาน
+
+#### 6.3.1 สร้าง Repository ใหม่
+
+```bash
+# เปลี่ยนไปที่โฟลเดอร์โปรเจกต์
+cd ~/Projects/week01_hello_flutter
+
+# เริ่มต้น Git Repository
+git init
+
+# ผลลัพธ์: Initialized empty Git repository in ...
+```
+
+#### 6.3.2 ตรวจสอบสถานะไฟล์
+
+```bash
+git status
+
+# ผลลัพธ์ (เมื่อเพิ่มไฟล์ใหม่):
+# On branch main
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#         lib/main.dart
+#         pubspec.yaml
+```
+
+#### 6.3.3 เพิ่มไฟล์ (Staging)
+
+```bash
+# เพิ่มไฟล์เดียว
+git add lib/main.dart
+
+# เพิ่มทั้งหมด
+git add .
+
+# ตรวจสอบว่าเพิ่มแล้ว
+git status
+# ผลลัพธ์: Changes to be committed
+```
+
+#### 6.3.4 Commit (บันทึกประวัติ)
+
+```bash
+# Commit กับข้อความอธิบาย (ขนาดเล็ก)
+git commit -m "Initial Flutter project setup"
+
+# Commit กับข้อความยาว (ใช้ Editor)
+git commit
+
+# Commit และ Add พร้อมกัน (เฉพาะไฟล์ที่ติดตาม)
+git commit -am "Update main.dart with new UI"
+```
+
+**ตัวอย่าง Commit Message ที่ดี:**
+```
+✅ "Add Flutter Profile Card Widget"
+✅ "Fix hot reload issue on main.dart"
+✅ "Integrate Gemini API for AI chat"
+
+❌ "update" (ไม่ชัดเจน)
+❌ "asdfgh" (ไม่สำคัญ)
+```
+
+#### 6.3.5 ดู History — คำสั่ง `git log`
+
+**คำสั่ง git log พื้นฐาน:**
+
+```bash
+# ดู Commit History ทั้งหมด (ล่าสุดขึ้นแรก)
+git log
+
+# ดูเพียง 5 Commit ล่าสุด
+git log -5
+
+# ดูแบบกระชับ (แสดงอักษรตัดสินใจ)
+git log --oneline
+```
+
+**ผลลัพธ์ตัวอย่าง:**
+
+```
+commit a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
+Author: ชื่อ นามสกุล <email@example.com>
+Date:   Wed Jul 09 14:30:00 2026 +0700
+
+    Add Flutter Profile Card Widget
+
+commit f6e5d4c3b2a1z9y8x7w6v5u4t3s2r1q0
+Author: ชื่อ นามสกุล <email@example.com>
+Date:   Wed Jul 09 14:25:00 2026 +0700
+
+    Integrate Gemini API for AI chat
+```
+
+**โฟลเมตปรับแต่ง:**
+
+```bash
+# แสดงเฉพาะไฟล์ที่แก้ไข
+git log --name-status
+
+# แสดง Commit รวมกับการเปลี่ยนแปลงแต่ละบรรทัด
+git log -p
+
+# แสดงแบบกราฟ (แสดงสาขา Branch ได้ชัด)
+git log --graph --oneline --all
+
+# แสดง Author และเวลา
+git log --format=fuller
+
+# Filter: ดู Commit โดย Author
+git log --author="ชื่อ นามสกุล"
+
+# Filter: ดู Commit หลังจากวันที่นั้นมา
+git log --since="2026-07-01"
+
+# Filter: ดู Commit ที่เกี่ยวกับไฟล์เฉพาะ
+git log -- lib/main.dart
+
+# ผสมหลาย Option
+git log --oneline --author="ชื่อ นามสกุล" --since="2026-07-01" -- lib/
+```
+
+**ตัวอย่างการใช้งาน:**
+
+```bash
+# ดูไฟล์ที่เปลี่ยนแปลงในแต่ละ Commit
+$ git log --name-status -5
+commit abc123...
+Author: สมชาย <somchai@example.com>
+Date:   2026-07-09 14:30:00
+
+    Add AI Chat functionality
+    
+M       lib/pages/ai_chat_page.dart
+M       lib/main.dart
+A       lib/config/api_config.dart
+
+M = Modified (แก้ไข)
+A = Added (เพิ่มใหม่)
+D = Deleted (ลบ)
+```
+
+#### 6.3.6 ดูการเปลี่ยนแปลงรายละเอียด
+
+```bash
+# ดูการแก้ไข Commit ล่าสุด
+git show
+
+# ดู Diff ระหว่าง 2 Commit
+git diff commit1 commit2
+
+# ดู Diff ของไฟล์เฉพาะก่อน Commit
+git diff lib/main.dart
+```
+
+#### 6.3.7 ยกเลิก/ย้อนกลับการเปลี่ยนแปลง
+
+```bash
+# ย้อนกลับไฟล์ที่แก้ไข (ยังไม่ Commit)
+git checkout lib/main.dart
+
+# ยกเลิก Commit ล่าสุด (คง State ไว้)
+git reset --soft HEAD~1
+
+# ยกเลิก Commit ล่าสุด (รีเซ็ต State)
+git reset --hard HEAD~1
+
+# สร้าง Commit ใหม่เพื่อยกเลิกการเปลี่ยนแปลงเก่า
+git revert HEAD
+```
+
+> ⚠️ **ระวัง:** `git reset --hard` จะลบการเปลี่ยนแปลงไปเลย ไม่สามารถกู้คืนได้!
+
+---
+
+### 6.4 GitHub — Hosting Remote Repository
+
+#### 6.4.1 สร้าง GitHub Account
+
+1. เปิด https://github.com
+2. คลิก **"Sign up"**
+3. ตั้งชื่อผู้ใช้, อีเมล, รหัสผ่าน
+4. ยืนยันอีเมลแล้วบันทึกคีย์ SSH (ถ้าต้อง)
+
+#### 6.4.2 สร้าง Repository บน GitHub
+
+1. ล็อกอิน GitHub
+2. คลิก **"New"** หรือ **"Create repository"**
+3. ตั้งชื่อ: `week01-flutter-intro-XXXXXXXX` (XXXXXXXX = รหัสนักศึกษา)
+4. ไม่ต้อง Initialize ด้วย README (เราจะส่ง Local Repository ขึ้นไป)
+5. คลิก **"Create repository"**
+
+#### 6.4.3 เชื่อมต่อ Local Repository กับ GitHub
+
+GitHub จะให้คำสั่ง 2 แบบ ให้เลือกหนึ่งตาม SSH key ของคุณ:
+
+**วิธีที่ 1 — HTTPS (ถ้ายังไม่มี SSH Key):**
+
+```bash
+# เพิ่ม Remote Origin
+git remote add origin https://github.com/ชื่อผู้ใช้/week01-flutter-intro-XXXXXXXX.git
+
+# ตั้งชื่อ Branch หลัก
+git branch -M main
+
+# Push โค้ดขึ้น GitHub
+git push -u origin main
+```
+
+**วิธีที่ 2 — SSH (แนะนำ — ปลอดภัยกว่า):**
+
+```bash
+# เพิ่ม Remote Origin
+git remote add origin git@github.com:ชื่อผู้ใช้/week01-flutter-intro-XXXXXXXX.git
+
+# ตั้งชื่อ Branch หลัก
+git branch -M main
+
+# Push โค้ดขึ้น GitHub
+git push -u origin main
+```
+
+> 📌 **หมายเหตุ:** คำสั่งที่สองใช้เฉพาะครั้งแรก คำสั่งต่อไปเพียง `git push` ก็พอ
+
+#### 6.4.4 Verify Repository บน GitHub
+
+1. รีเฟรชหน้า GitHub
+2. ควรเห็น Repository กับไฟล์ทั้งหมด
+3. ดู Commit History ที่ GitHub ด้วย **"Commits"** link
+
+---
+
+### 6.5 Best Practices สำหรับ Git
+
+#### ✅ ปฏิบัติที่ดี
+
+| ปฏิบัติ | ตัวอย่าง |
+|---|---|
+| **Commit บ่อยๆ** | ทุก 30 นาที หรือทุกครั้งที่เสร็จ Feature เล็กๆ |
+| **Commit Message ชัดเจน** | `"Add user authentication"` ไม่ใช่ `"fix bug"` |
+| **ตรวจสอบ `.gitignore`** | ไม่ต้อง Commit API keys, node_modules, build/ |
+| **Sync เรื่อยๆ** | `git pull` ก่อน `git push` |
+| **ใช้ Branch สำหรับ Feature** | `git checkout -b feature/new-ui` แล้ว merge |
+
+#### ❌ หลีกเลี่ยง
+
+| อันตราย | ทำไม |
+|---|---|
+| **Commit ลบบรรทัดโค้ด 100 บรรทัด** | ยากต่อการ Debug ประวัติ |
+| **Commit API Key เข้า Git** | ผู้อื่นจะสามารถใช้งานได้ |
+| **ใช้ `git reset --hard` ลืมไป** | ข้อมูลจะหาย ไม่สามารถกู้คืนได้ |
+| **Commit ไม่มีข้อความ** | 6 เดือนต่อมาเราลืมว่าแก้ไขไร |
+
+---
+
+### 6.6 Workflow ทั่วไปสำหรับวิชานี้
+
+```bash
+# 1. สร้าง Local Repository
+git init
+
+# 2. แก้ไขโค้ด...
+# (แก้ไข lib/main.dart, lib/pages/ai_chat_page.dart ฯลฯ)
+
+# 3. ตรวจสอบสถานะไฟล์
+git status
+
+# 4. เพิ่มไฟล์
+git add .
+
+# 5. Commit กับข้อความ
+git commit -m "Add Flutter UI with AI integration"
+
+# 6. ดูประวัติ (เพื่อนำลงในใบงาน)
+git log --oneline
+
+# 7. สร้าง Repository บน GitHub
+
+# 8. เชื่อมต่อและ Push
+git remote add origin https://github.com/ชื่อ/repo.git
+git branch -M main
+git push -u origin main
+
+# 9. Commit ต่อไปเพียงแค่
+# (แก้ไข...)
+# git add .
+# git commit -m "ข้อความ"
+# git push
+```
+
+---
+
+### 6.7 แบบฝึกหัด Git
+
+**ท่องคำสั่งต่อไปนี้เพื่อให้ชำนาญ:**
+
+```bash
+# 1. เริ่มต้น Repository
+git init test-repo
+cd test-repo
+
+# 2. สร้างไฟล์
+echo "Hello" > file1.txt
+echo "World" > file2.txt
+
+# 3. Commit ครั้งแรก
+git add .
+git commit -m "Initial commit"
+
+# 4. แก้ไขไฟล์
+echo "Hello Flutter!" > file1.txt
+
+# 5. ดู Diff
+git diff
+
+# 6. Commit ครั้งที่สอง
+git add .
+git commit -m "Update file1"
+
+# 7. ดู Log
+git log --oneline
+
+# 8. ดู Commit สุดท้าย
+git show HEAD
+
+# 9. ดู Author ทั้งหมด
+git log --pretty=format:"%an"
+
+# 10. ยกเลิก Commit ล่าสุด (โยกมาไว้ Staging)
+git reset --soft HEAD~1
+
+# 11. ตรวจสอบสถานะ
+git status
+```
+
+---
+
+### 6.8 ตัวอย่าง Git Log Output สำหรับใบงาน
+
+วิทยาศาสตร์จะจดบันทึก Output ของคำสั่ง `git log --oneline` ตามตัวอย่างด้านล่าง:
+
+```bash
+$ git log --oneline
+a7f2d4c Add AI Chat with Gemini API
+9k8l1m2 Update profile card with animations
+3j4k5l6 Integrate Flutter with Google AI Studio
+2e3f4g5 Create initial profile card UI
+1a2b3c4 Initial Flutter project setup
+```
+
+**ค่าที่จะจดลงในใบงาน:**
+- Commit Hash (ตัวแรก 7 ตัว): `a7f2d4c`, `9k8l1m2`, ฯลฯ
+- Commit Message: อธิบายว่าทำอะไร
+
+---
+
+## �📤 การส่งงาน (Submission)
 
 ### สิ่งที่ต้องส่ง
 
