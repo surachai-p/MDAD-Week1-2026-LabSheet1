@@ -1183,10 +1183,10 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [✅] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [✅] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [✅] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [✅] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
 
 ---
 
@@ -1723,63 +1723,98 @@ flutter run
 ```
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
+│   Doctor summary (to see all details, run flutter doctor -v):
+[√] Flutter (Channel stable, 3.44.5, on Microsoft Windows [Version 10.0.19045.6332], locale th-TH)
+[√] Windows Version (10 Pro 64-bit, 22H2, 2009)
+[√] Android toolchain - develop for Android devices (Android SDK version 36.1.0)
+[√] Chrome - develop for the web
+[X] Visual Studio - develop Windows apps
+    X Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+[√] Connected device (3 available)
+[√] Network resources
+
+! Doctor found issues in 1 category.                                                      │
+│   
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 10.0.19045.6332
+Dart Version: 3.12.2 (stable)
+Android SDK Version: 36.1.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+<img width="1294" height="765" alt="งานAI CHAT 2" src="https://github.com/user-attachments/assets/62f152a1-f7d2-44b5-a81b-b13f5e85b7ac" />
+
+
 
 **Widget Tree ที่วาด:**
 
 ```
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
 
-MaterialApp
-└── ?
-    └── ?
-        └── ...
+main()
+└── runApp()
+    └── MyApp (StatelessWidget)
+        └── MaterialApp
+            ├── title: "Flutter Demo"
+            ├── theme: ThemeData
+            │   └── ColorScheme.fromSeed()
+            └── home
+                └── MyHomePage (StatefulWidget)
+                    └── Scaffold
+                        ├── AppBar
+                        │   └── Text(widget.title)
+                        │       └── "Flutter Demo Home Page"
+                        │
+                        ├── Body
+                        │   └── Center
+                        │       └── Column
+                        │           ├── mainAxisAlignment
+                        │           │   └── MainAxisAlignment.center
+                        │           ├── Text
+                        │           │   └── "You have pushed the button this many times:"
+                        │           └── Text
+                        │               └── "$_counter"
+                        │
+                        └── FloatingActionButton
+                            ├── onPressed
+                            │   └── _incrementCounter()
+                            └── Icon
+                                └── Icons.add
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | เร็วมาก (ประมาณ 1–3 วินาที) | ช้ากว่า (ประมาณ 3–10 วินาที) |
+| State ถูก Reset? | ❌ ไม่ถูกรีเซ็ต (State เดิมยังคงอยู่) | ✅ ถูกรีเซ็ตทั้งหมด (เริ่มแอปใหม่) |
+| ใช้เมื่อไหร่ | เมื่อแก้ไข UI, Layout, สี, ข้อความ, Widget หรือ Logic เล็กน้อย | มื่อแก้ main(), ตัวแปร Global/Static, การกำหนดค่าเริ่มต้นของแอป, Provider/Dependency หรือเมื่อ Hot Reload ไม่เห็นผล |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
-```
-(วาง Prompt ที่ใช้)
-```
+
+<img width="1294" height="675" alt="AI CHAT ตอบ1" src="https://github.com/user-attachments/assets/fb03178a-6e5b-4b75-a725-71180308955b" />
+
 
 **Prompt แบบ Detailed:**
-```
-(วาง Prompt ที่ใช้)
-```
+
+<img width="1293" height="766" alt="AI CHAT ตอบ2" src="https://github.com/user-attachments/assets/20ab74f4-d970-4caa-81f4-4b2d9b029073" />
+
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+Prompt แบบ Simple ให้คำตอบสั้นและอธิบายเพียงภาพรวมของความแตกต่าง ส่วน Prompt แบบ Detailed ให้คำตอบที่ละเอียดกว่า มีการเปรียบเทียบเป็นหัวข้อหรือเป็นตาราง พร้อมอธิบายการทำงานของ Rendering Engine ประสิทธิภาพ ข้อดีข้อเสีย และคำแนะนำในการเลือกใช้งาน ทำให้ข้อมูลครบถ้วนและตรงตามความต้องการมากกว่า
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+<img width="1310" height="768" alt="งานAI CHAT" src="https://github.com/user-attachments/assets/450b1429-1874-4977-b630-7df15626cff9" />
 
 ---
 
@@ -1790,34 +1825,40 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter ใช้ Rendering Engine ของตัวเอง (Skia/Impeller) ในการวาด UI โดยตรง ทำให้ทำงานได้ลื่นไหลและหน้าตาเหมือนกันทุกแพลตฟอร์ม ส่วน React Native ใช้ Native Components ของ Android/iOS ในการแสดงผล ทำให้ UI ดูเป็นธรรมชาติของแต่ละระบบ แต่มีการสื่อสารระหว่าง JavaScript กับ Native.
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget คือ Widget ที่ไม่มีการเปลี่ยนแปลงข้อมูล (State) หลังจากสร้างขึ้น UI จะคงที่ตลอดการทำงาน เหมาะสำหรับการแสดงผลข้อมูลที่ไม่เปลี่ยนแปลง เช่น ข้อความ รูปภาพ 
+       StatefulWidget คือ Widget ที่สามารถเปลี่ยนแปลงข้อมูล (State) ได้ระหว่างการทำงาน เมื่อข้อมูลเปลี่ยนจะใช้ setState() เพื่ออัปเดต UI ให้แสดงผลใหม่ เหมาะสำหรับหน้าที่มีการโต้ตอบกับผู้ใช้ เช่น ฟอร์มกรอกข้อมูล
+       หาก UI ไม่มีการเปลี่ยนแปลงควรใช้ StatelessWidget เพื่อความเรียบง่ายและประสิทธิภาพ ส่วน StatefulWidget เหมาะสำหรับงานที่ข้อมูลหรือหน้าจอมีการเปลี่ยนแปลงระหว่างการใช้งาน
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: ไม่ควร Commit API Key ลง Git Repository เพราะ API Key เป็นข้อมูลสำคัญที่ใช้ยืนยันตัวตนในการเข้าถึงบริการต่าง ๆ หากผู้อื่นพบ API Key อาจนำไปใช้งานโดยไม่ได้รับอนุญาต ทำให้เกิดค่าใช้จ่าย ข้อมูลรั่วไหล หรือระบบถูกโจมตีได้
+       วิธีจัดการ API Key อย่างปลอดภัย 1.เก็บ API Key ไว้ในไฟล์ .env หรือไฟล์ Configuration ที่ไม่ถูกอัปโหลดขึ้น Git 2.เพิ่มไฟล์ที่เก็บ API Key ลงใน .gitignore เพื่อป้องกันการ Commit 3.ใช้ Environment Variables สำหรับเก็บข้อมูลสำคัญแทนการเขียนไว้ในโค้ด
+
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload เป็นฟีเจอร์ของ Flutter ที่ช่วยอัปเดตโค้ดที่แก้ไขแล้วเข้าสู่แอปที่กำลังทำงาน โดยไม่ต้องปิดและเปิดแอปใหม่ 
+       ข้อจำกัดมี 1.ไม่อัปเดตการเปลี่ยนแปลงที่เกี่ยวข้องกับ main() หรือการเริ่มต้นแอป 2.ไม่รองรับการเปลี่ยนแปลงตัวแปร static หรือ global บางกรณี 3.หากมีการเปลี่ยนโครงสร้างหลักของแอป เช่น การตั้งค่า Provider หรือ Dependency อาจต้องใช้ Hot Restart
+       4.บางครั้งหากเกิดข้อผิดพลาดของ State หรือการเปลี่ยนแปลงไม่แสดงผล จำเป็นต้องทำ Hot Restart หรือ Full Restart
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. AI Chatbot – ตอบคำถามผู้ใช้อัตโนมัติ ให้ข้อมูล แนะนำการใช้งาน หรือช่วยแก้ไขปัญหาได้ตลอด 24 ชั่วโมง
+2. สรุปและวิเคราะห์ข้อความ – ช่วยสรุปบทความ เอกสาร หรือข้อความยาว ๆ ให้สั้นและเข้าใจง่าย รวมถึงวิเคราะห์เนื้อหาหรือจัดหมวดหมู่ข้อมูล
+3. ผู้ช่วยสร้างเนื้อหา (Content Generation) – ช่วยเขียนอีเมล บทความ คำอธิบายสินค้า หรือข้อความสำหรับโซเชียลมีเดีย ทำให้ผู้ใช้สร้างเนื้อหาได้รวดเร็วและสะดวกมากขึ้น
 ```
 
 ---
@@ -1879,13 +1920,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [✅] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [✅] App รันได้บน Chrome หรือ Android Device/Emulator
+- [✅] Profile Card แสดงข้อมูลของตัวเอง
+- [✅] AI Chat คุยกับ Gemini ได้จริง
+- [✅] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [✅] ตอบคำถามท้ายบทครบทุกข้อ
+- [✅] Push ขึ้น GitHub แล้ว
 
 ---
 
