@@ -1747,10 +1747,8 @@ Android SDK Version: 36.0.0
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[<img width="1296" height="987" alt="image" src="https://github.com/user-attachments/assets/a6eaa926-7377-4396-9670-aaaaa0d961aa" />]
+<img width="1296" height="987" alt="image" src="https://github.com/user-attachments/assets/12570425-a046-4bf3-8bee-b75123cab2cd" />
 
-```
 
 **Widget Tree ที่วาด:**
 
@@ -1800,10 +1798,7 @@ Prompt แบบ Detailed ได้ผลลัพธ์ที่ตรงตา
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[<img width="667" height="717" alt="image" src="https://github.com/user-attachments/assets/809fa2db-5a2a-47c6-91d8-13015aa7c293" />
-]
-```
+<img width="667" height="717" alt="image" src="https://github.com/user-attachments/assets/8d06f253-e412-476a-b74e-e199299ca727" />
 
 ---
 
