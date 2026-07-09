@@ -1723,63 +1723,75 @@ flutter run
 ```
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
+│ Doctor summary (to see all details, run flutter doctor -v):
+│ [√] Flutter (Channel stable, 3.44.5, on Microsoft Windows)
+│ [√] Windows Version (Windows 11 or higher, 25H2, 2009)
+│ [X] Android toolchain - develop for Android devices
+│     X Unable to locate Android SDK.
+│ [√] Connected device (3 available)
+│ [√] Network resources
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.5
+Dart Version: 3.12.2
+Android SDK Version: Not Installed / Not Configured
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+![alt text](image-1.png)
 
 **Widget Tree ที่วาด:**
 
 ```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
-
 MaterialApp
-└── ?
-    └── ?
-        └── ...
+└── ProfilePage (Scaffold)
+    ├── AppBar
+    └── SingleChildScrollView
+        └── Column
+            ├── CircleAvatar
+            ├── Text (ชื่อ)
+            ├── Text (รหัสนักศึกษา)
+            ├── Card
+            │   └── Padding
+            │       └── Column
+            │           ├── Row (คณะ)
+            │           ├── Row (วิชาที่ชอบ)
+            │           └── Row (เป้าหมาย)
+            └── ElevatedButton (ปุ่มเปิดแชท)
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | เร็วมาก (เสี้ยววินาที) | ช้ากว่า (1-3 วินาที) |
+| State ถูก Reset? | ไม่รีเซ็ต (ตัวแปรเก็บค่าเดิม) | รีเซ็ต (เริ่มแอปใหม่ทั้งหมด) |
+| ใช้เมื่อไหร่ | ตอนแก้ UI, สี, ขนาด, ข้อความ | ตอนแก้โครงสร้างหลัก, initState, หรือเพิ่ม package ใหม่ |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+อธิบายแนวคิดของ Flutter Framework ให้นักศึกษาปี 2 เข้าใจง่ายๆ ภายใน 5 ประโยค
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+คุณเป็น Flutter Developer ผู้เชี่ยวชาญ
+สร้าง Flutter Widget ชื่อ WeatherCard โดยรับ parameters และมีเงื่อนไขตามที่กำหนด...
+(กำหนดสี ไอคอน และขนาดให้ชัดเจน ไม่ต้องอธิบาย)
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+Prompt แบบ Simple จะได้คำตอบกว้างๆ และเป็นเพียงทฤษฎี ต้องนำไปประยุกต์ต่อเอง 
+ส่วน Prompt แบบ Detailed จะได้โค้ดที่ตรงความต้องการ 100% พร้อมใช้งานได้ทันที มีองค์ประกอบครบถ้วนตามที่สั่งเป๊ะๆ
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+![alt text](image-2.png)
 
 ---
 
@@ -1790,34 +1802,36 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter ใช้ Rendering Engine ของตัวเอง (Skia/Impeller) ในการวาด UI ทุกพิกเซลบนหน้าจอโดยตรง ทำให้วาดได้เร็วและหน้าตาเหมือนกันทุกแพลตฟอร์ม ส่วน React Native จะใช้ Bridge ในการคุยกับ Native OS เพื่อเรียก Widgets ของระบบขึ้นมาแสดงผล
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: 
+- StatelessWidget: UI จะคงที่ตลอด ไม่สามารถเปลี่ยนแปลงข้อมูลภายในตัวเองได้หลังสร้างเสร็จ (เช่น Icon, Text, หรือปุ่มธรรมดา)
+- StatefulWidget: UI สามารถเปลี่ยนแปลงและอัปเดตหน้าจอได้แบบไดนามิกเมื่อมี Event เกิดขึ้น (เช่น หน้าจอที่มีตัวนับเลข, ช่องกรอกข้อมูล, Checkbox)
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพราะหากเป็น Public Repository ผู้ไม่หวังดีสามารถคัดลอก API Key ไปใช้งานได้ ทำให้เราอาจถูกคิดเงินบิลตามหลังหรือถูกขโมยข้อมูล วิธีจัดการที่ปลอดภัยคือเก็บ API Key ไว้ในตัวแปร Environment (.env) และนำไฟล์ .env ไปใส่ไว้ใน .gitignore เสมอ
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload ทำงานโดยการแทรกโค้ดที่อัปเดตใหม่เข้าไปใน Dart Virtual Machine ทำให้หน้าจออัปเดตทันทีโดยที่ตัวแปร State เก่ายังคงอยู่ ข้อจำกัดคือหากมีการเปลี่ยนแปลงโครงสร้างที่สำคัญมากๆ เช่น โค้ดใน initState() หรือตัวแปร Global บางอย่าง จะต้องใช้ Hot Restart แทน
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. ทำแชทบอทตอบคำถามลูกค้าเบื้องต้นอัตโนมัติ (Customer Support Bot)
+2. ฟีเจอร์สรุปบทความยาวๆ หรือสรุปรีวิวสินค้าให้สั้นลง
+3. ระบบวิเคราะห์ความรู้สึกจากข้อความที่ผู้ใช้พิมพ์มา (Sentiment Analysis)
 ```
 
 ---
