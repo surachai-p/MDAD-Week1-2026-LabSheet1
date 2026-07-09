@@ -882,9 +882,9 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 
 > 📝 **แบบฝึกหัด:** วาด Widget Tree ของโค้ดนี้ลงในใบงาน
-
+``
 ![alt text](image-17.png)
-
+```
 
 
 ---
@@ -1074,6 +1074,7 @@ class ProfilePage extends StatelessWidget {
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
 > 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
+
 ![alt text](image-12.png)
 ---
 
