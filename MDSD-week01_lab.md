@@ -1798,14 +1798,14 @@ main()
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
-```
-Flutter แตกต่างจาก React Native อย่างไร?
-```
+
+<img width="1294" height="675" alt="AI CHAT ตอบ1" src="https://github.com/user-attachments/assets/fb03178a-6e5b-4b75-a725-71180308955b" />
+
 
 **Prompt แบบ Detailed:**
-```
-อธิบายความแตกต่างระหว่าง Flutter และ React Native ในแง่ของ Rendering Engine โดยเปรียบเทียบการเรนเดอร์ UI, ประสิทธิภาพ, การใช้ Native Components และยกตัวอย่างข้อดีข้อเสียของแต่ละ Framework ในรูปแบบตาราง พร้อมสรุปว่าควรเลือกใช้ในสถานการณ์ใด
-```
+
+<img width="1293" height="766" alt="AI CHAT ตอบ2" src="https://github.com/user-attachments/assets/20ab74f4-d970-4caa-81f4-4b2d9b029073" />
+
 
 **ความแตกต่างของผลลัพธ์:**
 ```
