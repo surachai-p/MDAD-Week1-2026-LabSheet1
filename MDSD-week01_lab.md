@@ -1744,15 +1744,16 @@ flutter doctor output:
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.5
+Dart Version: 3.12.2 
+Android SDK Version: 34.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
 
 ```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
+<img width="1915" height="1021" alt="image" src="https://github.com/user-attachments/assets/b099faef-e934-4d7c-a0b1-1939f9c7bc2d" />
+
 ```
 
 **Widget Tree ที่วาด:**
