@@ -1796,31 +1796,17 @@ MaterialApp
 
 **Prompt แบบ Simple:**
 ```
-อธิบายแนวคิดของ Flutter Framework ให้นักศึกษาปี 2 เข้าใจง่ายๆ ภายใน 5 ประโยค
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง: - ชื่อเมือง - อุณหภูมิ (ตัวเลขขนาดใหญ่) - ไอคอนสภาพอากาศ (sunny/cloudy/rainy) - ความชื้น ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
 
-![output-flutter-doctor](../MDAD-Week1-2026-LabSheet1/image/prompt-2.png)
-<img width="1919" height="1079" alt="Screenshot 2026-07-05 193754" src="https://github.com/user-attachments/assets/a984e7a4-c334-4f73-9079-2ce70146070e" />
-
-
+<img width="1918" height="1038" alt="Screenshot 2026-07-09 114845" src="https://github.com/user-attachments/assets/3260ce4a-47cb-492a-b49d-a6acbd10dabb" />
 
 **Prompt แบบ Detailed:**
 ```
-คุณเป็น Flutter Developer ผู้เชี่ยวชาญ
-
-สร้าง Flutter Widget ชื่อ WeatherCard โดย:
-1. รับ parameters: city (String), temperature (double), condition (String), humidity (int)
-2. แสดง UI สวยงามด้วย Card Widget
-3. ใช้ Icons.wb_sunny สำหรับ "sunny", Icons.cloud สำหรับ "cloudy", Icons.water_drop สำหรับ "rainy"
-4. ใช้ Color scheme สีฟ้า-ขาว
-5. ขนาดอุณหภูมิต้องใหญ่และชัดเจน
-
-ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
+คุณเป็น Flutter Developer ผู้เชี่ยวชาญ สร้าง Flutter Widget ชื่อ WeatherCard โดย: 1. รับ parameters: city (String), temperature (double), condition (String), humidity (int) 2. แสดง UI สวยงามด้วย Card Widget 3. ใช้ Icons.wb_sunny สำหรับ "sunny", Icons.cloud สำหรับ "cloudy", Icons.water_drop สำหรับ "rainy" 4. ใช้ Color scheme สีฟ้า-ขาว 5. ขนาดอุณหภูมิต้องใหญ่และชัดเจน ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
 
-![output-flutter-doctor](../MDAD-Week1-2026-LabSheet1/image/prompt-3.png)
-<img width="1919" height="1079" alt="Screenshot 2026-07-05 194936" src="https://github.com/user-attachments/assets/724cef2b-61d8-4cd8-865a-a230d07261ad" />
-
+<img width="1917" height="1038" alt="Screenshot 2026-07-09 115102" src="https://github.com/user-attachments/assets/a0b124f3-e46a-408b-805e-e22fac64535e" />
 
 **ความแตกต่างของผลลัพธ์:**
 ```
