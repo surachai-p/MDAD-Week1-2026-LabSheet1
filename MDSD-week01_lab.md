@@ -1753,6 +1753,9 @@ Android SDK Version: 34.0.0
 ```
 [แนบ Screenshot ของ Profile Card App ที่สร้าง]
 ```
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 16 16" src="https://github.com/user-attachments/assets/a9524a7b-f1b0-406d-99dd-a9bc614c9e09" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 16 28" src="https://github.com/user-attachments/assets/b059a2cf-db05-4358-9159-a23acdf62fd9" />
+
 
 **Widget Tree ที่วาด:**
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
@@ -1789,16 +1792,39 @@ MyApp
 **Prompt แบบ Simple:**
 ```
 (วาง Prompt ที่ใช้)
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง:
+- ชื่อเมือง
+- อุณหภูมิ (ตัวเลขขนาดใหญ่)
+- ไอคอนสภาพอากาศ (sunny/cloudy/rainy)
+- ความชื้น
+
+ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
 
 **Prompt แบบ Detailed:**
 ```
 (วาง Prompt ที่ใช้)
+คุณเป็น Flutter Developer ระดับ Senior
+
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง:
+1. ชื่อเมือง (String) 
+2. อุณหภูมิ (double) ให้ตัวเลขมีขนาดใหญ่และหนาเด่นชัด
+3. ไอคอนสภาพอากาศ (String: sunny/cloudy/rainy) โดยใช้ Icons.wb_sunny, Icons.cloud, Icons.water_drop ให้สอดคล้องกับค่าที่ส่งมา
+4. ความชื้น (int) แสดงคู่กับไอคอนความชื้นขนาดเล็ก
+
+เงื่อนไขการออกแบบ:
+- ใช้ Material Design 3 (Card Widget) แบบไม่มีขอบมุมแหลม
+- รับค่าทั้งหมดผ่าน Constructor Parameters
+- ตกแต่ง Card ให้มีพื้นหลังไล่สี (LinearGradient) โทนสีฟ้าสดใส-ขาว
+- จัด Layout ด้วย Padding ให้สมดุล และให้ผลลัพธ์เป็นโค้ดที่สมบูรณ์พร้อมรัน
+ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
 (บันทึกสิ่งที่สังเกต)
+โค้ดจาก Prompt แบบ Simple จะได้แค่การ์ดสีพื้นธรรมดาๆ ต้องมาจัด Layout และเขียนเงื่อนไขแสดงไอคอนเพิ่มเอง
+โค้ดจาก Prompt แบบ Detailed จะได้โค้ดที่สวยงามพร้อมใช้งานทันที มีการไล่สีพื้นหลังโทนฟ้า-ขาว ตัวเลขใหญ่อ่านง่าย AI เขียนเงื่อนไขผูกไอคอนให้เสร็จสรรพ และให้มาเฉพาะโค้ดเพียวๆ ไม่มีคำอธิบายยืดยาวตามที่สั่งไว้
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
@@ -1806,6 +1832,24 @@ MyApp
 ```
 [แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
 ```
+1. `สวัสดี ฉันเป็นนักศึกษา Flutter มือใหม่`
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 09 45" src="https://github.com/user-attachments/assets/e95f43a3-5986-47b0-9cf1-aeef03c7ac4c" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 10 12" src="https://github.com/user-attachments/assets/c962c4b0-06d0-4bb2-a70a-7db2b58384ce" />
+
+2. `อธิบาย StatefulWidget ให้เข้าใจง่ายๆ`
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 11 08" src="https://github.com/user-attachments/assets/e2c370ee-bde3-4853-a5d8-625ce11f2ff4" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 11 27" src="https://github.com/user-attachments/assets/64b0d3ba-960a-46b8-9d2d-c456229e2d6e" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 11 33" src="https://github.com/user-attachments/assets/c5a07219-e7a6-4d3c-9c0c-7476b2fc78f9" />
+
+3. `ช่วยเขียน Flutter code แสดงรายการนักศึกษา 5 คน`
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 13 06" src="https://github.com/user-attachments/assets/d310165a-1c34-49bc-8e83-2c3c1097615d" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 13 13" src="https://github.com/user-attachments/assets/429f1305-62b0-4678-9fb0-b76cb739634b" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 13 21" src="https://github.com/user-attachments/assets/2ccc44c0-6d27-48d4-b9b1-6fd42615347f" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 14 45" src="https://github.com/user-attachments/assets/6bde1fb1-adbc-45b5-b1c4-194c877a7fde" />
+
+4. `ลองถามคำถามอื่นๆ ที่คุณสงสัย (ขอรหัสโค้ดสีโทนชมพู-ฟ้า สวยๆ 3 สี)`
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 23 15" src="https://github.com/user-attachments/assets/32822d2b-4a43-44f3-bf0e-bd75d7f233be" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-07-10 เวลา 08 23 21" src="https://github.com/user-attachments/assets/11cc4a36-66ef-4005-8cff-6e692a2ecc39" />
 
 ---
 
