@@ -1735,6 +1735,8 @@ Android SDK Version: 34.0.0
 ```
 [แนบ Screenshot ของ Profile Card App ที่สร้าง]
 ```
+<img width="1917" height="1016" alt="Screenshot 2026-07-13 215717" src="https://github.com/user-attachments/assets/4c526a49-a646-4eaf-b6c1-d02529d8b0ae" />
+
 
 **Widget Tree ที่วาด:**
 
