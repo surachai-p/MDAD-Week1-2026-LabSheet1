@@ -1743,19 +1743,38 @@ Android SDK Version: ______34.0.0______
 ```
 (วาด Widget Tree ของแอปที่สร้างด้วยมือ)
 
-MaterialApp
-└── ?
-    └── ?
-        └── ...
+[ MyApp ]
+   │
+   └── [ MaterialApp ]
+         │
+         └── [ MyHomePage ]
+               │
+               └── [ Scaffold ] 
+                     │
+                     ├── appBar: [ AppBar ]
+                     │             │
+                     │             └── title: [ Text ]
+                     │
+                     ├── body: [ Center ]
+                     │           │
+                     │           └── child: [ Column ]
+                     │                 │
+                     │                 ├── children 1: [ Text ]  (บรรทัดที่แสดงคำว่า 'You have pushed...')
+                     │                 │
+                     │                 └── children 2: [ Text ]  (บรรทัดที่แสดงค่าตัวเลข '$_counter')
+                     │
+                     └── floatingActionButton: [ FloatingActionButton ]
+                                                 │
+                                                 └── child: [ Icon ]
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | เร็วมาก (ใช้เวลาเพียงเสี้ยววินาที)|ช้ากว่า (ใช้เวลาประมาณ 1-3 วินาที) |
+| State ถูก Reset? |ไม่ (คงค่า State ปัจจุบันไว้เหมือนเดิม) |ใช่ (รีเซ็ต State ใหม่ทั้งหมด กลับไปค่าเริ่มต้น) |
+| ใช้เมื่อไหร่ |เมื่อมีการแก้ไข UI, เปลี่ยนสี, เปลี่ยนข้อความ หรือปรับขนาดต่างๆ |เมื่อมีการเพิ่ม Class ใหม่, แก้ไขโค้ดใน initState() หรือเปลี่ยนโครงสร้างหลักของแอป |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
