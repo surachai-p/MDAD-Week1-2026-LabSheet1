@@ -1183,10 +1183,10 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [x] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [x] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [x] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [x] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
 
 ---
 
@@ -1723,63 +1723,111 @@ flutter run
 ```
 flutter doctor output:
 ┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
+│ Doctor summary (to see all details, run flutter doctor -v):
+│ [✓] Flutter (Channel stable, 3.44.5, on macOS 26.5.2 25F84 darwin-arm64, locale th-TH)
+│ [✓] Android toolchain - develop for Android devices (Android SDK version 34.0.0)
+│ [✓] Chrome - develop for the web
+│ [✓] Connected device (1 available)
+│ [✓] Network resources
+│ 
+│ • No issues found!
 └─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
+Flutter Version: 3.44.5
+Dart Version: 3.12.2
+Android SDK Version: 34.0.0
 ```
 
 ### 3.2 Screenshot ของ Flutter App
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-08-07 เวลา 01 55 08" src="https://github.com/user-attachments/assets/7b3dae04-76c9-4efb-8764-238a05ee98f4" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-08-07 เวลา 01 55 14" src="https://github.com/user-attachments/assets/83d2a45d-0537-4d6f-a9fc-5e939a609df3" />
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
 
 **Widget Tree ที่วาด:**
+<img width="2048" height="1536" alt="3598C336-09C9-4848-A3B7-7B00D1B729C3_1_102_a" src="https://github.com/user-attachments/assets/b84fe07e-1ce7-4c8a-990b-6632f6cddfca" />
 
 ```
-(วาด Widget Tree ของแอปที่สร้างด้วยมือ)
-
-MaterialApp
-└── ?
-    └── ?
-        └── ...
+MyApp
+└── MaterialApp
+    └── MyHomePage
+        └── Scaffold
+            ├── AppBar
+            │   └── Text (แสดงชื่อแอป)
+            │
+            ├── Center (ส่วน Body)
+            │   └── Column
+            │       ├── Text ("You have pushed the button...")
+            │       └── Text (ตัวเลข $_counter)
+            │
+            └── FloatingActionButton
+                └── Icon (รูปบวก Icons.add)
 ```
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว | เร็วมาก | ใช้เวลาประมาณ 1-3 วินาที |
+| State ถูก Reset? | ไม่ถูก Reset ค่าหรือข้อมูลที่พิมพ์ค้างไว้ในแอปยังคงอยู่ | ถูก Reset ค่าทุกอย่างจะกลับไปเป็นค่าเริ่มต้นเหมือนเปิดแอปใหม่ |
+| ใช้เมื่อไหร่ | ปรับแต่ง UI ทั่วไป เช่น แก้สี, เปลี่ยนขนาดฟอนต์, ขยับ Padding, แก้ไขข้อความ | แก้ไข Logic โค้ด, เพิ่มไฟล์รูปภาพ/ฟอนต์ใหม่, เปลี่ยนโครงสร้างจาก Stateless เป็น Stateful, หรือแก้ไขใน |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง:
+- ชื่อเมือง
+- อุณหภูมิ (ตัวเลขขนาดใหญ่)
+- ไอคอนสภาพอากาศ (sunny/cloudy/rainy)
+- ความชื้น
+
+ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
+คุณเป็น Flutter Developer ระดับ Senior
+
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง:
+1. ชื่อเมือง (String) 
+2. อุณหภูมิ (double) ให้ตัวเลขมีขนาดใหญ่และหนาเด่นชัด
+3. ไอคอนสภาพอากาศ (String: sunny/cloudy/rainy) โดยใช้ Icons.wb_sunny, Icons.cloud, Icons.water_drop ให้สอดคล้องกับค่าที่ส่งมา
+4. ความชื้น (int) แสดงคู่กับไอคอนความชื้นขนาดเล็ก
+
+เงื่อนไขการออกแบบ:
+- ใช้ Material Design 3 (Card Widget) แบบไม่มีขอบมุมแหลม
+- รับค่าทั้งหมดผ่าน Constructor Parameters
+- ตกแต่ง Card ให้มีพื้นหลังไล่สี (LinearGradient) โทนสีฟ้าสดใส-ขาว
+- จัด Layout ด้วย Padding ให้สมดุล และให้ผลลัพธ์เป็นโค้ดที่สมบูรณ์พร้อมรัน
+ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย
 ```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
+โค้ดจาก Prompt แบบ Simple จะได้แค่การ์ดสีพื้นธรรมดาๆ ต้องมาจัด Layout และเขียนเงื่อนไขแสดงไอคอนเพิ่มเอง
+โค้ดจาก Prompt แบบ Detailed จะได้โค้ดที่สวยงามพร้อมใช้งานทันที มีการไล่สีพื้นหลังโทนฟ้า-ขาว ตัวเลขใหญ่อ่านง่าย AI เขียนเงื่อนไขผูกไอคอนให้เสร็จสรรพ และให้มาเฉพาะโค้ดเพียวๆ ไม่มีคำอธิบายยืดยาวตามที่สั่งไว้
 ```
 
 ### 3.5 Screenshot ของ AI Chat App
+1. `สวัสดี ฉันเป็นนักศึกษา Flutter มือใหม่`
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-08-07 เวลา 00 54 24" src="https://github.com/user-attachments/assets/2cd84be3-6b32-4ec4-9dbb-a9d2bd6e355a" />
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+2. `อธิบาย StatefulWidget ให้เข้าใจง่ายๆ`
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-08-07 เวลา 00 55 02" src="https://github.com/user-attachments/assets/8f423933-4b3d-47f5-8a84-c93fc5e557be" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-08-07 เวลา 00 55 07" src="https://github.com/user-attachments/assets/0a7e21f0-4125-463d-ba28-bbd9276c5437" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-08-07 เวลา 00 55 11" src="https://github.com/user-attachments/assets/26041c19-f659-454b-a88b-c9e0ce8bada1" />
+
+
+3. `ช่วยเขียน Flutter code แสดงรายการนักศึกษา 5 คน`
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-08-07 เวลา 00 57 14" src="https://github.com/user-attachments/assets/59701d46-f0c4-4a16-8faa-da8979a330c2" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-08-07 เวลา 00 57 19" src="https://github.com/user-attachments/assets/9f59c6fb-375c-459d-8b61-559bf87fc236" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-08-07 เวลา 00 57 28" src="https://github.com/user-attachments/assets/e7f69e99-e1f2-41bf-b2d4-d4ade7ad659d" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-08-07 เวลา 00 57 36" src="https://github.com/user-attachments/assets/b6074469-9b73-4bcf-bfd5-8233a5d465c9" />
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-08-07 เวลา 00 57 46" src="https://github.com/user-attachments/assets/cae6b38c-eee6-416f-8bfc-60c57fa1f8c2" />
+
+
+4. `ลองถามคำถามอื่นๆ ที่คุณสงสัย (Widget ใน Flutter คืออะไร? ช่วยอธิบายเปรียบเทียบกับของในชีวิตประจำวันให้เห็นภาพหน่อย เข้าใจง่ายๆ สั้นๆ)`
+<img width="1440" height="900" alt="ภาพถ่ายหน้าจอ 2569-08-07 เวลา 01 02 33" src="https://github.com/user-attachments/assets/c5384635-0223-4f46-bd96-c58c339c4183" />
 
 ---
 
@@ -1790,34 +1838,38 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter วาด UI เองทั้งหมด ทำให้ลื่นและหน้าตาเหมือนกันทุกเครื่อง
+       React Native ยืม UI ของระบบมาใช้ผ่านตัวกลาง อาจมีหน่วงหรือเพี้ยนบ้าง
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: StatelessWidget หน้าจอคงที่ เปลี่ยนข้อมูลไม่ได้ เช่น หน้าโชว์โปรไฟล์
+       StatefulWidget หน้าจอโต้ตอบได้ อัปเดตข้อมูลได้ เช่น หน้าแชท
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: กันคนอื่นขโมยคีย์ไปใช้จนโควต้าเต็มหรือโดนเรียกเก็บเงิน
+       วิธีแก้คือเก็บคีย์ในไฟล์แยก แล้วเอาชื่อไฟล์ไปใส่ใน .gitignore
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: อัปเดตโค้ดเข้าแอปทันที ทำให้หน้าจอเปลี่ยนไวมากโดยไม่ต้องรันใหม่
+       ข้อจำกัดคือใช้ไม่ได้ถ้าเพิ่มไฟล์รูปใหม่หรือแก้โครงสร้างแอป ต้องกด Hot Restart แทน
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1. ทำแชทบอทตอบคำถามผู้ใช้งาน
+2. ฟีเจอร์ช่วยแปลภาษาในแอป
+3. ฟีเจอร์สรุปบทความยาวๆให้สั้นลง
 ```
 
 ---
@@ -1879,13 +1931,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
-- [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [x] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [x] App รันได้บน Chrome หรือ Android Device/Emulator
+- [x] Profile Card แสดงข้อมูลของตัวเอง
+- [x] AI Chat คุยกับ Gemini ได้จริง
+- [x] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [x] ตอบคำถามท้ายบทครบทุกข้อ
+- [x] Push ขึ้น GitHub แล้ว
 
 ---
 
