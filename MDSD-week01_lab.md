@@ -425,6 +425,8 @@ Doctor summary (to see all details, run flutter doctor -v):
 > 📝 `[✗] Android toolchain` แสดงว่ายังไม่มี Android SDK — **ต้องแก้ไขในขั้นตอนที่ 4**
 > `[✓] Chrome` หมายความว่าสามารถรัน Flutter บน Chrome ได้แล้วทันที โดยไม่ต้องรอ Android SDK
 
+
+
 ---
 
 ### ขั้นตอนที่ 4: ติดตั้ง Android SDK Command-line Tools (แทน Android Studio)
@@ -675,6 +677,9 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 > 📝 **บันทึกผล:** จดบันทึก Error (`[✗]`) ที่พบ และทำการแก้ไขตามคำแนะนำ  
 > ไม่ต้องแก้ไขรายการที่ขึ้น `[!] Android Studio`
+
+
+![](https://github.com/user-attachments/assets/70205baa-400c-4093-ae8d-bfb4b07ddee2)
 
 ---
 
@@ -1013,6 +1018,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
 > 📝 **แบบฝึกหัด:** วาด Widget Tree ของโค้ดนี้ลงในใบงาน
 
+
+```text
+MyApp (StatelessWidget)
+  └── MaterialApp
+        └── MyHomePage (StatefulWidget)
+              └── Scaffold
+                    ├── AppBar
+                    │     └── Text ('Flutter Demo Home Page')
+                    ├── Center
+                    │     └── Column
+                    │           ├── Text ('You have pushed the button this many times:')
+                    │           └── Text ('$_counter')
+                    └── FloatingActionButton
+                          └── Icon (Icons.add)
+```
 ---
 
 ### ขั้นตอนที่ 4: รันแอปพลิเคชันครั้งแรก
@@ -1183,10 +1203,10 @@ class ProfilePage extends StatelessWidget {
 ```
 
 **TODO สำหรับนักศึกษา:**
-- [ ] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
-- [ ] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
-- [ ] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
-- [ ] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
+- [✓] เปลี่ยนชื่อและรหัสนักศึกษาให้เป็นของตัวเอง
+- [✓] เปลี่ยนข้อมูลในแถวข้อมูลให้เป็นของตัวเอง
+- [✓] เพิ่ม Row ข้อมูลเพิ่มเติมอีก 2 แถว
+- [✓] ลองเปลี่ยนสี Theme จาก `Colors.teal` เป็นสีอื่น
 
 ---
 
@@ -1200,7 +1220,10 @@ class ProfilePage extends StatelessWidget {
 6. ลองกด **R** ใน Terminal เพื่อ Hot Restart
 
 > 🔍 **ข้อสังเกต:** Hot Reload vs Hot Restart ต่างกันอย่างไร? บันทึกการสังเกตลงในใบงาน
-
+```
+Hot Reload เป็นการอัปเดตโค้ดและหน้า UI บนหน้าจออย่างรวดเร็วโดยที่ข้อมูลหรือสถานะเดิม
+Hot Restart เป็นการล้างระบบและเริ่มรันแอปพลิเคชันใหม่ ทำให้ค่าของตัวแปรและสถานะทุกอย่างในแอปถูกรีเซ็ตกลับไปเป็นค่าเริ่มต้น
+```
 ---
 
 ## 🧪 การทดลองที่ 3: ทดลองใช้งาน Google AI Studio
@@ -1227,8 +1250,11 @@ class ProfilePage extends StatelessWidget {
 ```
 
 4. คลิก **"Run"** หรือกด `Ctrl+Enter`
-5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้ำ
-
+5. บันทึก Response และสังเกตความแตกต่างเมื่อเรียกซ้ำ 
+```
+AI สามารถสรุปแนวคิด Flutter ได้กระชับจริงตามเงื่อนไข
+เมื่อเรียกซ้ำด้วย Prompt เดิม พบว่า AI ให้ผลลัพธ์ที่ไม่เหมือนเดิม 
+```
 #### ทดลองที่ 2: Code Generation
 
 พิมพ์ Prompt ต่อไปนี้:
@@ -1263,6 +1289,11 @@ class ProfilePage extends StatelessWidget {
 ```
 
 > 🔍 **เปรียบเทียบ:** ผลลัพธ์จาก Prompt แบบ Simple vs Detailed ต่างกันอย่างไร?
+
+```
+Simple Prompt AI มีการออกแบบ enum และระบบดึงสีธีม Material 3 อัตโนมัติ รวมถึงแทรกข้อความอธิบายความหมายของโค้ดมาให้
+Detailed Prompt ตัว AI  เหมือนเชี่ยวชาญขึ้น ทำตามเงื่อนไขทางเทคนิคและการออกแบบหน้าตา UI (ฟ้า-ขาว) อย่างถูกต้อง และโค้ดที่ได้จะสะอาดพร้อมนำไปติดตั้งใช้งานได้ทันทีโดยไม่มีข้อความอธิบายแทรกตาม Prompt ที่ให้ไป
+```
 
 ---
 
@@ -1720,24 +1751,21 @@ flutter run
 
 ### 3.1 ผลการติดตั้ง Flutter
 
-```
-flutter doctor output:
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│  วางผลลัพธ์จาก flutter doctor ที่นี่                    │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
 
-Flutter Version: ___________________
-Dart Version: ______________________
-Android SDK Version: _______________
-```
+flutter doctor output:
+
+![](https://github.com/user-attachments/assets/2da836d0-68a9-46a0-8c04-19af33c99038)
+
+
+Flutter Version: 3.44.4 
+Dart Version: 3.12.2
+Android SDK Version: 36.0.0
+
 
 ### 3.2 Screenshot ของ Flutter App
 
-```
-[แนบ Screenshot ของ Profile Card App ที่สร้าง]
-```
+![](https://github.com/user-attachments/assets/31082ff8-a831-4f42-88bc-b64fded779e2)
+
 
 **Widget Tree ที่วาด:**
 
@@ -1749,37 +1777,58 @@ MaterialApp
     └── ?
         └── ...
 ```
+![](https://github.com/user-attachments/assets/41b60fdd-57b8-4696-ba02-30e955de8d81)
+
 
 ### 3.3 การเปรียบเทียบ Hot Reload vs Hot Restart
 
 | รายการ | Hot Reload (r) | Hot Restart (R) |
 |---|---|---|
-| ความเร็ว | | |
-| State ถูก Reset? | | |
-| ใช้เมื่อไหร่ | | |
+| ความเร็ว |เร็วมาก |ช้ากว่า Hot Reload |
+| State ถูก Reset? |ไม่ถูก Reset |ถูก Reset |
+| ใช้เมื่อไหร่ |เมื่อต้องการแก้ไข UI เช่น สี ข้อความ |เมื่อต้องการเริ่มแอปใหม่หรือรีเซ็ต State |
 
 ### 3.4 ผลการทดลอง Prompt Engineering
 
 **Prompt แบบ Simple:**
 ```
-(วาง Prompt ที่ใช้)
+เขียน Flutter Widget ชื่อ WeatherCard ที่แสดง:
+- ชื่อเมือง
+- อุณหภูมิ (ตัวเลขขนาดใหญ่)
+- ไอคอนสภาพอากาศ (sunny/cloudy/rainy)
+- ความชื้น
+
+ใช้ Material Design 3 และรับค่าผ่าน Constructor Parameters
 ```
 
 **Prompt แบบ Detailed:**
 ```
-(วาง Prompt ที่ใช้)
-```
+คุณเป็น Flutter Developer ผู้เชี่ยวชาญ
+
+สร้าง Flutter Widget ชื่อ WeatherCard โดย:
+1. รับ parameters: city (String), temperature (double),
+   condition (String), humidity (int)
+2. แสดง UI ด้วย Card Widget
+3. ใช้ Icons.wb_sunny สำหรับ sunny, Icons.cloud สำหรับ cloudy
+   และ Icons.water_drop สำหรับ rainy
+4. ใช้ Color scheme สีฟ้า-ขาว
+5. แสดงอุณหภูมิเป็นตัวเลขขนาดใหญ่และชัดเจน
+
+ให้โค้ดที่สมบูรณ์และใช้งานได้เลย ไม่ต้อง Comment อธิบาย```
 
 **ความแตกต่างของผลลัพธ์:**
 ```
-(บันทึกสิ่งที่สังเกต)
-```
+Simple Prompt: AI สร้างโค้ดได้ตามคำสั่งพื้นฐาน
+แต่รูปแบบและสีของ UI ขึ้นอยู่กับการออกแบบของ AI
+
+Detailed Prompt: AI สร้างโค้ดได้ตรงตามเงื่อนไขมากกว่า
+ทั้งสี ไอคอน และการจัดวางข้อมูล ทำให้โค้ดมีความชัดเจน
+และนำไปใช้งานได้ง่ายขึ้น```
 
 ### 3.5 Screenshot ของ AI Chat App
 
-```
-[แนบ Screenshot ของ Gemini AI Chat ที่ทำงานได้]
-```
+![](https://github.com/user-attachments/assets/08f41903-ad61-4368-8145-4938f75989a5)
+
 
 ---
 
@@ -1790,34 +1839,34 @@ MaterialApp
 **1.** Flutter แตกต่างจาก React Native อย่างไรในแง่ของ Rendering Engine?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Flutter ใช้ Rendering Engine ของตัวเองในการวาด UI ส่วน React Native ใช้ Native Components ของระบบปฏิบัติการ ทำให้ Flutter แสดงผล UI ได้สม่ำเสมอในหลายแพลตฟอร์ม
 ```
 
 **2.** อธิบายความแตกต่างระหว่าง `StatelessWidget` และ `StatefulWidget` พร้อมยกตัวอย่างการใช้งานที่เหมาะสมของแต่ละประเภท
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ:StatelessWidget ใช้กับ UI ที่ไม่มี State เปลี่ยนแปลง เช่น ข้อความหรือไอคอน ส่วน StatefulWidget ใช้กับ UI ที่มี State เปลี่ยนแปลงได้ เช่น ตัวนับจำนวนหรือช่องกรอกข้อความ
 ```
 
 **3.** เหตุใดจึงห้าม Commit API Key ลง Git Repository? และมีวิธีจัดการ API Key อย่างปลอดภัยอย่างไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: เพราะผู้อื่นอาจนำ API Key ไปใช้งานโดยไม่ได้รับอนุญาต ควรเก็บ Key ไว้ใน Environment Variables หรือระบบจัดการ Secret และใช้ Backend เรียก API แทนการฝัง Key ในแอป
 ```
 
 **4.** Hot Reload ทำงานอย่างไร และมีข้อจำกัดอะไรบ้าง?
 
 ```
-คำตอบ: _______________________________________________
+คำตอบ: Hot Reload ช่วยอัปเดตโค้ดและ UI โดยไม่ต้องเริ่มแอปใหม่และยังคง State เดิมไว้ แต่บางการเปลี่ยนแปลง เช่น การแก้ไขโค้ดเริ่มต้น อาจต้องใช้ Hot Restart
 ```
 
 **5.** จากการทดลองใช้ Gemini API ในวันนี้ คุณคิดว่าสามารถนำ AI มาช่วยพัฒนาแอปในแง่ไหนได้บ้าง? ยกตัวอย่าง Use Case 3 อย่าง
 
 ```
 คำตอบ: 
-1. _______________________________________________
-2. _______________________________________________
-3. _______________________________________________
+1.Chatbot – ใช้ AI ตอบคำถามและให้คำแนะนำผู้ใช้
+2.Code Generation – ใช้ AI ช่วยเขียนโค้ดและแก้ไขข้อผิดพลาด
+3.Image Analysis – ใช้ AI วิเคราะห์รูปภาพและอ่านข้อความจากภาพ (OCR)
 ```
 
 ---
@@ -1831,14 +1880,38 @@ MaterialApp
 - เพิ่ม Dark Mode Support
 - เพิ่ม Social Media Links
 
+![](https://github.com/user-attachments/assets/492827bb-5d91-4e39-90fa-effc2e225391)
+
+![](https://github.com/user-attachments/assets/14b12029-72b5-4886-9464-19dad9bad60b)
+
+
 ### Challenge 2: ปรับปรุง AI Chat
 - เพิ่มประวัติการสนทนา (Chat History) โดยส่ง Message History ไปกับ Request
 - เพิ่ม System Prompt เพื่อกำหนดบุคลิกของ AI
 - เพิ่มปุ่ม Clear Chat
 
+2.1 Chat History
+![](https://github.com/user-attachments/assets/97e3991c-b52d-4e19-8fda-949d775f2ac4)
+
+2.2 System Prompt
+![](https://github.com/user-attachments/assets/ba0bbeb1-d785-4ee8-a35b-3884adf06dbc)
+
+2.3 Clear Chat
+![](https://github.com/user-attachments/assets/b37e3b02-ce43-43e7-bc9e-d9e7ad41664e)
+
+![](https://github.com/user-attachments/assets/6750251c-76fd-435c-82de-277d8270b119)
+
+![](https://github.com/user-attachments/assets/9e6f14d8-2d8e-46d3-a9a1-66b1b8605abc)
+
+
+
 ### Challenge 3: รวม Profile + AI
 - เพิ่มปุ่มใน Profile Page ที่ให้ AI สร้าง "Introduction" จากข้อมูลของคุณ
 - ส่งข้อมูล Profile ไปใน Prompt และให้ Gemini เขียนแนะนำตัว
+
+
+<img width="1042" height="686" alt="image" src="https://github.com/user-attachments/assets/d4b03220-e036-44db-9a78-89506d72e11d" />
+
 
 ---
 
@@ -1879,13 +1952,13 @@ week01-flutter-intro-XXXXXXXX/
 
 ### Checklist ก่อนส่ง
 
-- [ ] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
-- [ ] App รันได้บน Chrome หรือ Android Device/Emulator
-- [ ] Profile Card แสดงข้อมูลของตัวเอง
-- [ ] AI Chat คุยกับ Gemini ได้จริง
-- [ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
+- [ ✅] `flutter doctor` ไม่มี `[✗]` (มี `[!] Android Studio` ได้ — ปกติสำหรับ VS Code Workflow)
+- [✅ ] App รันได้บน Chrome หรือ Android Device/Emulator
+- [✅ ] Profile Card แสดงข้อมูลของตัวเอง
+- [✅ ] AI Chat คุยกับ Gemini ได้จริง
+- [✅ ] API Key ไม่ถูก Commit ลง Git (ตรวจสอบ `.gitignore`)
 - [ ] ตอบคำถามท้ายบทครบทุกข้อ
-- [ ] Push ขึ้น GitHub แล้ว
+- [✅ ] Push ขึ้น GitHub แล้ว
 
 ---
 
